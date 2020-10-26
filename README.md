@@ -1,6 +1,6 @@
 # Mcapitata_Developmental_Gene_Expression_Timeseries
 
-<div style="width: 640px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" src="https://app.lucidchart.com/documents/embeddedchart/be6d7b57-e86e-4c26-a279-ce26a17c4b7c" id="4nsIf4Emwm65"></iframe></div>
+![pipeline](https://app.lucidchart.com/publicSegments/view/902dd343-c79e-468c-b26a-5e8b82b44c44/image.png)
 
 This repository provides data and scripts to analyze *Monitpora capitata* gene expression dynamics across nine life stages from pre-fertilization to adult, focusing on shifts in the gene expression network within the first 24 hours post-spawning. This analysis provides data characterizing the coral maternal mRNA complement, as well as transcriptome and epigenetic reprogramming dynamics during the Maternal to Zygotic transition. In doing so, I aim to provide essential information regarding setting the stage for, and the sensitivity of, developmental success under increasing environmental stressors, as well as the potential for positive or negative carryover effects.
 
