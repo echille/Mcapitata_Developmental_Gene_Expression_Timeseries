@@ -1,0 +1,505 @@
+---
+title: "GO Semantic Similarity"
+author: "Erin Chille"
+date: "DRAFT: Last updated 2020/09/08"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Prepare workspace
+```{r, message=FALSE, warning=FALSE}
+rm(list=ls()) # removes all prior objects
+library(tidyverse)
+library(org.Hs.eg.db)
+library(simplifyEnrichment)
+library(magick)
+```
+
+#Maternal
+
+Load GO data and select only the GO_IDs associated with BP terms
+```{r, message=FALSE, warning=FALSE}
+MatGO <- read_csv("Output/RNAseq/MatWGCNA.GO.05.csv", col_names = TRUE)
+nrow(MatGO) # total #enriched terms
+nrow(filter(MatGO, ontology=="BP")) # #BP terms
+nrow(filter(MatGO, ontology=="CC")) # #CC terms
+nrow(filter(MatGO, ontology=="MF")) # #MF terms
+MatGO.BP <- MatGO %>% filter(ontology == "BP")
+MatBP <- MatGO.BP$category
+MatGO.MF <- MatGO %>% filter(ontology == "MF")
+MatMF <- MatGO.MF$category
+```
+
+Calculate a similarity matrix and save the output.
+```{r}
+Mat = GO_similarity(MatBP, ont = "BP", db = "org.Hs.eg.db")
+pdf(file = "Output/RNAseq/MatBP_GOSEM.pdf", width = 7, height = 5)
+simplifyGO(Mat, word_cloud_grob_param = list(max_width = 50), max_words=20)
+dev.off()
+# Mat = GO_similarity(MatMF, ont = "MF", db = "org.Hs.eg.db")
+# simplifyGO(Mat, word_cloud_grob_param = list(max_width = 50), max_words=20)
+```
+
+Load GO data and select only the GO_IDs associated with BP terms
+```{r, message=FALSE, warning=FALSE}
+UEGO <- read_csv("Output/RNAseq/UEWGCNA.GO.05.csv", col_names = TRUE)
+nrow(UEGO) # total #enriched terms
+nrow(filter(UEGO, ontology=="BP")) # #BP terms
+nrow(filter(UEGO, ontology=="CC")) # #CC terms
+nrow(filter(UEGO, ontology=="MF")) # #MF terms
+UEGO.BP <- UEGO %>% filter(ontology == "BP")
+UEBP <- UEGO.BP$category
+# UEGO.MF <- UEGO %>% filter(ontology == "MF")
+# UEMF <- UEGO.MF$category
+```
+
+Calculate a similarity matrix and save the output.
+```{r}
+UE = GO_similarity(UEBP, ont = "BP", db = "org.Hs.eg.db")
+pdf(file = "Output/RNAseq/UEBP_GOSEM.pdf", width = 7, height = 5)
+simplifyGO(UE, word_cloud_grob_param = list(max_width = 50), max_words=20)
+dev.off()
+# UE = GO_similarity(UEMF, ont = "MF", db = "org.Hs.eg.db")
+# simplifyGO(UE, word_cloud_grob_param = list(max_width = 50), max_words=20)
+```
+
+Load GO data and select only the GO_IDs associated with BP terms
+```{r, message=FALSE, warning=FALSE}
+FEGO <- read_csv("Output/RNAseq/FEWGCNA.GO.05.csv", col_names = TRUE)
+nrow(FEGO) # total #enriched terms
+nrow(filter(FEGO, ontology=="BP")) # #BP terms
+nrow(filter(FEGO, ontology=="CC")) # #CC terms
+nrow(filter(FEGO, ontology=="MF")) # #MF terms
+FEGO.BP <- FEGO %>% filter(ontology == "BP")
+FEBP <- FEGO.BP$category
+# FEGO.MF <- FEGO %>% filter(ontology == "MF")
+# FEMF <- FEGO.MF$category
+```
+
+Calculate a similarity matrix and save the output.
+```{r}
+FE = GO_similarity(FEBP, ont = "BP", db = "org.Hs.eg.db")
+pdf(file = "Output/RNAseq/FEBP_GOSEM.pdf", width = 7, height = 5)
+simplifyGO(FE, word_cloud_grob_param = list(max_width = 50), max_words=20)
+dev.off()
+# FE = GO_similarity(FEMF, ont = "MF", db = "org.Hs.eg.db")
+# simplifyGO(FE, word_cloud_grob_param = list(max_width = 50), max_words=20)
+```
+
+# First ZGA
+
+Load GO data and select only the GO_IDs associated with BP terms
+```{r, message=FALSE, warning=FALSE}
+ZGA1GO <- read_csv("Output/RNAseq/ZGA1WGCNA.GO.05.csv", col_names = TRUE)
+nrow(ZGA1GO) # total #enriched terms
+nrow(filter(ZGA1GO, ontology=="BP")) # #BP terms
+nrow(filter(ZGA1GO, ontology=="CC")) # #CC terms
+nrow(filter(ZGA1GO, ontology=="MF")) # #MF terms
+ZGA1GO.BP <- ZGA1GO %>% filter(ontology == "BP")
+ZGA1BP <- ZGA1GO.BP$category
+# ZGA1GO.MF <- ZGA1GO %>% filter(ontology == "MF")
+# ZGA1MF <- ZGA1GO.MF$category
+```
+
+Calculate a similarity matrix and save the output.
+```{r}
+ZGA1 = GO_similarity(ZGA1BP, ont = "BP", db = "org.Hs.eg.db")
+pdf(file = "Output/RNAseq/ZGA1_GOSEM.pdf", width = 7, height = 5)
+simplifyGO(ZGA1, word_cloud_grob_param = list(max_width = 50), max_words=20)
+dev.off()
+# ZGA1 = GO_similarity(ZGA1MF, ont = "MF", db = "org.Hs.eg.db")
+# simplifyGO(ZGA1, word_cloud_grob_param = list(max_width = 50), max_words=20)
+```
+
+Load GO data and select only the GO_IDs associated with BP terms
+```{r, message=FALSE, warning=FALSE}
+ClvgGO <- read_csv("Output/RNAseq/ClvgWGCNA.GO.05.csv", col_names = TRUE)
+nrow(ClvgGO) # total #enriched terms
+nrow(filter(ClvgGO, ontology=="BP")) # #BP terms
+nrow(filter(ClvgGO, ontology=="CC")) # #CC terms
+nrow(filter(ClvgGO, ontology=="MF")) # #MF terms
+ClvgGO.BP <- ClvgGO %>% filter(ontology == "BP")
+ClvgBP <- ClvgGO.BP$category
+# ClvgGO.MF <- ClvgGO %>% filter(ontology == "MF")
+# ClvgMF <- ClvgGO.MF$category
+```
+
+Calculate a similarity matrix and save the output.
+```{r}
+Clvg = GO_similarity(ClvgBP, ont = "BP", db = "org.Hs.eg.db")
+pdf(file = "Output/RNAseq/ClvgBP_GOSEM.pdf", width = 7, height = 5)
+simplifyGO(Clvg, word_cloud_grob_param = list(max_width = 50), max_words=20)
+dev.off()
+# Clvg = GO_similarity(ClvgMF, ont = "MF", db = "org.Hs.eg.db")
+# simplifyGO(Clvg, word_cloud_grob_param = list(max_width = 50), max_words=20)
+```
+
+Load GO data and select only the GO_IDs associated with BP terms
+```{r, message=FALSE, warning=FALSE}
+PCGO <- read_csv("Output/RNAseq/PCWGCNA.GO.05.csv", col_names = TRUE)
+nrow(PCGO) # total #enriched terms
+nrow(filter(PCGO, ontology=="BP")) # #BP terms
+nrow(filter(PCGO, ontology=="CC")) # #CC terms
+nrow(filter(PCGO, ontology=="MF")) # #MF terms
+PCGO.BP <- PCGO %>% filter(ontology == "BP")
+PCBP <- PCGO.BP$category
+# PCGO.MF <- PCGO %>% filter(ontology == "MF")
+# PCMF <- PCGO.MF$category
+```
+
+Calculate a similarity matrix and save the output.
+```{r}
+PC = GO_similarity(PCBP, ont = "BP", db = "org.Hs.eg.db")
+pdf(file = "Output/RNAseq/PCBP_GOSEM.pdf", width = 7, height = 5)
+simplifyGO(PC, word_cloud_grob_param = list(max_width = 50), max_words=20)
+dev.off()
+# PC = GO_similarity(PCMF, ont = "MF", db = "org.Hs.eg.db")
+# simplifyGO(PC, word_cloud_grob_param = list(max_width = 50), max_words=20)
+```
+
+Load GO data and select only the GO_IDs associated with BP terms
+```{r, message=FALSE, warning=FALSE}
+EGGO <- read_csv("Output/RNAseq/EGWGCNA.GO.05.csv", col_names = TRUE)
+nrow(EGGO) # total #enriched terms
+nrow(filter(EGGO, ontology=="BP")) # #BP terms
+nrow(filter(EGGO, ontology=="CC")) # #CC terms
+nrow(filter(EGGO, ontology=="MF")) # #MF terms
+EGGO.BP <- EGGO %>% filter(ontology == "BP")
+EGBP <- EGGO.BP$category
+# EGGO.MF <- EGGO %>% filter(ontology == "MF")
+# EGMF <- EGGO.MF$category
+```
+
+Calculate a similarity matrix and save the output.
+```{r}
+EG = GO_similarity(EGBP, ont = "BP", db = "org.Hs.eg.db")
+pdf(file = "Output/RNAseq/EGBP_GOSEM.pdf", width = 7, height = 5)
+simplifyGO(EG, word_cloud_grob_param = list(max_width = 50), max_words=20)
+dev.off()
+# EG = GO_similarity(EGMF, ont = "MF", db = "org.Hs.eg.db")
+# simplifyGO(EG, word_cloud_grob_param = list(max_width = 50), max_words=20)
+```
+
+#Second ZGA
+
+Load GO data and select only the GO_IDs associated with BP terms
+```{r, message=FALSE, warning=FALSE}
+ZGA2GO <- read_csv("Output/RNAseq/ZGA2WGCNA.GO.05.csv", col_names = TRUE)
+nrow(ZGA2GO) # total #enriched terms
+nrow(filter(ZGA2GO, ontology=="BP")) # #BP terms
+nrow(filter(ZGA2GO, ontology=="CC")) # #CC terms
+nrow(filter(ZGA2GO, ontology=="MF")) # #MF terms
+ZGA2GO.BP <- ZGA2GO %>% filter(ontology == "BP")
+ZGA2BP <- ZGA2GO.BP$category
+# ZGA2GO.MF <- ZGA2GO %>% filter(ontology == "MF")
+# ZGA2MF <- ZGA2GO.MF$category
+```
+
+Calculate a similarity matrix and save the output.
+```{r}
+ZGA2 = GO_similarity(ZGA2BP, ont = "BP", db = "org.Hs.eg.db")
+pdf(file = "Output/RNAseq/ZGA2BP_GOSEM.pdf", width = 7, height = 5)
+simplifyGO(ZGA2, word_cloud_grob_param = list(max_width = 50), max_words=20)
+dev.off()
+# ZGA2 = GO_similarity(ZGA2MF, ont = "MF", db = "org.Hs.eg.db")
+# simplifyGO(ZGA2, word_cloud_grob_param = list(max_width = 50), max_words=20)
+```
+
+Load GO data and select only the GO_IDs associated with BP terms
+```{r, message=FALSE, warning=FALSE}
+MGGO <- read_csv("Output/RNAseq/MGWGCNA.GO.05.csv", col_names = TRUE)
+nrow(MGGO) # total #enriched terms
+nrow(filter(MGGO, ontology=="BP")) # #BP terms
+nrow(filter(MGGO, ontology=="CC")) # #CC terms
+nrow(filter(MGGO, ontology=="MF")) # #MF terms
+MGGO.BP <- MGGO %>% filter(ontology == "BP")
+MGBP <- MGGO.BP$category
+# MGGO.MF <- MGGO %>% filter(ontology == "MF")
+# MGMF <- MGGO.MF$category
+```
+
+Calculate a similarity matrix and save the output.
+```{r}
+MG = GO_similarity(MGBP, ont = "BP", db = "org.Hs.eg.db")
+pdf(file = "Output/RNAseq/MGBP_GOSEM.pdf", width = 7, height = 5)
+simplifyGO(MG, word_cloud_grob_param = list(max_width = 50), max_words=20)
+dev.off()
+# MG = GO_similarity(MGMF, ont = "MF", db = "org.Hs.eg.db")
+# simplifyGO(MG, word_cloud_grob_param = list(max_width = 50), max_words=20)
+```
+
+Load GO data and select only the GO_IDs associated with BP terms
+```{r, message=FALSE, warning=FALSE}
+LGGO <- read_csv("Output/RNAseq/LGWGCNA.GO.05.csv", col_names = TRUE)
+nrow(LGGO) # total #enriched terms
+nrow(filter(LGGO, ontology=="BP")) # #BP terms
+nrow(filter(LGGO, ontology=="CC")) # #CC terms
+nrow(filter(LGGO, ontology=="MF")) # #MF terms
+LGGO.BP <- LGGO %>% filter(ontology == "BP")
+LGBP <- LGGO.BP$category
+# LGGO.MF <- LGGO %>% filter(ontology == "MF")
+# LGMF <- LGGO.MF$category
+```
+
+Calculate a similarity matrix and save the output.
+```{r}
+LG = GO_similarity(LGBP, ont = "BP", db = "org.Hs.eg.db")
+pdf(file = "Output/RNAseq/LGBP_GOSEM.pdf", width = 7, height = 5)
+simplifyGO(LG, word_cloud_grob_param = list(max_width = 50), max_words=20)
+dev.off()
+# LG = GO_similarity(LGMF, ont = "MF", db = "org.Hs.eg.db")
+# simplifyGO(LG, word_cloud_grob_param = list(max_width = 50), max_words=20)
+```
+
+Load GO data and select only the GO_IDs associated with BP terms
+```{r, message=FALSE, warning=FALSE}
+PlnGO <- read_csv("Output/RNAseq/PlnWGCNA.GO.05.csv", col_names = TRUE)
+nrow(PlnGO) # total #enriched terms
+nrow(filter(PlnGO, ontology=="BP")) # #BP terms
+nrow(filter(PlnGO, ontology=="CC")) # #CC terms
+nrow(filter(PlnGO, ontology=="MF")) # #MF terms
+PlnGO.BP <- PlnGO %>% filter(ontology == "BP")
+PlnBP <- PlnGO.BP$category
+# PlnGO.MF <- PlnGO %>% filter(ontology == "MF")
+# PlnMF <- PlnGO.MF$category
+```
+
+Calculate a similarity matrix and save the output.
+```{r}
+Pln = GO_similarity(PlnBP, ont = "BP", db = "org.Hs.eg.db")
+pdf(file = "Output/RNAseq/PlnBP_GOSEM.pdf", width = 7, height = 5)
+simplifyGO(Pln, word_cloud_grob_param = list(max_width = 50), max_words=20)
+dev.off()
+# Pln = GO_similarity(PlnMF, ont = "MF", db = "org.Hs.eg.db")
+# simplifyGO(Pln, word_cloud_grob_param = list(max_width = 50), max_words=20)
+```
+
+#Adult
+
+Load GO data and select only the GO_IDs associated with BP terms
+```{r, message=FALSE, warning=FALSE}
+AdultGO <- read_csv("Output/RNAseq/AdultWGCNA.GO.05.csv", col_names = TRUE)
+nrow(AdultGO) # total #enriched terms
+nrow(filter(AdultGO, ontology=="BP")) # #BP terms
+nrow(filter(AdultGO, ontology=="CC")) # #CC terms
+nrow(filter(AdultGO, ontology=="MF")) # #MF terms
+AdultGO.BP <- AdultGO %>% filter(ontology == "BP")
+AdultBP <- AdultGO.BP$category
+# AdultGO.MF <- AdultGO %>% filter(ontology == "MF")
+# AdultMF <- AdultGO.MF$category
+```
+
+Calculate a similarity matrix and save the output.
+```{r}
+pdf(file = "Output/RNAseq/AdultBP_GOSEM.pdf", width = 7, height = 5)
+Adult = GO_similarity(AdultBP, ont = "BP", db = "org.Hs.eg.db")
+dev.off()
+simplifyGO(Adult, word_cloud_grob_param = list(max_width = 50), max_words=20)
+# Adult = GO_similarity(AdultMF, ont = "MF", db = "org.Hs.eg.db")
+# simplifyGO(Adult, word_cloud_grob_param = list(max_width = 50), max_words=20)
+```
+
+#Create bar plots of each life stage
+```{r}
+ClvgGO.BP %>% 
+  mutate(term = fct_reorder(term, over_represented_pvalue, .desc = TRUE)) %>%
+  ggplot(aes(x=term, y=over_represented_pvalue) ) +
+      geom_segment( aes(x=term ,xend=term, y=0, yend=over_represented_pvalue), color="grey") +
+      geom_point(size=3, color="#69b3a2") +
+      coord_flip() +
+      theme(
+        panel.grid.minor.y = element_blank(),
+        panel.grid.major.y = element_blank(),
+        legend.position="none"
+      ) +
+  xlab("") +
+  ylab("over_represented_pvalueover_represented_pvalue") +
+  ggtitle("Cleavage") + #add a main title
+  theme(plot.title = element_text(face = 'bold',
+                                  size = 12,
+                                  hjust = 0)) +
+  theme_bw() + #Set background color
+  theme(panel.border = element_blank(), # Set border
+                     panel.grid.major = element_blank(), #Set major gridlines
+                     panel.grid.minor = element_blank(), #Set minor gridlines
+                     axis.line = element_line(colour = "black"), #Set axes color
+        plot.background=element_blank(),#Set the plot background
+        legend.position="none")
+PCGO.BP %>% 
+  mutate(term = fct_reorder(term, over_represented_pvalue, .desc = TRUE)) %>%
+  ggplot(aes(x=term, y=over_represented_pvalue) ) +
+      geom_segment( aes(x=term ,xend=term, y=0, yend=over_represented_pvalue), color="grey") +
+      geom_point(size=3, color="#69b3a2") +
+      coord_flip() +
+      theme(
+        panel.grid.minor.y = element_blank(),
+        panel.grid.major.y = element_blank(),
+        legend.position="none"
+      ) +
+  xlab("") +
+  ylab("over_represented_pvalueover_represented_pvalue") +
+  ggtitle("Prawn Chip") + #add a main title
+  theme(plot.title = element_text(face = 'bold',
+                                  size = 12,
+                                  hjust = 0)) +
+  theme_bw() + #Set background color
+  theme(panel.border = element_blank(), # Set border
+                     panel.grid.major = element_blank(), #Set major gridlines
+                     panel.grid.minor = element_blank(), #Set minor gridlines
+                     axis.line = element_line(colour = "black"), #Set axes color
+        plot.background=element_blank(),#Set the plot background
+        legend.position="none")
+EGGO.BP %>% 
+  mutate(term = fct_reorder(term, over_represented_pvalue, .desc = TRUE)) %>%
+  ggplot(aes(x=term, y=over_represented_pvalue) ) +
+      geom_segment( aes(x=term ,xend=term, y=0, yend=over_represented_pvalue), color="grey") +
+      geom_point(size=3, color="#69b3a2") +
+      coord_flip() +
+      theme(
+        panel.grid.minor.y = element_blank(),
+        panel.grid.major.y = element_blank(),
+        legend.position="none"
+      ) +
+  xlab("") +
+  ylab("over_represented_pvalueover_represented_pvalue") +
+  ggtitle("Early Gastrula") + #add a main title
+  theme(plot.title = element_text(face = 'bold',
+                                  size = 12,
+                                  hjust = 0)) +
+  theme_bw() + #Set background color
+  theme(panel.border = element_blank(), # Set border
+                     panel.grid.major = element_blank(), #Set major gridlines
+                     panel.grid.minor = element_blank(), #Set minor gridlines
+                     axis.line = element_line(colour = "black"), #Set axes color
+        plot.background=element_blank(),#Set the plot background
+        legend.position="none")
+MGGO.BP %>% 
+  mutate(term = fct_reorder(term, over_represented_pvalue, .desc = TRUE)) %>%
+  ggplot(aes(x=term, y=over_represented_pvalue) ) +
+      geom_segment( aes(x=term ,xend=term, y=0, yend=over_represented_pvalue), color="grey") +
+      geom_point(size=3, color="#69b3a2") +
+      coord_flip() +
+      theme(
+        panel.grid.minor.y = element_blank(),
+        panel.grid.major.y = element_blank(),
+        legend.position="none"
+      ) +
+  xlab("") +
+  ylab("over_represented_pvalueover_represented_pvalue") +
+  ggtitle("Mid Gastrula") + #add a main title
+  theme(plot.title = element_text(face = 'bold',
+                                  size = 12,
+                                  hjust = 0)) +
+  theme_bw() + #Set background color
+  theme(panel.border = element_blank(), # Set border
+                     panel.grid.major = element_blank(), #Set major gridlines
+                     panel.grid.minor = element_blank(), #Set minor gridlines
+                     axis.line = element_line(colour = "black"), #Set axes color
+        plot.background=element_blank(),#Set the plot background
+        legend.position="none")
+LGGO.BP %>% 
+  mutate(term = fct_reorder(term, over_represented_pvalue, .desc = TRUE)) %>%
+  ggplot(aes(x=term, y=over_represented_pvalue) ) +
+      geom_segment( aes(x=term ,xend=term, y=0, yend=over_represented_pvalue), color="grey") +
+      geom_point(size=3, color="#69b3a2") +
+      coord_flip() +
+      theme(
+        panel.grid.minor.y = element_blank(),
+        panel.grid.major.y = element_blank(),
+        legend.position="none"
+      ) +
+  xlab("") +
+  ylab("over_represented_pvalue") +
+  ggtitle("Late Gastrula") + #add a main title
+  theme(plot.title = element_text(face = 'bold',
+                                  size = 12,
+                                  hjust = 0)) +
+  theme_bw() + #Set background color
+  theme(panel.border = element_blank(), # Set border
+                     panel.grid.major = element_blank(), #Set major gridlines
+                     panel.grid.minor = element_blank(), #Set minor gridlines
+                     axis.line = element_line(colour = "black"), #Set axes color
+        plot.background=element_blank(),#Set the plot background
+        legend.position="none")
+PlnGO.BP %>% 
+  mutate(term = fct_reorder(term, over_represented_pvalue, .desc = TRUE)) %>%
+  ggplot(aes(x=term, y=over_represented_pvalue) ) +
+      geom_segment( aes(x=term ,xend=term, y=0, yend=over_represented_pvalue), color="grey") +
+      geom_point(size=3, color="#69b3a2") +
+      coord_flip() +
+      theme(
+        panel.grid.minor.y = element_blank(),
+        panel.grid.major.y = element_blank(),
+        legend.position="none"
+      ) +
+  xlab("") +
+  ylab("over_represented_pvalue") +
+  ggtitle("Planula") + #add a main title
+  theme(plot.title = element_text(face = 'bold',
+                                  size = 12,
+                                  hjust = 0)) +
+  theme_bw() + #Set background color
+  theme(panel.border = element_blank(), # Set border
+                     panel.grid.major = element_blank(), #Set major gridlines
+                     panel.grid.minor = element_blank(), #Set minor gridlines
+                     axis.line = element_line(colour = "black"), #Set axes color
+        plot.background=element_blank(),#Set the plot background
+        legend.position="none")
+AdultGO.BP %>% 
+  mutate(term = fct_reorder(term, over_represented_pvalue, .desc = TRUE)) %>%
+  ggplot(aes(x=term, y=over_represented_pvalue) ) +
+      geom_segment( aes(x=term ,xend=term, y=0, yend=over_represented_pvalue), color="grey") +
+      geom_point(size=3, color="#69b3a2") +
+      coord_flip() +
+      theme(
+        panel.grid.minor.y = element_blank(),
+        panel.grid.major.y = element_blank(),
+        legend.position="none"
+      ) +
+  xlab("") +
+  ylab("over_represented_pvalue") +
+  ggtitle("Adult") + #add a main title
+  theme(plot.title = element_text(face = 'bold',
+                                  size = 12,
+                                  hjust = 0)) +
+  theme_bw() + #Set background color
+  theme(panel.border = element_blank(), # Set border
+                     panel.grid.major = element_blank(), #Set major gridlines
+                     panel.grid.minor = element_blank(), #Set minor gridlines
+                     axis.line = element_line(colour = "black"), #Set axes color
+        plot.background=element_blank(),#Set the plot background
+        legend.position="none")
+```
+
+Save CSV of sig BP terms for each stage
+```{r}
+UEGO.BP$time_point <- c("Unfertilized_Egg")
+FEGO.BP$time_point <- c("Fertilized_Egg")
+ClvgGO.BP$time_point <- c("Cleavage")
+PCGO.BP$time_point <- c("Prawn_chip")
+EGGO.BP$time_point <- c("Early_gastrula")
+MGGO.BP$time_point <- c("Mid_gastrula")
+LGGO.BP$time_point <- c("Late_gastrula")
+PlnGO.BP$time_point <- c("Planula")
+AdultGO.BP$time_point <- c("Adult")
+GO05.BP <- bind_rows(UEGO.BP, FEGO.BP, ClvgGO.BP, PCGO.BP, EGGO.BP, MGGO.BP, LGGO.BP, PlnGO.BP, AdultGO.BP)
+GO05.BP <- GO05.BP[,c(8,6,1:5)]
+write.csv(GO05.BP, "Output/stage_GO05_BP.csv", row.names = FALSE)
+# 
+# UEGO.MF$time_point <- c("Unfertilized_Egg")
+# FEGO.MF$time_point <- c("Fertilized_Egg")
+# ClvgGO.MF$time_point <- c("Cleavage")
+# PCGO.MF$time_point <- c("Prawn_chip")
+# EGGO.MF$time_point <- c("Early_gastrula")
+# MGGO.MF$time_point <- c("Mid_gastrula")
+# LGGO.MF$time_point <- c("Late_gastrula")
+# PlnGO.MF$time_point <- c("Planula")
+# AdultGO.MF$time_point <- c("Adult")
+# GO05.MF <- bind_rows(UEGO.MF, FEGO.MF, ClvgGO.MF, PCGO.MF, EGGO.MF, MGGO.MF, LGGO.MF, PlnGO.MF, AdultGO.MF)
+# GO05.MF <- GO05.MF[,c(8,6,1:5)]
+# write.csv(GO05.MF, "Output/stage_GO05_MF.csv", row.names = FALSE)
+```
+
