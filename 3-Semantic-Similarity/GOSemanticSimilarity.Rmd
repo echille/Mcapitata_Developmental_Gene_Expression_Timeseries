@@ -296,8 +296,8 @@ Calculate a similarity matrix and save the output.
 ```{r}
 pdf(file = "3-Semantic-Similarity/Output/AdultBP_GOSEM.pdf", width = 7, height = 5)
 Adult = GO_similarity(AdultBP, ont = "BP", db = "org.Hs.eg.db")
-dev.off()
 simplifyGO(Adult, word_cloud_grob_param = list(max_width = 50), max_words=20)
+dev.off()
 # Adult = GO_similarity(AdultMF, ont = "MF", db = "org.Hs.eg.db")
 # simplifyGO(Adult, word_cloud_grob_param = list(max_width = 50), max_words=20)
 ```
