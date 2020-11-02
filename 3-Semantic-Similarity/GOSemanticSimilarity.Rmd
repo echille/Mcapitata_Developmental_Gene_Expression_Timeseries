@@ -1,7 +1,7 @@
 ---
 title: "GO Semantic Similarity"
 author: "Erin Chille"
-date: "DRAFT: Last updated 2020/09/08"
+date: "DRAFT: Last updated 2020/11/02"
 output: html_document
 ---
 
@@ -22,7 +22,7 @@ library(magick)
 
 Load GO data and select only the GO_IDs associated with BP terms
 ```{r, message=FALSE, warning=FALSE}
-MatGO <- read_csv("Output/RNAseq/MatWGCNA.GO.05.csv", col_names = TRUE)
+MatGO <- read_csv("2a-WGCNA/Output/GO.05.Mat.csv", col_names = TRUE)
 nrow(MatGO) # total #enriched terms
 nrow(filter(MatGO, ontology=="BP")) # #BP terms
 nrow(filter(MatGO, ontology=="CC")) # #CC terms
@@ -36,7 +36,7 @@ MatMF <- MatGO.MF$category
 Calculate a similarity matrix and save the output.
 ```{r}
 Mat = GO_similarity(MatBP, ont = "BP", db = "org.Hs.eg.db")
-pdf(file = "Output/RNAseq/MatBP_GOSEM.pdf", width = 7, height = 5)
+pdf(file = "3-Semantic-Similarity/Output/MatBP_GOSEM.pdf", width = 7, height = 5)
 simplifyGO(Mat, word_cloud_grob_param = list(max_width = 50), max_words=20)
 dev.off()
 # Mat = GO_similarity(MatMF, ont = "MF", db = "org.Hs.eg.db")
@@ -45,7 +45,7 @@ dev.off()
 
 Load GO data and select only the GO_IDs associated with BP terms
 ```{r, message=FALSE, warning=FALSE}
-UEGO <- read_csv("Output/RNAseq/UEWGCNA.GO.05.csv", col_names = TRUE)
+UEGO <- read_csv("2a-WGCNA/Output/GO.05.UE.csv", col_names = TRUE)
 nrow(UEGO) # total #enriched terms
 nrow(filter(UEGO, ontology=="BP")) # #BP terms
 nrow(filter(UEGO, ontology=="CC")) # #CC terms
@@ -59,7 +59,7 @@ UEBP <- UEGO.BP$category
 Calculate a similarity matrix and save the output.
 ```{r}
 UE = GO_similarity(UEBP, ont = "BP", db = "org.Hs.eg.db")
-pdf(file = "Output/RNAseq/UEBP_GOSEM.pdf", width = 7, height = 5)
+pdf(file = "3-Semantic-Similarity/Output/UEBP_GOSEM.pdf", width = 7, height = 5)
 simplifyGO(UE, word_cloud_grob_param = list(max_width = 50), max_words=20)
 dev.off()
 # UE = GO_similarity(UEMF, ont = "MF", db = "org.Hs.eg.db")
@@ -68,7 +68,7 @@ dev.off()
 
 Load GO data and select only the GO_IDs associated with BP terms
 ```{r, message=FALSE, warning=FALSE}
-FEGO <- read_csv("Output/RNAseq/FEWGCNA.GO.05.csv", col_names = TRUE)
+FEGO <- read_csv("2a-WGCNA/Output/GO.05.FE.csv", col_names = TRUE)
 nrow(FEGO) # total #enriched terms
 nrow(filter(FEGO, ontology=="BP")) # #BP terms
 nrow(filter(FEGO, ontology=="CC")) # #CC terms
@@ -82,7 +82,7 @@ FEBP <- FEGO.BP$category
 Calculate a similarity matrix and save the output.
 ```{r}
 FE = GO_similarity(FEBP, ont = "BP", db = "org.Hs.eg.db")
-pdf(file = "Output/RNAseq/FEBP_GOSEM.pdf", width = 7, height = 5)
+pdf(file = "3-Semantic-Similarity/Output/FEBP_GOSEM.pdf", width = 7, height = 5)
 simplifyGO(FE, word_cloud_grob_param = list(max_width = 50), max_words=20)
 dev.off()
 # FE = GO_similarity(FEMF, ont = "MF", db = "org.Hs.eg.db")
@@ -93,7 +93,7 @@ dev.off()
 
 Load GO data and select only the GO_IDs associated with BP terms
 ```{r, message=FALSE, warning=FALSE}
-ZGA1GO <- read_csv("Output/RNAseq/ZGA1WGCNA.GO.05.csv", col_names = TRUE)
+ZGA1GO <- read_csv("2a-WGCNA/Output/GO.05.ZGA1.csv", col_names = TRUE)
 nrow(ZGA1GO) # total #enriched terms
 nrow(filter(ZGA1GO, ontology=="BP")) # #BP terms
 nrow(filter(ZGA1GO, ontology=="CC")) # #CC terms
@@ -107,7 +107,7 @@ ZGA1BP <- ZGA1GO.BP$category
 Calculate a similarity matrix and save the output.
 ```{r}
 ZGA1 = GO_similarity(ZGA1BP, ont = "BP", db = "org.Hs.eg.db")
-pdf(file = "Output/RNAseq/ZGA1_GOSEM.pdf", width = 7, height = 5)
+pdf(file = "3-Semantic-Similarity/Output/ZGA1_GOSEM.pdf", width = 7, height = 5)
 simplifyGO(ZGA1, word_cloud_grob_param = list(max_width = 50), max_words=20)
 dev.off()
 # ZGA1 = GO_similarity(ZGA1MF, ont = "MF", db = "org.Hs.eg.db")
@@ -116,7 +116,7 @@ dev.off()
 
 Load GO data and select only the GO_IDs associated with BP terms
 ```{r, message=FALSE, warning=FALSE}
-ClvgGO <- read_csv("Output/RNAseq/ClvgWGCNA.GO.05.csv", col_names = TRUE)
+ClvgGO <- read_csv("2a-WGCNA/Output/GO.05.Clvg.csv", col_names = TRUE)
 nrow(ClvgGO) # total #enriched terms
 nrow(filter(ClvgGO, ontology=="BP")) # #BP terms
 nrow(filter(ClvgGO, ontology=="CC")) # #CC terms
@@ -130,7 +130,7 @@ ClvgBP <- ClvgGO.BP$category
 Calculate a similarity matrix and save the output.
 ```{r}
 Clvg = GO_similarity(ClvgBP, ont = "BP", db = "org.Hs.eg.db")
-pdf(file = "Output/RNAseq/ClvgBP_GOSEM.pdf", width = 7, height = 5)
+pdf(file = "3-Semantic-Similarity/Output/ClvgBP_GOSEM.pdf", width = 7, height = 5)
 simplifyGO(Clvg, word_cloud_grob_param = list(max_width = 50), max_words=20)
 dev.off()
 # Clvg = GO_similarity(ClvgMF, ont = "MF", db = "org.Hs.eg.db")
@@ -139,7 +139,7 @@ dev.off()
 
 Load GO data and select only the GO_IDs associated with BP terms
 ```{r, message=FALSE, warning=FALSE}
-PCGO <- read_csv("Output/RNAseq/PCWGCNA.GO.05.csv", col_names = TRUE)
+PCGO <- read_csv("2a-WGCNA/Output/GO.05.PC.csv", col_names = TRUE)
 nrow(PCGO) # total #enriched terms
 nrow(filter(PCGO, ontology=="BP")) # #BP terms
 nrow(filter(PCGO, ontology=="CC")) # #CC terms
@@ -153,7 +153,7 @@ PCBP <- PCGO.BP$category
 Calculate a similarity matrix and save the output.
 ```{r}
 PC = GO_similarity(PCBP, ont = "BP", db = "org.Hs.eg.db")
-pdf(file = "Output/RNAseq/PCBP_GOSEM.pdf", width = 7, height = 5)
+pdf(file = "3-Semantic-Similarity/Output/PCBP_GOSEM.pdf", width = 7, height = 5)
 simplifyGO(PC, word_cloud_grob_param = list(max_width = 50), max_words=20)
 dev.off()
 # PC = GO_similarity(PCMF, ont = "MF", db = "org.Hs.eg.db")
@@ -162,7 +162,7 @@ dev.off()
 
 Load GO data and select only the GO_IDs associated with BP terms
 ```{r, message=FALSE, warning=FALSE}
-EGGO <- read_csv("Output/RNAseq/EGWGCNA.GO.05.csv", col_names = TRUE)
+EGGO <- read_csv("2a-WGCNA/Output/GO.05.EG.csv", col_names = TRUE)
 nrow(EGGO) # total #enriched terms
 nrow(filter(EGGO, ontology=="BP")) # #BP terms
 nrow(filter(EGGO, ontology=="CC")) # #CC terms
@@ -176,7 +176,7 @@ EGBP <- EGGO.BP$category
 Calculate a similarity matrix and save the output.
 ```{r}
 EG = GO_similarity(EGBP, ont = "BP", db = "org.Hs.eg.db")
-pdf(file = "Output/RNAseq/EGBP_GOSEM.pdf", width = 7, height = 5)
+pdf(file = "3-Semantic-Similarity/Output/EGBP_GOSEM.pdf", width = 7, height = 5)
 simplifyGO(EG, word_cloud_grob_param = list(max_width = 50), max_words=20)
 dev.off()
 # EG = GO_similarity(EGMF, ont = "MF", db = "org.Hs.eg.db")
@@ -187,7 +187,7 @@ dev.off()
 
 Load GO data and select only the GO_IDs associated with BP terms
 ```{r, message=FALSE, warning=FALSE}
-ZGA2GO <- read_csv("Output/RNAseq/ZGA2WGCNA.GO.05.csv", col_names = TRUE)
+ZGA2GO <- read_csv("2a-WGCNA/Output/GO.05.ZGA2.csv", col_names = TRUE)
 nrow(ZGA2GO) # total #enriched terms
 nrow(filter(ZGA2GO, ontology=="BP")) # #BP terms
 nrow(filter(ZGA2GO, ontology=="CC")) # #CC terms
@@ -201,7 +201,7 @@ ZGA2BP <- ZGA2GO.BP$category
 Calculate a similarity matrix and save the output.
 ```{r}
 ZGA2 = GO_similarity(ZGA2BP, ont = "BP", db = "org.Hs.eg.db")
-pdf(file = "Output/RNAseq/ZGA2BP_GOSEM.pdf", width = 7, height = 5)
+pdf(file = "3-Semantic-Similarity/Output/ZGA2BP_GOSEM.pdf", width = 7, height = 5)
 simplifyGO(ZGA2, word_cloud_grob_param = list(max_width = 50), max_words=20)
 dev.off()
 # ZGA2 = GO_similarity(ZGA2MF, ont = "MF", db = "org.Hs.eg.db")
@@ -210,7 +210,7 @@ dev.off()
 
 Load GO data and select only the GO_IDs associated with BP terms
 ```{r, message=FALSE, warning=FALSE}
-MGGO <- read_csv("Output/RNAseq/MGWGCNA.GO.05.csv", col_names = TRUE)
+MGGO <- read_csv("2a-WGCNA/Output/GO.05.MG.csv", col_names = TRUE)
 nrow(MGGO) # total #enriched terms
 nrow(filter(MGGO, ontology=="BP")) # #BP terms
 nrow(filter(MGGO, ontology=="CC")) # #CC terms
@@ -224,7 +224,7 @@ MGBP <- MGGO.BP$category
 Calculate a similarity matrix and save the output.
 ```{r}
 MG = GO_similarity(MGBP, ont = "BP", db = "org.Hs.eg.db")
-pdf(file = "Output/RNAseq/MGBP_GOSEM.pdf", width = 7, height = 5)
+pdf(file = "3-Semantic-Similarity/Output/MGBP_GOSEM.pdf", width = 7, height = 5)
 simplifyGO(MG, word_cloud_grob_param = list(max_width = 50), max_words=20)
 dev.off()
 # MG = GO_similarity(MGMF, ont = "MF", db = "org.Hs.eg.db")
@@ -233,7 +233,7 @@ dev.off()
 
 Load GO data and select only the GO_IDs associated with BP terms
 ```{r, message=FALSE, warning=FALSE}
-LGGO <- read_csv("Output/RNAseq/LGWGCNA.GO.05.csv", col_names = TRUE)
+LGGO <- read_csv("2a-WGCNA/Output/GO.05.LG.csv", col_names = TRUE)
 nrow(LGGO) # total #enriched terms
 nrow(filter(LGGO, ontology=="BP")) # #BP terms
 nrow(filter(LGGO, ontology=="CC")) # #CC terms
@@ -247,7 +247,7 @@ LGBP <- LGGO.BP$category
 Calculate a similarity matrix and save the output.
 ```{r}
 LG = GO_similarity(LGBP, ont = "BP", db = "org.Hs.eg.db")
-pdf(file = "Output/RNAseq/LGBP_GOSEM.pdf", width = 7, height = 5)
+pdf(file = "3-Semantic-Similarity/Output/LGBP_GOSEM.pdf", width = 7, height = 5)
 simplifyGO(LG, word_cloud_grob_param = list(max_width = 50), max_words=20)
 dev.off()
 # LG = GO_similarity(LGMF, ont = "MF", db = "org.Hs.eg.db")
@@ -256,7 +256,7 @@ dev.off()
 
 Load GO data and select only the GO_IDs associated with BP terms
 ```{r, message=FALSE, warning=FALSE}
-PlnGO <- read_csv("Output/RNAseq/PlnWGCNA.GO.05.csv", col_names = TRUE)
+PlnGO <- read_csv("2a-WGCNA/Output/GO.05.Pln.csv", col_names = TRUE)
 nrow(PlnGO) # total #enriched terms
 nrow(filter(PlnGO, ontology=="BP")) # #BP terms
 nrow(filter(PlnGO, ontology=="CC")) # #CC terms
@@ -270,7 +270,7 @@ PlnBP <- PlnGO.BP$category
 Calculate a similarity matrix and save the output.
 ```{r}
 Pln = GO_similarity(PlnBP, ont = "BP", db = "org.Hs.eg.db")
-pdf(file = "Output/RNAseq/PlnBP_GOSEM.pdf", width = 7, height = 5)
+pdf(file = "3-Semantic-Similarity/Output/PlnBP_GOSEM.pdf", width = 7, height = 5)
 simplifyGO(Pln, word_cloud_grob_param = list(max_width = 50), max_words=20)
 dev.off()
 # Pln = GO_similarity(PlnMF, ont = "MF", db = "org.Hs.eg.db")
@@ -281,7 +281,7 @@ dev.off()
 
 Load GO data and select only the GO_IDs associated with BP terms
 ```{r, message=FALSE, warning=FALSE}
-AdultGO <- read_csv("Output/RNAseq/AdultWGCNA.GO.05.csv", col_names = TRUE)
+AdultGO <- read_csv("2a-WGCNA/Output/GO.05.Adult.csv", col_names = TRUE)
 nrow(AdultGO) # total #enriched terms
 nrow(filter(AdultGO, ontology=="BP")) # #BP terms
 nrow(filter(AdultGO, ontology=="CC")) # #CC terms
@@ -294,7 +294,7 @@ AdultBP <- AdultGO.BP$category
 
 Calculate a similarity matrix and save the output.
 ```{r}
-pdf(file = "Output/RNAseq/AdultBP_GOSEM.pdf", width = 7, height = 5)
+pdf(file = "3-Semantic-Similarity/Output/AdultBP_GOSEM.pdf", width = 7, height = 5)
 Adult = GO_similarity(AdultBP, ont = "BP", db = "org.Hs.eg.db")
 dev.off()
 simplifyGO(Adult, word_cloud_grob_param = list(max_width = 50), max_words=20)
@@ -487,7 +487,7 @@ PlnGO.BP$time_point <- c("Planula")
 AdultGO.BP$time_point <- c("Adult")
 GO05.BP <- bind_rows(UEGO.BP, FEGO.BP, ClvgGO.BP, PCGO.BP, EGGO.BP, MGGO.BP, LGGO.BP, PlnGO.BP, AdultGO.BP)
 GO05.BP <- GO05.BP[,c(8,6,1:5)]
-write.csv(GO05.BP, "Output/stage_GO05_BP.csv", row.names = FALSE)
+write.csv(GO05.BP, "3-Semantic-Similarity/Output/stage_GO05_BP.csv", row.names = FALSE)
 # 
 # UEGO.MF$time_point <- c("Unfertilized_Egg")
 # FEGO.MF$time_point <- c("Fertilized_Egg")

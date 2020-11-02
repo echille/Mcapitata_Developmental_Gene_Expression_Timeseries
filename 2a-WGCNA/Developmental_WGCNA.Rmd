@@ -1,7 +1,7 @@
 ---
 title: "Mcap Developmental Timeseries WGCNA"
 author: "Erin Chille"
-date: "DRAFT: Last updated 2020/09/08"
+date: "DRAFT: Last updated 2020/11/02"
 output: html_document
 ---
 
@@ -38,10 +38,10 @@ library("simplifyEnrichment")
 
 Import the data files 
 ```{r}
-treatmentinfo <- read.csv("Data/RNAseq_data.csv", header = TRUE, sep = ",")
+treatmentinfo <- read.csv("2a-WGCNA/Input/RNAseq_data.csv", header = TRUE, sep = ",")
 head(treatmentinfo)
 
-gcount <- as.data.frame(read.csv("Data/gene_count_matrix.csv", row.names="gene_id"), colClasses = double)
+gcount <- as.data.frame(read.csv("2a-WGCNA/Input/gene_count_matrix.csv", row.names="gene_id"), colClasses = double)
 head(gcount)
 dim(gcount)
 ```
@@ -159,7 +159,7 @@ allgenesfilt_PCA <- ggplot(gPCAdata_dev, aes(PC1, PC2, shape=time_point)) +
         plot.background=element_blank()) # + #Set the plot background
   #theme(legend.position = ("none")) #set title attributes
 allgenesfilt_PCA
-ggsave("Output/RNAseq/DEV-allgenesfilt-PCA.pdf", allgenesfilt_PCA)
+ggsave("2a-WGCNA/Output/Fig2-DEV-allgenesfilt-PCA.pdf", allgenesfilt_PCA)
 ```
 
 ### Compile WGCNA Dataset
@@ -198,9 +198,6 @@ Look for outliers by examining
 sampleTree = hclust(dist(datExpr), method = "average");
 # Plot the sample tree: Open a graphic output window of size 12 by 9 inches
 # The user should change the dimensions if the window is too large or too small.
-pdf(file="Output/RNAseq/WGCNAsampleClustering.pdf")
-plot(sampleTree, main = "Sample clustering to detect outliers", sub="", xlab="", cex.lab = 1.5, cex.axis = 1.5, cex.main = 2)
-dev.off()
 plot(sampleTree, main = "Sample clustering to detect outliers", sub="", xlab="", cex.lab = 1.5, cex.axis = 1.5, cex.main = 2)
 ```
 There don't look to be any outliers, so we will move on with business as usual.
@@ -313,7 +310,7 @@ Module 0 is reserved for unassigned genes. The are other modules will be listed 
 
 Load modules calculated from the adjacency matrix
 ```{r}
-dyMod_geneTree <- load(file = "Data/dyMod_geneTree.RData")
+dyMod_geneTree <- load(file = "2a-WGCNA/Input/dyMod_geneTree.RData")
 dyMod_geneTree
 ```
 
@@ -323,9 +320,9 @@ Plot the module assignment under the gene dendrogram
 dynamicColors = labels2colors(dynamicMods) # Convert numeric labels into colors
 table(dynamicColors)
 
-pdf(file="Output/RNAseq/dissTOMColorClustering.pdf", width=20, height=20)
+#pdf(file="Output/RNAseq/dissTOMColorClustering.pdf", width=20, height=20)
 plotDendroAndColors(geneTree, dynamicColors, "Dynamic Tree Cut", dendroLabels = FALSE, hang = 0.03, addGuide = TRUE, guideHang = 0.05, main = "Gene dendrogram and module colors")
-dev.off()
+#dev.off()
 ```
 
 ### Merge modules whose expression profiles are very similar or choose not to merge
@@ -342,28 +339,28 @@ MEDiss = 1-cor(MEs)
 #Cluster again and plot the results
 METree = flashClust(as.dist(MEDiss), method = "average")
 
-pdf(file="Output/RNAseq/eigengeneClustering1.pdf", width = 20)
+#pdf(file="Output/RNAseq/eigengeneClustering1.pdf", width = 20)
 plot(METree, main = "Clustering of module eigengenes", xlab = "", sub = "")
-dev.off()
+#dev.off()
 ```
 
 **Merge modules with >85% eigengene similarity.** Most studies use somewhere between 80-90% similarity. It looks like most of our modules are highly related so I will use 85% similarity as my merging threshold.
 ```{r}
 MEDissThres= 0.15 #merge modules that are 85% similar
 
-pdf(file="Output/RNAseq/eigengeneClustering2.pdf", width = 20)
+#pdf(file="Output/RNAseq/eigengeneClustering2.pdf", width = 20)
 plot(METree, main = "Clustering of module eigengenes", xlab = "", sub = "")
 abline(h=MEDissThres, col="red")
-dev.off()
+#dev.off()
 
 merge= mergeCloseModules(datExpr, dynamicColors, cutHeight= MEDissThres, verbose =3)
 
 mergedColors= merge$colors
 mergedMEs= merge$newMEs
 
-pdf(file="Output/RNAseq/mergedClusters.pdf", width=20, height=20)
+#pdf(file="Output/RNAseq/mergedClusters.pdf", width=20, height=20)
 plotDendroAndColors(geneTree, cbind(dynamicColors, mergedColors), c("Dynamic Tree Cut", "Merged dynamic"), dendroLabels= FALSE, hang=0.03, addGuide= TRUE, guideHang=0.05)
-dev.off()
+#dev.off()
 ```
 
 Save new colors
@@ -375,17 +372,17 @@ MEs = mergedMEs;
 ncol(MEs) #How many modules do we have now?
 ```
 
-Instead of 105 modules, we are now working with 31, a much more reasonable number.
+Instead of 105 modules, we are now working with 34, a much more reasonable number.
 
 ### Plot new tree
 ```{r}
 #Calculate dissimilarity of module eigengenes
 MEDiss = 1-cor(MEs)
 #Cluster again and plot the results
-pdf(file="Output/RNAseq/eigengeneClustering3.pdf")
+#pdf(file="Output/RNAseq/eigengeneClustering3.pdf")
 METree = flashClust(as.dist(MEDiss), method = "average")
 MEtreePlot = plot(METree, main = "Clustering of module eigengenes", xlab = "", sub = "")
-dev.off()
+#dev.off()
 ```
 
 ##  Relating modules to developmental stage
@@ -449,9 +446,9 @@ head(textMatrix)
 
 labeledHeatmap(Matrix = moduleTraitCor, xLabels = names(datTraits),  yLabels = names(MEs), ySymbols = names(MEs), cex.lab.y= 0.55, cex.lab.x= 0.55, colors = blueWhiteRed(50), textMatrix = textMatrix, setStdMargins = TRUE, cex.text = 0.25, textAdj = , zlim = c(-1,1), main = paste("Module-trait relationships"))
 
-pdf(file="Output/RNAseq/Module-trait-relationships.pdf")
+#pdf(file="Output/RNAseq/Module-trait-relationships.pdf")
 labeledHeatmap(Matrix = moduleTraitCor, xLabels = names(datTraits),  yLabels = names(MEs), ySymbols = names(MEs), cex.lab.y= 0.55, cex.lab.x= 0.55, colors = blueWhiteRed(50), textMatrix = textMatrix, setStdMargins = TRUE, cex.text = 0.25, textAdj = , zlim = c(-1,1), main = paste("Module-trait relationships"))
-dev.off()
+#dev.off()
 ```
 
 Attempt at complexHeatmap
@@ -467,7 +464,7 @@ heatmappval <- signif(moduleTraitPvalue, 1)
 htmap.colors <- names(MEs)
 htmap.colors <- gsub("ME", "", htmap.colors)
 
-pdf(file = "Output/RNAseq/Module-trait-relationship-heatmap.pdf", height = 11.5, width = 8)
+pdf(file = "2a-WGCNA/Output/Fig3-Module-trait-relationship-heatmap.pdf", height = 11.5, width = 8)
 ht=Heatmap(moduleTraitCor, name = "Eigengene", column_title = "Module-Trait Eigengene Correlation", 
         col = blueWhiteRed(50), 
         row_names_side = "left", row_dend_side = "left",
@@ -483,6 +480,7 @@ ht=Heatmap(moduleTraitCor, name = "Eigengene", column_title = "Module-Trait Eige
         }},
         column_names_gp =  gpar(fontsize = 10),
 row_names_gp = gpar(fontsize = 10, alpha = 0.75, border = TRUE, fill = htmap.colors))
+draw(ht)
 dev.off()
 ```
 
@@ -561,16 +559,18 @@ Cluster1Plot <- expressionProfile_data %>%
   ylab("Mean Module Eigenegene") +
   theme_bw() + 
   ggtitle("A)") +
-  theme(axis.title.x=element_blank(), #No x-title
-        axis.text.x=element_blank(), #No x-labels
+  theme(axis.text.x=element_blank(), #set x-axis label size
+        axis.title.x=element_blank(), #set x-axis title size
         axis.ticks.x=element_blank(), #No x-label ticks
-        axis.title.y=element_text(size = 8), #set y-axis title size
+        axis.title.y=element_text(size = 14), #No y-axis title
+        axis.text.y=element_text(size = 14), #set y-axis label size, #No y-title
         panel.border = element_blank(), # Set border
         panel.grid.major = element_blank(), #Set major gridlines
         panel.grid.minor = element_blank(), #Set minor gridlines
         axis.line = element_line(colour = "black"), #Set axes color
-        plot.background=element_blank()) + #Set the plot background
-  annotate("text", x = 1.2, y = 0.5, label = "n = 1") +
+        plot.background=element_blank(),
+        plot.title = element_text(size=18)) + #Set the plot background
+  annotate("text", x = 1.2, y = 0.5, label = "n = 1", size = 6) +
   geom_hline(yintercept = 0, linetype="dashed", color = "grey") #
 Cluster2Plot <- expressionProfile_data %>%
         select(time_point, cluster2) %>% 
@@ -582,16 +582,18 @@ Cluster2Plot <- expressionProfile_data %>%
   #ylim(-0.5,1) +
   ggtitle("B)") +
   theme_bw() + 
-  theme(axis.title.x=element_blank(), #No x-title
-        axis.text.x=element_blank(), #No x-labels
+  theme(axis.text.x=element_blank(), #set x-axis label size
+        axis.title.x=element_blank(), #set x-axis title size
         axis.ticks.x=element_blank(), #No x-label ticks
-        axis.title.y=element_blank(), #No y-title
+        axis.title.y=element_blank(), #No y-axis title
+        axis.text.y=element_text(size = 14), #set y-axis label size, #No y-title
         panel.border = element_blank(), # Set border
         panel.grid.major = element_blank(), #Set major gridlines
         panel.grid.minor = element_blank(), #Set minor gridlines
         axis.line = element_line(colour = "black"), #Set axes color
-        plot.background=element_blank()) + #Set the plot background
-  annotate("text", x = 1.2, y = 0.5, label = "n = 4")  +
+        plot.background=element_blank(),
+        plot.title = element_text(size=22)) + #Set the plot background
+  annotate("text", x = 1.2, y = 0.5, label = "n = 4", size = 6)  +
   geom_hline(yintercept = 0, linetype="dashed", color = "grey") #
 Cluster3Plot <- expressionProfile_data %>%
         select(time_point, cluster3) %>% 
@@ -603,17 +605,19 @@ Cluster3Plot <- expressionProfile_data %>%
   #ylim(-0.5,1) +
   ggtitle("C)") +
   theme_bw() + 
-  theme(axis.title.x=element_blank(), #No x-title
-        axis.text.x=element_blank(), #No x-labels
+ theme(axis.text.x=element_blank(), #set x-axis label size
+        axis.title.x=element_blank(), #set x-axis title size
         axis.ticks.x=element_blank(), #No x-label ticks
-        axis.title.y=element_blank(), #No y-title
+        axis.title.y=element_blank(), #No y-axis title
+        axis.text.y=element_text(size = 14), #set y-axis label size, #No y-title
         panel.border = element_blank(), # Set border
         panel.grid.major = element_blank(), #Set major gridlines
         panel.grid.minor = element_blank(), #Set minor gridlines
         axis.line = element_line(colour = "black"), #Set axes color
-        plot.background=element_blank()) + #Set the plot background
-  annotate("text", x = 1.2, y = 0.5, label = "n = 6")  +
-  geom_hline(yintercept = 0, linetype="dashed", color = "grey") #
+        plot.background=element_blank(),
+        plot.title = element_text(size=22)) + #Set the plot background
+  annotate("text", x = 1.2, y = 0.5, label = "n = 6", size = 6)  +
+  geom_hline(yintercept = 0, linetype="dashed", color = "grey")
 Cluster4Plot <- expressionProfile_data %>%
         select(time_point, cluster4) %>% 
   group_by(time_point) %>% 
@@ -625,17 +629,19 @@ Cluster4Plot <- expressionProfile_data %>%
   ggtitle("D)") +
   ylab("Mean Module Eigenegene") +
   theme_bw() + 
-  theme(axis.title.x=element_blank(), #No x-title
-        axis.text.x=element_blank(), #No x-labels
+ theme(axis.text.x=element_blank(), #set x-axis label size
+        axis.title.x=element_blank(), #set x-axis title size
         axis.ticks.x=element_blank(), #No x-label ticks
-        axis.title.y=element_text(size = 8), #set y-axis title size
+        axis.title.y=element_text(size = 14), #No y-axis title
+        axis.text.y=element_text(size = 14), #set y-axis label size, #No y-title
         panel.border = element_blank(), # Set border
         panel.grid.major = element_blank(), #Set major gridlines
         panel.grid.minor = element_blank(), #Set minor gridlines
         axis.line = element_line(colour = "black"), #Set axes color
-        plot.background=element_blank()) + #Set the plot background
-  annotate("text", x = 1.2, y = 0.5, label = "n = 7")  +
-  geom_hline(yintercept = 0, linetype="dashed", color = "grey") #
+        plot.background=element_blank(),
+        plot.title = element_text(size=22)) + #Set the plot background
+  annotate("text", x = 1.2, y = 0.5, label = "n = 7", size = 6)  +
+  geom_hline(yintercept = 0, linetype="dashed", color = "grey")
 Cluster5Plot <- expressionProfile_data %>%
         select(time_point, cluster5) %>% 
   group_by(time_point) %>% 
@@ -646,17 +652,19 @@ Cluster5Plot <- expressionProfile_data %>%
   #ylim(-0.5,1) +
   ggtitle("E)") +
   theme_bw() + 
-theme(axis.title.x=element_blank(), #No x-title
-        axis.text.x=element_blank(), #No x-labels
+ theme(axis.text.x=element_blank(), #set x-axis label size
+        axis.title.x=element_blank(), #set x-axis title size
         axis.ticks.x=element_blank(), #No x-label ticks
-        axis.title.y=element_blank(), #No y-title
+        axis.title.y=element_blank(), #No y-axis title
+        axis.text.y=element_text(size = 14), #set y-axis label size, #No y-title
         panel.border = element_blank(), # Set border
         panel.grid.major = element_blank(), #Set major gridlines
         panel.grid.minor = element_blank(), #Set minor gridlines
         axis.line = element_line(colour = "black"), #Set axes color
-        plot.background=element_blank()) + #Set the plot background
-  annotate("text", x = 1.2, y = 0.5, label = "n = 3") +
-  geom_hline(yintercept = 0, linetype="dashed", color = "grey") # 
+        plot.background=element_blank(),
+        plot.title = element_text(size=22)) + #Set the plot background
+  annotate("text", x = 1.2, y = 0.5, label = "n = 3", size = 6) +
+  geom_hline(yintercept = 0, linetype="dashed", color = "grey")
 Cluster6Plot <- expressionProfile_data %>%
         select(time_point, cluster6) %>% 
   group_by(time_point) %>% 
@@ -667,17 +675,19 @@ Cluster6Plot <- expressionProfile_data %>%
   #ylim(-0.5,1) +
   ggtitle("F)") +
   theme_bw() + 
-  theme(axis.title.x=element_blank(), #No x-title
-        axis.text.x=element_blank(), #No x-labels
+  theme(axis.text.x=element_blank(), #set x-axis label size
+        axis.title.x=element_blank(), #set x-axis title size
         axis.ticks.x=element_blank(), #No x-label ticks
-        axis.title.y=element_blank(), #No y-title
+        axis.title.y=element_blank(), #No y-axis title
+        axis.text.y=element_text(size = 14), #set y-axis label size, #No y-title
         panel.border = element_blank(), # Set border
         panel.grid.major = element_blank(), #Set major gridlines
         panel.grid.minor = element_blank(), #Set minor gridlines
         axis.line = element_line(colour = "black"), #Set axes color
-        plot.background=element_blank()) + #Set the plot background
-  annotate("text", x = 1.2, y = 0.5, label = "n = 2") +
-  geom_hline(yintercept = 0, linetype="dashed", color = "grey") #
+        plot.background=element_blank(),
+        plot.title = element_text(size=22)) + #Set the plot background
+  annotate("text", x = 1.2, y = 0.5, label = "n = 2", size = 6) +
+  geom_hline(yintercept = 0, linetype="dashed", color = "grey")
 Cluster7Plot <- expressionProfile_data %>%
         select(time_point, cluster7) %>% 
   group_by(time_point) %>% 
@@ -689,16 +699,19 @@ Cluster7Plot <- expressionProfile_data %>%
   ggtitle("G)") +
   ylab("Mean Module Eigenegene") +
   theme_bw() + 
-  theme(axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1), #set x-axis label size
+  theme(axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1, size = 14), #set x-axis label size
+        axis.title.x=element_text(size = 14), #set x-axis title size
         axis.ticks.x=element_blank(), #No x-label ticks
-        axis.title.y=element_text(size = 8), #set y-axis title size
+        axis.title.y=element_text(size = 14), #No y-axis title
+        axis.text.y=element_text(size = 14), #set y-axis label size, #No y-title
         panel.border = element_blank(), # Set border
         panel.grid.major = element_blank(), #Set major gridlines
         panel.grid.minor = element_blank(), #Set minor gridlines
         axis.line = element_line(colour = "black"), #Set axes color
-        plot.background=element_blank()) + #Set the plot background
-  annotate("text", x = 1.2, y = 0.6, label = "n = 5")  +
-  geom_hline(yintercept = 0, linetype="dashed", color = "grey") #
+        plot.background=element_blank(),
+        plot.title = element_text(size=22)) + #Set the plot background
+  annotate("text", x = 1.2, y = 0.5, label = "n = 5", size = 6) +
+  geom_hline(yintercept = 0, linetype="dashed", color = "grey")
 Cluster8Plot <- expressionProfile_data %>%
         select(time_point, cluster8) %>% 
   group_by(time_point) %>% 
@@ -709,16 +722,19 @@ Cluster8Plot <- expressionProfile_data %>%
   #ylim(-0.5,1) +
   ggtitle("H)") +
   theme_bw() + 
-  theme(axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1), #set x-axis label size
+  theme(axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1, size = 14), #set x-axis label size
+        axis.title.x=element_text(size = 14), #set x-axis title size
         axis.ticks.x=element_blank(), #No x-label ticks
-        axis.title.y=element_blank(), #No y-title
+        axis.title.y=element_blank(), #No y-axis title
+        axis.text.y=element_text(size = 14), #set y-axis label size, #No y-title
         panel.border = element_blank(), # Set border
         panel.grid.major = element_blank(), #Set major gridlines
         panel.grid.minor = element_blank(), #Set minor gridlines
         axis.line = element_line(colour = "black"), #Set axes color
-        plot.background=element_blank()) + #Set the plot background
-  annotate("text", x = 1.2, y = 0.5, label = "n = 3")  +
-  geom_hline(yintercept = 0, linetype="dashed", color = "grey") #
+        plot.background=element_blank(),
+        plot.title = element_text(size=22)) + #Set the plot background
+  annotate("text", x = 1.2, y = 0.5, label = "n = 3", size = 6) +
+  geom_hline(yintercept = 0, linetype="dashed", color = "grey")
 Cluster9Plot <- expressionProfile_data %>%
         select(time_point, cluster9) %>% 
   group_by(time_point) %>% 
@@ -730,20 +746,23 @@ Cluster9Plot <- expressionProfile_data %>%
   ggtitle("I)") +
   xlab("Time Point") +
   theme_bw() + #Set background color
-  theme(axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1), #set x-axis label size
+  theme(axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1, size = 14), #set x-axis label size
+        axis.title.x=element_text(size = 14), #set x-axis title size
         axis.ticks.x=element_blank(), #No x-label ticks
-        axis.title.y=element_blank(), #No y-title
+        axis.title.y=element_blank(), #No y-axis title
+        axis.text.y=element_text(size = 14), #set y-axis label size, #No y-title
         panel.border = element_blank(), # Set border
         panel.grid.major = element_blank(), #Set major gridlines
         panel.grid.minor = element_blank(), #Set minor gridlines
         axis.line = element_line(colour = "black"), #Set axes color
-        plot.background=element_blank()) + #Set the plot background
-  annotate("text", x = 1.2, y = 0.5, label = "n = 3") +
-  geom_hline(yintercept = 0, linetype="dashed", color = "grey") #
+        plot.background=element_blank(),
+        plot.title = element_text(size=22)) + #Set the plot background
+  annotate("text", x = 1.2, y = 0.5, label = "n = 3", size = 6) +
+  geom_hline(yintercept = 0, linetype="dashed", color = "grey")
 
 #Compile plots into 1 graph, aligning by y-axis and save
 expressionProfiles <- cowplot::plot_grid(Cluster1Plot, Cluster2Plot, Cluster3Plot, Cluster4Plot, Cluster5Plot, Cluster6Plot, Cluster7Plot, Cluster8Plot, Cluster9Plot, align = "v", ncol = 3, nrow = 3)
-ggsave("Output/RNAseq/expressionProfiles.pdf", expressionProfiles, height = 16, width = 21, units = "in")
+ggsave("2a-WGCNA/Output/SFig1-RNAseq-expressionProfiles.pdf", expressionProfiles, height = 16, width = 21, units = "in")
 ```
 
 ###  Gene relationship to trait and important modules: Gene Significance and Module Membership
@@ -789,7 +808,7 @@ names(GSPvalue) = paste("p.GS.", names(time_point), sep="");
 
 Import annotation file.
 ```{r}
-Mcap.annot <- read_tsv("RNAseq_Analyses/annot/200824_Mcap_Blast_GO_KO.tsv", col_names = TRUE) #biological annotation information
+Mcap.annot <- read_tsv( "2a-WGCNA/Input/200824_Mcap_Blast_GO_KO.tsv", col_names = TRUE) #biological annotation information
 tail(Mcap.annot)
 dim(Mcap.annot)
 ```
@@ -862,7 +881,7 @@ head(geneInfo)
 geneInfo$Annotation.GO.ID <- gsub(";NA", "", geneInfo$Annotation.GO.ID) #Remove NAs
 geneInfo$Annotation.GO.ID <- gsub("NA", "", geneInfo$Annotation.GO.ID) #Remove NAs
 
-write.csv(geneInfo, file = "Output/RNAseq/geneInfo.csv")
+write.csv(geneInfo, file = "2a-WGCNA/Output/geneInfo.csv")
 ```
 
 ### Gene Ontology Analysis of each developmental phase: Maternal, Early ZGA, Late ZGA, Adult and other individual life stages
@@ -1015,7 +1034,7 @@ dim(genesAdult.GO.sig)
 
 Find the length of each gene using the stringtie_merged.gtf as a map
 ```{r}
-map <- read.csv(file="Data/stringtie_merged.gtf", header=FALSE, sep="\t", skip=2) #load sample info
+map <- read.csv(file="2a-WGCNA/Input/stringtie_merged.gtf", header=FALSE, sep="\t", skip=2) #load sample info
 map <- subset(map, V3=="transcript")
 map <- map[,c(1,4,5,9)]
 map <- separate(map, V9, into = c("gene_id", "transcript_id", "gene_name"), sep=";")
@@ -1343,18 +1362,18 @@ print(NAs.ontology)
 
 Save significant terms
 ```{r, warning=FALSE}
-write.csv(Mat.GO.05, file = "Output/RNAseq/MatWGCNA.GO.05.csv", row.names = FALSE)
-write.csv(UE.GO.05, file = "Output/RNAseq/UEWGCNA.GO.05.csv", row.names = FALSE)
-write.csv(FE.GO.05, file = "Output/RNAseq/FEWGCNA.GO.05.csv", row.names = FALSE)
-write.csv(ZGA1.GO.05, file = "Output/RNAseq/ZGA1WGCNA.GO.05.csv", row.names = FALSE)
-write.csv(Clvg.GO.05, file = "Output/RNAseq/ClvgWGCNA.GO.05.csv", row.names = FALSE)
-write.csv(PC.GO.05, file = "Output/RNAseq/PCWGCNA.GO.05.csv", row.names = FALSE)
-write.csv(EG.GO.05, file = "Output/RNAseq/EGWGCNA.GO.05.csv", row.names = FALSE)
-write.csv(ZGA2.GO.05, file = "Output/RNAseq/ZGA2WGCNA.GO.05.csv", row.names = FALSE)
-write.csv(MG.GO.05, file = "Output/RNAseq/MGWGCNA.GO.05.csv", row.names = FALSE)
-write.csv(LG.GO.05, file = "Output/RNAseq/LGWGCNA.GO.05.csv", row.names = FALSE)
-write.csv(Pln.GO.05, file = "Output/RNAseq/PlnWGCNA.GO.05.csv", row.names = FALSE)
-write.csv(Adult.GO.05, file = "Output/RNAseq/AdultWGCNA.GO.05.csv", row.names = FALSE)
+write.csv(Mat.GO.05, file = "2a-WGCNA/Output/GO.05.Mat.csv", row.names = FALSE)
+write.csv(UE.GO.05, file = "2a-WGCNA/Output/GO.05.UE.csv", row.names = FALSE)
+write.csv(FE.GO.05, file = "2a-WGCNA/Output/GO.05.FE.csv", row.names = FALSE)
+write.csv(ZGA1.GO.05, file = "2a-WGCNA/Output/GO.05.ZGA1.csv", row.names = FALSE)
+write.csv(Clvg.GO.05, file = "2a-WGCNA/Output/GO.05.Clvg.csv", row.names = FALSE)
+write.csv(PC.GO.05, file = "2a-WGCNA/Output/GO.05.PC.csv", row.names = FALSE)
+write.csv(EG.GO.05, file = "2a-WGCNA/Output/GO.05.EG.csv", row.names = FALSE)
+write.csv(ZGA2.GO.05, file = "2a-WGCNA/Output/GO.05.ZGA2.csv", row.names = FALSE)
+write.csv(MG.GO.05, file = "2a-WGCNA/Output/GO.05.MG.csv", row.names = FALSE)
+write.csv(LG.GO.05, file = "2a-WGCNA/Output/GO.05.LG.csv", row.names = FALSE)
+write.csv(Pln.GO.05, file = "2a-WGCNA/Output/GO.05.Pln.csv", row.names = FALSE)
+write.csv(Adult.GO.05, file = "2a-WGCNA/Output/GO.05.Adult.csv", row.names = FALSE)
 ```
 
 ### KEGG enrichment of maternal modules
@@ -1627,7 +1646,7 @@ str(GO.05.top10.all)
 
 Save as CSV
 ```{r}
-write.csv(GO.05.top10.all, file = "Output/RNAseq/WGCNA.GO.05.top10.csv")
-write.csv(GO.05.all, file = "Output/RNAseq/WGCNA.GO.05.csv")
+#write.csv(GO.05.top10.all, file = "Output/RNAseq/WGCNA.GO.05.top10.csv")
+write.csv(GO.05.all, file = "2a-WGCNA/Output/GO.05.allMods.csv")
 ```
 
