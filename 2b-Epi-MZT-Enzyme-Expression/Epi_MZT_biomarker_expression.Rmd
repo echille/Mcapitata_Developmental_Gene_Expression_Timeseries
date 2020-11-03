@@ -1,7 +1,7 @@
 ---
-title: "MZT Biomarker Expression"
+title: "Epigenetic and MZT Biomarker Expression"
 author: "Erin Chille"
-date: "DRAFT: Last updated 2020/11/03"
+date: "Last updated: 2020/11/03"
 output: html_document
 ---
 
@@ -24,7 +24,7 @@ library("ggpubr")
 
 Load sample Information
 ```{r}
-sample.info <- read.csv(file="2b-Epi-MZT-Enzyme-Expression/Input/RNAseq_data.csv", header=T, sep=",") #load sample info
+sample.info <- read.csv(file="Sample_Info/RNAseq_data.csv", header=T, sep=",") #load sample info
 ```
 
 Load gene count Information

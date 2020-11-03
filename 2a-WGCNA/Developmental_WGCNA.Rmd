@@ -1,7 +1,7 @@
 ---
 title: "Mcap Developmental Timeseries WGCNA"
 author: "Erin Chille"
-date: "DRAFT: Last updated 2020/11/03"
+date: "Last updated 2020/11/03"
 output: html_document
 ---
 
@@ -12,9 +12,9 @@ knitr::opts_chunk$set(echo = TRUE)
 options(stringsAsFactors = FALSE) #Set Strings to character
 ```
 
-# BSF Biomineralization Project: RNAseq Differential Expression and Functional Enrichment Analysis 
+# BSF Biomineralization Project: RNAseq Expression and Functional Enrichment Analysis 
 
-This script is based off of: Langfelder P, Horvath S (2008) WGCNA: an R package for weighted correlation network analysis. BMC Bioinformatics 2008, 9:559 [link to paper](http://www.biomedcentral.com/1471-2105/9/559)
+This script is based off of Langfelder P, Horvath S (2008) WGCNA: an R package for weighted correlation network analysis. BMC Bioinformatics 2008, 9:559 ([link to paper](http://www.biomedcentral.com/1471-2105/9/559))
 
 ## Set up workspace
 
@@ -38,7 +38,7 @@ library("simplifyEnrichment")
 
 Import the data files 
 ```{r}
-treatmentinfo <- read.csv("2a-WGCNA/Input/RNAseq_data.csv", header = TRUE, sep = ",")
+treatmentinfo <- read.csv("Sample_Info/RNAseq_data.csv", header = TRUE, sep = ",")
 head(treatmentinfo)
 
 gcount <- as.data.frame(read.csv("1-QC-Align-Assemble/Output/gene_count_matrix.csv", row.names="gene_id"), colClasses = double)
@@ -310,7 +310,7 @@ Module 0 is reserved for unassigned genes. The are other modules will be listed 
 
 Load modules calculated from the adjacency matrix
 ```{r}
-dyMod_geneTree <- load(file = "2a-WGCNA/Input/dyMod_geneTree.RData")
+dyMod_geneTree <- load(file = "2a-WGCNA/Output/dyMod_geneTree.RData")
 dyMod_geneTree
 ```
 
