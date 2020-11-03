@@ -1,7 +1,7 @@
 ---
 title: "MZT Biomarker Expression"
 author: "Erin Chille"
-date: "DRAFT: Last updated 2020/11/2"
+date: "DRAFT: Last updated 2020/11/03"
 output: html_document
 ---
 
@@ -29,7 +29,7 @@ sample.info <- read.csv(file="2b-Epi-MZT-Enzyme-Expression/Input/RNAseq_data.csv
 
 Load gene count Information
 ```{r}
-counts <- as.data.frame(read.csv("2b-Epi-MZT-Enzyme-Expression/Input/gene_abund_TPM.csv", row.names="gene_id"), colClasses = double) #Load normalized expression matrix from stringtie
+counts <- as.data.frame(read.csv("1-QC-Align-Assemble/Output/gene_abund_TPM.csv", row.names="gene_id"), colClasses = double) #Load normalized expression matrix from stringtie
 ```
 
 
@@ -121,7 +121,7 @@ Mcap.DNMT3 <- ggplot(DNMT3.counts, aes(x=time_point, y=mean, group=gene_id)) +
         axis.title.y=element_text(size = 14), #set x-axis label size
         axis.ticks.x=element_blank(), #No x-label ticks
         legend.text=element_text(size = 12), #Legend text size
-        legend.position="bottom") +
+        legend.position=c(0.75, 0.9)) +
   ggtitle("i) DNMT3A homologs") +
   #facet_grid(rows=vars(gene_id), scales="free_y") +
   theme(strip.text.y = element_text(size = 5)) +
@@ -151,7 +151,7 @@ Mcap.DNMT1 <- ggplot(DNMT1.counts, aes(x=time_point, y=mean, group=gene_id)) +
         axis.title.y=element_blank(), #set x-axis label size
         axis.ticks.x=element_blank(), #No x-label ticks
         legend.text=element_text(size = 12), #Legend text size
-        legend.position = "bottom") +
+        legend.position=c(0.75, 0.9)) +
   ggtitle("ii) DNMT1 homologs") +
   #facet_grid(rows=vars(gene_id), scales="free_y") +
   theme(strip.text.y = element_text(size = 5)) +
@@ -181,7 +181,7 @@ Mcap.TET1 <- ggplot(TET1.counts, aes(x=time_point, y=mean, group=gene_id)) +
         axis.title.y=element_blank(), #set x-axis label size
         axis.ticks.x=element_blank(), #No x-label ticks
         legend.text=element_text(size = 12), #Legend text size
-        legend.position = "bottom") +
+        legend.position=c(0.75, 0.9)) +
   ggtitle("iii) TET1 homologs") +
   #facet_grid(rows=vars(gene_id), scales="free_y") +
   theme(strip.text.y = element_text(size = 5)) +
@@ -211,7 +211,7 @@ Mcap.MBD2 <- ggplot(MBD2.counts, aes(x=time_point, y=mean, group=gene_id)) +
         axis.title.y=element_text(size = 14), #set x-axis label size
         axis.ticks.x=element_blank(), #No x-label ticks
         legend.text=element_text(size = 12), #Legend text size
-        legend.position = "bottom") +
+        legend.position=c(0.75, 0.9)) +
   ggtitle("iv) MBD2/3 homologs") +
   #facet_grid(rows=vars(gene_id), scales="free_y") +
   theme(strip.text.y = element_text(size = 5)) +
@@ -238,10 +238,10 @@ Mcap.UHRF1 <- ggplot(UHRF1.counts, aes(x=time_point, y=mean, group=gene_id)) +
         axis.title.x=element_text(size = 14), #set x-axis title size
         axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1, size = 14), #set x-axis label size
         axis.text.y=element_text(size = 14), #set x-axis label size
-        axis.title.y=element_text(size = 14), #set x-axis label size
+        axis.title.y=element_blank(), #set x-axis label size
         axis.ticks.x=element_blank(), #No x-label ticks
         legend.text=element_text(size = 12), #Legend text size
-        legend.position = "bottom") +
+        legend.position=c(0.75, 0.9)) +
   ggtitle("v) UHRF1 homologs") +
   #facet_grid(rows=vars(gene_id), scales="free_y") +
   theme(strip.text.y = element_text(size = 5)) +
@@ -268,10 +268,10 @@ Mcap.BRG1 <- ggplot(BRG1.counts, aes(x=time_point, y=mean, group=gene_id)) +
         axis.title.x=element_text(size = 14), #set x-axis title size
         axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1, size = 14), #set x-axis label size
         axis.text.y=element_text(size = 14), #set x-axis label size
-        axis.title.y=element_text(size = 14), #set x-axis label size
+        axis.title.y=element_blank(), #set x-axis label size
         axis.ticks.x=element_blank(), #No x-label ticks
         legend.text=element_text(size = 12), #Legend text size
-        legend.position = "bottom") +
+        legend.position = c(0.75, 0.9)) +
   ggtitle("vi) BRG1 homologs") +
   #facet_grid(rows=vars(gene_id), scales="free_y") +
   theme(strip.text.y = element_text(size = 5)) +
@@ -283,9 +283,9 @@ Mcap.BRG1
 
 Compile plots into single figure and save
 ```{r}
-Fig.5A <- cowplot::plot_grid(Mcap.DNMT3, Mcap.DNMT1, Mcap.TET1, Mcap.MBD2, Mcap.UHRF1, Mcap.BRG1, align = "v", ncol = 3)
-Fig.5A
-ggsave("2b-Epi-MZT-Enzyme-Expression/Output/Fig5-Mcap-Dev-Epi-Expression.pdf", Fig.5A, width=21, height=15)
+Fig.5 <- cowplot::plot_grid(Mcap.DNMT3, Mcap.DNMT1, Mcap.TET1, Mcap.MBD2, Mcap.UHRF1, Mcap.BRG1, align = "v", ncol = 3)
+Fig.5
+ggsave("2b-Epi-MZT-Enzyme-Expression/Output/Fig5-Mcap-Dev-Epi-Expression.pdf", Fig.5, width=21, height=15)
 ```
 
 ## Plot MZT biomarkers
@@ -310,7 +310,7 @@ Mcap.SMG <- ggplot(SMG.counts, aes(x=time_point, y=mean, group=gene_id)) +
         axis.title.y=element_text(size = 14), #set x-axis label size
         axis.ticks.x=element_blank(), #No x-label ticks
         legend.text=element_text(size = 12), #Legend text size
-        legend.position="bottom") +
+        legend.position = c(0.75, 0.9)) +
   ggtitle("i) SMAUG homologs") +
   #facet_grid(rows=vars(gene_id), scales="free_y") +
   theme(strip.text.y = element_text(size = 5)) +
@@ -340,7 +340,7 @@ Mcap.KAISO <- ggplot(KAISO.counts, aes(x=time_point, y=mean, group=gene_id)) +
         axis.title.y=element_blank(), #set x-axis label size
         axis.ticks.x=element_blank(), #No x-label ticks
         legend.text=element_text(size = 12), #Legend text size
-        legend.position = "bottom") +
+        legend.position = c(0.9, 0.9)) +
   ggtitle("ii) KAISO homologs") +
   #facet_grid(rows=vars(gene_id), scales="free_y") +
   theme(strip.text.y = element_text(size = 5)) +
@@ -370,7 +370,7 @@ Mcap.TBXT <- ggplot(TBXT.counts, aes(x=time_point, y=mean, group=gene_id)) +
         axis.title.y=element_blank(), #set x-axis label size
         axis.ticks.x=element_blank(), #No x-label ticks
         legend.text=element_text(size = 12), #Legend text size
-        legend.position = "bottom") +
+        legend.position = c(0.75, 0.9)) +
   ggtitle("iii) Brachyury (TBXT) homologs") +
   #facet_grid(rows=vars(gene_id), scales="free_y") +
   theme(strip.text.y = element_text(size = 5)) +
@@ -400,7 +400,7 @@ Mcap.SOX2 <- ggplot(SOX2.counts, aes(x=time_point, y=mean, group=gene_id)) +
         axis.title.y=element_text(size = 14), #set x-axis label size
         axis.ticks.x=element_blank(), #No x-label ticks
         legend.text=element_text(size = 12), #Legend text size
-        legend.position = "bottom") +
+        legend.position = c(0.75, 0.9)) +
   ggtitle("iv) SOX2 homologs") +
   #facet_grid(rows=vars(gene_id), scales="free_y") +
   theme(strip.text.y = element_text(size = 5)) +
@@ -427,10 +427,10 @@ Mcap.NANOG <- ggplot(NANOG.counts, aes(x=time_point, y=mean, group=gene_id)) +
         axis.title.x=element_text(size = 14), #set x-axis title size
         axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1, size = 14), #set x-axis label size
         axis.text.y=element_text(size = 14), #set x-axis label size
-        axis.title.y=element_text(size = 14), #set x-axis label size
+        axis.title.y=element_blank(), #set x-axis label size
         axis.ticks.x=element_blank(), #No x-label ticks
         legend.text=element_text(size = 12), #Legend text size
-        legend.position = "bottom") +
+        legend.position = c(0.75, 0.9)) +
   ggtitle("v) NANOG homologs") +
   #facet_grid(rows=vars(gene_id), scales="free_y") +
   theme(strip.text.y = element_text(size = 5)) +
@@ -445,11 +445,11 @@ Plot WNT8 expression as a function of time and treatment
 Mcap.WNT8 <- ggplot(WNT8.counts, aes(x=time_point, y=mean, group=gene_id)) + 
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
   geom_line(aes(shape=gene_id), lty="dashed", color = "darkgrey") +
-  geom_point(aes(shape=gene_id), size = 2, ) +
+  geom_point(aes(shape=gene_id), size = 2) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (TPM)"))) +
   theme_bw() + #Set the background color
-    theme(axis.line = element_line(color = 'black'), #Set the axes color
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
         panel.grid.minor = element_blank(), #Set the minor gridlines
@@ -457,10 +457,11 @@ Mcap.WNT8 <- ggplot(WNT8.counts, aes(x=time_point, y=mean, group=gene_id)) +
         axis.title.x=element_text(size = 14), #set x-axis title size
         axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1, size = 14), #set x-axis label size
         axis.text.y=element_text(size = 14), #set x-axis label size
-        axis.title.y=element_text(size = 14), #set x-axis label size
+        axis.title.y=element_blank(), #set x-axis label size
         axis.ticks.x=element_blank(), #No x-label ticks
         legend.text=element_text(size = 12), #Legend text size
-        legend.position = "bottom") +
+        legend.position = c(0.918, 0.9)) +
+  #guides(shape=guide_legend(ncol=3, nrow=2)) +
   ggtitle("vi) WNT8 homologs") +
   #facet_grid(rows=vars(gene_id), scales="free_y") +
   theme(strip.text.y = element_text(size = 5)) +
@@ -472,8 +473,8 @@ Mcap.WNT8
 
 Compile plots into single figure and save
 ```{r}
-Fig.5 <- cowplot::plot_grid(Mcap.SMG, Mcap.KAISO, Mcap.TBXT, Mcap.SOX2, Mcap.NANOG, Mcap.WNT8, align = "v", ncol = 3)
-Fig.5
-ggsave("2b-Epi-MZT-Enzyme-Expression/Output/Fig6-Mcap-Dev-MZT-Expression.pdf", Fig.5, width=21, height=14)
+Fig.6 <- cowplot::plot_grid(Mcap.SMG, Mcap.KAISO, Mcap.TBXT, Mcap.SOX2, Mcap.NANOG, Mcap.WNT8, align = "v", ncol = 3)
+Fig.6
+ggsave("2b-Epi-MZT-Enzyme-Expression/Output/Fig6-Mcap-Dev-MZT-Expression.pdf", Fig.6, width=21, height=14)
 ```
 

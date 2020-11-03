@@ -1,7 +1,7 @@
 ---
 title: "Mcap Developmental Timeseries WGCNA"
 author: "Erin Chille"
-date: "DRAFT: Last updated 2020/11/02"
+date: "DRAFT: Last updated 2020/11/03"
 output: html_document
 ---
 
@@ -41,7 +41,7 @@ Import the data files
 treatmentinfo <- read.csv("2a-WGCNA/Input/RNAseq_data.csv", header = TRUE, sep = ",")
 head(treatmentinfo)
 
-gcount <- as.data.frame(read.csv("2a-WGCNA/Input/gene_count_matrix.csv", row.names="gene_id"), colClasses = double)
+gcount <- as.data.frame(read.csv("1-QC-Align-Assemble/Output/gene_count_matrix.csv", row.names="gene_id"), colClasses = double)
 head(gcount)
 dim(gcount)
 ```
@@ -808,7 +808,7 @@ names(GSPvalue) = paste("p.GS.", names(time_point), sep="");
 
 Import annotation file.
 ```{r}
-Mcap.annot <- read_tsv( "2a-WGCNA/Input/200824_Mcap_Blast_GO_KO.tsv", col_names = TRUE) #biological annotation information
+Mcap.annot <- read_tsv( "0-BLAST-GO-KO/Output/200824_Mcap_Blast_GO_KO.tsv", col_names = TRUE) #biological annotation information
 tail(Mcap.annot)
 dim(Mcap.annot)
 ```
@@ -1034,7 +1034,7 @@ dim(genesAdult.GO.sig)
 
 Find the length of each gene using the stringtie_merged.gtf as a map
 ```{r}
-map <- read.csv(file="2a-WGCNA/Input/stringtie_merged.gtf", header=FALSE, sep="\t", skip=2) #load sample info
+map <- read.csv(file="1-QC-Align-Assemble/Output/stringtie_merged.gtf", header=FALSE, sep="\t", skip=2) #load sample info
 map <- subset(map, V3=="transcript")
 map <- map[,c(1,4,5,9)]
 map <- separate(map, V9, into = c("gene_id", "transcript_id", "gene_name"), sep=";")
