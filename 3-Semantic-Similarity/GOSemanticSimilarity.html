@@ -394,14 +394,14 @@ MatMF &lt;- MatGO.MF$category</code></pre>
 <pre class="r"><code>Mat = GO_similarity(MatBP, ont = &quot;BP&quot;, db = &quot;org.Hs.eg.db&quot;)
 pdf(file = &quot;3-Semantic-Similarity/Output/Biological_Process_Plots/MatBP_GOSEM.pdf&quot;, width = 7, height = 5)
 simplifyGO(Mat, word_cloud_grob_param = list(max_width = 50), max_words=20)</code></pre>
-<pre><code>## Cluster 92 terms by &#39;binary_cut&#39;... 10 clusters, used 0.2162631 secs.</code></pre>
+<pre><code>## Cluster 92 terms by &#39;binary_cut&#39;... 10 clusters, used 0.1820681 secs.</code></pre>
 <pre class="r"><code>dev.off()</code></pre>
 <pre><code>## quartz_off_screen 
 ##                 2</code></pre>
 <pre class="r"><code>pdf(file = &quot;3-Semantic-Similarity/Output/Molecular_Function_Plots/MatMF_GOSEM.pdf&quot;, width = 7, height = 5)
 Mat = GO_similarity(MatMF, ont = &quot;MF&quot;, db = &quot;org.Hs.eg.db&quot;)
 simplifyGO(Mat, word_cloud_grob_param = list(max_width = 50), max_words=20)</code></pre>
-<pre><code>## Cluster 92 terms by &#39;binary_cut&#39;... 11 clusters, used 0.183763 secs.</code></pre>
+<pre><code>## Cluster 92 terms by &#39;binary_cut&#39;... 11 clusters, used 0.2110231 secs.</code></pre>
 <pre class="r"><code>dev.off()</code></pre>
 <pre><code>## quartz_off_screen 
 ##                 2</code></pre>
@@ -423,7 +423,7 @@ UEBP &lt;- UEGO.BP$category
 <pre class="r"><code>UE = GO_similarity(UEBP, ont = &quot;BP&quot;, db = &quot;org.Hs.eg.db&quot;)
 pdf(file = &quot;3-Semantic-Similarity/Output/Biological_Process_Plots/UEBP_GOSEM.pdf&quot;, width = 7, height = 5)
 simplifyGO(UE, word_cloud_grob_param = list(max_width = 50), max_words=20)</code></pre>
-<pre><code>## Cluster 83 terms by &#39;binary_cut&#39;... 8 clusters, used 0.225498 secs.</code></pre>
+<pre><code>## Cluster 83 terms by &#39;binary_cut&#39;... 8 clusters, used 0.1368229 secs.</code></pre>
 <pre class="r"><code>dev.off()</code></pre>
 <pre><code>## quartz_off_screen 
 ##                 2</code></pre>
@@ -447,7 +447,7 @@ FEBP &lt;- FEGO.BP$category
 <pre class="r"><code>FE = GO_similarity(FEBP, ont = &quot;BP&quot;, db = &quot;org.Hs.eg.db&quot;)
 pdf(file = &quot;3-Semantic-Similarity/Output/Biological_Process_Plots/FEBP_GOSEM.pdf&quot;, width = 7, height = 5)
 simplifyGO(FE, word_cloud_grob_param = list(max_width = 50), max_words=20)</code></pre>
-<pre><code>## Cluster 68 terms by &#39;binary_cut&#39;... 7 clusters, used 0.14381 secs.</code></pre>
+<pre><code>## Cluster 68 terms by &#39;binary_cut&#39;... 7 clusters, used 0.107486 secs.</code></pre>
 <pre class="r"><code>dev.off()</code></pre>
 <pre><code>## quartz_off_screen 
 ##                 2</code></pre>
@@ -473,14 +473,14 @@ ZGA1MF &lt;- ZGA1GO.MF$category</code></pre>
 <pre class="r"><code>ZGA1 = GO_similarity(ZGA1BP, ont = &quot;BP&quot;, db = &quot;org.Hs.eg.db&quot;)
 pdf(file = &quot;3-Semantic-Similarity/Output/Biological_Process_Plots/ZGA1_GOSEM.pdf&quot;, width = 7, height = 5)
 simplifyGO(ZGA1, word_cloud_grob_param = list(max_width = 50), max_words=20)</code></pre>
-<pre><code>## Cluster 55 terms by &#39;binary_cut&#39;... 5 clusters, used 0.09726882 secs.</code></pre>
+<pre><code>## Cluster 55 terms by &#39;binary_cut&#39;... 5 clusters, used 0.08638906 secs.</code></pre>
 <pre class="r"><code>dev.off()</code></pre>
 <pre><code>## quartz_off_screen 
 ##                 2</code></pre>
 <pre class="r"><code>pdf(file = &quot;3-Semantic-Similarity/Output/Molecular_Function_Plots/ZGA1MF_GOSEM.pdf&quot;, width = 7, height = 5)
 ZGA1 = GO_similarity(ZGA1MF, ont = &quot;MF&quot;, db = &quot;org.Hs.eg.db&quot;)
 simplifyGO(ZGA1, word_cloud_grob_param = list(max_width = 50), max_words=20)</code></pre>
-<pre><code>## Cluster 60 terms by &#39;binary_cut&#39;... 11 clusters, used 0.174031 secs.</code></pre>
+<pre><code>## Cluster 60 terms by &#39;binary_cut&#39;... 11 clusters, used 0.203418 secs.</code></pre>
 <pre class="r"><code>dev.off()</code></pre>
 <pre><code>## quartz_off_screen 
 ##                 2</code></pre>
@@ -502,7 +502,7 @@ ClvgBP &lt;- ClvgGO.BP$category
 <pre class="r"><code>Clvg = GO_similarity(ClvgBP, ont = &quot;BP&quot;, db = &quot;org.Hs.eg.db&quot;)
 pdf(file = &quot;3-Semantic-Similarity/Output/Biological_Process_Plots/ClvgBP_GOSEM.pdf&quot;, width = 7, height = 5)
 simplifyGO(Clvg, word_cloud_grob_param = list(max_width = 50), max_words=20)</code></pre>
-<pre><code>## Cluster 45 terms by &#39;binary_cut&#39;... 6 clusters, used 0.1247451 secs.</code></pre>
+<pre><code>## Cluster 45 terms by &#39;binary_cut&#39;... 6 clusters, used 0.06782317 secs.</code></pre>
 <pre class="r"><code>dev.off()</code></pre>
 <pre><code>## quartz_off_screen 
 ##                 2</code></pre>
@@ -526,7 +526,7 @@ PCBP &lt;- PCGO.BP$category
 <pre class="r"><code>PC = GO_similarity(PCBP, ont = &quot;BP&quot;, db = &quot;org.Hs.eg.db&quot;)
 pdf(file = &quot;3-Semantic-Similarity/Output/Biological_Process_Plots/PCBP_GOSEM.pdf&quot;, width = 7, height = 5)
 simplifyGO(PC, word_cloud_grob_param = list(max_width = 50), max_words=20)</code></pre>
-<pre><code>## Cluster 52 terms by &#39;binary_cut&#39;... 5 clusters, used 0.11025 secs.</code></pre>
+<pre><code>## Cluster 52 terms by &#39;binary_cut&#39;... 5 clusters, used 0.1107731 secs.</code></pre>
 <pre class="r"><code>dev.off()</code></pre>
 <pre><code>## quartz_off_screen 
 ##                 2</code></pre>
@@ -550,7 +550,7 @@ EGBP &lt;- EGGO.BP$category
 <pre class="r"><code>EG = GO_similarity(EGBP, ont = &quot;BP&quot;, db = &quot;org.Hs.eg.db&quot;)
 pdf(file = &quot;3-Semantic-Similarity/Output/Biological_Process_Plots/EGBP_GOSEM.pdf&quot;, width = 7, height = 5)
 simplifyGO(EG, word_cloud_grob_param = list(max_width = 50), max_words=20)</code></pre>
-<pre><code>## Cluster 48 terms by &#39;binary_cut&#39;... 9 clusters, used 0.2066329 secs.</code></pre>
+<pre><code>## Cluster 48 terms by &#39;binary_cut&#39;... 9 clusters, used 0.107178 secs.</code></pre>
 <pre class="r"><code>dev.off()</code></pre>
 <pre><code>## quartz_off_screen 
 ##                 2</code></pre>
@@ -575,14 +575,14 @@ ZGA2MF &lt;- ZGA2GO.MF$category</code></pre>
 <pre class="r"><code>ZGA2 = GO_similarity(ZGA2BP, ont = &quot;BP&quot;, db = &quot;org.Hs.eg.db&quot;)
 pdf(file = &quot;3-Semantic-Similarity/Output/Biological_Process_Plots/ZGA2BP_GOSEM.pdf&quot;, width = 7, height = 5)
 simplifyGO(ZGA2, word_cloud_grob_param = list(max_width = 50), max_words=20)</code></pre>
-<pre><code>## Cluster 22 terms by &#39;binary_cut&#39;... 4 clusters, used 0.04908991 secs.</code></pre>
+<pre><code>## Cluster 22 terms by &#39;binary_cut&#39;... 4 clusters, used 0.03258204 secs.</code></pre>
 <pre class="r"><code>dev.off()</code></pre>
 <pre><code>## quartz_off_screen 
 ##                 2</code></pre>
 <pre class="r"><code>pdf(file = &quot;3-Semantic-Similarity/Output/Molecular_Function_Plots/ZGA2MF_GOSEM.pdf&quot;, width = 7, height = 5)
 ZGA2 = GO_similarity(ZGA2MF, ont = &quot;MF&quot;, db = &quot;org.Hs.eg.db&quot;)
 simplifyGO(ZGA2, word_cloud_grob_param = list(max_width = 50), max_words=20)</code></pre>
-<pre><code>## Cluster 47 terms by &#39;binary_cut&#39;... 12 clusters, used 0.1441679 secs.</code></pre>
+<pre><code>## Cluster 47 terms by &#39;binary_cut&#39;... 12 clusters, used 0.1189291 secs.</code></pre>
 <pre class="r"><code>dev.off()</code></pre>
 <pre><code>## quartz_off_screen 
 ##                 2</code></pre>
@@ -604,7 +604,7 @@ MGBP &lt;- MGGO.BP$category
 <pre class="r"><code>MG = GO_similarity(MGBP, ont = &quot;BP&quot;, db = &quot;org.Hs.eg.db&quot;)
 pdf(file = &quot;3-Semantic-Similarity/Output/Biological_Process_Plots/MGBP_GOSEM.pdf&quot;, width = 7, height = 5)
 simplifyGO(MG, word_cloud_grob_param = list(max_width = 50), max_words=20)</code></pre>
-<pre><code>## Cluster 65 terms by &#39;binary_cut&#39;... 10 clusters, used 0.1085589 secs.</code></pre>
+<pre><code>## Cluster 65 terms by &#39;binary_cut&#39;... 10 clusters, used 0.1062272 secs.</code></pre>
 <pre class="r"><code>dev.off()</code></pre>
 <pre><code>## quartz_off_screen 
 ##                 2</code></pre>
@@ -628,7 +628,7 @@ LGBP &lt;- LGGO.BP$category
 <pre class="r"><code>LG = GO_similarity(LGBP, ont = &quot;BP&quot;, db = &quot;org.Hs.eg.db&quot;)
 pdf(file = &quot;3-Semantic-Similarity/Output/Biological_Process_Plots/LGBP_GOSEM.pdf&quot;, width = 7, height = 5)
 simplifyGO(LG, word_cloud_grob_param = list(max_width = 50), max_words=20)</code></pre>
-<pre><code>## Cluster 34 terms by &#39;binary_cut&#39;... 6 clusters, used 0.05577803 secs.</code></pre>
+<pre><code>## Cluster 34 terms by &#39;binary_cut&#39;... 6 clusters, used 0.05532789 secs.</code></pre>
 <pre class="r"><code>dev.off()</code></pre>
 <pre><code>## quartz_off_screen 
 ##                 2</code></pre>
@@ -652,7 +652,7 @@ PlnBP &lt;- PlnGO.BP$category
 <pre class="r"><code>Pln = GO_similarity(PlnBP, ont = &quot;BP&quot;, db = &quot;org.Hs.eg.db&quot;)
 pdf(file = &quot;3-Semantic-Similarity/Output/Biological_Process_Plots/PlnBP_GOSEM.pdf&quot;, width = 7, height = 5)
 simplifyGO(Pln, word_cloud_grob_param = list(max_width = 50), max_words=20)</code></pre>
-<pre><code>## Cluster 24 terms by &#39;binary_cut&#39;... 4 clusters, used 0.03755498 secs.</code></pre>
+<pre><code>## Cluster 24 terms by &#39;binary_cut&#39;... 4 clusters, used 0.03833699 secs.</code></pre>
 <pre class="r"><code>dev.off()</code></pre>
 <pre><code>## quartz_off_screen 
 ##                 2</code></pre>
@@ -677,14 +677,14 @@ AdultMF &lt;- AdultGO.MF$category</code></pre>
 <pre class="r"><code>pdf(file = &quot;3-Semantic-Similarity/Output/Biological_Process_Plots/AdultBP_GOSEM.pdf&quot;, width = 7, height = 5)
 Adult = GO_similarity(AdultBP, ont = &quot;BP&quot;, db = &quot;org.Hs.eg.db&quot;)
 simplifyGO(Adult, word_cloud_grob_param = list(max_width = 50), max_words=20)</code></pre>
-<pre><code>## Cluster 31 terms by &#39;binary_cut&#39;... 6 clusters, used 0.08671403 secs.</code></pre>
+<pre><code>## Cluster 31 terms by &#39;binary_cut&#39;... 6 clusters, used 0.04718399 secs.</code></pre>
 <pre class="r"><code>dev.off()</code></pre>
 <pre><code>## quartz_off_screen 
 ##                 2</code></pre>
 <pre class="r"><code>pdf(file = &quot;3-Semantic-Similarity/Output/Molecular_Function_Plots/AdultMF_GOSEM.pdf&quot;, width = 7, height = 5)
 Adult = GO_similarity(AdultMF, ont = &quot;MF&quot;, db = &quot;org.Hs.eg.db&quot;)
 simplifyGO(Adult, word_cloud_grob_param = list(max_width = 50), max_words=20)</code></pre>
-<pre><code>## Cluster 54 terms by &#39;binary_cut&#39;... 8 clusters, used 0.08643007 secs.</code></pre>
+<pre><code>## Cluster 54 terms by &#39;binary_cut&#39;... 8 clusters, used 0.08839178 secs.</code></pre>
 <pre class="r"><code>dev.off()</code></pre>
 <pre><code>## quartz_off_screen 
 ##                 2</code></pre>
@@ -878,13 +878,21 @@ GO05.BP &lt;- bind_rows(UEGO.BP, FEGO.BP, ClvgGO.BP, PCGO.BP, EGGO.BP, MGGO.BP, 
 GO05.BP &lt;- GO05.BP[,c(8,6,1:5)]
 write.csv(GO05.BP, &quot;3-Semantic-Similarity/Output/stage_GO05_BP.csv&quot;, row.names = FALSE)
 
+MatGO.BP$time_point &lt;- c(&quot;Maternal&quot;)
+ZGA1GO.BP$time_point &lt;- c(&quot;ZGA1&quot;)
+ZGA2GO.BP$time_point &lt;- c(&quot;ZGA2&quot;)
+AdultGO.BP$time_point &lt;- c(&quot;Adult&quot;)
+GO05.BP &lt;- bind_rows(MatGO.BP, ZGA1GO.BP, ZGA2GO.BP, AdultGO.BP)
+GO05.BP &lt;- GO05.BP[,c(8,6,1:5)]
+write.csv(GO05.BP, &quot;3-Semantic-Similarity/Output/MZT_GO05_BP.csv&quot;, row.names = FALSE)
+
 MatGO.MF$time_point &lt;- c(&quot;Maternal&quot;)
 ZGA1GO.MF$time_point &lt;- c(&quot;ZGA1&quot;)
 ZGA2GO.MF$time_point &lt;- c(&quot;ZGA2&quot;)
 AdultGO.MF$time_point &lt;- c(&quot;Adult&quot;)
 GO05.MF &lt;- bind_rows(MatGO.MF, ZGA1GO.MF, ZGA2GO.MF, AdultGO.MF)
 GO05.MF &lt;- GO05.MF[,c(8,6,1:5)]
-write.csv(GO05.MF, &quot;3-Semantic-Similarity/Output/stage_GO05_MF.csv&quot;, row.names = FALSE)</code></pre>
+write.csv(GO05.MF, &quot;3-Semantic-Similarity/Output/MZT_GO05_MF.csv&quot;, row.names = FALSE)</code></pre>
 </div>
 
 

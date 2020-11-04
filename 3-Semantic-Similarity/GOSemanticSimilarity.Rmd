@@ -501,12 +501,20 @@ GO05.BP <- bind_rows(UEGO.BP, FEGO.BP, ClvgGO.BP, PCGO.BP, EGGO.BP, MGGO.BP, LGG
 GO05.BP <- GO05.BP[,c(8,6,1:5)]
 write.csv(GO05.BP, "3-Semantic-Similarity/Output/stage_GO05_BP.csv", row.names = FALSE)
 
+MatGO.BP$time_point <- c("Maternal")
+ZGA1GO.BP$time_point <- c("ZGA1")
+ZGA2GO.BP$time_point <- c("ZGA2")
+AdultGO.BP$time_point <- c("Adult")
+GO05.BP <- bind_rows(MatGO.BP, ZGA1GO.BP, ZGA2GO.BP, AdultGO.BP)
+GO05.BP <- GO05.BP[,c(8,6,1:5)]
+write.csv(GO05.BP, "3-Semantic-Similarity/Output/MZT_GO05_BP.csv", row.names = FALSE)
+
 MatGO.MF$time_point <- c("Maternal")
 ZGA1GO.MF$time_point <- c("ZGA1")
 ZGA2GO.MF$time_point <- c("ZGA2")
 AdultGO.MF$time_point <- c("Adult")
 GO05.MF <- bind_rows(MatGO.MF, ZGA1GO.MF, ZGA2GO.MF, AdultGO.MF)
 GO05.MF <- GO05.MF[,c(8,6,1:5)]
-write.csv(GO05.MF, "3-Semantic-Similarity/Output/stage_GO05_MF.csv", row.names = FALSE)
+write.csv(GO05.MF, "3-Semantic-Similarity/Output/MZT_GO05_MF.csv", row.names = FALSE)
 ```
 

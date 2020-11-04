@@ -1,0 +1,201 @@
+"time_point","term","category","over_represented_pvalue","under_represented_pvalue","numDEInCat","numInCat"
+"Maternal","vacuolar transport","GO:0007034",1.42165663950631e-06,0.999999919183329,10,14
+"Maternal","spliceosomal snRNP assembly","GO:0000387",1.29786696096859e-05,0.999999234969212,8,12
+"Maternal","D-amino acid metabolic process","GO:0046416",2.56312970764545e-05,1,6,6
+"Maternal","DNA damage checkpoint","GO:0000077",9.35604421421143e-05,0.999994349528488,7,10
+"Maternal","intracellular signal transduction","GO:0035556",0.000165225381782367,0.999923991553934,40,146
+"Maternal","DNA repair","GO:0006281",0.000580872009903417,0.999772651477796,24,87
+"Maternal","kinetochore assembly","GO:0051382",0.00065756545197794,0.999967749830559,5,7
+"Maternal","protein dephosphorylation","GO:0006470",0.00122831404280579,0.999575201075769,18,55
+"Maternal","DNA replication","GO:0006260",0.00129595133307453,0.999599889837352,15,45
+"Maternal","negative regulation of transcription by RNA polymerase II","GO:0000122",0.00171418365046175,0.999965044996623,3,4
+"Maternal","nucleoside metabolic process","GO:0009116",0.00281349000872529,0.999378033135229,9,23
+"Maternal","microtubule anchoring","GO:0034453",0.00331827629930103,1,3,3
+"Maternal","DNA-templated transcription, initiation","GO:0006352",0.00347991730741224,0.999488432461216,6,14
+"Maternal","protein deubiquitination","GO:0016579",0.00348783543163584,0.99880919605808,15,43
+"Maternal","organic phosphonate catabolic process","GO:0019700",0.00356669567671005,1,3,3
+"Maternal","ATP-dependent chromatin remodeling","GO:0043044",0.00544156262343466,1,3,3
+"Maternal","regulation of exit from mitosis","GO:0007096",0.00584942167421551,1,2,2
+"Maternal","cellular response to ionizing radiation","GO:0071479",0.00693622534848116,1,2,2
+"Maternal","tRNA processing","GO:0008033",0.00769764035148345,0.997946657756486,9,25
+"Maternal","glucose metabolic process","GO:0006006",0.00836718940109423,0.999692584077159,3,4
+"Maternal","positive regulation of transcription by RNA polymerase II","GO:0045944",0.00893723956993968,0.999178869291586,4,7
+"Maternal","chromatin assembly or disassembly","GO:0006333",0.00903002510893218,1,2,2
+"Maternal","C-terminal protein methylation","GO:0006481",0.00929018610583493,1,2,2
+"Maternal","Arp2/3 complex-mediated actin nucleation","GO:0034314",0.00940296098483455,0.999026860657579,4,8
+"Maternal","proton transmembrane transport","GO:1902600",0.00981104632999577,0.997828241892458,7,18
+"Maternal","rRNA processing","GO:0006364",0.00983943020616639,0.997509420469336,8,22
+"Maternal","protein import into nucleus","GO:0006606",0.0102518017009094,0.998652744773137,5,9
+"Maternal","microtubule organizing center organization","GO:0031023",0.0110553207114416,1,2,2
+"Maternal","mRNA processing","GO:0006397",0.0112030919727216,0.996039911975566,12,38
+"Maternal","GPI anchor biosynthetic process","GO:0006506",0.011294644059,0.997742388293723,6,16
+"Maternal","S-adenosylmethionine biosynthetic process","GO:0006556",0.0113723822412973,1,2,2
+"Maternal","calcium ion import across plasma membrane","GO:0098703",0.012089039906655,1,2,2
+"Maternal","ubiquitin-dependent protein catabolic process","GO:0006511",0.0129194516860909,0.994008983385686,19,70
+"Maternal","protein O-linked glycosylation","GO:0006493",0.0134575921837777,0.999405035105915,3,4
+"Maternal","mitochondrial electron transport, NADH to ubiquinone","GO:0006120",0.0141736936032597,1,2,2
+"Maternal","dUMP biosynthetic process","GO:0006226",0.0150713051155335,1,2,2
+"Maternal","dUTP catabolic process","GO:0046081",0.0150713051155335,1,2,2
+"Maternal","centrosome cycle","GO:0007098",0.0157794555765395,0.998269830333802,4,7
+"Maternal","signaling","GO:0023052",0.0164036240511975,0.999215391232126,3,4
+"Maternal","mitochondrial transport","GO:0006839",0.0182460418527771,1,2,2
+"Maternal","meiotic chromosome segregation","GO:0045132",0.0185726666983838,1,2,2
+"Maternal","DNA replication, synthesis of RNA primer","GO:0006269",0.0186014407927454,0.999064115746568,3,4
+"Maternal","actin cytoskeleton organization","GO:0030036",0.0189070917846192,0.999042449085882,3,4
+"Maternal","transport","GO:0006810",0.0189387338989015,1,2,2
+"Maternal","spindle assembly","GO:0051225",0.0198107070993806,0.996487039508567,5,11
+"Maternal","replication fork protection","GO:0048478",0.020129926917523,1,2,2
+"Maternal","translational initiation","GO:0006413",0.0201536972787855,0.994030677272913,8,24
+"Maternal","regulation of protein phosphorylation","GO:0001932",0.021519894348187,1,2,2
+"Maternal","dTMP biosynthetic process","GO:0006231",0.0217931663275806,1,2,2
+"Maternal","Golgi vesicle transport","GO:0048193",0.0228871905819951,0.998198089337725,3,5
+"Maternal","ribosomal large subunit assembly","GO:0000027",0.0229186077786621,1,2,2
+"Maternal","protein folding","GO:0006457",0.0235291333470197,0.989681104053852,14,55
+"Maternal","positive regulation of apoptotic process","GO:0043065",0.0245490692912765,1,2,2
+"Maternal","biosynthetic process","GO:0009058",0.0248322471809689,0.989100760531816,14,52
+"Maternal","regulation of receptor recycling","GO:0001919",0.0254794665916356,1,2,2
+"Maternal","lysosome organization","GO:0007040",0.0254794665916356,1,2,2
+"Maternal","cholesterol homeostasis","GO:0042632",0.0254794665916356,1,2,2
+"Maternal","positive regulation of MAPK cascade","GO:0043410",0.0254794665916356,1,2,2
+"Maternal","glycerol-3-phosphate catabolic process","GO:0046168",0.0256552848069622,1,2,2
+"Maternal","cGMP biosynthetic process","GO:0006182",0.0257576283527187,0.993887435001145,6,15
+"Maternal","ATP synthesis coupled proton transport","GO:0015986",0.0264419463421741,0.993256234449613,6,19
+"Maternal","glucose catabolic process","GO:0006007",0.0269452348357379,1,2,2
+"Maternal","tRNA wobble uridine modification","GO:0002098",0.0271276274129365,0.996084365530183,4,8
+"Maternal","ADP biosynthetic process","GO:0006172",0.0286448903020278,1,2,2
+"Maternal","double-strand break repair via nonhomologous end joining","GO:0006303",0.0286561754525553,0.99578878534996,4,8
+"Maternal","recombinational repair","GO:0000725",0.0292384271473824,1,2,2
+"Maternal","heme O biosynthetic process","GO:0048034",0.0298566778592564,1,2,2
+"Maternal","threonine catabolic process","GO:0006567",0.0300359958366327,1,2,2
+"Maternal","cysteine biosynthetic process from serine","GO:0006535",0.0301886721369464,1,2,2
+"Maternal","positive regulation of cell cycle G2/M phase transition","GO:1902751",0.0303164012228823,1,2,2
+"Maternal","transcription by RNA polymerase I","GO:0006360",0.0303494180174679,1,2,2
+"Maternal","glycerol-3-phosphate metabolic process","GO:0006072",0.0304259249091805,1,2,2
+"Maternal","ultradian rhythm","GO:0007624",0.0306022125285484,1,2,2
+"Maternal","cell morphogenesis","GO:0000902",0.0307885161049366,0.997266227618222,3,5
+"Maternal","N-terminal protein myristoylation","GO:0006499",0.0308624998433163,1,2,2
+"Maternal","establishment or maintenance of cell polarity","GO:0007163",0.0309118701128956,1,2,2
+"Maternal","mRNA 3'-end processing","GO:0031124",0.0309175391333374,1,2,2
+"Maternal","pentose-phosphate shunt, non-oxidative branch","GO:0009052",0.0309499631247517,1,2,2
+"Maternal","histone arginine methylation","GO:0034969",0.0309556296747085,1,2,2
+"Maternal","cytoskeleton-dependent intracellular transport","GO:0030705",0.0309558134358239,1,2,2
+"Maternal","cholesterol biosynthetic process","GO:0006695",0.0310584201499511,0.998360054865701,2,4
+"Maternal","telomere maintenance","GO:0000723",0.0321963694319998,0.991389292047611,6,19
+"Maternal","electron transport chain","GO:0022900",0.0381018087916681,0.998383175319049,2,3
+"Maternal","cellular amino acid metabolic process","GO:0006520",0.0382324548617672,0.988093359912298,7,22
+"Maternal","phosphatidylinositol metabolic process","GO:0046488",0.0391121785773934,0.996164900312125,3,5
+"Maternal","vesicle-mediated transport","GO:0016192",0.0394607387340672,0.978967102296603,19,79
+"Maternal","nitrogen compound metabolic process","GO:0006807",0.0400092323481358,0.990386074522911,5,15
+"Maternal","oxidation-reduction process","GO:0055114",0.04029767714787,0.967435910669428,136,819
+"Maternal","glycogen biosynthetic process","GO:0005978",0.0409844534462662,0.995901603141181,3,5
+"Maternal","ATP synthesis coupled electron transport","GO:0042773",0.0414229125429663,0.9981567647166,2,3
+"Maternal","regulation of cyclin-dependent protein serine/threonine kinase activity","GO:0000079",0.0474802741004201,0.997715414364472,2,3
+"Maternal","protein phosphorylation","GO:0006468",0.0486258371281076,0.961311736098132,112,615
+"ZGA1","nucleosome assembly","GO:0006334",5.73437999224509e-17,1,30,41
+"ZGA1","regulation of transcription, DNA-templated","GO:0006355",3.56866796456539e-13,1,121,465
+"ZGA1","regulation of DNA replication","GO:0006275",3.78863103692651e-05,1,5,5
+"ZGA1","protein ADP-ribosylation","GO:0006471",6.63919530283519e-05,0.999997478177326,6,8
+"ZGA1","DNA topological change","GO:0006265",7.9698903886404e-05,0.999996864093277,6,8
+"ZGA1","tRNA processing","GO:0008033",0.000136769526992189,0.999976845094449,11,25
+"ZGA1","transcription elongation from RNA polymerase II promoter","GO:0006368",0.000193849834105825,0.999995319196795,5,6
+"ZGA1","pyrimidine nucleotide-sugar transmembrane transport","GO:0090481",0.000206044613468241,0.999994954445412,5,6
+"ZGA1","endoplasmic reticulum to Golgi vesicle-mediated transport","GO:0006888",0.000266283116668924,0.999975936396949,7,12
+"ZGA1","transcription, DNA-templated","GO:0006351",0.000355157262882328,0.999909641431181,14,41
+"ZGA1","intracellular signal transduction","GO:0035556",0.000375854763639616,0.999830025036291,33,146
+"ZGA1","ribosome biogenesis","GO:0042254",0.00101538087602455,0.999838352242796,8,18
+"ZGA1","DNA-templated transcription, initiation","GO:0006352",0.00117111340889984,0.9998456427726,7,14
+"ZGA1","response to heat","GO:0009408",0.00213892256759458,1,3,3
+"ZGA1","centromere complex assembly","GO:0034508",0.00219358751849217,1,3,3
+"ZGA1","protein peptidyl-prolyl isomerization","GO:0000413",0.0022006973570613,0.999584615554359,8,20
+"ZGA1","phosphatidylinositol dephosphorylation","GO:0046856",0.00234836208956765,0.999787052173709,5,9
+"ZGA1","DNA repair","GO:0006281",0.00305784770420114,0.998695843149119,21,87
+"ZGA1","nucleobase-containing compound metabolic process","GO:0006139",0.0039059205123853,0.998874596877853,11,35
+"ZGA1","pseudouridine synthesis","GO:0001522",0.0039358660751722,0.999426037784012,6,13
+"ZGA1","dephosphorylation","GO:0016311",0.00403656077090607,0.999249542284754,7,18
+"ZGA1","mRNA splicing, via spliceosome","GO:0000398",0.00486772807119486,0.998657620189802,10,31
+"ZGA1","rRNA processing","GO:0006364",0.00498429528791653,0.998883769485646,8,22
+"ZGA1","RNA processing","GO:0006396",0.00694180293826845,0.997521418415799,13,49
+"ZGA1","regulation of transcription by RNA polymerase II","GO:0006357",0.0107390912525156,0.996577379658407,10,35
+"ZGA1","RNA metabolic process","GO:0016070",0.0136377322860759,1,2,2
+"ZGA1","histone lysine methylation","GO:0034968",0.0153962074386743,0.998963784887082,3,5
+"ZGA1","snRNA processing","GO:0016180",0.0163681635673893,1,2,2
+"ZGA1","negative regulation of translation","GO:0017148",0.0165163950305348,1,2,2
+"ZGA1","regulation of mRNA stability","GO:0043488",0.0165163950305348,1,2,2
+"ZGA1","protein targeting to vacuole","GO:0006623",0.0167393393320766,1,2,2
+"ZGA1","purine ribonucleotide biosynthetic process","GO:0009152",0.0168069837257893,1,2,2
+"ZGA1","heme A biosynthetic process","GO:0006784",0.0170005826635418,1,2,2
+"ZGA1","N-terminal protein amino acid methylation","GO:0006480",0.0170873108761716,1,2,2
+"ZGA1","spindle organization","GO:0007051",0.017383603208735,1,2,2
+"ZGA1","tail-anchored membrane protein insertion into ER membrane","GO:0071816",0.0175379124737738,1,2,2
+"ZGA1","GDP-mannose biosynthetic process","GO:0009298",0.0177897680312178,1,2,2
+"ZGA1","mRNA processing","GO:0006397",0.0182707091636123,0.993576803841387,10,38
+"ZGA1","tetrahydrofolate biosynthetic process","GO:0046654",0.0186290103694923,0.998648710454034,3,5
+"ZGA1","intrinsic apoptotic signaling pathway in response to DNA damage","GO:0008630",0.0195833614349847,1,2,2
+"ZGA1","extrinsic apoptotic signaling pathway in absence of ligand","GO:0097192",0.0195833614349847,1,2,2
+"ZGA1","CENP-A containing nucleosome assembly","GO:0034080",0.020531637621927,1,2,2
+"ZGA1","anaphase-promoting complex-dependent catabolic process","GO:0031145",0.0226567781999066,1,2,2
+"ZGA1","protein folding","GO:0006457",0.0230548294932762,0.990187174420279,13,55
+"ZGA1","purine nucleotide biosynthetic process","GO:0006164",0.0281542712805302,0.997172726767575,3,6
+"ZGA1","isoprenoid biosynthetic process","GO:0008299",0.0313044761668099,0.994706043025606,4,10
+"ZGA1","mitochondrial fusion","GO:0008053",0.040301075703385,0.998234470206556,2,3
+"ZGA1","single strand break repair","GO:0000012",0.0422047893347676,0.998101806918046,2,3
+"ZGA1","arginine biosynthetic process","GO:0006526",0.0439020483355487,0.997980472350684,2,3
+"ZGA1","protein geranylgeranylation","GO:0018344",0.0448443279406102,0.997911878687261,2,3
+"ZGA1","ribosomal small subunit biogenesis","GO:0042274",0.0454440154473003,0.997867769634008,2,3
+"ZGA1","histone modification","GO:0016570",0.0467516599457167,0.997770369471956,2,3
+"ZGA1","deadenylation-dependent decapping of nuclear-transcribed mRNA","GO:0000290",0.046796046030702,0.997767034168139,2,3
+"ZGA1","base-excision repair","GO:0006284",0.0476970518518357,0.990408979722879,4,11
+"ZGA1","DNA-dependent DNA replication","GO:0006261",0.049655468309702,0.997548163167794,2,3
+"ZGA2","G protein-coupled receptor signaling pathway","GO:0007186",7.72535039147708e-29,1,712,1128
+"ZGA2","transmembrane transport","GO:0055085",1.15648848817427e-16,1,353,580
+"ZGA2","DNA integration","GO:0015074",8.45471482538225e-08,1,306,528
+"ZGA2","potassium ion transport","GO:0006813",8.31530139360064e-07,0.999999760172181,55,75
+"ZGA2","translation","GO:0006412",2.44785371514328e-06,0.999998960346675,89,135
+"ZGA2","ion transport","GO:0006811",6.28234784574227e-06,0.999997367045134,76,119
+"ZGA2","ion transmembrane transport","GO:0034220",0.000129566529008764,0.999941543841418,64,103
+"ZGA2","oxidation-reduction process","GO:0055114",0.000224911235690578,0.999828269466037,416,819
+"ZGA2","protein homooligomerization","GO:0051260",0.000771329878367208,0.999667456636567,48,74
+"ZGA2","L-arabinose metabolic process","GO:0046373",0.00115712057606427,1,8,8
+"ZGA2","response to oxidative stress","GO:0006979",0.00174972074580658,0.999559853478049,20,27
+"ZGA2","nucleosome assembly","GO:0006334",0.00203290383570502,0.999309555458292,29,41
+"ZGA2","potassium ion transmembrane transport","GO:0071805",0.00393503072041736,0.998844431116053,21,29
+"ZGA2","DNA metabolic process","GO:0006259",0.00579981806280188,1,7,7
+"ZGA2","purine nucleotide biosynthetic process","GO:0006164",0.00605867483277072,1,6,6
+"ZGA2","sodium ion transport","GO:0006814",0.00616323689641961,0.997953317267616,21,31
+"ZGA2","cell surface receptor signaling pathway","GO:0007166",0.010597090342239,0.993582843588166,65,119
+"ZGA2","oligopeptide transport","GO:0006857",0.0111168619121092,0.998436385065931,9,11
+"ZGA2","peptidyl-tyrosine sulfation","GO:0006478",0.0211969841060237,0.996569961998202,9,11
+"ZGA2","proteolysis involved in cellular protein catabolic process","GO:0051603",0.0273004109521322,0.995517705206641,8,10
+"ZGA2","arachidonic acid secretion","GO:0050482",0.034951633783769,0.993897713869273,8,10
+"ZGA2","regulation of ion transmembrane transport","GO:0034765",0.0401535449159158,0.993098897239946,7,9
+"Adult","G protein-coupled receptor signaling pathway","GO:0007186",1.5006664881115e-20,1,708,1128
+"Adult","proteolysis","GO:0006508",1.09255961447824e-07,1,312,515
+"Adult","regulation of apoptotic process","GO:0042981",1.92481543371052e-07,0.99999991514194,125,183
+"Adult","cell surface receptor signaling pathway","GO:0007166",3.1938173308171e-06,0.999998732288739,84,119
+"Adult","homophilic cell adhesion via plasma membrane adhesion molecules","GO:0007156",2.34830039789002e-05,0.999994945506016,35,43
+"Adult","protein homooligomerization","GO:0051260",3.10828250377344e-05,0.999989346473502,54,74
+"Adult","transmembrane transport","GO:0055085",3.24092852045153e-05,0.999977826163383,335,580
+"Adult","carbohydrate metabolic process","GO:0005975",3.46716524692313e-05,0.999982821732381,103,157
+"Adult","ion transmembrane transport","GO:0034220",4.6703472004847e-05,0.99998037770126,71,103
+"Adult","glutathione catabolic process","GO:0006751",5.13558140207288e-05,1,14,14
+"Adult","signal transduction","GO:0007165",0.000172087484144902,0.999888703829023,198,332
+"Adult","protein autoprocessing","GO:0016540",0.000232143518881363,0.99998655098054,15,16
+"Adult","cell-cell signaling","GO:0007267",0.000237144293247536,0.999986222433151,15,16
+"Adult","intein-mediated protein splicing","GO:0016539",0.00152556158266279,0.999893106570229,12,13
+"Adult","DNA integration","GO:0015074",0.00161706093285895,0.998788073122555,295,528
+"Adult","immune response","GO:0006955",0.00898393530285442,0.997953100483518,15,19
+"Adult","arachidonic acid secretion","GO:0050482",0.00968716179573207,0.999139491946344,9,10
+"Adult","lipid catabolic process","GO:0016042",0.00974721555083432,0.999132981564728,9,10
+"Adult","chloride transport","GO:0006821",0.00988275510877514,0.99911825230677,9,10
+"Adult","cell-matrix adhesion","GO:0007160",0.0113062866629245,0.996703301764199,18,24
+"Adult","positive regulation of type I interferon production","GO:0032481",0.0144882540667812,1,6,6
+"Adult","sulfate transport","GO:0008272",0.0145551068454522,1,6,6
+"Adult","potassium ion transport","GO:0006813",0.0147920579800206,0.992030306120748,47,75
+"Adult","multicellular organism development","GO:0007275",0.0205142660483651,0.989032643572938,42,67
+"Adult","phospholipid metabolic process","GO:0006644",0.029798973152598,0.994782129638674,9,11
+"Adult","oligopeptide transport","GO:0006857",0.0301621889494531,0.994703304340169,9,11
+"Adult","phosphorylation","GO:0016310",0.0309082858450663,0.994540592357903,9,11
+"Adult","L-arabinose metabolic process","GO:0046373",0.0331506367436019,0.996378507005524,7,8
+"Adult","lipid metabolic process","GO:0006629",0.0355261055016931,0.976966029341065,66,113
+"Adult","transmembrane receptor protein tyrosine kinase signaling pathway","GO:0007169",0.0435608302135907,0.989541277760405,10,13
+"Adult","calcium ion transmembrane transport","GO:0070588",0.0499665477062408,0.976207188526557,24,37
