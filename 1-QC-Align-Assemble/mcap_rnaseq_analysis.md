@@ -436,6 +436,7 @@ cd ../
 Create the StringTie reference-guided assembly script, ```McapStringTie-assembly.sh``` *inside of the StringTie program directory.*  
 
 ++StringTie Arguments Used++:  
+- -A - Output gene abundance file
 - -p - Specify number of processers
 - --rf - Reads are stranded
 - -e - Limit the estimation and output of transcripts to only those that match the reference (in this case, our merged GTF)
@@ -444,6 +445,7 @@ Create the StringTie reference-guided assembly script, ```McapStringTie-assembly
 
 ```
 cd stringtie
+mkdir gene_abund #Make directory for gene abundance files
 nano ./McapStringTie-assembly.sh
 ```
 ```
@@ -457,7 +459,7 @@ F=/home/echille/mcap2019/data/stringtie
 array1=($(ls $F/BAM/*_R1_001.clean.fastq.gz.bam))
 
 for i in ${array1[@]}; do
-        ./stringtie -p 8 --rf -e -G Mcap.GFFannotation.gff -o ${i}.gtf ${i}
+        ./stringtie -A gene_abund/{i}.gene_abund.tab -p 8 --rf -e -G Mcap.GFFannotation.gff -o ${i}.gtf ${i}
         mv /ref-guided-gtfs/${i}.gtf
         echo "StringTie-assembly-to-ref ${i}" $(date)
 done

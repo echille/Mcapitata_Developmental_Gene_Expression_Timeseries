@@ -1,7 +1,7 @@
 ---
 title: "Epigenetic and MZT Biomarker Expression"
 author: "Erin Chille"
-date: "Last updated: 2020/11/03"
+date: "Last updated: 2020/11/04"
 output: html_document
 ---
 
@@ -19,6 +19,7 @@ library("RColorBrewer")
 library("ggplot2")
 library("tidyverse")
 library("ggpubr")
+library("DESeq2")
 ```
 
 
@@ -29,7 +30,7 @@ sample.info <- read.csv(file="Sample_Info/RNAseq_data.csv", header=T, sep=",") #
 
 Load gene count Information
 ```{r}
-counts <- as.data.frame(read.csv("1-QC-Align-Assemble/Output/gene_abund_TPM.csv", row.names="gene_id"), colClasses = double) #Load normalized expression matrix from stringtie
+counts <- as.data.frame(read.csv("1-QC-Align-Assemble/Output/gene_count_matrix.csv", row.names="gene_id"), colClasses = double) #Load normalized expression matrix from stringtie
 ```
 
 
@@ -42,6 +43,40 @@ dim(treatmentinfo_dev) #rows should be 24
 gcount_dev <- counts[treatmentinfo_dev$sample_id]
 dim(gcount_dev) #columns should be 24
 ```
+
+### Read normalization
+We are now going normalize our read counts using VST-normalization in DESeq2
+
+#### Construct the DESeq2 dataset
+
+Merge the treatment and time_point columns into a new column , group. Set group as a factor.
+```{r}
+treatmentinfo_dev$time_point <- factor(treatmentinfo_dev$time_point, levels = c("Unfertilized_egg", "Fertilized_egg", "Cleavage", "Prawn_chip", "Early_gastrula", "Mid_gastrula", "Late_gastrula", "Planula", "Adult"))
+```
+
+Create a DESeqDataSet design from gene count matrix and labels. Here we set the design to look at time_point to test for any differences in gene expression across timepoints.
+```{r}
+#Set DESeq2 design
+gdds_dev <- DESeqDataSetFromMatrix(countData = gcount_dev,
+                              colData = treatmentinfo_dev,
+                              design = ~time_point)
+```
+
+#### Log-transform the count data
+First we are going to log-transform the data using a variance stabilizing transforamtion (VST). This is only for visualization purposes. Essentially, this is roughly similar to putting the data on the log2 scale. It will deal with the sampling variability of low counts by calculating within-group variability (if blind=FALSE). Importantly, it does not use the design to remove variation in the data, and so can be used to examine if there may be any variability do to technical factors such as extraction batch effects.
+
+To do this we first need to calculate the size factors of our samples. This is a rough estimate of how many reads each sample contains compared to the others. In order to use VST (the faster log2 transforming process) to log-transform our data, the size factors need to be less than 4. Otherwise, there could be artefacts in our results.
+```{r}
+SF.gdds_dev <- estimateSizeFactors(gdds_dev) #estimate size factors to determine if we can use vst  to transform our data. Size factors should be less than for to use vst
+print(sizeFactors(SF.gdds_dev)) #View size factors
+```
+
+Our size factors are all less than 4, so we can use VST!
+```{r}
+gvst_dev <- vst(gdds_dev, blind=FALSE) #apply a variance stabilizing transforamtion to minimize effects of small counts and normalize wrt library size
+head(assay(gvst_dev), 3) #view transformed gene count data
+```
+
 
 ## Run BLAST search of biomarkers against Mcap protein fasta
 
@@ -62,7 +97,7 @@ hits <- read.table(file="2b-Epi-MZT-Enzyme-Expression/Output/Mcap_Epi_MZT_biomar
 colnames(hits) <- c("Epi.gene","queryprot", "gene_id", "pident", "length", "mismatch", "gapopen", "qstart", "qend", "sstart", "send", "evalue", "bitscore")
 hits <- hits %>% distinct(Epi.gene, gene_id, .keep_all = TRUE)
 
-countsx <- gcount_dev
+countsx <- as.data.frame(assay(gvst_dev))
 gene.counts <- countsx[(row.names(countsx) %in% hits$gene), ]
 str(gene.counts)
 gene.counts$gene_id <- row.names(gene.counts) 
@@ -108,7 +143,7 @@ Mcap.DNMT3 <- ggplot(DNMT3.counts, aes(x=time_point, y=mean, group=gene_id)) +
   geom_line(aes(), lty="dashed", color = "darkgrey") +
   geom_point(aes(shape=gene_id), size = 2) +
   xlab("Timepoint") +
-  ylab(expression(paste("Mean expression (TPM)"))) +
+  ylab(expression(paste("Mean vst-normalized expression"))) +
   theme_bw() + #Set the background color
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
@@ -138,7 +173,7 @@ Mcap.DNMT1 <- ggplot(DNMT1.counts, aes(x=time_point, y=mean, group=gene_id)) +
   geom_line(aes(), lty="dashed", color = "darkgrey") +
   geom_point(aes(shape=gene_id), size = 2) +
   xlab("Timepoint") +
-  ylab(expression(paste("Mean expression (TPM)"))) +
+  ylab(expression(paste("Mean normalized expression"))) +
   theme_bw() + #Set the background color
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
@@ -168,7 +203,7 @@ Mcap.TET1 <- ggplot(TET1.counts, aes(x=time_point, y=mean, group=gene_id)) +
   geom_line(aes(), lty="dashed", color = "darkgrey") +
   geom_point(aes(shape=gene_id), size = 2) +
   xlab("Timepoint") +
-  ylab(expression(paste("Mean expression (TPM)"))) +
+  ylab(expression(paste("Mean vst-normalized expression"))) +
   theme_bw() + #Set the background color
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
@@ -198,7 +233,7 @@ Mcap.MBD2 <- ggplot(MBD2.counts, aes(x=time_point, y=mean, group=gene_id)) +
   geom_line(aes(shape=gene_id), lty="dashed", color = "darkgrey") +
   geom_point(aes(shape=gene_id), size = 2, ) +
   xlab("Timepoint") +
-  ylab(expression(paste("Mean expression (TPM)"))) +
+  ylab(expression(paste("Mean vst-normalized expression"))) +
   theme_bw() + #Set the background color
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
@@ -228,7 +263,7 @@ Mcap.UHRF1 <- ggplot(UHRF1.counts, aes(x=time_point, y=mean, group=gene_id)) +
   geom_line(aes(shape=gene_id), lty="dashed", color = "darkgrey") +
   geom_point(aes(shape=gene_id), size = 2, ) +
   xlab("Timepoint") +
-  ylab(expression(paste("Mean expression (TPM)"))) +
+  ylab(expression(paste("Mean vst-normalized expression"))) +
   theme_bw() + #Set the background color
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
@@ -258,7 +293,7 @@ Mcap.BRG1 <- ggplot(BRG1.counts, aes(x=time_point, y=mean, group=gene_id)) +
   geom_line(aes(shape=gene_id), lty="dashed", color = "darkgrey") +
   geom_point(aes(shape=gene_id), size = 2, ) +
   xlab("Timepoint") +
-  ylab(expression(paste("Mean expression (TPM)"))) +
+  ylab(expression(paste("Mean vst-normalized expression"))) +
   theme_bw() + #Set the background color
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
@@ -297,7 +332,7 @@ Mcap.SMG <- ggplot(SMG.counts, aes(x=time_point, y=mean, group=gene_id)) +
   geom_line(aes(), lty="dashed", color = "darkgrey") +
   geom_point(aes(shape=gene_id), size = 2) +
   xlab("Timepoint") +
-  ylab(expression(paste("Mean expression (TPM)"))) +
+  ylab(expression(paste("Mean vst-normalized expression"))) +
   theme_bw() + #Set the background color
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
@@ -327,7 +362,7 @@ Mcap.KAISO <- ggplot(KAISO.counts, aes(x=time_point, y=mean, group=gene_id)) +
   geom_line(aes(), lty="dashed", color = "darkgrey") +
   geom_point(aes(shape=gene_id), size = 2) +
   xlab("Timepoint") +
-  ylab(expression(paste("Mean expression (TPM)"))) +
+  ylab(expression(paste("Mean vst-normalized expression"))) +
   theme_bw() + #Set the background color
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
@@ -357,7 +392,7 @@ Mcap.TBXT <- ggplot(TBXT.counts, aes(x=time_point, y=mean, group=gene_id)) +
   geom_line(aes(shape=gene_id), lty="dashed", color = "darkgrey") +
   geom_point(aes(shape=gene_id), size = 2, ) +
   xlab("Timepoint") +
-  ylab(expression(paste("Mean expression (TPM)"))) +
+  ylab(expression(paste("Mean vst-normalized expression"))) +
   theme_bw() + #Set the background color
    theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
@@ -387,7 +422,7 @@ Mcap.SOX2 <- ggplot(SOX2.counts, aes(x=time_point, y=mean, group=gene_id)) +
   geom_line(aes(shape=gene_id), lty="dashed", color = "darkgrey") +
   geom_point(aes(shape=gene_id), size = 2, ) +
   xlab("Timepoint") +
-  ylab(expression(paste("Mean expression (TPM)"))) +
+  ylab(expression(paste("Mean vst-normalized expression"))) +
   theme_bw() + #Set the background color
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
@@ -417,7 +452,7 @@ Mcap.NANOG <- ggplot(NANOG.counts, aes(x=time_point, y=mean, group=gene_id)) +
   geom_line(aes(shape=gene_id), lty="dashed", color = "darkgrey") +
   geom_point(aes(shape=gene_id), size = 2, ) +
   xlab("Timepoint") +
-  ylab(expression(paste("Mean expression (TPM)"))) +
+  ylab(expression(paste("Mean vst-normalized expression"))) +
   theme_bw() + #Set the background color
     theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
@@ -447,7 +482,7 @@ Mcap.WNT8 <- ggplot(WNT8.counts, aes(x=time_point, y=mean, group=gene_id)) +
   geom_line(aes(shape=gene_id), lty="dashed", color = "darkgrey") +
   geom_point(aes(shape=gene_id), size = 2) +
   xlab("Timepoint") +
-  ylab(expression(paste("Mean expression (TPM)"))) +
+  ylab(expression(paste("Mean vst-normalized expression"))) +
   theme_bw() + #Set the background color
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
