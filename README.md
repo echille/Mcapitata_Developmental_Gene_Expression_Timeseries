@@ -9,4 +9,4 @@ This repository provides data and scripts to analyze *Monitpora capitata* gene e
 
 ---
 
-**Execute all scripts in Rproj and knit to project
+**Execute all scripts in Rproj and knit to project**
