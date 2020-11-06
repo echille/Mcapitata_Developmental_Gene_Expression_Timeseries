@@ -1,7 +1,7 @@
 ---
 title: "Epigenetic and MZT Biomarker Expression"
 author: "Erin Chille"
-date: "Last updated: 2020/11/04"
+date: "Last updated: 2020/11/06"
 output: html_document
 ---
 
@@ -143,7 +143,7 @@ Mcap.DNMT3 <- ggplot(DNMT3.counts, aes(x=time_point, y=mean, group=gene_id)) +
   geom_line(aes(), lty="dashed", color = "darkgrey") +
   geom_point(aes(shape=gene_id), size = 2) +
   xlab("Timepoint") +
-  ylab(expression(paste("Mean vst-normalized expression"))) +
+  ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
@@ -203,7 +203,7 @@ Mcap.TET1 <- ggplot(TET1.counts, aes(x=time_point, y=mean, group=gene_id)) +
   geom_line(aes(), lty="dashed", color = "darkgrey") +
   geom_point(aes(shape=gene_id), size = 2) +
   xlab("Timepoint") +
-  ylab(expression(paste("Mean vst-normalized expression"))) +
+  ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
@@ -233,7 +233,7 @@ Mcap.MBD2 <- ggplot(MBD2.counts, aes(x=time_point, y=mean, group=gene_id)) +
   geom_line(aes(shape=gene_id), lty="dashed", color = "darkgrey") +
   geom_point(aes(shape=gene_id), size = 2, ) +
   xlab("Timepoint") +
-  ylab(expression(paste("Mean vst-normalized expression"))) +
+  ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
@@ -263,7 +263,7 @@ Mcap.UHRF1 <- ggplot(UHRF1.counts, aes(x=time_point, y=mean, group=gene_id)) +
   geom_line(aes(shape=gene_id), lty="dashed", color = "darkgrey") +
   geom_point(aes(shape=gene_id), size = 2, ) +
   xlab("Timepoint") +
-  ylab(expression(paste("Mean vst-normalized expression"))) +
+  ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
@@ -293,7 +293,7 @@ Mcap.BRG1 <- ggplot(BRG1.counts, aes(x=time_point, y=mean, group=gene_id)) +
   geom_line(aes(shape=gene_id), lty="dashed", color = "darkgrey") +
   geom_point(aes(shape=gene_id), size = 2, ) +
   xlab("Timepoint") +
-  ylab(expression(paste("Mean vst-normalized expression"))) +
+  ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
@@ -332,7 +332,7 @@ Mcap.SMG <- ggplot(SMG.counts, aes(x=time_point, y=mean, group=gene_id)) +
   geom_line(aes(), lty="dashed", color = "darkgrey") +
   geom_point(aes(shape=gene_id), size = 2) +
   xlab("Timepoint") +
-  ylab(expression(paste("Mean vst-normalized expression"))) +
+  ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
@@ -362,7 +362,7 @@ Mcap.KAISO <- ggplot(KAISO.counts, aes(x=time_point, y=mean, group=gene_id)) +
   geom_line(aes(), lty="dashed", color = "darkgrey") +
   geom_point(aes(shape=gene_id), size = 2) +
   xlab("Timepoint") +
-  ylab(expression(paste("Mean vst-normalized expression"))) +
+  ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
@@ -392,7 +392,7 @@ Mcap.TBXT <- ggplot(TBXT.counts, aes(x=time_point, y=mean, group=gene_id)) +
   geom_line(aes(shape=gene_id), lty="dashed", color = "darkgrey") +
   geom_point(aes(shape=gene_id), size = 2, ) +
   xlab("Timepoint") +
-  ylab(expression(paste("Mean vst-normalized expression"))) +
+  ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
    theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
@@ -422,7 +422,7 @@ Mcap.SOX2 <- ggplot(SOX2.counts, aes(x=time_point, y=mean, group=gene_id)) +
   geom_line(aes(shape=gene_id), lty="dashed", color = "darkgrey") +
   geom_point(aes(shape=gene_id), size = 2, ) +
   xlab("Timepoint") +
-  ylab(expression(paste("Mean vst-normalized expression"))) +
+  ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
@@ -452,7 +452,7 @@ Mcap.NANOG <- ggplot(NANOG.counts, aes(x=time_point, y=mean, group=gene_id)) +
   geom_line(aes(shape=gene_id), lty="dashed", color = "darkgrey") +
   geom_point(aes(shape=gene_id), size = 2, ) +
   xlab("Timepoint") +
-  ylab(expression(paste("Mean vst-normalized expression"))) +
+  ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
     theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
@@ -482,7 +482,7 @@ Mcap.WNT8 <- ggplot(WNT8.counts, aes(x=time_point, y=mean, group=gene_id)) +
   geom_line(aes(shape=gene_id), lty="dashed", color = "darkgrey") +
   geom_point(aes(shape=gene_id), size = 2) +
   xlab("Timepoint") +
-  ylab(expression(paste("Mean vst-normalized expression"))) +
+  ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
