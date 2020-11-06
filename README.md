@@ -6,10 +6,7 @@ This repository provides data and scripts to analyze *Monitpora capitata* gene e
 
 *M. capitata* bundles were collected from the HIMB reef during the peak releases of June 2018 and fertilized in the lab. The gametes and embryos were in ambient conditions. In order to elucidate maternal provisioning and the maternal-to-zygotic transition, mRNA was sequenced from eggs and embryos at 1, 4, 9, 14, 22, and 36 hours post fertilization (hpf), as well as swimming larvae (9 days), and adults (>years). Samples were snap frozen in liquid nitrogen and stored at -80°C. RNA was extracted from 2-3 biological replicates for each treatment at each sampling point to determine gene expression profiles at each life stage. Samples were sequenced using Illumina stranded mRNA sequencing on the HiSeq targeting ~15 million reads per sample. See figure above for an outline of the bioinformatic pipeline.
 
-Contents:  
-- Rproj
-
 
 ---
 
-**Please execute all scripts in Rproj
+**Execute all scripts in Rproj and knit to project
