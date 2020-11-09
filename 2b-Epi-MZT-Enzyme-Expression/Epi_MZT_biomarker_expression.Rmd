@@ -1,7 +1,7 @@
 ---
 title: "Epigenetic and MZT Biomarker Expression"
 author: "Erin Chille"
-date: "Last updated: 2020/11/06"
+date: "Last updated: 2020/11/09"
 output: html_document
 ---
 
@@ -82,24 +82,26 @@ head(assay(gvst_dev), 3) #view transformed gene count data
 
 Find orthologues of biomarkers within Mcap genome
 ```{bash}
-##Make blast database from Mcap predicted protein fasta file
-#/usr/local/ncbi/blast/bin/makeblastdb -in Mcap.protein.fa -input_type fasta -dbtype prot -parse_seqids -out Mcap.protein.blast.db
-#
-##Blast fasta file containing sequences of selected biomarkers against our sequences
-#/usr/local/ncbi/blast/bin/blastp -query MZT_biomarkers.fa -db Mcap.protein.blast.db -outfmt 6 -max_target_seqs 5 -evalue 1e-05 -out Mcap_Epi_MZT_biomarker_hits_5.tsv
+#Make blast database from Mcap predicted protein fasta file
+#/usr/local/ncbi/blast/bin/makeblastdb -in {path2ref}/Mcap.protein.fa -input_type fasta -dbtype prot -parse_seqids -out 2b-Epi-MZT-Enzyme-Expression/Input/Mcap.protein.blast.db
 
-#move BLAST output to project directory
+#Blast fasta file containing sequences of selected biomarkers against our sequences
+#/usr/local/ncbi/blast/bin/blastp -query 2b-Epi-MZT-Enzyme-Expression/Input/Epi_MTZ_biomarkers.fa -db 2b-Epi-MZT-Enzyme-Expression/Input/Mcap.protein.blast.db -outfmt 6 -max_target_seqs 100 -evalue 1e-05 -out 2b-Epi-MZT-Enzyme-Expression/Output/Mcap_Epi_MZT_biomarker_hits_100.tsv
+
+#Manually in text editor: (1.) Add column names: "queryprot", "gene_id", "pident", "length", "mismatch", "gapopen", "qstart", "qend", "sstart", "send", "evalue", "bitscore", and (2.) Remove ("augustus." and ".t1") from gene_ids using "command F" replace
+#Manually in Excel: Add a column called Epi.gene that lists the alias for each of your target of enzymes
 ```
 
 Subset results for genes of interest
 ```{r}
-hits <- read.table(file="2b-Epi-MZT-Enzyme-Expression/Output/Mcap_Epi_MZT_biomarker_hits_5.tsv", header=F, sep="\t")
-colnames(hits) <- c("Epi.gene","queryprot", "gene_id", "pident", "length", "mismatch", "gapopen", "qstart", "qend", "sstart", "send", "evalue", "bitscore")
+hits <- read.table(file="2b-Epi-MZT-Enzyme-Expression/Output/Mcap_Epi_MZT_biomarker_hits_100.tsv", header=T, sep="\t")
 hits <- hits %>% distinct(Epi.gene, gene_id, .keep_all = TRUE)
+
+levels(as.factor(hits$queryprot))
 
 countsx <- as.data.frame(assay(gvst_dev))
 gene.counts <- countsx[(row.names(countsx) %in% hits$gene), ]
-str(gene.counts)
+#str(gene.counts)
 gene.counts$gene_id <- row.names(gene.counts) 
 gene.counts <- merge(gene.counts, hits[,c(1,3)], by="gene_id")
 
@@ -107,7 +109,7 @@ gene.counts.long <- pivot_longer(gene.counts, 2:25, values_to = "exp")
   #gather(gene.counts, group, exp, X1101:X375, factor_key=TRUE) 
 colnames(gene.counts.long)[3] <- "sample_id"
 gene.counts.long <- merge(gene.counts.long, sample.info[,c(1:2)], by="sample_id")
-str(gene.counts.long)
+#str(gene.counts.long)
 
 mean.counts <- gene.counts.long %>%
   group_by(gene_id, Epi.gene, time_point) %>%
@@ -118,20 +120,54 @@ mean.counts$time_point <- factor(mean.counts$time_point,
                                  levels = c("Unfertilized_egg","Fertilized_egg","Cleavage", 
                                   "Prawn_chip","Early_gastrula","Mid_gastrula", "Late_gastrula",
                                   "Planula", "Adult"))
+levels(as.factor(mean.counts$Epi.gene))
+```
 
+```{r}
 DNMT3.counts <- subset(mean.counts, Epi.gene =="DNMT3A")
+nDNMT3 <- length(levels(as.factor(DNMT3.counts$gene_id)))
 DNMT1.counts <- subset(mean.counts, Epi.gene =="DNMT1")
+nDNMT1 <- length(levels(as.factor(DNMT1.counts$gene_id)))
 TET1.counts <- subset(mean.counts, Epi.gene =="TET1")
+nTET <- length(levels(as.factor(TET1.counts$gene_id)))
 MBD2.counts <- subset(mean.counts, Epi.gene =="MBD2")
+nMBD2 <- length(levels(as.factor(MBD2.counts$gene_id)))
 MBD3.counts <- subset(mean.counts, Epi.gene =="MBD3")
+nMBD3 <- length(levels(as.factor(MBD3.counts$gene_id)))
 UHRF1.counts <- subset(mean.counts, Epi.gene =="UHRF1")
+nUHRF1 <- length(levels(as.factor(UHRF1.counts$gene_id)))
 BRG1.counts <- subset(mean.counts, Epi.gene =="BRG1")
+nBRG1 <- length(levels(as.factor(BRG1.counts$gene_id)))
+
 SMG.counts <- subset(mean.counts, Epi.gene =="SMG") #SMAUG
+nSMG <- length(levels(as.factor(SMG.counts$gene_id)))
 KAISO.counts <- subset(mean.counts, Epi.gene =="KAISO") #Kaiso
-NANOG.counts <- subset(mean.counts, Epi.gene =="NANOG") #SNANOG
-SOX2.counts <- subset(mean.counts, Epi.gene =="SOX2") #SOX2
-WNT8.counts <- subset(mean.counts, Epi.gene =="WNT8") #WNT8
+nKAISO <- length(levels(as.factor(KAISO.counts$gene_id)))
 TBXT.counts <- subset(mean.counts, Epi.gene =="TBXT") #brachyury
+nTBXT <- length(levels(as.factor(TBXT.counts$gene_id)))
+SOX2.counts <- subset(mean.counts, Epi.gene =="SOX2") #SOX2
+nSOX2 <- length(levels(as.factor(SOX2.counts$gene_id)))
+NANOG.counts <- subset(mean.counts, Epi.gene =="NANOG") #NANOG
+nNANOG <- length(levels(as.factor(NANOG.counts$gene_id)))
+WNT8.counts <- subset(mean.counts, Epi.gene =="WNT8") #WNT8
+nWNT8 <- length(levels(as.factor(WNT8.counts$gene_id)))
+
+
+nEpihomologues <- as.data.frame(cbind(DNMT3A=nDNMT3, DNMT1=nDNMT1, TET1=nTET, MBD2=nMBD2, MBD3=nMBD3, UHRF1=nUHRF1, BRG1=nBRG1))
+print(nEpihomologues)
+nMZThomologues <- as.data.frame(cbind(SMG=nSMG, KAISO=nKAISO, TBXT=nTBXT, SOX2=nSOX2, NANOG=nNANOG, WNT8=nWNT8))
+print(nMZThomologues)
+```
+
+```{r}
+subset(hits, Epi.gene=="TBXT")
+top_UHRF1=c("adi2mcaRNA19502_R1", "adi2mcaRNA19502_R0") # evalue very more sig e-100s versus next e-0s,  and bitscore 5x higher than next genes listed
+top_BRG1=c("g68733", "g61145") #evalue 0 and bitscore 3x higher than next genes listed
+top_KAISO=c("g60350", "g40393", "g12928") #top 3 bitscore > 70 or maybe top 1 e-15 versus e-12
+top_TBXT=c("g68947", "g21139", "g18324") #top 3 have 2x lower evalue and ~150 higher bitscore
+top_SOX2=c("g50894") #top 1, bitscore and evalue most signif by a lot
+top_NANOG=c("g31757", "g31758") #top 2 both e-13
+top_WNT8=c("g14809", "g23174", "g33143", "g17638", "adi2mcaRNA17113_R1") #top 5
 ```
 
 ## Plot methylation-related genes
@@ -145,6 +181,7 @@ Mcap.DNMT3 <- ggplot(DNMT3.counts, aes(x=time_point, y=mean, group=gene_id)) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
+  ylim(8,15) +
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
@@ -175,6 +212,7 @@ Mcap.DNMT1 <- ggplot(DNMT1.counts, aes(x=time_point, y=mean, group=gene_id)) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean normalized expression"))) +
   theme_bw() + #Set the background color
+  ylim(8,15) +
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
@@ -205,6 +243,7 @@ Mcap.TET1 <- ggplot(TET1.counts, aes(x=time_point, y=mean, group=gene_id)) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
+  ylim(8,15) +
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
@@ -235,6 +274,7 @@ Mcap.MBD2 <- ggplot(MBD2.counts, aes(x=time_point, y=mean, group=gene_id)) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
+  ylim(8,15) +
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
@@ -258,13 +298,14 @@ Mcap.MBD2
 
 Plot UHRF1 expression as a function of time and treatment
 ```{r}
-Mcap.UHRF1 <- ggplot(UHRF1.counts, aes(x=time_point, y=mean, group=gene_id)) + 
+Mcap.UHRF1 <- UHRF1.counts %>% subset(gene_id%in%top_UHRF1) %>% ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
   geom_line(aes(shape=gene_id), lty="dashed", color = "darkgrey") +
   geom_point(aes(shape=gene_id), size = 2, ) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
+  ylim(8,15) +
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
@@ -288,13 +329,14 @@ Mcap.UHRF1
 
 Plot BRG1 expression as a function of time and treatment
 ```{r}
-Mcap.BRG1 <- ggplot(BRG1.counts, aes(x=time_point, y=mean, group=gene_id)) +
+Mcap.BRG1 <- BRG1.counts %>% subset(gene_id%in%top_BRG1) %>% ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
   geom_line(aes(shape=gene_id), lty="dashed", color = "darkgrey") +
   geom_point(aes(shape=gene_id), size = 2, ) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
+  ylim(8,15) +
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
@@ -307,6 +349,7 @@ Mcap.BRG1 <- ggplot(BRG1.counts, aes(x=time_point, y=mean, group=gene_id)) +
         axis.ticks.x=element_blank(), #No x-label ticks
         legend.text=element_text(size = 12), #Legend text size
         legend.position = c(0.75, 0.9)) +
+  #guides(shape=guide_legend(ncol=2)) +
   ggtitle("vi) BRG1 homologs") +
   #facet_grid(rows=vars(gene_id), scales="free_y") +
   theme(strip.text.y = element_text(size = 5)) +
@@ -318,7 +361,7 @@ Mcap.BRG1
 
 Compile plots into single figure and save
 ```{r}
-Fig.5 <- cowplot::plot_grid(Mcap.DNMT3, Mcap.DNMT1, Mcap.TET1, Mcap.MBD2, Mcap.UHRF1, Mcap.BRG1, align = "v", ncol = 3)
+Fig.5 <- cowplot::plot_grid(Mcap.DNMT3, Mcap.DNMT1, Mcap.TET1, Mcap.MBD2, Mcap.UHRF1, Mcap.BRG1, align = "vh", ncol = 3)
 Fig.5
 ggsave("2b-Epi-MZT-Enzyme-Expression/Output/Fig5-Mcap-Dev-Epi-Expression.pdf", Fig.5, width=21, height=15)
 ```
@@ -334,6 +377,7 @@ Mcap.SMG <- ggplot(SMG.counts, aes(x=time_point, y=mean, group=gene_id)) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
+  ylim(8,15) +
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
@@ -357,13 +401,14 @@ Mcap.SMG
 
 Plot KAISO expression as a function of time and treatment
 ```{r}
-Mcap.KAISO <- ggplot(KAISO.counts, aes(x=time_point, y=mean, group=gene_id)) + 
+Mcap.KAISO <- KAISO.counts %>% subset(gene_id%in%top_KAISO) %>% ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
   geom_line(aes(), lty="dashed", color = "darkgrey") +
   geom_point(aes(shape=gene_id), size = 2) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
+  ylim(8,15) +
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
@@ -375,7 +420,7 @@ Mcap.KAISO <- ggplot(KAISO.counts, aes(x=time_point, y=mean, group=gene_id)) +
         axis.title.y=element_blank(), #set x-axis label size
         axis.ticks.x=element_blank(), #No x-label ticks
         legend.text=element_text(size = 12), #Legend text size
-        legend.position = c(0.9, 0.9)) +
+        legend.position = c(0.75, 0.9)) +
   ggtitle("ii) KAISO homologs") +
   #facet_grid(rows=vars(gene_id), scales="free_y") +
   theme(strip.text.y = element_text(size = 5)) +
@@ -387,13 +432,14 @@ Mcap.KAISO
 
 Plot TBXT expression as a function of time and treatment
 ```{r}
-Mcap.TBXT <- ggplot(TBXT.counts, aes(x=time_point, y=mean, group=gene_id)) + 
+Mcap.TBXT <- TBXT.counts %>% subset(gene_id%in%top_TBXT) %>% ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
   geom_line(aes(shape=gene_id), lty="dashed", color = "darkgrey") +
   geom_point(aes(shape=gene_id), size = 2, ) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
+  ylim(8,15) +
    theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
@@ -417,13 +463,14 @@ Mcap.TBXT
 
 Plot SOX2 expression as a function of time and treatment
 ```{r}
-Mcap.SOX2 <- ggplot(SOX2.counts, aes(x=time_point, y=mean, group=gene_id)) + 
+Mcap.SOX2 <- SOX2.counts %>% subset(gene_id%in%top_SOX2) %>% ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
   geom_line(aes(shape=gene_id), lty="dashed", color = "darkgrey") +
   geom_point(aes(shape=gene_id), size = 2, ) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
+  ylim(8,15) +
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
@@ -447,13 +494,14 @@ Mcap.SOX2
 
 Plot NANOG expression as a function of time and treatment
 ```{r}
-Mcap.NANOG <- ggplot(NANOG.counts, aes(x=time_point, y=mean, group=gene_id)) + 
+Mcap.NANOG <- NANOG.counts %>% subset(gene_id%in%top_NANOG) %>% ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
   geom_line(aes(shape=gene_id), lty="dashed", color = "darkgrey") +
   geom_point(aes(shape=gene_id), size = 2, ) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
+  ylim(8,15) +
     theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
@@ -477,13 +525,14 @@ Mcap.NANOG
 
 Plot WNT8 expression as a function of time and treatment
 ```{r}
-Mcap.WNT8 <- ggplot(WNT8.counts, aes(x=time_point, y=mean, group=gene_id)) + 
+Mcap.WNT8 <- WNT8.counts %>% subset(gene_id%in%top_WNT8) %>% ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
   geom_line(aes(shape=gene_id), lty="dashed", color = "darkgrey") +
   geom_point(aes(shape=gene_id), size = 2) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
+  ylim(8,15) +
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
@@ -495,8 +544,8 @@ Mcap.WNT8 <- ggplot(WNT8.counts, aes(x=time_point, y=mean, group=gene_id)) +
         axis.title.y=element_blank(), #set x-axis label size
         axis.ticks.x=element_blank(), #No x-label ticks
         legend.text=element_text(size = 12), #Legend text size
-        legend.position = c(0.918, 0.9)) +
-  #guides(shape=guide_legend(ncol=3, nrow=2)) +
+        legend.position = c(0.75, 0.9)) +
+  #guides(shape=guide_legend(ncol=2)) +
   ggtitle("vi) WNT8 homologs") +
   #facet_grid(rows=vars(gene_id), scales="free_y") +
   theme(strip.text.y = element_text(size = 5)) +
