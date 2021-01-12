@@ -76,6 +76,16 @@ Our size factors are all less than 4, so we can use VST!
 gvst_dev <- vst(gdds_dev, blind=FALSE) #apply a variance stabilizing transforamtion to minimize effects of small counts and normalize wrt library size
 head(assay(gvst_dev), 3) #view transformed gene count data
 ```
+Find mean, median, mode of expression
+```{r}
+exp_df <- as.data.frame(assay(gvst_dev))
+exp_list <- c(exp_df$X119, exp_df$X120, exp_df$X121, exp_df$X127, exp_df$X132, exp_df$X153, exp_df$X154, exp_df$X159, exp_df$X162, exp_df$X163, exp_df$X167, exp_df$X179, exp_df$X180, exp_df$X184, exp_df$X212, exp_df$X215, exp_df$X218, exp_df$X221, exp_df$X359, exp_df$X361, exp_df$X375, exp_df$X1101, exp_df$X1548, exp_df$X1628)
+max(exp_list)
+mean(exp_list)
+median(exp_list)
+min(exp_list)
+hist(exp_list)
+```
 
 
 ## Run BLAST search of biomarkers against Mcap protein fasta
@@ -89,12 +99,12 @@ Find orthologues of biomarkers within Mcap genome
 #/usr/local/ncbi/blast/bin/blastp -query 2b-Epi-MZT-Enzyme-Expression/Input/Epi_MTZ_biomarkers.fa -db 2b-Epi-MZT-Enzyme-Expression/Input/Mcap.protein.blast.db -outfmt 6 -max_target_seqs 100 -evalue 1e-05 -out 2b-Epi-MZT-Enzyme-Expression/Output/Mcap_Epi_MZT_biomarker_hits_100.tsv
 
 #Manually in text editor: (1.) Add column names: "queryprot", "gene_id", "pident", "length", "mismatch", "gapopen", "qstart", "qend", "sstart", "send", "evalue", "bitscore", and (2.) Remove ("augustus." and ".t1") from gene_ids using "command F" replace
-#Manually in Excel: Add a column called Epi.gene that lists the alias for each of your target of enzymes
+#Manually in Excel: Add a column called Epi.gene that lists the alias for each of your target of enzymes. Check the annotation to see if there is any overlap in genes
 ```
 
 Subset results for genes of interest
 ```{r}
-hits <- read.table(file="2b-Epi-MZT-Enzyme-Expression/Output/Mcap_Epi_MZT_biomarker_hits_100.tsv", header=T, sep="\t")
+hits <- read.table(file="2b-Epi-MZT-Enzyme-Expression/Output/Mcap_Epi_MZT_HSP_hits_100.csv", header=T, sep=",")
 hits <- hits %>% distinct(Epi.gene, gene_id, .keep_all = TRUE)
 
 levels(as.factor(hits$queryprot))
@@ -147,41 +157,54 @@ TBXT.counts <- subset(mean.counts, Epi.gene =="TBXT") #brachyury
 nTBXT <- length(levels(as.factor(TBXT.counts$gene_id)))
 SOX2.counts <- subset(mean.counts, Epi.gene =="SOX2") #SOX2
 nSOX2 <- length(levels(as.factor(SOX2.counts$gene_id)))
-NANOG.counts <- subset(mean.counts, Epi.gene =="NANOG") #NANOG
-nNANOG <- length(levels(as.factor(NANOG.counts$gene_id)))
+CyclinB.counts <- subset(mean.counts, Epi.gene =="CyclinB") #CyclinB
+nCyclinB <- length(levels(as.factor(CyclinB.counts$gene_id)))
 WNT8.counts <- subset(mean.counts, Epi.gene =="WNT8") #WNT8
 nWNT8 <- length(levels(as.factor(WNT8.counts$gene_id)))
+
+HSP70.counts <- subset(mean.counts, Epi.gene =="HSP70") #HSP70
+nHSP70 <- length(levels(as.factor(HSP70.counts$gene_id)))
+HSP90.counts <- subset(mean.counts, Epi.gene =="HSP90") #HSP90
+nHSP90 <- length(levels(as.factor(HSP90.counts$gene_id)))
 
 
 nEpihomologues <- as.data.frame(cbind(DNMT3A=nDNMT3, DNMT1=nDNMT1, TET1=nTET, MBD2=nMBD2, MBD3=nMBD3, UHRF1=nUHRF1, BRG1=nBRG1))
 print(nEpihomologues)
-nMZThomologues <- as.data.frame(cbind(SMG=nSMG, KAISO=nKAISO, TBXT=nTBXT, SOX2=nSOX2, NANOG=nNANOG, WNT8=nWNT8))
+nMZThomologues <- as.data.frame(cbind(SMG=nSMG, KAISO=nKAISO, TBXT=nTBXT, SOX2=nSOX2, CyclinB=nCyclinB, WNT8=nWNT8))
 print(nMZThomologues)
+nHSPhomologues <- as.data.frame(cbind(HSP70=nHSP70, HSP90=nHSP90))
+print(nHSPhomologues)
 ```
 
 ```{r}
-subset(hits, Epi.gene=="TBXT")
+top_DNMT1=c("g53952") #highest eval (0) + bitscore
+top_DNMT3=c("g25804") #highest eval (0) + bitscore
+top_MBD=c("g53132") #highest eval (0) + bitscore
 top_UHRF1=c("adi2mcaRNA19502_R1", "adi2mcaRNA19502_R0") # evalue very more sig e-100s versus next e-0s,  and bitscore 5x higher than next genes listed
-top_BRG1=c("g68733", "g61145") #evalue 0 and bitscore 3x higher than next genes listed
-top_KAISO=c("g60350", "g40393", "g12928") #top 3 bitscore > 70 or maybe top 1 e-15 versus e-12
-top_TBXT=c("g68947", "g21139", "g18324") #top 3 have 2x lower evalue and ~150 higher bitscore
-top_SOX2=c("g50894") #top 1, bitscore and evalue most signif by a lot
-top_NANOG=c("g31757", "g31758") #top 2 both e-13
-top_WNT8=c("g14809", "g23174", "g33143", "g17638", "adi2mcaRNA17113_R1") #top 5
+top_BRG1=c("g68733", "g61145") #evalue 0 and bitscore 3x higher than next genes listed, length twice as long as others listed
+top_SMG=c("g4639", "g11098") #longest listed
+top_CyclinB=c("g71356") #top 1 longest with best evalue and bitscore
+top_KAISO=c("g60350") #longest listed
+top_TBXT=c("g68947", "g21139", "g18324") #top 3 have 2x lower evalue and ~150 higher bitscore. Also annotated in transcriptome with BLAST
+top_SOX2=c("g53225") #top 1, bitscore and evalue most signif by a lot
+top_WNT8=c("g33149") #top 1
+
+top_HSP70=c("adi2mcaRNA1829_R0", "adi2mcaRNA1829_R1")
+top_HSP90=c("g33244")
 ```
 
 ## Plot methylation-related genes
 
 Plot DNMT3a expression as a function of time and treatment
 ```{r}
-Mcap.DNMT3 <- ggplot(DNMT3.counts, aes(x=time_point, y=mean, group=gene_id)) + 
+Mcap.DNMT3 <- DNMT3.counts %>% subset(gene_id%in%top_DNMT3) %>% ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
   geom_line(aes(), lty="dashed", color = "darkgrey") +
-  geom_point(aes(shape=gene_id), size = 2) +
+  geom_point(size = 1) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
-  ylim(8,15) +
+  ylim(8.728599, 19.30752) +
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
@@ -189,30 +212,31 @@ Mcap.DNMT3 <- ggplot(DNMT3.counts, aes(x=time_point, y=mean, group=gene_id)) +
         plot.background=element_blank(),  #Set the plot background
         axis.title.x=element_blank(), #set x-axis title size
         axis.text.x=element_blank(), #set x-axis label size
-        axis.text.y=element_text(size = 14), #set x-axis label size
-        axis.title.y=element_text(size = 14), #set x-axis label size
+        axis.text.y=element_text(size = 6), #set x-axis label size
+        axis.title.y=element_text(size = 6), #set x-axis label size
         axis.ticks.x=element_blank(), #No x-label ticks
-        legend.text=element_text(size = 12), #Legend text size
+        legend.text=element_text(size = 6), #Legend text size
+        legend.title=element_text(size = 6), #Legend title size
         legend.position=c(0.75, 0.9)) +
-  ggtitle("i) DNMT3A homologs") +
+  ggtitle("i) DNMT3A") +
   #facet_grid(rows=vars(gene_id), scales="free_y") +
   theme(strip.text.y = element_text(size = 5)) +
   theme(plot.title = element_text(face = 'bold.italic', 
-                                  size = 18, 
+                                  size = 9, 
                                   hjust = 0))
 Mcap.DNMT3
 ```
 
 Plot DNMT1 expression as a function of time and treatment
 ```{r}
-Mcap.DNMT1 <- ggplot(DNMT1.counts, aes(x=time_point, y=mean, group=gene_id)) + 
+Mcap.DNMT1 <- DNMT1.counts %>% subset(gene_id%in%top_DNMT1) %>% ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
   geom_line(aes(), lty="dashed", color = "darkgrey") +
-  geom_point(aes(shape=gene_id), size = 2) +
+  geom_point(size = 1) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean normalized expression"))) +
   theme_bw() + #Set the background color
-  ylim(8,15) +
+  ylim(8.728599, 19.30752) +
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
@@ -220,16 +244,17 @@ Mcap.DNMT1 <- ggplot(DNMT1.counts, aes(x=time_point, y=mean, group=gene_id)) +
         plot.background=element_blank(),  #Set the plot background
         axis.title.x=element_blank(), #set x-axis title size
         axis.text.x=element_blank(), #set x-axis label size
-        axis.text.y=element_text(size = 14), #set x-axis label size
+        axis.text.y=element_text(size = 6), #set x-axis label size
         axis.title.y=element_blank(), #set x-axis label size
         axis.ticks.x=element_blank(), #No x-label ticks
-        legend.text=element_text(size = 12), #Legend text size
+        legend.text=element_text(size = 6), #Legend text size
+        legend.title=element_text(size = 6), #Legend title size
         legend.position=c(0.75, 0.9)) +
-  ggtitle("ii) DNMT1 homologs") +
+  ggtitle("ii) DNMT1") +
   #facet_grid(rows=vars(gene_id), scales="free_y") +
   theme(strip.text.y = element_text(size = 5)) +
   theme(plot.title = element_text(face = 'bold.italic', 
-                                  size = 18, 
+                                  size = 9, 
                                   hjust = 0))
 Mcap.DNMT1
 ```
@@ -239,11 +264,11 @@ Plot TET1 expression as a function of time and treatment
 Mcap.TET1 <- ggplot(TET1.counts, aes(x=time_point, y=mean, group=gene_id)) + 
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
   geom_line(aes(), lty="dashed", color = "darkgrey") +
-  geom_point(aes(shape=gene_id), size = 2) +
+  geom_point(size = 1) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
-  ylim(8,15) +
+  ylim(8.728599, 19.30752) +
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
@@ -251,110 +276,115 @@ Mcap.TET1 <- ggplot(TET1.counts, aes(x=time_point, y=mean, group=gene_id)) +
         plot.background=element_blank(),  #Set the plot background
         axis.title.x=element_blank(), #set x-axis title size
         axis.text.x=element_blank(), #set x-axis label size
-        axis.text.y=element_text(size = 14), #set x-axis label size
+        axis.text.y=element_text(size = 6), #set x-axis label size
         axis.title.y=element_blank(), #set x-axis label size
         axis.ticks.x=element_blank(), #No x-label ticks
-        legend.text=element_text(size = 12), #Legend text size
+        legend.text=element_text(size = 6), #Legend text size
+        legend.title=element_text(size = 6), #Legend title size
         legend.position=c(0.75, 0.9)) +
-  ggtitle("iii) TET1 homologs") +
+  ggtitle("iii) TET1") +
   #facet_grid(rows=vars(gene_id), scales="free_y") +
   theme(strip.text.y = element_text(size = 5)) +
   theme(plot.title = element_text(face = 'bold.italic', 
-                                  size = 18, 
+                                  size = 9, 
                                   hjust = 0))
 Mcap.TET1
 ```
 
 Plot MBD2 and MBD3 expression as a function of time and treatment
 ```{r}
-Mcap.MBD2 <- ggplot(MBD2.counts, aes(x=time_point, y=mean, group=gene_id)) + 
+Mcap.MBD2 <- MBD2.counts %>% subset(gene_id%in%top_MBD) %>% ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
-  geom_line(aes(shape=gene_id), lty="dashed", color = "darkgrey") +
-  geom_point(aes(shape=gene_id), size = 2, ) +
+  geom_line(lty="dashed", color = "darkgrey") +
+  geom_point(size = 1, ) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
-  ylim(8,15) +
+  ylim(8.728599, 19.30752) +
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
         panel.grid.minor = element_blank(), #Set the minor gridlines
         plot.background=element_blank(),  #Set the plot background
-        axis.title.x=element_text(size = 14), #set x-axis title size
-        axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1, size = 14), #set x-axis label size
-        axis.text.y=element_text(size = 14), #set x-axis label size
-        axis.title.y=element_text(size = 14), #set x-axis label size
+        axis.title.x=element_text(size = 6), #set x-axis title size
+        axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1, size = 6), #set x-axis label size
+        axis.text.y=element_text(size = 6), #set x-axis label size
+        axis.title.y=element_text(size = 6), #set x-axis label size
         axis.ticks.x=element_blank(), #No x-label ticks
-        legend.text=element_text(size = 12), #Legend text size
+        legend.text=element_text(size = 6), #Legend text size
+        legend.title=element_text(size = 6), #Legend title size
         legend.position=c(0.75, 0.9)) +
-  ggtitle("iv) MBD2/3 homologs") +
+  ggtitle("iv) MBD2/3") +
   #facet_grid(rows=vars(gene_id), scales="free_y") +
   theme(strip.text.y = element_text(size = 5)) +
   theme(plot.title = element_text(face = 'bold.italic', 
-                                  size = 18, 
+                                  size = 9, 
                                   hjust = 0))
 Mcap.MBD2
 ```
 
 Plot UHRF1 expression as a function of time and treatment
 ```{r}
-Mcap.UHRF1 <- UHRF1.counts %>% subset(gene_id%in%top_UHRF1) %>% ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
+#UHRF1.counts %>% subset(gene_id%in%top_UHRF1) %>% 
+Mcap.UHRF1 <- ggplot(UHRF1.counts, aes(x=time_point, y=mean, group=gene_id)) + 
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
-  geom_line(aes(shape=gene_id), lty="dashed", color = "darkgrey") +
-  geom_point(aes(shape=gene_id), size = 2, ) +
+  geom_line(lty="dashed", color = "darkgrey") +
+  geom_point(size = 1, ) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
-  ylim(8,15) +
+  ylim(8.728599, 19.30752) +
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
         panel.grid.minor = element_blank(), #Set the minor gridlines
         plot.background=element_blank(),  #Set the plot background
-        axis.title.x=element_text(size = 14), #set x-axis title size
-        axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1, size = 14), #set x-axis label size
-        axis.text.y=element_text(size = 14), #set x-axis label size
+        axis.title.x=element_text(size = 6), #set x-axis title size
+        axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1, size = 6), #set x-axis label size
+        axis.text.y=element_text(size = 6), #set x-axis label size
         axis.title.y=element_blank(), #set x-axis label size
         axis.ticks.x=element_blank(), #No x-label ticks
-        legend.text=element_text(size = 12), #Legend text size
-        legend.position=c(0.75, 0.9)) +
-  ggtitle("v) UHRF1 homologs") +
+        legend.text=element_text(size = 6), #Legend text size
+        legend.title=element_text(size = 6), #Legend title size
+        legend.position=c(0.75, 0.85)) +
+  ggtitle("v) UHRF1") +
   #facet_grid(rows=vars(gene_id), scales="free_y") +
   theme(strip.text.y = element_text(size = 5)) +
   theme(plot.title = element_text(face = 'bold.italic', 
-                                  size = 18, 
+                                  size = 9, 
                                   hjust = 0))
 Mcap.UHRF1
 ```
 
 Plot BRG1 expression as a function of time and treatment
 ```{r}
-Mcap.BRG1 <- BRG1.counts %>% subset(gene_id%in%top_BRG1) %>% ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
+Mcap.BRG1 <- BRG1.counts %>% subset(gene_id%in%top_BRG1) %>% ggplot(aes(x=time_point, y=mean, group=gene_id)) +
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
-  geom_line(aes(shape=gene_id), lty="dashed", color = "darkgrey") +
-  geom_point(aes(shape=gene_id), size = 2, ) +
+  geom_line(lty="dashed", color = "darkgrey") +
+  geom_point(size = 1, ) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
-  ylim(8,15) +
+  ylim(8.728599, 19.30752) +
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
         panel.grid.minor = element_blank(), #Set the minor gridlines
         plot.background=element_blank(),  #Set the plot background
-        axis.title.x=element_text(size = 14), #set x-axis title size
-        axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1, size = 14), #set x-axis label size
-        axis.text.y=element_text(size = 14), #set x-axis label size
+        axis.title.x=element_text(size = 6), #set x-axis title size
+        axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1, size = 6), #set x-axis label size
+        axis.text.y=element_text(size = 6), #set x-axis label size
         axis.title.y=element_blank(), #set x-axis label size
         axis.ticks.x=element_blank(), #No x-label ticks
-        legend.text=element_text(size = 12), #Legend text size
+        legend.text=element_text(size = 6), #Legend text size
+        legend.title=element_text(size = 6), #Legend title size
         legend.position = c(0.75, 0.9)) +
   #guides(shape=guide_legend(ncol=2)) +
-  ggtitle("vi) BRG1 homologs") +
+  ggtitle("vi) BRG1") +
   #facet_grid(rows=vars(gene_id), scales="free_y") +
   theme(strip.text.y = element_text(size = 5)) +
   theme(plot.title = element_text(face = 'bold.italic',
-                                  size = 18,
+                                  size = 9,
                                   hjust = 0))
 Mcap.BRG1
 ```
@@ -363,21 +393,54 @@ Compile plots into single figure and save
 ```{r}
 Fig.5 <- cowplot::plot_grid(Mcap.DNMT3, Mcap.DNMT1, Mcap.TET1, Mcap.MBD2, Mcap.UHRF1, Mcap.BRG1, align = "vh", ncol = 3)
 Fig.5
-ggsave("2b-Epi-MZT-Enzyme-Expression/Output/Fig5-Mcap-Dev-Epi-Expression.pdf", Fig.5, width=21, height=15)
+ggsave("2b-Epi-MZT-Enzyme-Expression/Output/Fig5-Mcap-Dev-Epi-Expression.pdf", Fig.5, width=7, height=5)
 ```
 
 ## Plot MZT biomarkers
 
-Plot SMAUG expression as a function of time and treatment
+Plot CyclinB expression as a function of time and treatment
 ```{r}
-Mcap.SMG <- ggplot(SMG.counts, aes(x=time_point, y=mean, group=gene_id)) + 
+Mcap.CyclinB <- CyclinB.counts %>% subset(gene_id%in%top_CyclinB) %>% 
+  ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
-  geom_line(aes(), lty="dashed", color = "darkgrey") +
-  geom_point(aes(shape=gene_id), size = 2) +
+  geom_line(lty="dashed", color = "darkgrey") +
+  geom_point(size = 1, ) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
-  ylim(8,15) +
+  #ylim(8,19) +
+    theme(axis.line = element_line(color = 'black'), #Set the axes color
+        panel.border = element_blank(), #Set the border
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        plot.background=element_blank(),  #Set the plot background
+        axis.title.x=element_blank(), #set x-axis title size
+        axis.text.x=element_blank(), #set x-axis label size
+        axis.text.y=element_text(size = 6), #set x-axis label size
+        axis.title.y=element_text(size = 6), #set x-axis label size
+        axis.ticks.x=element_blank(), #No x-label ticks
+        legend.title=element_text(size = 6), #Legend text size
+        legend.text=element_text(size = 6), #Legend text size
+        legend.position = c(0.75, 0.9)) +
+  ggtitle("i) CyclinB") +
+  #facet_grid(rows=vars(gene_id), scales="free_y") +
+  theme(strip.text.y = element_text(size = 5)) +
+  theme(plot.title = element_text(face = 'bold.italic', 
+                                  size = 9, 
+                                  hjust = 0))
+Mcap.CyclinB
+```
+
+Plot SMAUG expression as a function of time and treatment
+```{r}
+Mcap.SMG <- SMG.counts %>% subset(gene_id%in%top_SMG) %>% ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
+  geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
+  geom_line(aes(), lty="dashed", color = "darkgrey") +
+  geom_point(size = 1) +
+  xlab("Timepoint") +
+  ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
+  theme_bw() + #Set the background color
+  ylim(8.728599, 19.30752) +
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
@@ -385,30 +448,32 @@ Mcap.SMG <- ggplot(SMG.counts, aes(x=time_point, y=mean, group=gene_id)) +
         plot.background=element_blank(),  #Set the plot background
         axis.title.x=element_blank(), #set x-axis title size
         axis.text.x=element_blank(), #set x-axis label size
-        axis.text.y=element_text(size = 14), #set x-axis label size
-        axis.title.y=element_text(size = 14), #set x-axis label size
+        axis.text.y=element_text(size = 6), #set x-axis label size
+        axis.title.y=element_blank(), #set x-axis label size
         axis.ticks.x=element_blank(), #No x-label ticks
-        legend.text=element_text(size = 12), #Legend text size
-        legend.position = c(0.75, 0.9)) +
-  ggtitle("i) SMAUG homologs") +
+        legend.text=element_text(size = 6), #Legend text size
+        legend.title=element_text(size = 6), #Legend text size
+        legend.position = c(0.85, 0.9)) +
+  ggtitle("ii) SMAUG") +
   #facet_grid(rows=vars(gene_id), scales="free_y") +
   theme(strip.text.y = element_text(size = 5)) +
   theme(plot.title = element_text(face = 'bold.italic', 
-                                  size = 18, 
+                                  size = 9, 
                                   hjust = 0))
 Mcap.SMG
 ```
 
 Plot KAISO expression as a function of time and treatment
 ```{r}
-Mcap.KAISO <- KAISO.counts %>% subset(gene_id%in%top_KAISO) %>% ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
+Mcap.KAISO <- KAISO.counts %>% subset(gene_id%in%top_KAISO) %>% 
+  ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
   geom_line(aes(), lty="dashed", color = "darkgrey") +
-  geom_point(aes(shape=gene_id), size = 2) +
+  geom_point(size = 1) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
-  ylim(8,15) +
+  ylim(8.728599, 19.30752) +
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
@@ -416,149 +481,198 @@ Mcap.KAISO <- KAISO.counts %>% subset(gene_id%in%top_KAISO) %>% ggplot(aes(x=tim
         plot.background=element_blank(),  #Set the plot background
         axis.title.x=element_blank(), #set x-axis title size
         axis.text.x=element_blank(), #set x-axis label size
-        axis.text.y=element_text(size = 14), #set x-axis label size
+        axis.text.y=element_text(size = 6), #set x-axis label size
         axis.title.y=element_blank(), #set x-axis label size
         axis.ticks.x=element_blank(), #No x-label ticks
-        legend.text=element_text(size = 12), #Legend text size
+        legend.text=element_text(size = 6), #Legend text size
+        legend.title=element_text(size = 6), #Legend text size
         legend.position = c(0.75, 0.9)) +
-  ggtitle("ii) KAISO homologs") +
+  ggtitle("iii) KAISO") +
   #facet_grid(rows=vars(gene_id), scales="free_y") +
   theme(strip.text.y = element_text(size = 5)) +
   theme(plot.title = element_text(face = 'bold.italic', 
-                                  size = 18, 
+                                  size = 9, 
                                   hjust = 0))
 Mcap.KAISO
 ```
 
-Plot TBXT expression as a function of time and treatment
-```{r}
-Mcap.TBXT <- TBXT.counts %>% subset(gene_id%in%top_TBXT) %>% ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
-  geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
-  geom_line(aes(shape=gene_id), lty="dashed", color = "darkgrey") +
-  geom_point(aes(shape=gene_id), size = 2, ) +
-  xlab("Timepoint") +
-  ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
-  theme_bw() + #Set the background color
-  ylim(8,15) +
-   theme(axis.line = element_line(color = 'black'), #Set the axes color
-        panel.border = element_blank(), #Set the border
-        panel.grid.major = element_blank(), #Set the major gridlines
-        panel.grid.minor = element_blank(), #Set the minor gridlines
-        plot.background=element_blank(),  #Set the plot background
-        axis.title.x=element_blank(), #set x-axis title size
-        axis.text.x=element_blank(), #set x-axis label size
-        axis.text.y=element_text(size = 14), #set x-axis label size
-        axis.title.y=element_blank(), #set x-axis label size
-        axis.ticks.x=element_blank(), #No x-label ticks
-        legend.text=element_text(size = 12), #Legend text size
-        legend.position = c(0.75, 0.9)) +
-  ggtitle("iii) Brachyury (TBXT) homologs") +
-  #facet_grid(rows=vars(gene_id), scales="free_y") +
-  theme(strip.text.y = element_text(size = 5)) +
-  theme(plot.title = element_text(face = 'bold.italic', 
-                                  size = 18, 
-                                  hjust = 0))
-Mcap.TBXT
-```
-
 Plot SOX2 expression as a function of time and treatment
 ```{r}
-Mcap.SOX2 <- SOX2.counts %>% subset(gene_id%in%top_SOX2) %>% ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
+Mcap.SOX2 <- SOX2.counts %>% subset(gene_id%in%top_SOX2) %>% 
+  ggplot(aes(x=time_point, y=mean, group=gene_id)) +
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
-  geom_line(aes(shape=gene_id), lty="dashed", color = "darkgrey") +
-  geom_point(aes(shape=gene_id), size = 2, ) +
+  geom_line(lty="dashed", color = "darkgrey") +
+  geom_point(size = 1, ) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
-  ylim(8,15) +
+  ylim(8.728599, 19.30752) +
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
         panel.grid.minor = element_blank(), #Set the minor gridlines
         plot.background=element_blank(),  #Set the plot background
-        axis.title.x=element_text(size = 14), #set x-axis title size
-        axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1, size = 14), #set x-axis label size
-        axis.text.y=element_text(size = 14), #set x-axis label size
-        axis.title.y=element_text(size = 14), #set x-axis label size
+        axis.title.x=element_text(size = 6), #set x-axis title size
+        axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1, size = 6), #set x-axis label size
+        axis.text.y=element_text(size = 6), #set x-axis label size
+        axis.title.y=element_text(size = 6), #set y-axis title size
         axis.ticks.x=element_blank(), #No x-label ticks
-        legend.text=element_text(size = 12), #Legend text size
+        legend.text=element_text(size = 6), #Legend text size
+        legend.title=element_text(size = 6), #Legend text size
         legend.position = c(0.75, 0.9)) +
-  ggtitle("iv) SOX2 homologs") +
+  ggtitle("iv) SOX2") +
   #facet_grid(rows=vars(gene_id), scales="free_y") +
   theme(strip.text.y = element_text(size = 5)) +
   theme(plot.title = element_text(face = 'bold.italic', 
-                                  size = 18, 
+                                  size = 9, 
                                   hjust = 0))
 Mcap.SOX2
 ```
 
-Plot NANOG expression as a function of time and treatment
+Plot WNT8 expression as a function of time and treatment
 ```{r}
-Mcap.NANOG <- NANOG.counts %>% subset(gene_id%in%top_NANOG) %>% ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
+Mcap.WNT8 <- WNT8.counts %>% subset(gene_id%in%top_WNT8) %>% 
+  ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
-  geom_line(aes(shape=gene_id), lty="dashed", color = "darkgrey") +
-  geom_point(aes(shape=gene_id), size = 2, ) +
+  geom_line(lty="dashed", color = "darkgrey") +
+  geom_point(size = 1) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
-  ylim(8,15) +
+  ylim(8.728599, 19.30752) +
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        panel.border = element_blank(), #Set the border
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        plot.background=element_blank(),  #Set the plot background
+        axis.title.x=element_text(size = 6), #set x-axis title size
+        axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1, size = 6), #set x-axis label size
+        axis.text.y=element_text(size = 6), #set x-axis label size
+        axis.title.y=element_blank(), #set x-axis label size
+        axis.ticks.x=element_blank(), #No x-label ticks
+        legend.text=element_text(size = 6), #Legend text size
+        legend.title=element_text(size = 6), #Legend text size
+        legend.position = c(0.75, 0.9),
+        legend.spacing.y = unit(0.01, 'cm')) +
+  #guides(shape=guide_legend(ncol=2)) +
+  ggtitle("v) WNT8") +
+  #facet_grid(rows=vars(gene_id), scales="free_y") +
+  theme(strip.text.y = element_text(size = 5)) +
+  theme(plot.title = element_text(face = 'bold.italic', 
+                                  size = 9, 
+                                  hjust = 0))
+Mcap.WNT8
+```
+
+Plot TBXT expression as a function of time and treatment
+```{r}
+Mcap.TBXT <- TBXT.counts %>% subset(gene_id%in%top_TBXT) %>% 
+  ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
+  geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
+  geom_line(lty="dashed", color = "darkgrey") +
+  geom_point(size = 1, ) +
+  xlab("Timepoint") +
+  ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
+  theme_bw() + #Set the background color
+  ylim(8.728599, 19.30752) +
     theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
         panel.grid.minor = element_blank(), #Set the minor gridlines
         plot.background=element_blank(),  #Set the plot background
-        axis.title.x=element_text(size = 14), #set x-axis title size
-        axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1, size = 14), #set x-axis label size
-        axis.text.y=element_text(size = 14), #set x-axis label size
-        axis.title.y=element_blank(), #set x-axis label size
+        axis.title.x=element_text(size = 6), #set x-axis title size
+        axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1, size = 6), #set x-axis label size
+        axis.text.y=element_text(size = 6), #set x-axis label size
+        axis.title.y=element_text(size = 6), #set x-axis label size
         axis.ticks.x=element_blank(), #No x-label ticks
-        legend.text=element_text(size = 12), #Legend text size
-        legend.position = c(0.75, 0.9)) +
-  ggtitle("v) NANOG homologs") +
+        legend.text=element_text(size = 6), #Legend text size
+        legend.title=element_blank(), #Legend text size
+        legend.position = c(0.85, 0.85)) +
+  ggtitle("vi) TBXT") +
   #facet_grid(rows=vars(gene_id), scales="free_y") +
   theme(strip.text.y = element_text(size = 5)) +
   theme(plot.title = element_text(face = 'bold.italic', 
-                                  size = 18, 
+                                  size = 9, 
                                   hjust = 0))
-Mcap.NANOG
-```
-
-Plot WNT8 expression as a function of time and treatment
-```{r}
-Mcap.WNT8 <- WNT8.counts %>% subset(gene_id%in%top_WNT8) %>% ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
-  geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
-  geom_line(aes(shape=gene_id), lty="dashed", color = "darkgrey") +
-  geom_point(aes(shape=gene_id), size = 2) +
-  xlab("Timepoint") +
-  ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
-  theme_bw() + #Set the background color
-  ylim(8,15) +
-  theme(axis.line = element_line(color = 'black'), #Set the axes color
-        panel.border = element_blank(), #Set the border
-        panel.grid.major = element_blank(), #Set the major gridlines
-        panel.grid.minor = element_blank(), #Set the minor gridlines
-        plot.background=element_blank(),  #Set the plot background
-        axis.title.x=element_text(size = 14), #set x-axis title size
-        axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1, size = 14), #set x-axis label size
-        axis.text.y=element_text(size = 14), #set x-axis label size
-        axis.title.y=element_blank(), #set x-axis label size
-        axis.ticks.x=element_blank(), #No x-label ticks
-        legend.text=element_text(size = 12), #Legend text size
-        legend.position = c(0.75, 0.9)) +
-  #guides(shape=guide_legend(ncol=2)) +
-  ggtitle("vi) WNT8 homologs") +
-  #facet_grid(rows=vars(gene_id), scales="free_y") +
-  theme(strip.text.y = element_text(size = 5)) +
-  theme(plot.title = element_text(face = 'bold.italic', 
-                                  size = 18, 
-                                  hjust = 0))
-Mcap.WNT8
+Mcap.TBXT
 ```
 
 Compile plots into single figure and save
 ```{r}
-Fig.6 <- cowplot::plot_grid(Mcap.SMG, Mcap.KAISO, Mcap.TBXT, Mcap.SOX2, Mcap.NANOG, Mcap.WNT8, align = "v", ncol = 3)
+Fig.6 <- cowplot::plot_grid(Mcap.CyclinB, Mcap.SMG, Mcap.KAISO, Mcap.SOX2, Mcap.WNT8, Mcap.TBXT, align = "vh", ncol = 3)
 Fig.6
-ggsave("2b-Epi-MZT-Enzyme-Expression/Output/Fig6-Mcap-Dev-MZT-Expression.pdf", Fig.6, width=21, height=14)
+ggsave("2b-Epi-MZT-Enzyme-Expression/Output/Fig6-Mcap-Dev-MZT-Expression.pdf", Fig.6, width=7, height=5)
 ```
 
+Plot HSP70 expression as a function of time and treatment
+```{r}
+Mcap.HSP70 <- HSP70.counts %>% subset(gene_id%in%top_HSP70) %>% 
+  ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
+  geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
+  geom_line(lty="dashed", color = "darkgrey") +
+  geom_point(size = 1, ) +
+  xlab("Timepoint") +
+  ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
+  theme_bw() + #Set the background color
+  ylim(8.728599, 19.30752) +
+    theme(axis.line = element_line(color = 'black'), #Set the axes color
+        panel.border = element_blank(), #Set the border
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        plot.background=element_blank(),  #Set the plot background
+        axis.title.x=element_text(size = 6), #set x-axis title size
+        axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1, size = 6), #set x-axis label size
+        axis.text.y=element_text(size = 6), #set x-axis label size
+        axis.title.y=element_text(size = 6), #set x-axis label size
+        axis.ticks.x=element_blank(), #No x-label ticks
+        legend.text=element_text(size = 6), #Legend text size
+        legend.title=element_text(size = 6), #Legend text size
+        legend.position = c("none")) +
+  ggtitle("vi) HSP70") +
+  #facet_grid(rows=vars(gene_id), scales="free_y") +
+  theme(strip.text.y = element_text(size = 5)) +
+  theme(plot.title = element_text(face = 'bold.italic', 
+                                  size = 9, 
+                                  hjust = 0))
+Mcap.HSP70
+```
+
+Plot HSP90 expression as a function of time and treatment
+```{r}
+Mcap.HSP90 <- HSP90.counts %>% subset(gene_id%in%top_HSP90) %>% 
+  ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
+  geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
+  geom_line(lty="dashed", color = "darkgrey") +
+  geom_point(size = 1, ) +
+  xlab("Timepoint") +
+  ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
+  theme_bw() + #Set the background color
+  #ylim(8,19) +
+    theme(axis.line = element_line(color = 'black'), #Set the axes color
+        panel.border = element_blank(), #Set the border
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        plot.background=element_blank(),  #Set the plot background
+        axis.title.x=element_text(size = 6), #set x-axis title size
+        axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1, size = 6), #set x-axis label size
+        axis.text.y=element_text(size = 6), #set x-axis label size
+        axis.title.y=element_blank(), #set x-axis label size
+        axis.ticks.x=element_blank(), #No x-label ticks
+        legend.text=element_text(size = 6), #Legend text size
+        legend.title=element_text(size = 6), #Legend text size
+        legend.position = c("none")) +
+  ggtitle("vi) HSP90") +
+  #facet_grid(rows=vars(gene_id), scales="free_y") +
+  theme(strip.text.y = element_text(size = 5)) +
+  theme(plot.title = element_text(face = 'bold.italic', 
+                                  size = 9, 
+                                  hjust = 0))
+Mcap.HSP90
+```
+
+Compile plots into single figure and save
+```{r}
+Fig.7 <- cowplot::plot_grid(Mcap.HSP70, Mcap.HSP90, align = "v", ncol = 2)
+Fig.7
+ggsave("2b-Epi-MZT-Enzyme-Expression/Output/Fig7-Mcap-Dev-HSP-Expression.pdf", Fig.7, width=4.69, height=2.5)
+```

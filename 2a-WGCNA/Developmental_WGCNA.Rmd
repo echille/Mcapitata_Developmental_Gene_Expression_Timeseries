@@ -544,10 +544,14 @@ dim(expressionProfile_data)
 head(expressionProfile_data)
 ```
 
+Set timepoint order for plotting
+```{r}
+time_point_order = c("Unfertilized_egg", "Fertilized_egg", "Cleavage", "Prawn_chip", "Early_gastrula", "Mid_gastrula", "Late_gastrula", "Planula", "Adult") #Set time_point order
+```
+
+
 Plot mean module eigengene for each cluster
 ```{r, warning=FALSE, message=FALSE}
-time_point_order = c("Unfertilized_egg", "Fertilized_egg", "Cleavage", "Prawn_chip", "Early_gastrula", "Mid_gastrula", "Late_gastrula", "Planula", "Adult") #Set time_point order
-
 Cluster1Plot <- expressionProfile_data %>%
         select(time_point, cluster1) %>% 
   group_by(time_point) %>% 
@@ -759,8 +763,10 @@ Cluster9Plot <- expressionProfile_data %>%
         plot.title = element_text(size=22)) + #Set the plot background
   annotate("text", x = 1.2, y = 0.5, label = "n = 3", size = 6) +
   geom_hline(yintercept = 0, linetype="dashed", color = "grey")
+```
 
-#Compile plots into 1 graph, aligning by y-axis and save
+Compile plots into 1 graph, aligning by y-axis and save
+```{r}
 expressionProfiles <- cowplot::plot_grid(Cluster1Plot, Cluster2Plot, Cluster3Plot, Cluster4Plot, Cluster5Plot, Cluster6Plot, Cluster7Plot, Cluster8Plot, Cluster9Plot, align = "v", ncol = 3, nrow = 3)
 ggsave("2a-WGCNA/Output/SFig1-RNAseq-expressionProfiles.pdf", expressionProfiles, height = 16, width = 21, units = "in")
 ```

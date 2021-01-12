@@ -122,6 +122,8 @@ interproscan.sh -f XML -i ../data/ref/Mcap.IPSprotein.fa -b ./Mcap.interpro.2008
 
 #### ii) Blast2GO
 
+*For more information on Blast2GO, see the user manual, [here](https://insilicogen.com/media/manual/2020/01/16/OmicsBox_User_Manual_v1.2.pdf).*
+
 Blast2GO is a powerful annotation tool that takes the output from BLAST, and matches the IDs of the homologous sequences identified to gene ontology terms in the GO database. To map GO terms to our identified sequences, I used the DIAMOND output XML file as input for Blast2GO mapping. I then combined the output of Blast2GO with the XML file generated from InterProScan. Blast2GO mapping took about 16 hours to complete on Mcap sequences and about 45 minutes for Pacuta sequences.
 
 First, open Blast2GO. Click the down arrow next to "Start" and select "Load BLAST XML"
