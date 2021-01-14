@@ -1,0 +1,36 @@
+﻿moduleColor,Count of moduleColor,Correlated_life_stages
+grey,29,Maternal
+thistle4,48,ZGA2
+plum4,52,ZGA1
+blue4,53,ZGA1
+mediumpurple1,60,ZGA2
+navajowhite1,84,Adult
+magenta4,84,ZGA1/ZGA2
+thistle,91,Maternal/Adult
+skyblue1,118,ZGA1/ZGA2
+lightslateblue,131,Maternal
+antiquewhite4,132,Maternal/Adult
+indianred3,145,ZGA1
+lavenderblush2,146,None
+brown2,170,ZGA1
+salmon4,176,ZGA2
+coral1,215,Maternal
+blueviolet,250,Adult
+antiquewhite2,279,Maternal
+ivory,321,Adult
+plum3,409,ZGA1
+mediumpurple3,417,Maternal
+coral,454,ZGA1
+lightsteelblue,460,None
+blue2,778,ZGA1
+violet,799,ZGA1
+sienna3,953,ZGA2
+midnightblue,993,Maternal
+salmon,1027,ZGA2
+darkmagenta,1341,None
+darkslateblue,1345,ZGA1/ZGA2
+honeydew1,1888,Maternal
+darkseagreen4,3976,ZGA2
+cyan,4206,Adult
+blue,11142,Adult/ZGA2
+Grand Total,32772,
