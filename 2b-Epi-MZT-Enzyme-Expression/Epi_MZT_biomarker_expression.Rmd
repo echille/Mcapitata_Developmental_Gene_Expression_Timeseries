@@ -106,11 +106,13 @@ Subset results for genes of interest
 ```{r}
 hits <- read.table(file="2b-Epi-MZT-Enzyme-Expression/Output/Mcap_Epi_MZT_HSP_hits_100.csv", header=T, sep=",")
 hits <- hits %>% distinct(Epi.gene, gene_id, .keep_all = TRUE)
+hits <- hits %>% group_by(Epi.gene) %>% distinct(sstart, ssend, .keep_all = TRUE)
+hits <- filter(hits, bitscore>50)
 
 levels(as.factor(hits$queryprot))
 
 countsx <- as.data.frame(assay(gvst_dev))
-gene.counts <- countsx[(row.names(countsx) %in% hits$gene), ]
+gene.counts <- countsx[(row.names(countsx) %in% hits$gene_id), ]
 #str(gene.counts)
 gene.counts$gene_id <- row.names(gene.counts) 
 gene.counts <- merge(gene.counts, hits[,c(1,3)], by="gene_id")
@@ -179,8 +181,8 @@ print(nHSPhomologues)
 ```{r}
 top_DNMT1=c("g53952") #highest eval (0) + bitscore
 top_DNMT3=c("g25804") #highest eval (0) + bitscore
-top_MBD=c("g53132") #highest eval (0) + bitscore
-top_UHRF1=c("adi2mcaRNA19502_R1", "adi2mcaRNA19502_R0") # evalue very more sig e-100s versus next e-0s,  and bitscore 5x higher than next genes listed
+#top_MBD=c("g53132") #highest eval (0) + bitscore
+#top_UHRF1=c("adi2mcaRNA19502_R1", "adi2mcaRNA19502_R0") # evalue very more sig e-100s versus next e-0s,  and bitscore 5x higher than next genes listed
 top_BRG1=c("g68733", "g61145") #evalue 0 and bitscore 3x higher than next genes listed, length twice as long as others listed
 top_SMG=c("g4639", "g11098") #longest listed
 top_CyclinB=c("g71356") #top 1 longest with best evalue and bitscore
@@ -197,14 +199,15 @@ top_HSP90=c("g33244")
 
 Plot DNMT3a expression as a function of time and treatment
 ```{r}
-Mcap.DNMT3 <- DNMT3.counts %>% subset(gene_id%in%top_DNMT3) %>% ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
+Mcap.DNMT3 <- DNMT3.counts %>% subset(gene_id%in%top_DNMT3) %>% 
+  ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
   geom_line(aes(), lty="dashed", color = "darkgrey") +
-  geom_point(size = 1) +
+  geom_point(aes(shape=gene_id), size = 1.5) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
-  ylim(8.728599, 19.30752) +
+  ylim(8.728599, 15.5) +
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
@@ -229,14 +232,15 @@ Mcap.DNMT3
 
 Plot DNMT1 expression as a function of time and treatment
 ```{r}
-Mcap.DNMT1 <- DNMT1.counts %>% subset(gene_id%in%top_DNMT1) %>% ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
+Mcap.DNMT1 <- DNMT1.counts %>% subset(gene_id%in%top_DNMT1) %>% 
+  ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
   geom_line(aes(), lty="dashed", color = "darkgrey") +
-  geom_point(size = 1) +
+  geom_point(aes(shape=gene_id), size = 1.5) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean normalized expression"))) +
   theme_bw() + #Set the background color
-  ylim(8.728599, 19.30752) +
+  ylim(8.728599, 15.5) +
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
@@ -264,11 +268,11 @@ Plot TET1 expression as a function of time and treatment
 Mcap.TET1 <- ggplot(TET1.counts, aes(x=time_point, y=mean, group=gene_id)) + 
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
   geom_line(aes(), lty="dashed", color = "darkgrey") +
-  geom_point(size = 1) +
+  geom_point(aes(shape=gene_id), size = 1.5) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
-  ylim(8.728599, 19.30752) +
+  ylim(8.728599, 15.5) +
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
@@ -293,14 +297,15 @@ Mcap.TET1
 
 Plot MBD2 and MBD3 expression as a function of time and treatment
 ```{r}
-Mcap.MBD2 <- MBD2.counts %>% subset(gene_id%in%top_MBD) %>% ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
+Mcap.MBD2 <- MBD2.counts %>% #subset(gene_id%in%top_MBD) %>% 
+  ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
   geom_line(lty="dashed", color = "darkgrey") +
-  geom_point(size = 1, ) +
+  geom_point(aes(shape=gene_id), size = 1.5) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
-  ylim(8.728599, 19.30752) +
+  ylim(8.728599, 15.5) +
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
@@ -329,11 +334,11 @@ Plot UHRF1 expression as a function of time and treatment
 Mcap.UHRF1 <- ggplot(UHRF1.counts, aes(x=time_point, y=mean, group=gene_id)) + 
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
   geom_line(lty="dashed", color = "darkgrey") +
-  geom_point(size = 1, ) +
+  geom_point(aes(shape=gene_id), size = 1.5) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
-  ylim(8.728599, 19.30752) +
+  ylim(8.728599, 16) +
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
@@ -358,14 +363,15 @@ Mcap.UHRF1
 
 Plot BRG1 expression as a function of time and treatment
 ```{r}
-Mcap.BRG1 <- BRG1.counts %>% subset(gene_id%in%top_BRG1) %>% ggplot(aes(x=time_point, y=mean, group=gene_id)) +
+Mcap.BRG1 <- BRG1.counts %>% subset(gene_id%in%top_BRG1) %>% 
+  ggplot(aes(x=time_point, y=mean, group=gene_id)) +
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
   geom_line(lty="dashed", color = "darkgrey") +
-  geom_point(size = 1, ) +
+  geom_point(aes(shape=gene_id), size = 1.5) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
-  ylim(8.728599, 19.30752) +
+  ylim(8.728599, 15.5) +
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
@@ -404,7 +410,7 @@ Mcap.CyclinB <- CyclinB.counts %>% subset(gene_id%in%top_CyclinB) %>%
   ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
   geom_line(lty="dashed", color = "darkgrey") +
-  geom_point(size = 1, ) +
+  geom_point(aes(shape=gene_id), size = 1.5) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
@@ -436,7 +442,7 @@ Plot SMAUG expression as a function of time and treatment
 Mcap.SMG <- SMG.counts %>% subset(gene_id%in%top_SMG) %>% ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
   geom_line(aes(), lty="dashed", color = "darkgrey") +
-  geom_point(size = 1) +
+  geom_point(aes(shape=gene_id), size = 1.5) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
@@ -469,7 +475,7 @@ Mcap.KAISO <- KAISO.counts %>% subset(gene_id%in%top_KAISO) %>%
   ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
   geom_line(aes(), lty="dashed", color = "darkgrey") +
-  geom_point(size = 1) +
+  geom_point(aes(shape=gene_id), size = 1.5) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
@@ -502,7 +508,7 @@ Mcap.SOX2 <- SOX2.counts %>% subset(gene_id%in%top_SOX2) %>%
   ggplot(aes(x=time_point, y=mean, group=gene_id)) +
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
   geom_line(lty="dashed", color = "darkgrey") +
-  geom_point(size = 1, ) +
+  geom_point(aes(shape=gene_id), size = 1.5) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
@@ -535,7 +541,7 @@ Mcap.WNT8 <- WNT8.counts %>% subset(gene_id%in%top_WNT8) %>%
   ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
   geom_line(lty="dashed", color = "darkgrey") +
-  geom_point(size = 1) +
+  geom_point(aes(shape=gene_id), size = 1.5) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
@@ -570,7 +576,7 @@ Mcap.TBXT <- TBXT.counts %>% subset(gene_id%in%top_TBXT) %>%
   ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
   geom_line(lty="dashed", color = "darkgrey") +
-  geom_point(size = 1, ) +
+  geom_point(aes(shape=gene_id), size = 1.5) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
@@ -610,7 +616,7 @@ Mcap.HSP70 <- HSP70.counts %>% subset(gene_id%in%top_HSP70) %>%
   ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
   geom_line(lty="dashed", color = "darkgrey") +
-  geom_point(size = 1, ) +
+  geom_point(aes(shape=gene_id), size = 1.5) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
@@ -643,7 +649,7 @@ Mcap.HSP90 <- HSP90.counts %>% subset(gene_id%in%top_HSP90) %>%
   ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
   geom_line(lty="dashed", color = "darkgrey") +
-  geom_point(size = 1, ) +
+  geom_point(aes(shape=gene_id), size = 1.5) +
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
