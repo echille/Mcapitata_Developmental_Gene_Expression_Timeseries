@@ -169,35 +169,25 @@ nCyclinB <- length(levels(as.factor(CyclinB.counts$gene_id)))
 WNT8.counts <- subset(mean.counts, Epi.gene =="WNT8") #WNT8
 nWNT8 <- length(levels(as.factor(WNT8.counts$gene_id)))
 
-HSP70.counts <- subset(mean.counts, Epi.gene =="HSP70") #HSP70
-nHSP70 <- length(levels(as.factor(HSP70.counts$gene_id)))
-HSP90.counts <- subset(mean.counts, Epi.gene =="HSP90") #HSP90
-nHSP90 <- length(levels(as.factor(HSP90.counts$gene_id)))
-
-
 nEpihomologues <- as.data.frame(cbind(DNMT3A=nDNMT3, DNMT1=nDNMT1, TET1=nTET, MBD2=nMBD2, MBD3=nMBD3, UHRF1=nUHRF1, BRG1=nBRG1))
 print(nEpihomologues)
 nMZThomologues <- as.data.frame(cbind(SMG=nSMG, KAISO=nKAISO, TBXT=nTBXT, SOX2=nSOX2, CyclinB=nCyclinB, WNT8=nWNT8))
 print(nMZThomologues)
-nHSPhomologues <- as.data.frame(cbind(HSP70=nHSP70, HSP90=nHSP90))
-print(nHSPhomologues)
 ```
 
+Select only the top hit for each enzyme for plotting.
 ```{r}
-top_DNMT1=c("g53952") #highest eval (0) + bitscore
-top_DNMT3=c("g25804") #highest eval (0) + bitscore
-#top_MBD=c("g53132") #highest eval (0) + bitscore
-#top_UHRF1=c("adi2mcaRNA19502_R1", "adi2mcaRNA19502_R0") # evalue very more sig e-100s versus next e-0s,  and bitscore 5x higher than next genes listed
-top_BRG1=c("g68733", "g61145") #evalue 0 and bitscore 3x higher than next genes listed, length twice as long as others listed
-top_SMG=c("g4639", "g11098") #longest listed
-top_CyclinB=c("g71356") #top 1 longest with best evalue and bitscore
-top_KAISO=c("g60350") #longest listed
-top_TBXT=c("g68947", "g21139", "g18324") #top 3 have 2x lower evalue and ~150 higher bitscore. Also annotated in transcriptome with BLAST
-top_SOX2=c("g53225") #top 1, bitscore and evalue most signif by a lot
-top_WNT8=c("g33149") #top 1
-
-top_HSP70=c("adi2mcaRNA1829_R0", "adi2mcaRNA1829_R1")
-top_HSP90=c("g33244")
+top_DNMT1=c("g53952")
+top_DNMT3=c("g25804")
+#skipping TET1 and MBD proteins because they only have 1 hit
+top_UHRF1=c("adi2mcaRNA19502_R1")
+top_BRG1=c("g68733")
+top_SMG=c("g4639")
+top_CyclinB=c("g71356")
+top_KAISO=c("g60350")
+top_TBXT=c("g68947")
+top_SOX2=c("g53225")
+top_WNT8=c("g33149")
 ```
 
 ## Plot methylation-related genes
@@ -305,7 +295,7 @@ Mcap.TET1
 
 Plot MBD2 and MBD3 expression as a function of time and treatment
 ```{r}
-Mcap.MBD2 <- MBD2.counts %>% #subset(gene_id%in%top_MBD) %>% 
+Mcap.MBD2 <- MBD2.counts %>%
   ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
   geom_line(lty="dashed", color = "darkgrey") +
@@ -339,8 +329,7 @@ Mcap.MBD2
 
 Plot UHRF1 expression as a function of time and treatment
 ```{r}
-#UHRF1.counts %>% subset(gene_id%in%top_UHRF1) %>% 
-Mcap.UHRF1 <- ggplot(UHRF1.counts, aes(x=time_point, y=mean, group=gene_id)) + 
+Mcap.UHRF1 <- UHRF1.counts %>% subset(gene_id%in%top_UHRF1) %>% ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
   geom_line(lty="dashed", color = "darkgrey") +
   geom_point(aes(), size = 1.5) +
@@ -444,7 +433,8 @@ Mcap.CyclinB <- CyclinB.counts %>% subset(gene_id%in%top_CyclinB) %>%
   theme(strip.text.y = element_text(size = 5)) +
   theme(plot.title = element_text(face = 'bold.italic', 
                                   size = 9, 
-                                  hjust = 0))
+                                  hjust = 0)) +
+  annotate("text", x = 3.5, y = 19.5, label = "cell-cycle regulation (M/Z)", size = 2.5)
 Mcap.CyclinB
 ```
 
@@ -457,7 +447,7 @@ Mcap.SMG <- SMG.counts %>% subset(gene_id%in%top_SMG) %>% ggplot(aes(x=time_poin
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
-  ylim(8.728599, 19.30752) +
+  ylim(8.728599, 15.5) +
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
@@ -476,7 +466,8 @@ Mcap.SMG <- SMG.counts %>% subset(gene_id%in%top_SMG) %>% ggplot(aes(x=time_poin
   theme(strip.text.y = element_text(size = 5)) +
   theme(plot.title = element_text(face = 'bold.italic', 
                                   size = 9, 
-                                  hjust = 0))
+                                  hjust = 0)) +
+  annotate("text", x = 4.5, y = 15.5, label = "maternal mRNA degradation (M/Z)", size = 2.5)
 Mcap.SMG
 ```
 
@@ -490,7 +481,7 @@ Mcap.KAISO <- KAISO.counts %>% subset(gene_id%in%top_KAISO) %>%
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
-  ylim(8.728599, 19.30752) +
+  ylim(8.728599, 15.5) +
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
@@ -509,7 +500,8 @@ Mcap.KAISO <- KAISO.counts %>% subset(gene_id%in%top_KAISO) %>%
   theme(strip.text.y = element_text(size = 5)) +
   theme(plot.title = element_text(face = 'bold.italic', 
                                   size = 9, 
-                                  hjust = 0))
+                                  hjust = 0)) +
+  annotate("text", x = 3.5, y = 15.5, label = "repression of ZGA (M/Z)", size = 2.5)
 Mcap.KAISO
 ```
 
@@ -523,7 +515,7 @@ Mcap.SOX2 <- SOX2.counts %>% subset(gene_id%in%top_SOX2) %>%
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
-  ylim(8.728599, 19.30752) +
+  ylim(8.728599, 15.5) +
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
@@ -542,7 +534,8 @@ Mcap.SOX2 <- SOX2.counts %>% subset(gene_id%in%top_SOX2) %>%
   theme(strip.text.y = element_text(size = 5)) +
   theme(plot.title = element_text(face = 'bold.italic', 
                                   size = 9, 
-                                  hjust = 0))
+                                  hjust = 0)) +
+  annotate("text", x = 2.25, y = 15.5, label = "ZGA (M/Z)", size = 2.5)
 Mcap.SOX2
 ```
 
@@ -556,7 +549,7 @@ Mcap.WNT8 <- WNT8.counts %>% subset(gene_id%in%top_WNT8) %>%
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
-  ylim(8.728599, 19.30752) +
+  ylim(8.728599, 15.5) +
   theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
@@ -577,7 +570,8 @@ Mcap.WNT8 <- WNT8.counts %>% subset(gene_id%in%top_WNT8) %>%
   theme(strip.text.y = element_text(size = 5)) +
   theme(plot.title = element_text(face = 'bold.italic', 
                                   size = 9, 
-                                  hjust = 0))
+                                  hjust = 0)) +
+  annotate("text", x = 3.5, y = 15.5, label = "bauplan formation (M/Z)", size = 2.5)
 Mcap.WNT8
 ```
 
@@ -591,7 +585,7 @@ Mcap.TBXT <- TBXT.counts %>% subset(gene_id%in%top_TBXT) %>%
   xlab("Timepoint") +
   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
   theme_bw() + #Set the background color
-  ylim(8.728599, 19.30752) +
+  ylim(8.728599, 15.5) +
     theme(axis.line = element_line(color = 'black'), #Set the axes color
         panel.border = element_blank(), #Set the border
         panel.grid.major = element_blank(), #Set the major gridlines
@@ -610,7 +604,8 @@ Mcap.TBXT <- TBXT.counts %>% subset(gene_id%in%top_TBXT) %>%
   theme(strip.text.y = element_text(size = 5)) +
   theme(plot.title = element_text(face = 'bold.italic', 
                                   size = 9, 
-                                  hjust = 0))
+                                  hjust = 0)) +
+  annotate("text", x = 3.5, y = 15.5, label = "bauplan specification (Z)", size = 2.5)
 Mcap.TBXT
 ```
 
@@ -629,11 +624,10 @@ DEG_dev <- DESeq(gdds_dev) #run differential expression test by group using the 
 
 Make a list of biomarkers to look for:
 ```{r}
-Epi.markers <- c(top_DNMT1, top_DNMT3, TET1.counts$gene_id, MBD3.counts$gene_id, UHRF1.counts$gene_id, top_BRG1)
+Epi.markers <- c(top_DNMT1, top_DNMT3, TET1.counts$gene_id, MBD3.counts$gene_id, top_UHRF1, top_BRG1)
 
 Dev.markers <- c(top_CyclinB, top_SMG, top_KAISO, top_SOX2, top_WNT8, top_TBXT)
 ```
-
 
 Look for differential expression of biomarkers
 ```{r, warning=FALSE}
