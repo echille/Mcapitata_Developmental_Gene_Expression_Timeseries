@@ -20,6 +20,7 @@ library("ggplot2")
 library("tidyverse")
 library("ggpubr")
 library("DESeq2")
+library("genefilter")
 ```
 
 
@@ -33,15 +34,49 @@ Load gene count Information
 counts <- as.data.frame(read.csv("1-QC-Align-Assemble/Output/gene_count_matrix.csv", row.names="gene_id"), colClasses = double) #Load normalized expression matrix from stringtie
 ```
 
-
-Keep only ambient treatmentinfo and count data
+#### Quality-filter gene counts  
+Pre-filtering our dataset to reduce the memory size dataframe, increase the speed of the transformation and testing functions, and improve quality of statistical analysis by removing low-coverage counts. Removed counts could represent outliers in the data and removing these improves sensitivity of statistical tests. Here we will filter out the genes that are only present in fewer than two of the 24 ambient samples.
 ```{r}
+#keep only ambient treatmentinfo and count data
 dev <- c("AMB")
 treatmentinfo_dev <- filter(sample.info, treatment %in% dev)
 dim(treatmentinfo_dev) #rows should be 24
 
+# delete sample columns corresponding to low and extreme low samples by mapping Null value to them
 gcount_dev <- counts[treatmentinfo_dev$sample_id]
 dim(gcount_dev) #columns should be 24
+
+#create filter for the counts data
+#gfiltdev <- rowSums(count(gcount_dev)) > 0
+#set filter values for PoverA, P=100% percent of the samples have counts over A=10. This means that only 2 out of 24 (0.083) samples need to have counts over 10. Our smallest sample size for our life stages is two (fertilized egg, mid-gastrula, early-gastrula). By setting 2/24 as the P, this means if a particular gene is expressed only in 1 of these smallest life stages, it will be included in the analysis.
+filt <- filterfun(pOverA(0.083,10))
+
+#create filter for the counts data
+gfiltdev <- genefilter(gcount_dev, filt)
+
+#identify genes to keep by count filter
+gkeepdev <- gcount_dev[gfiltdev,]
+
+
+#identify genes to keep by count filter
+gkeepdev <- gcount_dev[gfiltdev,]
+
+#identify gene lists
+gn.keepdev <- rownames(gkeepdev)
+
+#gene count data filtered in PoverA, P percent of the samples have counts over A
+gcount_filt_dev <- as.data.frame(gcount_dev[which(rownames(gcount_dev) %in% gn.keepdev),])
+
+#How many rows do we have before and after filtering?
+nrow(gcount_dev) #Before
+nrow(gcount_filt_dev) #After
+```
+
+In order for the DESeq2 algorithms to work, the SampleIDs on the treatmentinfo file and count matrices have to match exactly and in the same order. The following R clump will check to make sure that these match.
+```{r}
+#Checking that all row and column names match. Should return "TRUE"
+all(treatmentinfo_dev$sample_id %in% colnames(gcount_filt_dev))
+all(treatmentinfo_dev$sample_id == colnames(gcount_filt_dev)) 
 ```
 
 ### Read normalization
@@ -57,7 +92,7 @@ treatmentinfo_dev$time_point <- factor(treatmentinfo_dev$time_point, levels = c(
 Create a DESeqDataSet design from gene count matrix and labels. Here we set the design to look at time_point to test for any differences in gene expression across timepoints.
 ```{r}
 #Set DESeq2 design
-gdds_dev <- DESeqDataSetFromMatrix(countData = gcount_dev,
+gdds_dev <- DESeqDataSetFromMatrix(countData = gcount_filt_dev,
                               colData = treatmentinfo_dev,
                               design = ~time_point)
 ```
@@ -112,7 +147,6 @@ Subset results for genes of interest
 hits <- read.table(file="2b-Epi-MZT-Enzyme-Expression/Output/cnidarian.Mcap_Epi_MZT_hits_100.csv", header=T, sep=",")
 hits <- hits %>% distinct(Epi.gene, gene_id, .keep_all = TRUE)
 hits <- hits %>% group_by(Epi.gene) %>% distinct(sstart, ssend, .keep_all = TRUE)
-hits <- filter(hits, bitscore>50)
 
 levels(as.factor(hits$queryprot))
 
