@@ -17,3 +17,15 @@ Prior to fertilization, mothers provision their oocytes with mRNA that regulates
 ---
 
 **Execute all scripts in Rproj and knit to project**
+
+[Figure 1](https://github.com/echille/Mcapitata_Developmental_Gene_Expression_Timeseries/blob/master/Final_figures/Fig1.jpg?raw=true)
+[Figure 2](https://github.com/echille/Mcapitata_Developmental_Gene_Expression_Timeseries/blob/master/Final_figures/Fig2.jpg?raw=true)
+[Figure 3](https://github.com/echille/Mcapitata_Developmental_Gene_Expression_Timeseries/blob/master/Final_figures/Fig3.png?raw=true)
+[Figure 4](https://github.com/echille/Mcapitata_Developmental_Gene_Expression_Timeseries/blob/master/Final_figures/Fig4.png?raw=true)
+[Figure 5](https://github.com/echille/Mcapitata_Developmental_Gene_Expression_Timeseries/blob/master/Final_figures/Fig5.png?raw=true)
+[Figure 6](https://github.com/echille/Mcapitata_Developmental_Gene_Expression_Timeseries/blob/master/Final_figures/Fig6-annot.png?raw=true)
+[Figure 7](https://github.com/echille/Mcapitata_Developmental_Gene_Expression_Timeseries/blob/master/Final_figures/Fig7_annot.png?raw=true)
+
+[Supplement]()
+
+
