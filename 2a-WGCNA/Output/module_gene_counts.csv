@@ -1,36 +1,36 @@
-﻿moduleColor,Count of moduleColor,Correlated_life_stages
-grey,29,Maternal
-thistle4,48,ZGA2
-plum4,52,ZGA1
-blue4,53,ZGA1
-mediumpurple1,60,ZGA2
-navajowhite1,84,Adult
-magenta4,84,ZGA1/ZGA2
-thistle,91,Maternal/Adult
-skyblue1,118,ZGA1/ZGA2
-lightslateblue,131,Maternal
-antiquewhite4,132,Maternal/Adult
-indianred3,145,ZGA1
-lavenderblush2,146,None
-brown2,170,ZGA1
-salmon4,176,ZGA2
-coral1,215,Maternal
-blueviolet,250,Adult
-antiquewhite2,279,Maternal
-ivory,321,Adult
-plum3,409,ZGA1
-mediumpurple3,417,Maternal
-coral,454,ZGA1
-lightsteelblue,460,None
-blue2,778,ZGA1
-violet,799,ZGA1
-sienna3,953,ZGA2
-midnightblue,993,Maternal
-salmon,1027,ZGA2
-darkmagenta,1341,None
-darkslateblue,1345,ZGA1/ZGA2
-honeydew1,1888,Maternal
-darkseagreen4,3976,ZGA2
-cyan,4206,Adult
-blue,11142,Adult/ZGA2
-Grand Total,32772,
+﻿Module Cluster,Module Color,Number of Genes in Module,Positive Significant Correlation,Negative Significant Correlation,Life Stage Cluster Assignment
+1,grey,29,Unfertilized Egg,Fertilized Egg,Maternal
+2,coral1,215,"Unfertilized Egg, Fertilized Egg",NA,Maternal
+2,lavenderblush2,146,NA,"Swimming Larvae, Adult",None
+2,lightslateblue,131,Fertilized egg,"Cleavage, Prawnchip",Maternal
+2,magenta4,84,Early Gastrula. Mid Gastrula,Adult,ZGA1/ZGA2
+3,mediumpurple3,417,"Unfertilized Egg, Fertilized Egg","Prawnchip, Early Gastrula",Maternal
+3,antiquewhite2,279,"Unfertilized Egg, Fertilized Egg",Early Gastrula. Mid Gastrula,Maternal
+3,antiquewhite4,132,"Unfertilized Egg, Adult","Prawnchip, Early Gastrula",Maternal/Adult
+3,thistle,91,"Unfertilized Egg, Adult","Mid Gastrula, Late Gastrula, Swimming Planulae",Maternal/Adult
+3,honeydew1,1888,Unfertilized Egg,"Swimming Planulae, Adult",Maternal
+3,midnightblue,993,"Unfertilized Egg, Fertilized Egg",NA,Maternal
+4,indianred3,145,Prawnchip,NA,ZGA1
+4,blue2,778,"Cleavage, Prawnchip",NA,ZGA1
+4,plum3,409,"Prawnchip, Early Gastrula","Swimming Planulae, Adult",ZGA1
+4,blue4,53,"Prawnchip, Early Gastrula","Swimming Planulae, Adult",ZGA1
+4,skyblue1,118,"Early Gastrula, Mid Gastrula","Swimming Planulae, Adult",ZGA1/ZGA2
+4,brown2,170,Early Gastrula,NA,ZGA1
+4,coral,454,"Prawnchip, Early Gastrula","Unfertilized Egg, Fertilized Egg",ZGA1
+5,darkseagreen4,3976,Mid Gastrula,"Unfertilized Egg, Cleavage",ZGA2
+5,darkslateblue,1345,"Early Gastrula, Mid Gastrula",Unfertilized Egg,ZGA1/ZGA2
+5,plum4,52,Early Gastrula,NA,ZGA1
+6,darkmagenta,1341,NA,"Unfertilized Egg, Fertilized Egg",None
+6,violet,799,"Cleavage, Prawnchip","Unfertilized Egg, Fertilized Egg",ZGA1
+7,navajowhite1,84,Adult,NA,Adult
+7,blue,11142,"Swimming Planulae, Adult",NA,Adult/ZGA2
+7,cyan,4206,Adult,NA,Adult
+7,blueviolet,250,Adult,NA,Adult
+7,ivory,321,Adult,NA,Adult
+8,mediumpurple1,60,Late Gastrula,NA,ZGA2
+8,salmon,1027,Swimming Planulae,NA,ZGA2
+8,sienna3,953,"Late Gastrula, Swimming Planulae",NA,ZGA2
+9,thistle4,48,"Mid Gastrula, Late Gastrula",NA,ZGA2
+9,lightsteelblue,460,NA,"Cleavage, Prawnchip",None
+9,salmon4,176,"Mid Gastrula, Late Gastrula","Cleavage, Prawnchip",ZGA2
+,Grand Total,32772,,,
