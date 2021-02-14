@@ -20,7 +20,7 @@ Prior to fertilization, mothers provision their oocytes with mRNA that regulates
 
 [Figure 1](https://github.com/echille/Mcapitata_Developmental_Gene_Expression_Timeseries/blob/master/Final_figures/Fig1.jpg?raw=true)  
 [Figure 2](https://github.com/echille/Mcapitata_Developmental_Gene_Expression_Timeseries/blob/master/Final_figures/Fig2.jpg?raw=true)  
-[Figure 3](hhttps://github.com/echille/Mcapitata_Developmental_Gene_Expression_Timeseries/blob/master/Final_figures/Fig3.jpg?raw=true)  
+[Figure 3](https://raw.githubusercontent.com/echille/Mcapitata_Developmental_Gene_Expression_Timeseries/master/Final_figures/Fig3.jpg)  
 [Figure 4](https://github.com/echille/Mcapitata_Developmental_Gene_Expression_Timeseries/blob/master/Final_figures/Fig4.png?raw=true)  
 [Figure 5](https://github.com/echille/Mcapitata_Developmental_Gene_Expression_Timeseries/blob/master/Final_figures/Fig5.png?raw=true)  
 [Figure 6](https://github.com/echille/Mcapitata_Developmental_Gene_Expression_Timeseries/blob/master/Final_figures/Fig6-annot.png?raw=true)  
