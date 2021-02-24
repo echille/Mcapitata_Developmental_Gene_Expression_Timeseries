@@ -669,6 +669,7 @@ DESeq.results.fe_vs_ue <-  results(DEG_dev, name="time_point_Fertilized_egg_vs_U
 DESeq.results.fe_vs_ue <- as.data.frame(DESeq.results.fe_vs_ue)
 DESeq.results.fe_vs_ue$contrast <- c("Fertilized_egg_vs_Unfertilized_egg")
 DESeq.results.fe_vs_ue$gene_id <-  rownames(DESeq.results.fe_vs_ue)
+nrow(filter(DESeq.results.fe_vs_ue, padj<0.05, log2FoldChange>1)) #N DEGs between fertilized and unfertilized eggs
 Epi.DEGs.fe_vs_ue.1 <- filter(DESeq.results.fe_vs_ue, gene_id%in%Epi.markers, padj<0.05, log2FoldChange>1)
 Epi.DEGs.fe_vs_ue.2 <- filter(DESeq.results.fe_vs_ue, gene_id%in%Epi.markers, padj<0.05, log2FoldChange<(-1))
 Dev.DEGs.fe_vs_ue.1 <- filter(DESeq.results.fe_vs_ue, gene_id%in%Dev.markers, padj<0.05, log2FoldChange>1)

@@ -8,9 +8,9 @@ Data uploaded and analyzed on the URI HPC [bluewaves](https://web.uri.edu/hpc-re
 
 ---
 
-### Project overview
+### Pipeline overview
 
-![bioinformatic_pipeline.png](https://raw.githubusercontent.com/echille/Montipora_OA_Development_Timeseries/master/_images/bioinformatic_pipeline.png)  
+![bioinformatic_pipeline.png](https://raw.githubusercontent.com/echille/Mcapitata_Developmental_Gene_Expression_Timeseries/master/Final_figures/RNAseq_Analysis_Pipeline.png)  
 
 **Bioinformatic tools used in analysis:**  
 Quality check: [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/), [MultiQC](https://multiqc.info/)  
