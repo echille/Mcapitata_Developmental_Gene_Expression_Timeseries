@@ -1007,75 +1007,90 @@ Dev.markers &lt;- c(top_CyclinB, top_SMG, top_KAISO, top_SOX2, top_WNT8, top_TBX
 DESeq.results.fe_vs_ue &lt;- as.data.frame(DESeq.results.fe_vs_ue)
 DESeq.results.fe_vs_ue$contrast &lt;- c(&quot;Fertilized_egg_vs_Unfertilized_egg&quot;)
 DESeq.results.fe_vs_ue$gene_id &lt;-  rownames(DESeq.results.fe_vs_ue)
-Epi.DEGs.fe_vs_ue.1 &lt;- filter(DESeq.results.fe_vs_ue, gene_id%in%Epi.markers, padj&lt;0.05, log2FoldChange&gt;1)
-Epi.DEGs.fe_vs_ue.2 &lt;- filter(DESeq.results.fe_vs_ue, gene_id%in%Epi.markers, padj&lt;0.05, log2FoldChange&lt;(-1))
-Dev.DEGs.fe_vs_ue.1 &lt;- filter(DESeq.results.fe_vs_ue, gene_id%in%Dev.markers, padj&lt;0.05, log2FoldChange&gt;1)
-Dev.DEGs.fe_vs_ue.2 &lt;- filter(DESeq.results.fe_vs_ue, gene_id%in%Dev.markers, padj&lt;0.05, log2FoldChange&lt;(-1))
+fe_vs_ue.DEGs &lt;- filter(DESeq.results.fe_vs_ue, padj&lt;0.05) 
+nrow(fe_vs_ue.DEGs) #N DEGs</code></pre>
+<pre><code>## [1] 2151</code></pre>
+<pre class="r"><code>Epi.DEGs.fe_vs_ue &lt;- filter(DESeq.results.fe_vs_ue, gene_id%in%Epi.markers, padj&lt;0.05, log2FoldChange&gt;1 | log2FoldChange&lt;(-1))
+Dev.DEGs.fe_vs_ue &lt;- filter(DESeq.results.fe_vs_ue, gene_id%in%Dev.markers, padj&lt;0.05, log2FoldChange&gt;1 | log2FoldChange&lt;(-1))
 
 DESeq.results.clvg_vs_fe &lt;-  results(DEG_dev, contrast= c(&quot;time_point&quot;,&quot;Cleavage&quot;,&quot;Fertilized_egg&quot;))
 DESeq.results.clvg_vs_fe &lt;- as.data.frame(DESeq.results.clvg_vs_fe)
 DESeq.results.clvg_vs_fe$contrast &lt;- c(&quot;Cleavage_vs_Fertilized_egg&quot;)
 DESeq.results.clvg_vs_fe$gene_id &lt;-  rownames(DESeq.results.clvg_vs_fe)
-Epi.DEGs.clvg_vs_fe.1 &lt;- filter(DESeq.results.clvg_vs_fe, gene_id%in%Epi.markers, padj&lt;0.05, log2FoldChange&gt;1)
-Epi.DEGs.clvg_vs_fe.2 &lt;- filter(DESeq.results.clvg_vs_fe, gene_id%in%Epi.markers, padj&lt;0.05, log2FoldChange&lt;(-1))
-Dev.DEGs.clvg_vs_fe.1 &lt;- filter(DESeq.results.clvg_vs_fe, gene_id%in%Dev.markers, padj&lt;0.05, log2FoldChange&gt;1)
-Dev.DEGs.clvg_vs_fe.2 &lt;- filter(DESeq.results.clvg_vs_fe, gene_id%in%Dev.markers, padj&lt;0.05, log2FoldChange&lt;(-1))
+clvg_vs_fe.DEGs &lt;- filter(DESeq.results.clvg_vs_fe, padj&lt;0.05) 
+nrow(clvg_vs_fe.DEGs) #N DEGs</code></pre>
+<pre><code>## [1] 9326</code></pre>
+<pre class="r"><code>Epi.DEGs.clvg_vs_fe &lt;- filter(DESeq.results.clvg_vs_fe, gene_id%in%Epi.markers, padj&lt;0.05, log2FoldChange&gt;1 | log2FoldChange&lt;(-1))
+Dev.DEGs.clvg_vs_fe &lt;- filter(DESeq.results.clvg_vs_fe, gene_id%in%Dev.markers, padj&lt;0.05, log2FoldChange&gt;1 | log2FoldChange&lt;(-1))
 
 DESeq.results.pc_vs_clvg &lt;-  results(DEG_dev, contrast= c(&quot;time_point&quot;,&quot;Prawn_chip&quot;,&quot;Cleavage&quot;))
 DESeq.results.pc_vs_clvg &lt;- as.data.frame(DESeq.results.pc_vs_clvg)
 DESeq.results.pc_vs_clvg$contrast &lt;- c(&quot;Prawn_chip_vs_Cleavage&quot;)
 DESeq.results.pc_vs_clvg$gene_id &lt;-  rownames(DESeq.results.pc_vs_clvg)
-Epi.DEGs.pc_vs_clvg.1 &lt;- filter(DESeq.results.pc_vs_clvg, gene_id%in%Epi.markers, padj&lt;0.05, log2FoldChange&gt;1)
-Epi.DEGs.pc_vs_clvg.2 &lt;- filter(DESeq.results.pc_vs_clvg, gene_id%in%Epi.markers, padj&lt;0.05, log2FoldChange&lt;(-1))
-Dev.DEGs.pc_vs_clvg.1 &lt;- filter(DESeq.results.pc_vs_clvg, gene_id%in%Dev.markers, padj&lt;0.05, log2FoldChange&gt;1)
-Dev.DEGs.pc_vs_clvg.2 &lt;- filter(DESeq.results.pc_vs_clvg, gene_id%in%Dev.markers, padj&lt;0.05, log2FoldChange&lt;(-1))
+pc_vs_clvg.DEGs &lt;- filter(DESeq.results.pc_vs_clvg, padj&lt;0.05) 
+nrow(pc_vs_clvg.DEGs) #N DEGs</code></pre>
+<pre><code>## [1] 8409</code></pre>
+<pre class="r"><code>Epi.DEGs.pc_vs_clvg &lt;- filter(DESeq.results.pc_vs_clvg, gene_id%in%Epi.markers, padj&lt;0.05, log2FoldChange&gt;1 | log2FoldChange&lt;(-1))
+Dev.DEGs.pc_vs_clvg &lt;- filter(DESeq.results.pc_vs_clvg, gene_id%in%Dev.markers, padj&lt;0.05, log2FoldChange&gt;1 | log2FoldChange&lt;(-1))
 
 DESeq.results.eg_vs_pc &lt;-  results(DEG_dev, contrast= c(&quot;time_point&quot;, &quot;Early_gastrula&quot;,&quot;Prawn_chip&quot;))
 DESeq.results.eg_vs_pc &lt;- as.data.frame(DESeq.results.eg_vs_pc)
 DESeq.results.eg_vs_pc$contrast &lt;- c(&quot;Early_gastrula_vs_Prawn_chip&quot;)
 DESeq.results.eg_vs_pc$gene_id &lt;-  rownames(DESeq.results.eg_vs_pc)
-Epi.DEGs.eg_vs_pc.1 &lt;- filter(DESeq.results.eg_vs_pc, gene_id%in%Epi.markers, padj&lt;0.05, log2FoldChange&gt;1)
-Epi.DEGs.eg_vs_pc.2 &lt;- filter(DESeq.results.eg_vs_pc, gene_id%in%Epi.markers, padj&lt;0.05, log2FoldChange&lt;(-1))
-Dev.DEGs.eg_vs_pc.1 &lt;- filter(DESeq.results.eg_vs_pc, gene_id%in%Dev.markers, padj&lt;0.05, log2FoldChange&gt;1)
-Dev.DEGs.eg_vs_pc.2 &lt;- filter(DESeq.results.eg_vs_pc, gene_id%in%Dev.markers, padj&lt;0.05, log2FoldChange&lt;(-1))
+eg_vs_pc.DEGs &lt;- filter(DESeq.results.eg_vs_pc, padj&lt;0.05) 
+nrow(eg_vs_pc.DEGs) #N DEGs</code></pre>
+<pre><code>## [1] 9488</code></pre>
+<pre class="r"><code>Epi.DEGs.eg_vs_pc &lt;- filter(DESeq.results.eg_vs_pc, gene_id%in%Epi.markers, padj&lt;0.05, log2FoldChange&gt;1 | log2FoldChange&lt;(-1))
+Dev.DEGs.eg_vs_pc &lt;- filter(DESeq.results.eg_vs_pc, gene_id%in%Dev.markers, padj&lt;0.05, log2FoldChange&gt;1 | log2FoldChange&lt;(-1))
 
 DESeq.results.mg_vs_eg &lt;-  results(DEG_dev, contrast= c(&quot;time_point&quot;, &quot;Mid_gastrula&quot;, &quot;Early_gastrula&quot;))
 DESeq.results.mg_vs_eg &lt;- as.data.frame(DESeq.results.mg_vs_eg)
 DESeq.results.mg_vs_eg$contrast &lt;- c(&quot;Mid_gastrula_vs_Early_gastrula&quot;)
 DESeq.results.mg_vs_eg$gene_id &lt;-  rownames(DESeq.results.mg_vs_eg)
-Epi.DEGs.mg_vs_eg.1 &lt;- filter(DESeq.results.mg_vs_eg, gene_id%in%Epi.markers, padj&lt;0.05, log2FoldChange&gt;1)
-Epi.DEGs.mg_vs_eg.2 &lt;- filter(DESeq.results.mg_vs_eg, gene_id%in%Epi.markers, padj&lt;0.05, log2FoldChange&lt;(-1))
-Dev.DEGs.mg_vs_eg.1 &lt;- filter(DESeq.results.mg_vs_eg, gene_id%in%Dev.markers, padj&lt;0.05, log2FoldChange&gt;1)
-Dev.DEGs.mg_vs_eg.2 &lt;- filter(DESeq.results.mg_vs_eg, gene_id%in%Dev.markers, padj&lt;0.05, log2FoldChange&lt;(-1))
+mg_vs_eg.DEGs &lt;- filter(DESeq.results.mg_vs_eg, padj&lt;0.05) 
+nrow(mg_vs_eg.DEGs) #N DEGs</code></pre>
+<pre><code>## [1] 7136</code></pre>
+<pre class="r"><code>Epi.DEGs.mg_vs_eg &lt;- filter(DESeq.results.mg_vs_eg, gene_id%in%Epi.markers, padj&lt;0.05, log2FoldChange&gt;1 | log2FoldChange&lt;(-1))
+Dev.DEGs.mg_vs_eg &lt;- filter(DESeq.results.mg_vs_eg, gene_id%in%Dev.markers, padj&lt;0.05, log2FoldChange&gt;1 | log2FoldChange&lt;(-1))
 
 DESeq.results.lg_vs_mg &lt;-  results(DEG_dev, contrast= c(&quot;time_point&quot;,&quot;Late_gastrula&quot;,&quot;Mid_gastrula&quot;))
 DESeq.results.lg_vs_mg &lt;- as.data.frame(DESeq.results.lg_vs_mg)
 DESeq.results.lg_vs_mg$contrast &lt;- c(&quot;Late_gastrula_vs_Mid_gastrula&quot;)
 DESeq.results.lg_vs_mg$gene_id &lt;-  rownames(DESeq.results.lg_vs_mg)
-Epi.DEGs.lg_vs_mg.1 &lt;- filter(DESeq.results.lg_vs_mg, gene_id%in%Epi.markers, padj&lt;0.05, log2FoldChange&gt;1)
-Epi.DEGs.lg_vs_mg.2 &lt;- filter(DESeq.results.lg_vs_mg, gene_id%in%Epi.markers, padj&lt;0.05, log2FoldChange&lt;(-1))
-Dev.DEGs.lg_vs_mg.1 &lt;- filter(DESeq.results.lg_vs_mg, gene_id%in%Dev.markers, padj&lt;0.05, log2FoldChange&gt;1)
-Dev.DEGs.lg_vs_mg.2 &lt;- filter(DESeq.results.lg_vs_mg, gene_id%in%Dev.markers, padj&lt;0.05, log2FoldChange&lt;(-1))
+lg_vs_mg.DEGs &lt;- filter(DESeq.results.lg_vs_mg, padj&lt;0.05) 
+nrow(lg_vs_mg.DEGs) #N DEGs</code></pre>
+<pre><code>## [1] 4336</code></pre>
+<pre class="r"><code>Epi.DEGs.lg_vs_mg &lt;- filter(DESeq.results.lg_vs_mg, gene_id%in%Epi.markers, padj&lt;0.05, log2FoldChange&gt;1 | log2FoldChange&lt;(-1))
+Dev.DEGs.lg_vs_mg &lt;- filter(DESeq.results.lg_vs_mg, gene_id%in%Dev.markers, padj&lt;0.05, log2FoldChange&gt;1 | log2FoldChange&lt;(-1))
 
 DESeq.results.pln_vs_lg &lt;-  results(DEG_dev, contrast= c(&quot;time_point&quot;, &quot;Planula&quot;, &quot;Late_gastrula&quot;))
 DESeq.results.pln_vs_lg &lt;- as.data.frame(DESeq.results.pln_vs_lg)
 DESeq.results.pln_vs_lg$contrast &lt;- c(&quot;Planula_vs_Late_gastrula&quot;)
 DESeq.results.pln_vs_lg$gene_id &lt;-  rownames(DESeq.results.pln_vs_lg)
-Epi.DEGs.pln_vs_lg.1 &lt;- filter(DESeq.results.pln_vs_lg, gene_id%in%Epi.markers, padj&lt;0.05, log2FoldChange&gt;1)
-Epi.DEGs.pln_vs_lg.2 &lt;- filter(DESeq.results.pln_vs_lg, gene_id%in%Epi.markers, padj&lt;0.05, log2FoldChange&lt;(-1))
-Dev.DEGs.pln_vs_lg.1 &lt;- filter(DESeq.results.pln_vs_lg, gene_id%in%Dev.markers, padj&lt;0.05, log2FoldChange&gt;1)
-Dev.DEGs.pln_vs_lg.2 &lt;- filter(DESeq.results.pln_vs_lg, gene_id%in%Dev.markers, padj&lt;0.05, log2FoldChange&lt;(-1))
+pln_vs_lg.DEGs &lt;- filter(DESeq.results.pln_vs_lg, padj&lt;0.05) 
+nrow(pln_vs_lg.DEGs) #N DEGs</code></pre>
+<pre><code>## [1] 4347</code></pre>
+<pre class="r"><code>Epi.DEGs.pln_vs_lg &lt;- filter(DESeq.results.pln_vs_lg, gene_id%in%Epi.markers, padj&lt;0.05, log2FoldChange&gt;1 | log2FoldChange&lt;(-1))
+Dev.DEGs.pln_vs_lg &lt;- filter(DESeq.results.pln_vs_lg, gene_id%in%Dev.markers, padj&lt;0.05, log2FoldChange&gt;1 | log2FoldChange&lt;(-1))
 
 DESeq.results.adult_vs_pln &lt;-  results(DEG_dev, contrast= c(&quot;time_point&quot;, &quot;Adult&quot;,&quot;Planula&quot;))
 DESeq.results.adult_vs_pln &lt;- as.data.frame(DESeq.results.adult_vs_pln)
 DESeq.results.adult_vs_pln$contrast &lt;- c(&quot;Adult_vs_Planula&quot;)
 DESeq.results.adult_vs_pln$gene_id &lt;-  rownames(DESeq.results.adult_vs_pln)
-Epi.DEGs.adult_vs_pln.1 &lt;- filter(DESeq.results.adult_vs_pln, gene_id%in%Epi.markers, padj&lt;0.05, log2FoldChange&gt;1)
-Epi.DEGs.adult_vs_pln.2 &lt;- filter(DESeq.results.adult_vs_pln, gene_id%in%Epi.markers, padj&lt;0.05, log2FoldChange&lt;(-1))
-Dev.DEGs.adult_vs_pln.1 &lt;- filter(DESeq.results.adult_vs_pln, gene_id%in%Dev.markers, padj&lt;0.05, log2FoldChange&gt;1)
-Dev.DEGs.adult_vs_pln.2 &lt;- filter(DESeq.results.adult_vs_pln, gene_id%in%Dev.markers, padj&lt;0.05, log2FoldChange&lt;(-1))</code></pre>
-<p>Bind results and add enzyme names</p>
-<pre class="r"><code>Epi_DEGs &lt;- bind_rows(Epi.DEGs.fe_vs_ue.1, Epi.DEGs.clvg_vs_fe.1, Epi.DEGs.pc_vs_clvg.1, Epi.DEGs.eg_vs_pc.1, Epi.DEGs.mg_vs_eg.1, Epi.DEGs.lg_vs_mg.1, Epi.DEGs.pln_vs_lg.1, Epi.DEGs.adult_vs_pln.1, Epi.DEGs.fe_vs_ue.2, Epi.DEGs.clvg_vs_fe.2, Epi.DEGs.pc_vs_clvg.2, Epi.DEGs.eg_vs_pc.2, Epi.DEGs.mg_vs_eg.2, Epi.DEGs.lg_vs_mg.2, Epi.DEGs.pln_vs_lg.2, Epi.DEGs.adult_vs_pln.2)
+adult_vs_pln.DEGs &lt;- filter(DESeq.results.adult_vs_pln, padj&lt;0.05) 
+nrow(adult_vs_pln.DEGs) #N DEGs</code></pre>
+<pre><code>## [1] 6899</code></pre>
+<pre class="r"><code>Epi.DEGs.adult_vs_pln &lt;- filter(DESeq.results.adult_vs_pln, gene_id%in%Epi.markers, padj&lt;0.05, log2FoldChange&gt;1 | log2FoldChange&lt;(-1))
+Dev.DEGs.adult_vs_pln &lt;- filter(DESeq.results.adult_vs_pln, gene_id%in%Dev.markers, padj&lt;0.05, log2FoldChange&gt;1 | log2FoldChange&lt;(-1))</code></pre>
+<p>Bind results. Add enzyme names for biomarker files.</p>
+<pre class="r"><code>#all
+all_DEGs &lt;- bind_rows(fe_vs_ue.DEGs, clvg_vs_fe.DEGs, pc_vs_clvg.DEGs, eg_vs_pc.DEGs, mg_vs_eg.DEGs, lg_vs_mg.DEGs, pln_vs_lg.DEGs, adult_vs_pln.DEGs)
+rownames(all_DEGs) &lt;- NULL #remove row names
+all_DEGs &lt;- all_DEGs[,c(8,1:7)] #move gene_id to first column
+
+
+#epi
+Epi_DEGs &lt;- bind_rows(Epi.DEGs.fe_vs_ue, Epi.DEGs.clvg_vs_fe, Epi.DEGs.pc_vs_clvg, Epi.DEGs.eg_vs_pc, Epi.DEGs.mg_vs_eg, Epi.DEGs.lg_vs_mg, Epi.DEGs.pln_vs_lg, Epi.DEGs.adult_vs_pln)
 Epi_DEGs &lt;- merge(Epi_DEGs, hits[,c(1,3)], by=&quot;gene_id&quot;)
 head(Epi_DEGs)</code></pre>
 <pre><code>##              gene_id baseMean log2FoldChange     lfcSE       stat       pvalue
@@ -1084,33 +1099,36 @@ head(Epi_DEGs)</code></pre>
 ## 3             g25804 1034.691       1.969455 0.1553636  12.676421 7.989785e-37
 ## 4             g53132 2203.264      -2.610716 0.2379149 -10.973318 5.135252e-28
 ## 5             g53132 2203.264      -2.610716 0.2379149 -10.973318 5.135252e-28
-## 6             g53952 2699.103       1.499377 0.3870979   3.873380 1.073364e-04
+## 6             g53952 2699.103      -1.662010 0.3521477  -4.719641 2.362617e-06
 ##           padj                       contrast Epi.gene
 ## 1 3.580905e-17 Mid_gastrula_vs_Early_gastrula    UHRF1
 ## 2 1.614349e-05     Cleavage_vs_Fertilized_egg     TET1
 ## 3 1.577892e-34     Cleavage_vs_Fertilized_egg   DNMT3A
 ## 4 4.869405e-26     Cleavage_vs_Fertilized_egg     MBD2
 ## 5 4.869405e-26     Cleavage_vs_Fertilized_egg     MBD3
-## 6 1.407249e-03  Late_gastrula_vs_Mid_gastrula    DNMT1</code></pre>
-<pre class="r"><code>Dev_DEGs &lt;- bind_rows(Dev.DEGs.fe_vs_ue.1, Dev.DEGs.clvg_vs_fe.1, Dev.DEGs.pc_vs_clvg.1, Dev.DEGs.eg_vs_pc.1, Dev.DEGs.mg_vs_eg.1, Dev.DEGs.lg_vs_mg.1, Dev.DEGs.pln_vs_lg.1, Dev.DEGs.adult_vs_pln.1, Dev.DEGs.fe_vs_ue.2, Dev.DEGs.clvg_vs_fe.2, Dev.DEGs.pc_vs_clvg.2, Dev.DEGs.eg_vs_pc.2, Dev.DEGs.mg_vs_eg.2, Dev.DEGs.lg_vs_mg.2, Dev.DEGs.pln_vs_lg.2, Dev.DEGs.adult_vs_pln.2)
+## 6 1.643010e-05     Cleavage_vs_Fertilized_egg    DNMT1</code></pre>
+<pre class="r"><code>#dev
+Dev_DEGs &lt;- bind_rows(Dev.DEGs.fe_vs_ue, Dev.DEGs.clvg_vs_fe, Dev.DEGs.pc_vs_clvg, Dev.DEGs.eg_vs_pc, Dev.DEGs.mg_vs_eg, Dev.DEGs.lg_vs_mg, Dev.DEGs.pln_vs_lg, Dev.DEGs.adult_vs_pln)
 Dev_DEGs &lt;- merge(Dev_DEGs, hits[,c(1,3)], by=&quot;gene_id&quot;)
 head(Dev_DEGs)</code></pre>
 <pre><code>##   gene_id baseMean log2FoldChange     lfcSE      stat       pvalue         padj
 ## 1  g33149 573.9964       2.215917 0.4492169  4.932845 8.104065e-07 9.907963e-06
 ## 2  g33149 573.9964      -1.485886 0.4008607 -3.706739 2.099447e-04 1.478690e-03
 ## 3  g33149 573.9964      -1.411909 0.4030537 -3.503030 4.599974e-04 2.615449e-03
-## 4   g4639 734.8694       1.223123 0.2941899  4.157598 3.216112e-05 4.509966e-04
+## 4   g4639 734.8694      -1.199368 0.2607411 -4.599843 4.228102e-06 3.337689e-05
 ## 5   g4639 734.8694       2.291707 0.3026568  7.571967 3.676149e-14 8.469976e-13
-## 6   g4639 734.8694      -1.199368 0.2607411 -4.599843 4.228102e-06 3.337689e-05
+## 6   g4639 734.8694       1.223123 0.2941899  4.157598 3.216112e-05 4.509966e-04
 ##                         contrast Epi.gene
 ## 1 Mid_gastrula_vs_Early_gastrula     WNT8
 ## 2               Adult_vs_Planula     WNT8
 ## 3         Prawn_chip_vs_Cleavage     WNT8
-## 4       Planula_vs_Late_gastrula      SMG
+## 4   Early_gastrula_vs_Prawn_chip      SMG
 ## 5     Cleavage_vs_Fertilized_egg      SMG
-## 6   Early_gastrula_vs_Prawn_chip      SMG</code></pre>
-<pre class="r"><code>write_csv(Epi_DEGs, file = &quot;2b-Epi-MZT-Enzyme-Expression/Output/Epi_biomarker_DEGs.csv&quot;)
-write_csv(Dev_DEGs, file = &quot;2b-Epi-MZT-Enzyme-Expression/Output/Dev_biomarker_DEGs.csv&quot;)</code></pre>
+## 6       Planula_vs_Late_gastrula      SMG</code></pre>
+<pre class="r"><code>#save
+write_csv(Epi_DEGs, file = &quot;2b-Epi-MZT-Enzyme-Expression/Output/Epi_biomarker_DEGs.csv&quot;)
+write_csv(Dev_DEGs, file = &quot;2b-Epi-MZT-Enzyme-Expression/Output/Dev_biomarker_DEGs.csv&quot;)
+#write_csv(all_DEGs, file = &quot;2b-Epi-MZT-Enzyme-Expression/Output/all_DEGs.csv&quot;)</code></pre>
 </div>
 
 

@@ -669,87 +669,95 @@ DESeq.results.fe_vs_ue <-  results(DEG_dev, name="time_point_Fertilized_egg_vs_U
 DESeq.results.fe_vs_ue <- as.data.frame(DESeq.results.fe_vs_ue)
 DESeq.results.fe_vs_ue$contrast <- c("Fertilized_egg_vs_Unfertilized_egg")
 DESeq.results.fe_vs_ue$gene_id <-  rownames(DESeq.results.fe_vs_ue)
-nrow(filter(DESeq.results.fe_vs_ue, padj<0.05, log2FoldChange>1)) #N DEGs between fertilized and unfertilized eggs
-Epi.DEGs.fe_vs_ue.1 <- filter(DESeq.results.fe_vs_ue, gene_id%in%Epi.markers, padj<0.05, log2FoldChange>1)
-Epi.DEGs.fe_vs_ue.2 <- filter(DESeq.results.fe_vs_ue, gene_id%in%Epi.markers, padj<0.05, log2FoldChange<(-1))
-Dev.DEGs.fe_vs_ue.1 <- filter(DESeq.results.fe_vs_ue, gene_id%in%Dev.markers, padj<0.05, log2FoldChange>1)
-Dev.DEGs.fe_vs_ue.2 <- filter(DESeq.results.fe_vs_ue, gene_id%in%Dev.markers, padj<0.05, log2FoldChange<(-1))
+fe_vs_ue.DEGs <- filter(DESeq.results.fe_vs_ue, padj<0.05) 
+nrow(fe_vs_ue.DEGs) #N DEGs
+Epi.DEGs.fe_vs_ue <- filter(DESeq.results.fe_vs_ue, gene_id%in%Epi.markers, padj<0.05, log2FoldChange>1 | log2FoldChange<(-1))
+Dev.DEGs.fe_vs_ue <- filter(DESeq.results.fe_vs_ue, gene_id%in%Dev.markers, padj<0.05, log2FoldChange>1 | log2FoldChange<(-1))
 
 DESeq.results.clvg_vs_fe <-  results(DEG_dev, contrast= c("time_point","Cleavage","Fertilized_egg"))
 DESeq.results.clvg_vs_fe <- as.data.frame(DESeq.results.clvg_vs_fe)
 DESeq.results.clvg_vs_fe$contrast <- c("Cleavage_vs_Fertilized_egg")
 DESeq.results.clvg_vs_fe$gene_id <-  rownames(DESeq.results.clvg_vs_fe)
-Epi.DEGs.clvg_vs_fe.1 <- filter(DESeq.results.clvg_vs_fe, gene_id%in%Epi.markers, padj<0.05, log2FoldChange>1)
-Epi.DEGs.clvg_vs_fe.2 <- filter(DESeq.results.clvg_vs_fe, gene_id%in%Epi.markers, padj<0.05, log2FoldChange<(-1))
-Dev.DEGs.clvg_vs_fe.1 <- filter(DESeq.results.clvg_vs_fe, gene_id%in%Dev.markers, padj<0.05, log2FoldChange>1)
-Dev.DEGs.clvg_vs_fe.2 <- filter(DESeq.results.clvg_vs_fe, gene_id%in%Dev.markers, padj<0.05, log2FoldChange<(-1))
+clvg_vs_fe.DEGs <- filter(DESeq.results.clvg_vs_fe, padj<0.05) 
+nrow(clvg_vs_fe.DEGs) #N DEGs
+Epi.DEGs.clvg_vs_fe <- filter(DESeq.results.clvg_vs_fe, gene_id%in%Epi.markers, padj<0.05, log2FoldChange>1 | log2FoldChange<(-1))
+Dev.DEGs.clvg_vs_fe <- filter(DESeq.results.clvg_vs_fe, gene_id%in%Dev.markers, padj<0.05, log2FoldChange>1 | log2FoldChange<(-1))
 
 DESeq.results.pc_vs_clvg <-  results(DEG_dev, contrast= c("time_point","Prawn_chip","Cleavage"))
 DESeq.results.pc_vs_clvg <- as.data.frame(DESeq.results.pc_vs_clvg)
 DESeq.results.pc_vs_clvg$contrast <- c("Prawn_chip_vs_Cleavage")
 DESeq.results.pc_vs_clvg$gene_id <-  rownames(DESeq.results.pc_vs_clvg)
-Epi.DEGs.pc_vs_clvg.1 <- filter(DESeq.results.pc_vs_clvg, gene_id%in%Epi.markers, padj<0.05, log2FoldChange>1)
-Epi.DEGs.pc_vs_clvg.2 <- filter(DESeq.results.pc_vs_clvg, gene_id%in%Epi.markers, padj<0.05, log2FoldChange<(-1))
-Dev.DEGs.pc_vs_clvg.1 <- filter(DESeq.results.pc_vs_clvg, gene_id%in%Dev.markers, padj<0.05, log2FoldChange>1)
-Dev.DEGs.pc_vs_clvg.2 <- filter(DESeq.results.pc_vs_clvg, gene_id%in%Dev.markers, padj<0.05, log2FoldChange<(-1))
+pc_vs_clvg.DEGs <- filter(DESeq.results.pc_vs_clvg, padj<0.05) 
+nrow(pc_vs_clvg.DEGs) #N DEGs
+Epi.DEGs.pc_vs_clvg <- filter(DESeq.results.pc_vs_clvg, gene_id%in%Epi.markers, padj<0.05, log2FoldChange>1 | log2FoldChange<(-1))
+Dev.DEGs.pc_vs_clvg <- filter(DESeq.results.pc_vs_clvg, gene_id%in%Dev.markers, padj<0.05, log2FoldChange>1 | log2FoldChange<(-1))
 
 DESeq.results.eg_vs_pc <-  results(DEG_dev, contrast= c("time_point", "Early_gastrula","Prawn_chip"))
 DESeq.results.eg_vs_pc <- as.data.frame(DESeq.results.eg_vs_pc)
 DESeq.results.eg_vs_pc$contrast <- c("Early_gastrula_vs_Prawn_chip")
 DESeq.results.eg_vs_pc$gene_id <-  rownames(DESeq.results.eg_vs_pc)
-Epi.DEGs.eg_vs_pc.1 <- filter(DESeq.results.eg_vs_pc, gene_id%in%Epi.markers, padj<0.05, log2FoldChange>1)
-Epi.DEGs.eg_vs_pc.2 <- filter(DESeq.results.eg_vs_pc, gene_id%in%Epi.markers, padj<0.05, log2FoldChange<(-1))
-Dev.DEGs.eg_vs_pc.1 <- filter(DESeq.results.eg_vs_pc, gene_id%in%Dev.markers, padj<0.05, log2FoldChange>1)
-Dev.DEGs.eg_vs_pc.2 <- filter(DESeq.results.eg_vs_pc, gene_id%in%Dev.markers, padj<0.05, log2FoldChange<(-1))
+eg_vs_pc.DEGs <- filter(DESeq.results.eg_vs_pc, padj<0.05) 
+nrow(eg_vs_pc.DEGs) #N DEGs
+Epi.DEGs.eg_vs_pc <- filter(DESeq.results.eg_vs_pc, gene_id%in%Epi.markers, padj<0.05, log2FoldChange>1 | log2FoldChange<(-1))
+Dev.DEGs.eg_vs_pc <- filter(DESeq.results.eg_vs_pc, gene_id%in%Dev.markers, padj<0.05, log2FoldChange>1 | log2FoldChange<(-1))
 
 DESeq.results.mg_vs_eg <-  results(DEG_dev, contrast= c("time_point", "Mid_gastrula", "Early_gastrula"))
 DESeq.results.mg_vs_eg <- as.data.frame(DESeq.results.mg_vs_eg)
 DESeq.results.mg_vs_eg$contrast <- c("Mid_gastrula_vs_Early_gastrula")
 DESeq.results.mg_vs_eg$gene_id <-  rownames(DESeq.results.mg_vs_eg)
-Epi.DEGs.mg_vs_eg.1 <- filter(DESeq.results.mg_vs_eg, gene_id%in%Epi.markers, padj<0.05, log2FoldChange>1)
-Epi.DEGs.mg_vs_eg.2 <- filter(DESeq.results.mg_vs_eg, gene_id%in%Epi.markers, padj<0.05, log2FoldChange<(-1))
-Dev.DEGs.mg_vs_eg.1 <- filter(DESeq.results.mg_vs_eg, gene_id%in%Dev.markers, padj<0.05, log2FoldChange>1)
-Dev.DEGs.mg_vs_eg.2 <- filter(DESeq.results.mg_vs_eg, gene_id%in%Dev.markers, padj<0.05, log2FoldChange<(-1))
+mg_vs_eg.DEGs <- filter(DESeq.results.mg_vs_eg, padj<0.05) 
+nrow(mg_vs_eg.DEGs) #N DEGs
+Epi.DEGs.mg_vs_eg <- filter(DESeq.results.mg_vs_eg, gene_id%in%Epi.markers, padj<0.05, log2FoldChange>1 | log2FoldChange<(-1))
+Dev.DEGs.mg_vs_eg <- filter(DESeq.results.mg_vs_eg, gene_id%in%Dev.markers, padj<0.05, log2FoldChange>1 | log2FoldChange<(-1))
 
 DESeq.results.lg_vs_mg <-  results(DEG_dev, contrast= c("time_point","Late_gastrula","Mid_gastrula"))
 DESeq.results.lg_vs_mg <- as.data.frame(DESeq.results.lg_vs_mg)
 DESeq.results.lg_vs_mg$contrast <- c("Late_gastrula_vs_Mid_gastrula")
 DESeq.results.lg_vs_mg$gene_id <-  rownames(DESeq.results.lg_vs_mg)
-Epi.DEGs.lg_vs_mg.1 <- filter(DESeq.results.lg_vs_mg, gene_id%in%Epi.markers, padj<0.05, log2FoldChange>1)
-Epi.DEGs.lg_vs_mg.2 <- filter(DESeq.results.lg_vs_mg, gene_id%in%Epi.markers, padj<0.05, log2FoldChange<(-1))
-Dev.DEGs.lg_vs_mg.1 <- filter(DESeq.results.lg_vs_mg, gene_id%in%Dev.markers, padj<0.05, log2FoldChange>1)
-Dev.DEGs.lg_vs_mg.2 <- filter(DESeq.results.lg_vs_mg, gene_id%in%Dev.markers, padj<0.05, log2FoldChange<(-1))
+lg_vs_mg.DEGs <- filter(DESeq.results.lg_vs_mg, padj<0.05) 
+nrow(lg_vs_mg.DEGs) #N DEGs
+Epi.DEGs.lg_vs_mg <- filter(DESeq.results.lg_vs_mg, gene_id%in%Epi.markers, padj<0.05, log2FoldChange>1 | log2FoldChange<(-1))
+Dev.DEGs.lg_vs_mg <- filter(DESeq.results.lg_vs_mg, gene_id%in%Dev.markers, padj<0.05, log2FoldChange>1 | log2FoldChange<(-1))
 
 DESeq.results.pln_vs_lg <-  results(DEG_dev, contrast= c("time_point", "Planula", "Late_gastrula"))
 DESeq.results.pln_vs_lg <- as.data.frame(DESeq.results.pln_vs_lg)
 DESeq.results.pln_vs_lg$contrast <- c("Planula_vs_Late_gastrula")
 DESeq.results.pln_vs_lg$gene_id <-  rownames(DESeq.results.pln_vs_lg)
-Epi.DEGs.pln_vs_lg.1 <- filter(DESeq.results.pln_vs_lg, gene_id%in%Epi.markers, padj<0.05, log2FoldChange>1)
-Epi.DEGs.pln_vs_lg.2 <- filter(DESeq.results.pln_vs_lg, gene_id%in%Epi.markers, padj<0.05, log2FoldChange<(-1))
-Dev.DEGs.pln_vs_lg.1 <- filter(DESeq.results.pln_vs_lg, gene_id%in%Dev.markers, padj<0.05, log2FoldChange>1)
-Dev.DEGs.pln_vs_lg.2 <- filter(DESeq.results.pln_vs_lg, gene_id%in%Dev.markers, padj<0.05, log2FoldChange<(-1))
+pln_vs_lg.DEGs <- filter(DESeq.results.pln_vs_lg, padj<0.05) 
+nrow(pln_vs_lg.DEGs) #N DEGs
+Epi.DEGs.pln_vs_lg <- filter(DESeq.results.pln_vs_lg, gene_id%in%Epi.markers, padj<0.05, log2FoldChange>1 | log2FoldChange<(-1))
+Dev.DEGs.pln_vs_lg <- filter(DESeq.results.pln_vs_lg, gene_id%in%Dev.markers, padj<0.05, log2FoldChange>1 | log2FoldChange<(-1))
 
 DESeq.results.adult_vs_pln <-  results(DEG_dev, contrast= c("time_point", "Adult","Planula"))
 DESeq.results.adult_vs_pln <- as.data.frame(DESeq.results.adult_vs_pln)
 DESeq.results.adult_vs_pln$contrast <- c("Adult_vs_Planula")
 DESeq.results.adult_vs_pln$gene_id <-  rownames(DESeq.results.adult_vs_pln)
-Epi.DEGs.adult_vs_pln.1 <- filter(DESeq.results.adult_vs_pln, gene_id%in%Epi.markers, padj<0.05, log2FoldChange>1)
-Epi.DEGs.adult_vs_pln.2 <- filter(DESeq.results.adult_vs_pln, gene_id%in%Epi.markers, padj<0.05, log2FoldChange<(-1))
-Dev.DEGs.adult_vs_pln.1 <- filter(DESeq.results.adult_vs_pln, gene_id%in%Dev.markers, padj<0.05, log2FoldChange>1)
-Dev.DEGs.adult_vs_pln.2 <- filter(DESeq.results.adult_vs_pln, gene_id%in%Dev.markers, padj<0.05, log2FoldChange<(-1))
+adult_vs_pln.DEGs <- filter(DESeq.results.adult_vs_pln, padj<0.05) 
+nrow(adult_vs_pln.DEGs) #N DEGs
+Epi.DEGs.adult_vs_pln <- filter(DESeq.results.adult_vs_pln, gene_id%in%Epi.markers, padj<0.05, log2FoldChange>1 | log2FoldChange<(-1))
+Dev.DEGs.adult_vs_pln <- filter(DESeq.results.adult_vs_pln, gene_id%in%Dev.markers, padj<0.05, log2FoldChange>1 | log2FoldChange<(-1))
 ```
 
-Bind results and add enzyme names
+Bind results. Add enzyme names for biomarker files.
 ```{r}
-Epi_DEGs <- bind_rows(Epi.DEGs.fe_vs_ue.1, Epi.DEGs.clvg_vs_fe.1, Epi.DEGs.pc_vs_clvg.1, Epi.DEGs.eg_vs_pc.1, Epi.DEGs.mg_vs_eg.1, Epi.DEGs.lg_vs_mg.1, Epi.DEGs.pln_vs_lg.1, Epi.DEGs.adult_vs_pln.1, Epi.DEGs.fe_vs_ue.2, Epi.DEGs.clvg_vs_fe.2, Epi.DEGs.pc_vs_clvg.2, Epi.DEGs.eg_vs_pc.2, Epi.DEGs.mg_vs_eg.2, Epi.DEGs.lg_vs_mg.2, Epi.DEGs.pln_vs_lg.2, Epi.DEGs.adult_vs_pln.2)
+#all
+all_DEGs <- bind_rows(fe_vs_ue.DEGs, clvg_vs_fe.DEGs, pc_vs_clvg.DEGs, eg_vs_pc.DEGs, mg_vs_eg.DEGs, lg_vs_mg.DEGs, pln_vs_lg.DEGs, adult_vs_pln.DEGs)
+rownames(all_DEGs) <- NULL #remove row names
+all_DEGs <- all_DEGs[,c(8,1:7)] #move gene_id to first column
+
+
+#epi
+Epi_DEGs <- bind_rows(Epi.DEGs.fe_vs_ue, Epi.DEGs.clvg_vs_fe, Epi.DEGs.pc_vs_clvg, Epi.DEGs.eg_vs_pc, Epi.DEGs.mg_vs_eg, Epi.DEGs.lg_vs_mg, Epi.DEGs.pln_vs_lg, Epi.DEGs.adult_vs_pln)
 Epi_DEGs <- merge(Epi_DEGs, hits[,c(1,3)], by="gene_id")
 head(Epi_DEGs)
 
-Dev_DEGs <- bind_rows(Dev.DEGs.fe_vs_ue.1, Dev.DEGs.clvg_vs_fe.1, Dev.DEGs.pc_vs_clvg.1, Dev.DEGs.eg_vs_pc.1, Dev.DEGs.mg_vs_eg.1, Dev.DEGs.lg_vs_mg.1, Dev.DEGs.pln_vs_lg.1, Dev.DEGs.adult_vs_pln.1, Dev.DEGs.fe_vs_ue.2, Dev.DEGs.clvg_vs_fe.2, Dev.DEGs.pc_vs_clvg.2, Dev.DEGs.eg_vs_pc.2, Dev.DEGs.mg_vs_eg.2, Dev.DEGs.lg_vs_mg.2, Dev.DEGs.pln_vs_lg.2, Dev.DEGs.adult_vs_pln.2)
+#dev
+Dev_DEGs <- bind_rows(Dev.DEGs.fe_vs_ue, Dev.DEGs.clvg_vs_fe, Dev.DEGs.pc_vs_clvg, Dev.DEGs.eg_vs_pc, Dev.DEGs.mg_vs_eg, Dev.DEGs.lg_vs_mg, Dev.DEGs.pln_vs_lg, Dev.DEGs.adult_vs_pln)
 Dev_DEGs <- merge(Dev_DEGs, hits[,c(1,3)], by="gene_id")
 head(Dev_DEGs)
 
+#save
 write_csv(Epi_DEGs, file = "2b-Epi-MZT-Enzyme-Expression/Output/Epi_biomarker_DEGs.csv")
 write_csv(Dev_DEGs, file = "2b-Epi-MZT-Enzyme-Expression/Output/Dev_biomarker_DEGs.csv")
+#write_csv(all_DEGs, file = "2b-Epi-MZT-Enzyme-Expression/Output/all_DEGs.csv")
 ```
-
