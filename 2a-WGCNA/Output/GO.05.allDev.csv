@@ -1,0 +1,1094 @@
+lifestage,category,over_represented_pvalue,under_represented_pvalue,numDEInCat,numInCat,term,ontology
+Unfertilized_egg,GO:0007034,1.42504935950617e-5,0.999998927051794,9,14,vacuolar transport,BP
+Unfertilized_egg,GO:0046416,2.16077907504344e-5,1,6,6,D-amino acid metabolic process,BP
+Unfertilized_egg,GO:0000077,7.58740585987307e-5,0.999995580037384,7,10,DNA damage checkpoint,BP
+Unfertilized_egg,GO:0035556,1.83585269928251e-4,0.999915747677176,39,146,intracellular signal transduction,BP
+Unfertilized_egg,GO:0051382,5.51899634821402e-4,0.99997402196695,5,7,kinetochore assembly,BP
+Unfertilized_egg,GO:0006281,8.95437627514149e-4,0.999643568151164,23,87,DNA repair,BP
+Unfertilized_egg,GO:0006260,9.35731407863453e-4,0.999720981241449,15,45,DNA replication,BP
+Unfertilized_egg,GO:0000387,0.00114195822425679,0.999877065250297,6,12,spliceosomal snRNP assembly,BP
+Unfertilized_egg,GO:0000122,0.00161628409513369,0.999967733756234,3,4,negative regulation of transcription by RNA polymerase II,BP
+Unfertilized_egg,GO:0006470,0.00236721358840177,0.999146594987254,17,55,protein dephosphorylation,BP
+Unfertilized_egg,GO:0016579,0.00259824092585684,0.99914219746927,15,43,protein deubiquitination,BP
+Unfertilized_egg,GO:0006352,0.00283896255971641,0.999600242312729,6,14,"DNA-templated transcription, initiation",BP
+Unfertilized_egg,GO:0019700,0.00326392206176125,1,3,3,organic phosphonate catabolic process,BP
+Unfertilized_egg,GO:0043044,0.00497231745943432,1,3,3,ATP-dependent chromatin remodeling,BP
+Unfertilized_egg,GO:0007096,0.00563343116697416,1,2,2,regulation of exit from mitosis,BP
+Unfertilized_egg,GO:0008033,0.00629613832131434,0.998375842695904,9,25,tRNA processing,BP
+Unfertilized_egg,GO:0071479,0.00646244115171373,1,2,2,cellular response to ionizing radiation,BP
+Unfertilized_egg,GO:0045944,0.00788583188588031,0.999302551484754,4,7,positive regulation of transcription by RNA polymerase II,BP
+Unfertilized_egg,GO:0006333,0.00819239593527657,1,2,2,chromatin assembly or disassembly,BP
+Unfertilized_egg,GO:1902600,0.00820934067664822,0.998246825887892,7,18,proton transmembrane transport,BP
+Unfertilized_egg,GO:0034314,0.00827775318379872,0.999175669422038,4,8,Arp2/3 complex-mediated actin nucleation,BP
+Unfertilized_egg,GO:0006481,0.00850007449977529,1,2,2,C-terminal protein methylation,BP
+Unfertilized_egg,GO:0006397,0.00882381556462922,0.9969843963485,12,38,mRNA processing,BP
+Unfertilized_egg,GO:0009116,0.00889372097382054,0.997764223934121,8,23,nucleoside metabolic process,BP
+Unfertilized_egg,GO:0006606,0.00903643160940711,0.998851130085206,5,9,protein import into nucleus,BP
+Unfertilized_egg,GO:0006511,0.00944613878596637,0.995763572661279,19,70,ubiquitin-dependent protein catabolic process,BP
+Unfertilized_egg,GO:0006506,0.0094514387856095,0.998184956047781,6,16,GPI anchor biosynthetic process,BP
+Unfertilized_egg,GO:0031023,0.010014012302265,1,2,2,microtubule organizing center organization,BP
+Unfertilized_egg,GO:0006556,0.0106136847716142,1,2,2,S-adenosylmethionine biosynthetic process,BP
+Unfertilized_egg,GO:0098703,0.0109638601075322,1,2,2,calcium ion import across plasma membrane,BP
+Unfertilized_egg,GO:0006493,0.0122728368210823,0.999476763363407,3,4,protein O-linked glycosylation,BP
+Unfertilized_egg,GO:0006120,0.013560275295582,1,2,2,"mitochondrial electron transport, NADH to ubiquinone",BP
+Unfertilized_egg,GO:0006226,0.0138655975658892,1,2,2,dUMP biosynthetic process,BP
+Unfertilized_egg,GO:0046081,0.0138655975658892,1,2,2,dUTP catabolic process,BP
+Unfertilized_egg,GO:0007098,0.0142487697270937,0.998487257665182,4,7,centrosome cycle,BP
+Unfertilized_egg,GO:0023052,0.0151276374994795,0.999299452167664,3,4,signaling,BP
+Unfertilized_egg,GO:0006269,0.0171354716527742,0.999165924508775,3,4,"DNA replication, synthesis of RNA primer",BP
+Unfertilized_egg,GO:0045132,0.0172628994747278,1,2,2,meiotic chromosome segregation,BP
+Unfertilized_egg,GO:0030036,0.0173498644063727,0.999151259115814,3,4,actin cytoskeleton organization,BP
+Unfertilized_egg,GO:0051225,0.017424638946181,0.997015341531098,5,11,spindle assembly,BP
+Unfertilized_egg,GO:0006810,0.0176265079291993,1,2,2,transport,BP
+Unfertilized_egg,GO:0006457,0.0182860640702464,0.992248802753966,14,55,protein folding,BP
+Unfertilized_egg,GO:0048478,0.018814698556977,1,2,2,replication fork protection,BP
+Unfertilized_egg,GO:0009058,0.0196879362665153,0.991628249863271,14,52,biosynthetic process,BP
+Unfertilized_egg,GO:0001932,0.0201638727189883,1,2,2,regulation of protein phosphorylation,BP
+Unfertilized_egg,GO:0006231,0.0204766175358783,1,2,2,dTMP biosynthetic process,BP
+Unfertilized_egg,GO:0048193,0.0207572181448298,0.99842836261194,3,5,Golgi vesicle transport,BP
+Unfertilized_egg,GO:0055114,0.0212543326498443,0.983259387088934,135,819,oxidation-reduction process,BP
+Unfertilized_egg,GO:0006182,0.0224790018908907,0.994838202302774,6,15,cGMP biosynthetic process,BP
+Unfertilized_egg,GO:0043065,0.023237303472604,1,2,2,positive regulation of apoptotic process,BP
+Unfertilized_egg,GO:0001919,0.0241316910580244,1,2,2,regulation of receptor recycling,BP
+Unfertilized_egg,GO:0007040,0.0241316910580244,1,2,2,lysosome organization,BP
+Unfertilized_egg,GO:0042632,0.0241316910580244,1,2,2,cholesterol homeostasis,BP
+Unfertilized_egg,GO:0043410,0.0241316910580244,1,2,2,positive regulation of MAPK cascade,BP
+Unfertilized_egg,GO:0046168,0.024337171200203,1,2,2,glycerol-3-phosphate catabolic process,BP
+Unfertilized_egg,GO:0002098,0.0246492838489773,0.996551370726809,4,8,tRNA wobble uridine modification,BP
+Unfertilized_egg,GO:0006007,0.0256174339299969,1,2,2,glucose catabolic process,BP
+Unfertilized_egg,GO:0006172,0.0272209533252444,1,2,2,ADP biosynthetic process,BP
+Unfertilized_egg,GO:0000723,0.0275392665406257,0.99290779833249,6,19,telomere maintenance,BP
+Unfertilized_egg,GO:0000725,0.0276692867402042,1,2,2,recombinational repair,BP
+Unfertilized_egg,GO:0048034,0.0283881171440157,1,2,2,heme O biosynthetic process,BP
+Unfertilized_egg,GO:0000902,0.0283931402791857,0.997561092656443,3,5,cell morphogenesis,BP
+Unfertilized_egg,GO:0006567,0.028472473533562,1,2,2,threonine catabolic process,BP
+Unfertilized_egg,GO:0006535,0.0286927585578257,1,2,2,cysteine biosynthetic process from serine,BP
+Unfertilized_egg,GO:1902751,0.02869730140347,1,2,2,positive regulation of cell cycle G2/M phase transition,BP
+Unfertilized_egg,GO:0006072,0.0287951475352589,1,2,2,glycerol-3-phosphate metabolic process,BP
+Unfertilized_egg,GO:0006360,0.0288141699005384,1,2,2,transcription by RNA polymerase I,BP
+Unfertilized_egg,GO:0007624,0.0289603673295505,1,2,2,ultradian rhythm,BP
+Unfertilized_egg,GO:0006499,0.029095887520244,1,2,2,N-terminal protein myristoylation,BP
+Unfertilized_egg,GO:0007163,0.0291215699049167,1,2,2,establishment or maintenance of cell polarity,BP
+Unfertilized_egg,GO:0031124,0.0291245184685128,1,2,2,mRNA 3'-end processing,BP
+Unfertilized_egg,GO:0009052,0.0291413809853598,1,2,2,"pentose-phosphate shunt, non-oxidative branch",BP
+Unfertilized_egg,GO:0034969,0.0291443276324547,1,2,2,histone arginine methylation,BP
+Unfertilized_egg,GO:0030705,0.0291444231883864,1,2,2,cytoskeleton-dependent intracellular transport,BP
+Unfertilized_egg,GO:0016192,0.0299347098477635,0.984559666896224,19,79,vesicle-mediated transport,BP
+Unfertilized_egg,GO:0006468,0.0300170499463978,0.976651026461929,111,615,protein phosphorylation,BP
+Unfertilized_egg,GO:0006520,0.0330857867071452,0.990022977115458,7,22,cellular amino acid metabolic process,BP
+Unfertilized_egg,GO:0022900,0.0353627147166044,0.998561367151364,2,3,electron transport chain,BP
+Unfertilized_egg,GO:0006807,0.0353849585745586,0.991784852703659,5,15,nitrogen compound metabolic process,BP
+Unfertilized_egg,GO:0046488,0.036232295580206,0.996559017751413,3,5,phosphatidylinositol metabolic process,BP
+Unfertilized_egg,GO:0005978,0.0378207392072218,0.996343318021576,3,5,glycogen biosynthetic process,BP
+Unfertilized_egg,GO:0000079,0.0440487109216761,0.997969906544824,2,3,regulation of cyclin-dependent protein serine/threonine kinase activity,BP
+Unfertilized_egg,GO:0006351,0.0485505383917681,0.979611918170316,10,41,"transcription, DNA-templated",BP
+Unfertilized_egg,GO:0005634,2.95202884970213e-5,0.999983479904966,82,379,nucleus,CC
+Unfertilized_egg,GO:0005829,7.71564434163095e-5,0.999988537181815,11,22,cytosol,CC
+Unfertilized_egg,GO:0031966,3.17781709045815e-4,0.999991396684244,5,6,mitochondrial membrane,CC
+Unfertilized_egg,GO:0033178,0.00129944604048859,1,3,3,"proton-transporting two-sector ATPase complex, catalytic domain",CC
+Unfertilized_egg,GO:0005685,0.0021597261056373,0.999927082381913,4,5,U1 snRNP,CC
+Unfertilized_egg,GO:0032299,0.00286525780009854,1,3,3,ribonuclease H2 complex,CC
+Unfertilized_egg,GO:0005739,0.0038425354120362,0.998673056029588,14,51,mitochondrion,CC
+Unfertilized_egg,GO:0009331,0.0041136277362139,1,3,3,glycerol-3-phosphate dehydrogenase complex,CC
+Unfertilized_egg,GO:0005737,0.00426787853775542,0.997482037607654,46,218,cytoplasm,CC
+Unfertilized_egg,GO:0009897,0.00494210535012885,1,3,3,external side of plasma membrane,CC
+Unfertilized_egg,GO:0008305,0.00497401701073759,1,3,3,integrin complex,CC
+Unfertilized_egg,GO:0005747,0.00500869945194871,0.999848535418404,3,4,mitochondrial respiratory chain complex I,CC
+Unfertilized_egg,GO:0005783,0.00712492146705611,0.997917800332409,10,31,endoplasmic reticulum,CC
+Unfertilized_egg,GO:0005885,0.00827775318379872,0.999175669422038,4,8,Arp2/3 protein complex,CC
+Unfertilized_egg,GO:0043564,0.0112862051962664,0.999534368695975,3,4,Ku70:Ku80 complex,CC
+Unfertilized_egg,GO:0005643,0.0116093018409878,0.998213801664374,5,11,nuclear pore,CC
+Unfertilized_egg,GO:0008537,0.0195488065783365,1,2,2,proteasome activator complex,CC
+Unfertilized_egg,GO:0016272,0.0200862867387909,0.996945019240441,4,11,prefoldin complex,CC
+Unfertilized_egg,GO:0030915,0.0221243563745803,1,2,2,Smc5-Smc6 complex,CC
+Unfertilized_egg,GO:0031965,0.0244616168787817,1,2,2,nuclear membrane,CC
+Unfertilized_egg,GO:0030880,0.0272690031219996,0.99904067054862,2,3,RNA polymerase complex,CC
+Unfertilized_egg,GO:0005814,0.0290883488974638,1,2,2,centriole,CC
+Unfertilized_egg,GO:0005658,0.0291444231879378,1,2,2,alpha DNA polymerase:primase complex,CC
+Unfertilized_egg,GO:0000220,0.0291444231890627,1,2,2,"vacuolar proton-transporting V-type ATPase, V0 domain",CC
+Unfertilized_egg,GO:0005856,0.0310827137567732,0.987499840379229,11,40,cytoskeleton,CC
+Unfertilized_egg,GO:0034998,0.0343990814523148,0.998622174696366,2,3,oligosaccharyltransferase I complex,CC
+Unfertilized_egg,GO:0033588,0.0348417789306293,0.996744438974192,3,5,Elongator holoenzyme complex,CC
+Unfertilized_egg,GO:0005952,0.0402864396306592,0.998235522390282,2,3,cAMP-dependent protein kinase complex,CC
+Unfertilized_egg,GO:0000776,0.0408493840924855,0.995226286930914,3,6,kinetochore,CC
+Unfertilized_egg,GO:0003884,2.16077907504344e-5,1,6,6,D-amino-acid oxidase activity,MF
+Unfertilized_egg,GO:0035091,1.83091703807944e-4,0.999948120545961,18,49,phosphatidylinositol binding,MF
+Unfertilized_egg,GO:0015035,6.82443644985733e-4,0.999878466090476,9,23,protein disulfide oxidoreductase activity,MF
+Unfertilized_egg,GO:0004725,8.05016827690154e-4,0.999714286531438,20,62,protein tyrosine phosphatase activity,MF
+Unfertilized_egg,GO:0004674,8.18726025916199e-4,0.999708990767562,20,62,protein serine/threonine kinase activity,MF
+Unfertilized_egg,GO:0008017,0.00106817077083249,0.999558210806538,25,83,microtubule binding,MF
+Unfertilized_egg,GO:0003684,0.00108036009094909,0.999804577924288,9,20,damaged DNA binding,MF
+Unfertilized_egg,GO:0043015,0.0012395603954489,0.999895730988182,6,9,gamma-tubulin binding,MF
+Unfertilized_egg,GO:0042802,0.00155703818106797,0.999906143178643,5,7,identical protein binding,MF
+Unfertilized_egg,GO:0004843,0.00196698146778641,0.999313535572021,17,51,thiol-dependent ubiquitin-specific protease activity,MF
+Unfertilized_egg,GO:0004672,0.00197600143047262,0.998714073243447,78,389,protein kinase activity,MF
+Unfertilized_egg,GO:0061630,0.00227686517507255,0.999500945193018,9,25,ubiquitin protein ligase activity,MF
+Unfertilized_egg,GO:0003682,0.00243210234211014,0.999649388723305,7,13,chromatin binding,MF
+Unfertilized_egg,GO:0015078,0.0025661031011557,0.999593776273017,7,15,proton transmembrane transporter activity,MF
+Unfertilized_egg,GO:0004364,0.00266282851890331,0.999731342876721,5,10,glutathione transferase activity,MF
+Unfertilized_egg,GO:0000287,0.00293092467050797,0.999005705884421,15,46,magnesium ion binding,MF
+Unfertilized_egg,GO:0004523,0.00342520807337942,0.999763448710193,4,7,RNA-DNA hybrid ribonuclease activity,MF
+Unfertilized_egg,GO:0042578,0.00366452260136105,0.999855203193344,4,5,phosphoric ester hydrolase activity,MF
+Unfertilized_egg,GO:0008483,0.0041482156416177696,0.999613606087872,5,8,transaminase activity,MF
+Unfertilized_egg,GO:0005542,0.00425148789844124,0.999879071687329,3,4,folic acid binding,MF
+Unfertilized_egg,GO:0004784,0.00460425667939295,1,3,3,superoxide dismutase activity,MF
+Unfertilized_egg,GO:0030695,0.00497378823692712,1,3,3,GTPase regulator activity,MF
+Unfertilized_egg,GO:0017110,0.00592825667594358,1,2,2,nucleoside-diphosphatase activity,MF
+Unfertilized_egg,GO:0051287,0.00615439861222953,0.998267218066954,10,29,NAD binding,MF
+Unfertilized_egg,GO:0003714,0.00689198313336455,0.999764885399237,3,4,transcription corepressor activity,MF
+Unfertilized_egg,GO:0003779,0.00705332741864554,0.997652047223971,12,39,actin binding,MF
+Unfertilized_egg,GO:0016791,0.0077566842283392,0.997522740969191,11,36,phosphatase activity,MF
+Unfertilized_egg,GO:0004671,0.00850007449977529,1,2,2,protein C-terminal S-isoprenylcysteine carboxyl O-methyltransferase activity,MF
+Unfertilized_egg,GO:0004045,0.00887259102868043,0.999516920377248,3,5,aminoacyl-tRNA hydrolase activity,MF
+Unfertilized_egg,GO:0030170,0.0105391347778562,0.995335070325981,18,66,pyridoxal phosphate binding,MF
+Unfertilized_egg,GO:0044877,0.010589806043871,0.999573819042785,3,4,protein-containing complex binding,MF
+Unfertilized_egg,GO:0004478,0.0106136847716142,1,2,2,methionine adenosyltransferase activity,MF
+Unfertilized_egg,GO:0042162,0.0112862051962664,0.999534368695975,3,4,telomeric DNA binding,MF
+Unfertilized_egg,GO:0017176,0.0127661518166649,0.999201117461718,3,5,phosphatidylinositol N-acetylglucosaminyltransferase activity,MF
+Unfertilized_egg,GO:0004144,0.0129815924444025,0.996590414798784,7,31,diacylglycerol O-acyltransferase activity,MF
+Unfertilized_egg,GO:0017056,0.0131062486604936,0.998644586372884,4,7,structural constituent of nuclear pore,MF
+Unfertilized_egg,GO:0004170,0.0138655975658892,1,2,2,dUTP diphosphatase activity,MF
+Unfertilized_egg,GO:0003713,0.016153749515226,0.997094861671705,5,13,transcription coactivator activity,MF
+Unfertilized_egg,GO:0003678,0.0181357735815354,0.994203532553962,9,29,DNA helicase activity,MF
+Unfertilized_egg,GO:0016627,0.0182055590971226,0.996024019426891,6,15,"oxidoreductase activity, acting on the CH-CH group of donors",MF
+Unfertilized_egg,GO:0004799,0.0204766175358783,1,2,2,thymidylate synthase activity,MF
+Unfertilized_egg,GO:0003841,0.0207679014514789,1,2,2,1-acylglycerol-3-phosphate O-acyltransferase activity,MF
+Unfertilized_egg,GO:0004637,0.0213587849371213,1,2,2,phosphoribosylamine-glycine ligase activity,MF
+Unfertilized_egg,GO:0005484,0.0216320981946966,0.997098261805259,4,8,SNAP receptor activity,MF
+Unfertilized_egg,GO:0009039,0.0216378590496361,1,2,2,urease activity,MF
+Unfertilized_egg,GO:0009055,0.0218681739201766,0.992579117159436,9,34,electron transfer activity,MF
+Unfertilized_egg,GO:0047304,0.0221521652567339,1,2,2,2-aminoethylphosphonate-pyruvate transaminase activity,MF
+Unfertilized_egg,GO:1990380,0.0226567291322617,1,2,2,Lys48-specific deubiquitinase activity,MF
+Unfertilized_egg,GO:0004617,0.0232618657780108,1,2,2,phosphoglycerate dehydrogenase activity,MF
+Unfertilized_egg,GO:0008425,0.0232866763298064,1,2,2,"2-polyprenyl-6-methoxy-1,4-benzoquinone methyltransferase activity",MF
+Unfertilized_egg,GO:0019829,0.0234900156719906,0.997805600649059,3,6,ATPase-coupled cation transmembrane transporter activity,MF
+Unfertilized_egg,GO:0003777,0.0242786804496938,0.987790018689843,19,78,microtubule motor activity,MF
+Unfertilized_egg,GO:0004367,0.024337171200203,1,2,2,glycerol-3-phosphate dehydrogenase [NAD+] activity,MF
+Unfertilized_egg,GO:0000900,0.0248248099131358,1,2,2,"translation repressor activity, mRNA regulatory element binding",MF
+Unfertilized_egg,GO:0004519,0.0249600455958762,0.995103310017383,5,12,endonuclease activity,MF
+Unfertilized_egg,GO:0004619,0.0256174339299969,1,2,2,phosphoglycerate mutase activity,MF
+Unfertilized_egg,GO:0000030,0.0263330431222326,0.99780624747536,3,5,mannosyltransferase activity,MF
+Unfertilized_egg,GO:0070403,0.0266362339422718,0.994390264827769,5,14,NAD+ binding,MF
+Unfertilized_egg,GO:0016151,0.0268172238197073,0.995882533208896,4,9,nickel cation binding,MF
+Unfertilized_egg,GO:0008495,0.0283881171440157,1,2,2,protoheme IX farnesyltransferase activity,MF
+Unfertilized_egg,GO:0008890,0.028472473533562,1,2,2,glycine C-acetyltransferase activity,MF
+Unfertilized_egg,GO:0019136,0.0289803712564227,1,2,2,deoxynucleoside kinase activity,MF
+Unfertilized_egg,GO:0004833,0.0290362135396568,1,2,2,"tryptophan 2,3-dioxygenase activity",MF
+Unfertilized_egg,GO:0004491,0.0290784154990238,1,2,2,methylmalonate-semialdehyde dehydrogenase (acylating) activity,MF
+Unfertilized_egg,GO:0004379,0.029095887520244,1,2,2,glycylpeptide N-tetradecanoyltransferase activity,MF
+Unfertilized_egg,GO:0004373,0.0291170586624447,1,2,2,glycogen (starch) synthase activity,MF
+Unfertilized_egg,GO:0004698,0.0291215699049167,1,2,2,calcium-dependent protein kinase C activity,MF
+Unfertilized_egg,GO:0031491,0.0291344650347178,1,2,2,nucleosome binding,MF
+Unfertilized_egg,GO:0004751,0.0291413809853598,1,2,2,ribose-5-phosphate isomerase activity,MF
+Unfertilized_egg,GO:0003860,0.0291428194240251,1,2,2,3-hydroxyisobutyryl-CoA hydrolase activity,MF
+Unfertilized_egg,GO:0008469,0.0291443276324547,1,2,2,histone-arginine N-methyltransferase activity,MF
+Unfertilized_egg,GO:0005049,0.0291444231884695,1,2,2,nuclear export signal receptor activity,MF
+Unfertilized_egg,GO:0003989,0.0291444231889415,1,2,2,acetyl-CoA carboxylase activity,MF
+Unfertilized_egg,GO:0004383,0.0302090962994907,0.99239104293349,6,16,guanylate cyclase activity,MF
+Unfertilized_egg,GO:0046961,0.0309381846643995,0.996772961036445,3,6,"proton-transporting ATPase activity, rotational mechanism",MF
+Unfertilized_egg,GO:0004017,0.0319313027648844,0.99662649160701,3,6,adenylate kinase activity,MF
+Unfertilized_egg,GO:0003887,0.0319363220443169,0.991582299805598,6,18,DNA-directed DNA polymerase activity,MF
+Unfertilized_egg,GO:0005543,0.0326326569571747,0.997032346272879,3,5,phospholipid binding,MF
+Unfertilized_egg,GO:0016888,0.0330826044651976,0.998703645019922,2,3,"endodeoxyribonuclease activity, producing 5'-phosphomonoesters",MF
+Unfertilized_egg,GO:0015075,0.0357014061424639,0.996630188229092,3,5,ion transmembrane transporter activity,MF
+Unfertilized_egg,GO:0016491,0.0362699127345986,0.975068427950782,48,268,oxidoreductase activity,MF
+Unfertilized_egg,GO:0017048,0.0378779165452206,0.996335477398407,3,5,Rho GTPase binding,MF
+Unfertilized_egg,GO:0008603,0.0402864396306592,0.998235522390282,2,3,cAMP-dependent protein kinase regulator activity,MF
+Unfertilized_egg,GO:0046982,0.0405042803199582,0.983445413145314,10,43,protein heterodimerization activity,MF
+Unfertilized_egg,GO:0004719,0.0411572205692007,0.997458346255263,2,4,protein-L-isoaspartate (D-aspartate) O-methyltransferase activity,MF
+Unfertilized_egg,GO:0003899,0.0447517539714715,0.987172640348407,6,18,DNA-directed 5'-3' RNA polymerase activity,MF
+Unfertilized_egg,GO:0005524,0.0464697309662408,0.960266888958901,240,1441,ATP binding,MF
+Unfertilized_egg,GO:0016798,0.0471146448547744,0.994156936713531,3,6,"hydrolase activity, acting on glycosyl bonds",MF
+Unfertilized_egg,GO:0003824,0.0477152944489468,0.969514075315074,31,176,catalytic activity,MF
+Unfertilized_egg,GO:0005096,0.0482814355479774,0.980153963267351,10,35,GTPase activator activity,MF
+Fertilized_egg,GO:0046416,4.86771871786505e-7,1,6,6,D-amino acid metabolic process,BP
+Fertilized_egg,GO:0007034,1.6811765356683e-4,0.999986520292293,6,14,vacuolar transport,BP
+Fertilized_egg,GO:0000387,3.50197848740027e-4,0.999975640760756,5,12,spliceosomal snRNP assembly,BP
+Fertilized_egg,GO:0034453,4.31730231579402e-4,1,3,3,microtubule anchoring,BP
+Fertilized_egg,GO:0034314,6.64902044217071e-4,0.999967768097671,4,8,Arp2/3 complex-mediated actin nucleation,BP
+Fertilized_egg,GO:0015986,7.0095518335267e-4,0.999917583276347,6,19,ATP synthesis coupled proton transport,BP
+Fertilized_egg,GO:0006493,0.00190939554490766,0.999959534157708,3,4,protein O-linked glycosylation,BP
+Fertilized_egg,GO:0006807,0.00199364683833546,0.999775972624968,5,15,nitrogen compound metabolic process,BP
+Fertilized_egg,GO:0023052,0.00232831056650103,0.999946968435656,3,4,signaling,BP
+Fertilized_egg,GO:0006120,0.00289956358005718,1,2,2,"mitochondrial electron transport, NADH to ubiquinone",BP
+Fertilized_egg,GO:0006839,0.004357278822721,1,2,2,mitochondrial transport,BP
+Fertilized_egg,GO:0045132,0.0044733564811163,1,2,2,meiotic chromosome segregation,BP
+Fertilized_egg,GO:0006520,0.00476811808335299,0.999144806417427,6,22,cellular amino acid metabolic process,BP
+Fertilized_egg,GO:0006695,0.00490710794752387,0.99990301890795,2,4,cholesterol biosynthetic process,BP
+Fertilized_egg,GO:0000122,0.00527064347624969,0.999891896162752,2,4,negative regulation of transcription by RNA polymerase II,BP
+Fertilized_egg,GO:0000027,0.00551906073464105,1,2,2,ribosomal large subunit assembly,BP
+Fertilized_egg,GO:0043065,0.00586781862243694,1,2,2,positive regulation of apoptotic process,BP
+Fertilized_egg,GO:0001919,0.00617217612191437,1,2,2,regulation of receptor recycling,BP
+Fertilized_egg,GO:0007040,0.00617217612191437,1,2,2,lysosome organization,BP
+Fertilized_egg,GO:0042632,0.00617217612191437,1,2,2,cholesterol homeostasis,BP
+Fertilized_egg,GO:0043410,0.00617217612191437,1,2,2,positive regulation of MAPK cascade,BP
+Fertilized_egg,GO:0006007,0.00649695467071123,1,2,2,glucose catabolic process,BP
+Fertilized_egg,GO:0009058,0.00670770534738816,0.997909645126728,10,52,biosynthetic process,BP
+Fertilized_egg,GO:0048034,0.00754033306433364,1,2,2,heme O biosynthetic process,BP
+Fertilized_egg,GO:0006360,0.00781393931743678,1,2,2,transcription by RNA polymerase I,BP
+Fertilized_egg,GO:0030705,0.00940611509175954,1,2,2,cytoskeleton-dependent intracellular transport,BP
+Fertilized_egg,GO:0006886,0.00947950974233783,0.996026304071977,15,91,intracellular protein transport,BP
+Fertilized_egg,GO:0006464,0.00982591239531856,0.997539147976599,7,33,cellular protein modification process,BP
+Fertilized_egg,GO:0042773,0.0107713933557673,0.999771159387962,2,3,ATP synthesis coupled electron transport,BP
+Fertilized_egg,GO:0016192,0.0116436721834789,0.995346496070413,13,79,vesicle-mediated transport,BP
+Fertilized_egg,GO:0006122,0.0139309208695094,0.999523716037878,2,4,"mitochondrial electron transport, ubiquinol to cytochrome c",BP
+Fertilized_egg,GO:0006096,0.0146248368255952,0.997879572880812,4,13,glycolytic process,BP
+Fertilized_egg,GO:0006506,0.0158447367244341,0.99753347087264,4,16,GPI anchor biosynthetic process,BP
+Fertilized_egg,GO:0019700,0.016078444718224,0.999576518188295,2,3,organic phosphonate catabolic process,BP
+Fertilized_egg,GO:0006002,0.0181599719141819,0.999489066400998,2,3,fructose 6-phosphate metabolic process,BP
+Fertilized_egg,GO:0006014,0.0190671531407124,0.999449123984649,2,3,D-ribose metabolic process,BP
+Fertilized_egg,GO:0016197,0.0193511866874569,0.999436395194335,2,3,endosomal transport,BP
+Fertilized_egg,GO:0032008,0.0195640674444317,0.999426785985183,2,3,positive regulation of TOR signaling,BP
+Fertilized_egg,GO:0071230,0.0195640674444317,0.999426785985183,2,3,cellular response to amino acid stimulus,BP
+Fertilized_egg,GO:0015693,0.0199357866269802,0.999409865844901,2,3,magnesium ion transport,BP
+Fertilized_egg,GO:0015689,0.0199900203060784,0.999170426574434,2,4,molybdate ion transport,BP
+Fertilized_egg,GO:0045947,0.0237520198495883,0.998917664397506,2,4,negative regulation of translational initiation,BP
+Fertilized_egg,GO:0006006,0.0237826458464588,0.998915508147485,2,4,glucose metabolic process,BP
+Fertilized_egg,GO:0006376,0.0242392451038162,0.999201284487458,2,3,mRNA splice site selection,BP
+Fertilized_egg,GO:0006303,0.0250045062637607,0.997212833972317,3,8,double-strand break repair via nonhomologous end joining,BP
+Fertilized_egg,GO:0030163,0.0252369705651484,0.997176693414589,3,8,protein catabolic process,BP
+Fertilized_egg,GO:0048747,0.0303330215286687,1,1,1,muscle fiber development,BP
+Fertilized_egg,GO:0006397,0.0308680682878841,0.990089776314659,7,38,mRNA processing,BP
+Fertilized_egg,GO:0000723,0.0339263971006319,0.993121330655515,4,19,telomere maintenance,BP
+Fertilized_egg,GO:0006094,0.0342473262499862,0.99809182170848,2,4,gluconeogenesis,BP
+Fertilized_egg,GO:0006913,0.0343377091228914,0.998083985340387,2,4,nucleocytoplasmic transport,BP
+Fertilized_egg,GO:0006298,0.0353065486480989,0.993037744937813,4,15,mismatch repair,BP
+Fertilized_egg,GO:0006779,0.0353201245287782,0.997998043838816,2,4,porphyrin-containing compound biosynthetic process,BP
+Fertilized_egg,GO:0036297,0.0365960558156024,0.997884352178778,2,4,interstrand cross-link repair,BP
+Fertilized_egg,GO:0032324,0.0367556351578844,1,1,1,molybdopterin cofactor biosynthetic process,BP
+Fertilized_egg,GO:0006777,0.038377309725057,0.99737345678902,2,5,Mo-molybdopterin cofactor biosynthetic process,BP
+Fertilized_egg,GO:0006281,0.0388306661638241,0.982749099029017,11,87,DNA repair,BP
+Fertilized_egg,GO:0006555,0.0392155317184744,0.997643712422659,2,4,methionine metabolic process,BP
+Fertilized_egg,GO:1902600,0.0394918500886845,0.991662765851378,4,18,proton transmembrane transport,BP
+Fertilized_egg,GO:0006606,0.0416296650239927,0.994071858689113,3,9,protein import into nucleus,BP
+Fertilized_egg,GO:0006352,0.0427315965377977,0.993188707556225,3,14,"DNA-templated transcription, initiation",BP
+Fertilized_egg,GO:0051259,0.0428970319211449,1,1,1,protein complex oligomerization,BP
+Fertilized_egg,GO:0048193,0.043990391381182103,0.996751618650377,2,5,Golgi vesicle transport,BP
+Fertilized_egg,GO:0035556,0.0452422412573039,0.975034912817037,18,146,intracellular signal transduction,BP
+Fertilized_egg,GO:0006260,0.0462155523856424,0.983576670282868,7,45,DNA replication,BP
+Fertilized_egg,GO:0006457,0.046446492781632,0.982041167803452,8,55,protein folding,BP
+Fertilized_egg,GO:0006633,0.0469153030617427,0.992986434020018,3,9,fatty acid biosynthetic process,BP
+Fertilized_egg,GO:0061484,0.0495811573724305,1,1,1,hematopoietic stem cell homeostasis,BP
+Fertilized_egg,GO:0031966,1.60614800940917e-7,1,6,6,mitochondrial membrane,CC
+Fertilized_egg,GO:0005737,2.8951852531949e-7,0.999999900783974,39,218,cytoplasm,CC
+Fertilized_egg,GO:0005829,1.18115994086585e-4,0.999985541622213,8,22,cytosol,CC
+Fertilized_egg,GO:0032299,3.70097404206643e-4,1,3,3,ribonuclease H2 complex,CC
+Fertilized_egg,GO:0005747,6.58390995752715e-4,0.999990461930383,3,4,mitochondrial respiratory chain complex I,CC
+Fertilized_egg,GO:0005885,6.64902044217071e-4,0.999967768097671,4,8,Arp2/3 protein complex,CC
+Fertilized_egg,GO:0005740,9.10375347759567e-4,0.999985207535929,3,4,mitochondrial envelope,CC
+Fertilized_egg,GO:0000276,9.69943917221211e-4,0.99994783483618,4,8,"mitochondrial proton-transporting ATP synthase complex, coupling factor F(o)",CC
+Fertilized_egg,GO:0001405,0.00245631924735929,1,2,2,"PAM complex, Tim23 associated import motor",CC
+Fertilized_egg,GO:0031965,0.00617929942747652,1,2,2,nuclear membrane,CC
+Fertilized_egg,GO:0030880,0.00731890519980159,0.999873276758576,2,3,RNA polymerase complex,CC
+Fertilized_egg,GO:0034998,0.00873170781733341,0.999834055029855,2,3,oligosaccharyltransferase I complex,CC
+Fertilized_egg,GO:0000220,0.00976552264849788,1,2,2,"vacuolar proton-transporting V-type ATPase, V0 domain",CC
+Fertilized_egg,GO:0005815,0.011065328387371,0.99922807886337806,3,6,microtubule organizing center,CC
+Fertilized_egg,GO:0030896,0.0173990902739255,0.999521719476134,2,3,checkpoint clamp complex,CC
+Fertilized_egg,GO:0000178,0.0176512426523895,0.999510984961097,2,3,exosome (RNase complex),CC
+Fertilized_egg,GO:0048188,0.0221167060916809,0.999307038435247,2,3,Set1C/COMPASS complex,CC
+Fertilized_egg,GO:0071986,0.0229567601575524,0.99897310737964,2,4,Ragulator complex,CC
+Fertilized_egg,GO:0043564,0.0302379307068106,0.998427313054263,2,4,Ku70:Ku80 complex,CC
+Fertilized_egg,GO:0005666,0.0312517045119003,0.99834475042656,2,4,RNA polymerase III complex,CC
+Fertilized_egg,GO:0005892,0.0325873107981802,1,1,1,acetylcholine-gated channel complex,CC
+Fertilized_egg,GO:0043240,0.0365960558156024,0.997884352178778,2,4,Fanconi anaemia nuclear complex,CC
+Fertilized_egg,GO:0005615,0.0440129017209959,0.990563969172076,4,16,extracellular space,CC
+Fertilized_egg,GO:0003884,4.86771871786505e-7,1,6,6,D-amino-acid oxidase activity,MF
+Fertilized_egg,GO:0015078,3.26107301055721e-6,0.999999803434106,8,15,proton transmembrane transporter activity,MF
+Fertilized_egg,GO:0008483,2.03297860917369e-4,0.999990718072296,5,8,transaminase activity,MF
+Fertilized_egg,GO:0004129,2.04127866530773e-4,0.999987942701209,5,11,cytochrome-c oxidase activity,MF
+Fertilized_egg,GO:0004523,2.32799034829981e-4,0.999992393019516,4,7,RNA-DNA hybrid ribonuclease activity,MF
+Fertilized_egg,GO:0003684,4.36320361192247e-4,0.999943934874356,7,20,damaged DNA binding,MF
+Fertilized_egg,GO:0016627,6.96967739032796e-4,0.999924175130224,6,15,"oxidoreductase activity, acting on the CH-CH group of donors",MF
+Fertilized_egg,GO:0017056,0.00127950428285218,0.999933310640837,4,7,structural constituent of nuclear pore,MF
+Fertilized_egg,GO:0035091,0.00144429760000965,0.999616224896003,11,49,phosphatidylinositol binding,MF
+Fertilized_egg,GO:0042802,0.00148431585182071,0.999919339096525,4,7,identical protein binding,MF
+Fertilized_egg,GO:0005484,0.00211611207442906,0.999858442793126,4,8,SNAP receptor activity,MF
+Fertilized_egg,GO:0016151,0.00261981422609336,0.999800106287548,4,9,nickel cation binding,MF
+Fertilized_egg,GO:0000030,0.0041700936382228,0.999828749105969,3,5,mannosyltransferase activity,MF
+Fertilized_egg,GO:0004345,0.00447361642176385,1,2,2,glucose-6-phosphate dehydrogenase activity,MF
+Fertilized_egg,GO:0004631,0.00490710794752387,0.99990301890795,2,4,phosphomevalonate kinase activity,MF
+Fertilized_egg,GO:0008017,0.00518035301053694,0.99798753341968,15,83,microtubule binding,MF
+Fertilized_egg,GO:0008121,0.00554308365935272,0.99991704448196606,2,3,ubiquinol-cytochrome-c reductase activity,MF
+Fertilized_egg,GO:0047304,0.00571152861164909,1,2,2,2-aminoethylphosphonate-pyruvate transaminase activity,MF
+Fertilized_egg,GO:0015075,0.00571311829800545,0.999736430037689,3,5,ion transmembrane transporter activity,MF
+Fertilized_egg,GO:1990380,0.00572654056836414,1,2,2,Lys48-specific deubiquitinase activity,MF
+Fertilized_egg,GO:0004617,0.00587466564054499,1,2,2,phosphoglycerate dehydrogenase activity,MF
+Fertilized_egg,GO:0008425,0.00588015957251283,1,2,2,"2-polyprenyl-6-methoxy-1,4-benzoquinone methyltransferase activity",MF
+Fertilized_egg,GO:0009039,0.00612379862879473,1,2,2,urease activity,MF
+Fertilized_egg,GO:0000900,0.00629080579803782,1,2,2,"translation repressor activity, mRNA regulatory element binding",MF
+Fertilized_egg,GO:0004619,0.00649695467071123,1,2,2,phosphoglycerate mutase activity,MF
+Fertilized_egg,GO:0043015,0.00661314074586911,0.999340404540765,4,9,gamma-tubulin binding,MF
+Fertilized_egg,GO:0042578,0.00747984798329422,0.999618342005639,3,5,phosphoric ester hydrolase activity,MF
+Fertilized_egg,GO:0008495,0.00754033306433364,1,2,2,protoheme IX farnesyltransferase activity,MF
+Fertilized_egg,GO:0004491,0.00846138719183897,1,2,2,methylmalonate-semialdehyde dehydrogenase (acylating) activity,MF
+Fertilized_egg,GO:0003860,0.00876333030437121,1,2,2,3-hydroxyisobutyryl-CoA hydrolase activity,MF
+Fertilized_egg,GO:0004719,0.00918319668407571,0.999748212191988,2,4,protein-L-isoaspartate (D-aspartate) O-methyltransferase activity,MF
+Fertilized_egg,GO:0015035,0.0092430126262264,0.99835593857007,5,23,protein disulfide oxidoreductase activity,MF
+Fertilized_egg,GO:0003989,0.00971767651917096,1,2,2,acetyl-CoA carboxylase activity,MF
+Fertilized_egg,GO:0017069,0.0123331897932869,0.999604799654747,2,4,snRNA binding,MF
+Fertilized_egg,GO:0004861,0.0168443885000233,0.999200162166351,2,6,cyclin-dependent protein serine/threonine kinase inhibitor activity,MF
+Fertilized_egg,GO:0003872,0.0181599719141819,0.999489066400998,2,3,6-phosphofructokinase activity,MF
+Fertilized_egg,GO:0009055,0.018542626000383,0.99524327877766,6,34,electron transfer activity,MF
+Fertilized_egg,GO:0004747,0.0190671531407124,0.999449123984649,2,3,ribokinase activity,MF
+Fertilized_egg,GO:0015095,0.0199357866269802,0.999409865844901,2,3,magnesium ion transmembrane transporter activity,MF
+Fertilized_egg,GO:0015098,0.0199900203060784,0.999170426574434,2,4,molybdate ion transmembrane transporter activity,MF
+Fertilized_egg,GO:0004784,0.0204016538002193,0.99938840846168,2,3,superoxide dismutase activity,MF
+Fertilized_egg,GO:0003678,0.0210908485193836,0.99452659058529,6,29,DNA helicase activity,MF
+Fertilized_egg,GO:0009374,0.0227821023918158,0.998985141864019,2,4,biotin binding,MF
+Fertilized_egg,GO:0004045,0.0238310844085337,0.998743527888034,2,5,aminoacyl-tRNA hydrolase activity,MF
+Fertilized_egg,GO:0030695,0.025014211902822,0.999161313502672,2,3,GTPase regulator activity,MF
+Fertilized_egg,GO:0016765,0.0270460429337333,0.998676962573618,2,4,"transferase activity, transferring alkyl or aryl (other than methyl) groups",MF
+Fertilized_egg,GO:0016758,0.0272344844128444,0.998662665455916,2,4,"transferase activity, transferring hexosyl groups",MF
+Fertilized_egg,GO:0004144,0.0280653869594522,0.994346139009994,4,31,diacylglycerol O-acyltransferase activity,MF
+Fertilized_egg,GO:0003908,0.0287662850463979,1,1,1,methylated-DNA-[protein]-cysteine S-methyltransferase activity,MF
+Fertilized_egg,GO:0017176,0.029803702520077,0.99822530044832,2,5,phosphatidylinositol N-acetylglucosaminyltransferase activity,MF
+Fertilized_egg,GO:0042162,0.0302379307068106,0.998427313054263,2,4,telomeric DNA binding,MF
+Fertilized_egg,GO:0000287,0.0323128356920546,0.988524421111144,8,46,magnesium ion binding,MF
+Fertilized_egg,GO:0004866,0.0339749615854338,0.995723860907151,3,8,endopeptidase inhibitor activity,MF
+Fertilized_egg,GO:0052381,0.034863031251562,1,1,1,tRNA dimethylallyltransferase activity,MF
+Fertilized_egg,GO:0030983,0.0353065486480989,0.993037744937813,4,15,mismatched DNA binding,MF
+Fertilized_egg,GO:0017022,0.0376243419224914,1,1,1,myosin binding,MF
+Fertilized_egg,GO:0071949,0.0383154107374983,0.988471269960862,6,31,FAD binding,MF
+Fertilized_egg,GO:0003755,0.0383259913947614,0.98694727747353,7,44,peptidyl-prolyl cis-trans isomerase activity,MF
+Fertilized_egg,GO:0004489,0.0392155317184744,0.997643712422659,2,4,methylenetetrahydrofolate reductase (NAD(P)H) activity,MF
+Fertilized_egg,GO:0004435,0.0430057349295945,0.993794676045907,3,9,phosphatidylinositol phospholipase C activity,MF
+Fertilized_egg,GO:0008137,0.0431907614318108,0.993010164812396,3,15,NADH dehydrogenase (ubiquinone) activity,MF
+Fertilized_egg,GO:0106073,0.0493354356315764,1,1,1,"dolichyl pyrophosphate Glc2Man9GlcNAc2 alpha-1,2-glucosyltransferase activity",MF
+Cleavage,GO:0035556,1.18788408270174e-6,0.99999967578968,24,146,intracellular signal transduction,BP
+Cleavage,GO:0090481,1.96574294982841e-6,0.999999982614014,5,6,pyrimidine nucleotide-sugar transmembrane transport,BP
+Cleavage,GO:0006139,6.57571386259665e-6,0.999999213924821,10,35,nucleobase-containing compound metabolic process,BP
+Cleavage,GO:0046856,6.48516052484129e-5,0.999997407809914,5,9,phosphatidylinositol dephosphorylation,BP
+Cleavage,GO:0016311,3.07949397612418e-4,0.999969598513665,6,18,dephosphorylation,BP
+Cleavage,GO:0008299,0.0013178818447787,0.999912745939225,4,10,isoprenoid biosynthetic process,BP
+Cleavage,GO:0034968,0.00145941120525989,0.999959008225722,3,5,histone lysine methylation,BP
+Cleavage,GO:0034080,0.00163030463869762,1,2,2,CENP-A containing nucleosome assembly,BP
+Cleavage,GO:0071816,0.00190895668358401,1,2,2,tail-anchored membrane protein insertion into ER membrane,BP
+Cleavage,GO:0006888,0.00233268182440518,0.999806145636252,4,12,endoplasmic reticulum to Golgi vesicle-mediated transport,BP
+Cleavage,GO:0006480,0.00286679572192832,1,2,2,N-terminal protein amino acid methylation,BP
+Cleavage,GO:0006784,0.00326148178149968,1,2,2,heme A biosynthetic process,BP
+Cleavage,GO:0006368,0.00330687460780584,0.999852499459583,3,6,transcription elongation from RNA polymerase II promoter,BP
+Cleavage,GO:0006623,0.00347000429728086,1,2,2,protein targeting to vacuole,BP
+Cleavage,GO:0017148,0.00354510294744893,1,2,2,negative regulation of translation,BP
+Cleavage,GO:0043488,0.00354510294744893,1,2,2,regulation of mRNA stability,BP
+Cleavage,GO:0006470,0.00961889250961298,0.997232201267226,8,55,protein dephosphorylation,BP
+Cleavage,GO:0006526,0.0100131269748997,0.999795412532254,2,3,arginine biosynthetic process,BP
+Cleavage,GO:0032218,0.0102761718519687,0.999701097077556,2,4,riboflavin transport,BP
+Cleavage,GO:0008053,0.0104582832075205,0.99978131738467,2,3,mitochondrial fusion,BP
+Cleavage,GO:0044260,0.0114837026419359,0.999645758601964,2,4,cellular macromolecule metabolic process,BP
+Cleavage,GO:0030488,0.013240499022152,0.999559500126672,2,4,tRNA methylation,BP
+Cleavage,GO:0050909,0.015310601928072501,0.999363496028578,2,5,sensory perception of taste,BP
+Cleavage,GO:0006379,0.0215141824495619,0.998926866720059,2,5,mRNA cleavage,BP
+Cleavage,GO:0006890,0.0261653500159195,0.998549008384239,2,5,"retrograde vesicle-mediated transport, Golgi to endoplasmic reticulum",BP
+Cleavage,GO:0120009,0.0316943815432718,0.997884656912825,2,6,intermembrane lipid transfer,BP
+Cleavage,GO:0006631,0.0324487957649558,0.997806279386236,2,6,fatty acid metabolic process,BP
+Cleavage,GO:0007179,0.034741292124575,0.997561790170442,2,6,transforming growth factor beta receptor signaling pathway,BP
+Cleavage,GO:0007018,0.0368328066195748,0.983634515629184,11,108,microtubule-based movement,BP
+Cleavage,GO:0006885,0.0368655283367773,0.997326915502081,2,6,regulation of pH,BP
+Cleavage,GO:0006506,0.037834434281203,0.99413703175552,3,16,GPI anchor biosynthetic process,BP
+Cleavage,GO:0007600,0.0401969210012109,1,1,1,sensory perception,BP
+Cleavage,GO:0045494,0.0401969210012109,1,1,1,photoreceptor cell maintenance,BP
+Cleavage,GO:0045329,0.0402473088721817,1,1,1,carnitine biosynthetic process,BP
+Cleavage,GO:0010826,0.0402748860501743,1,1,1,negative regulation of centrosome duplication,BP
+Cleavage,GO:0007264,0.040436436718683,0.987229687301129,6,48,small GTPase mediated signal transduction,BP
+Cleavage,GO:0000183,0.0412761357797296,1,1,1,rDNA heterochromatin assembly,BP
+Cleavage,GO:0034427,0.0415625646660989,1,1,1,"nuclear-transcribed mRNA catabolic process, exonucleolytic, 3'-5'",BP
+Cleavage,GO:0007064,0.0415859003628664,0.99677715007753,2,6,mitotic sister chromatid cohesion,BP
+Cleavage,GO:0021520,0.0418192742885038,1,1,1,spinal cord motor neuron cell fate specification,BP
+Cleavage,GO:0046474,0.0473608725902539,1,1,1,glycerophospholipid biosynthetic process,BP
+Cleavage,GO:0006788,0.0475510507182735,1,1,1,heme oxidation,BP
+Cleavage,GO:0042998,0.0476630001415036,1,1,1,positive regulation of Golgi to plasma membrane protein transport,BP
+Cleavage,GO:0060271,0.0479569802359028,0.995765367667257,2,7,cilium assembly,BP
+Cleavage,GO:0042981,0.0485842075360718,0.97429693081034,15,183,regulation of apoptotic process,BP
+Cleavage,GO:0000139,4.36154316578744e-4,0.999938702430459,7,30,Golgi membrane,CC
+Cleavage,GO:0043189,0.00165661326820703,1,2,2,H4/H2A histone acetyltransferase complex,CC
+Cleavage,GO:0036038,0.00253208596514505,1,2,2,MKS complex,CC
+Cleavage,GO:0016021,0.00278786514339952,0.997909066833606,146,2456,integral component of membrane,CC
+Cleavage,GO:0008023,0.00998283994084125,0.999796359386667,2,3,transcription elongation factor complex,CC
+Cleavage,GO:0016592,0.0147214145440087,0.996971731240713,5,29,mediator complex,CC
+Cleavage,GO:0000813,0.0285148109936826,0.998342895537665,2,5,ESCRT I complex,CC
+Cleavage,GO:0005662,0.0401952637691882,1,1,1,DNA replication factor A complex,CC
+Cleavage,GO:0035861,0.0401952637691882,1,1,1,site of double-strand break,CC
+Cleavage,GO:0005720,0.0412761357797296,1,1,1,nuclear heterochromatin,CC
+Cleavage,GO:0000799,0.0470060511461741,1,1,1,nuclear condensin complex,CC
+Cleavage,GO:0008408,1.23860055468825e-8,0.999999999230352,11,26,3'-5' exonuclease activity,MF
+Cleavage,GO:0015165,1.96574294982841e-6,0.999999982614014,5,6,pyrimidine nucleotide-sugar transmembrane transporter activity,MF
+Cleavage,GO:0018024,2.71324797893923e-5,0.999999204349554,5,8,histone-lysine N-methyltransferase activity,MF
+Cleavage,GO:0004725,1.42119699694799e-4,0.999968607574813,12,62,protein tyrosine phosphatase activity,MF
+Cleavage,GO:0005515,4.66685938174727e-4,0.999643415872961,238,3720,protein binding,MF
+Cleavage,GO:0016757,9.45327424999629e-4,0.999818893053868,8,43,"transferase activity, transferring glycosyl groups",MF
+Cleavage,GO:0009019,0.00183862489489738,1,2,2,tRNA (guanine-N1-)-methyltransferase activity,MF
+Cleavage,GO:0004421,0.00243900016086652,1,2,2,hydroxymethylglutaryl-CoA synthase activity,MF
+Cleavage,GO:0008017,0.0025246085622772,0.999201267404359,12,83,microtubule binding,MF
+Cleavage,GO:0035240,0.00286060839496673,1,2,2,dopamine binding,MF
+Cleavage,GO:0072544,0.00286060839496673,1,2,2,L-DOPA binding,MF
+Cleavage,GO:0072545,0.00286060839496673,1,2,2,tyrosine binding,MF
+Cleavage,GO:0005347,0.00306658593606192,0.999591889971262,5,20,ATP transmembrane transporter activity,MF
+Cleavage,GO:0003991,0.0033958990258582,1,2,2,acetylglutamate kinase activity,MF
+Cleavage,GO:0030371,0.00354510294744893,1,2,2,translation repressor activity,MF
+Cleavage,GO:0003777,0.00363053959788975,0.998864493737524,11,78,microtubule motor activity,MF
+Cleavage,GO:0016787,0.00423193786499473,0.998177518273547,18,183,hydrolase activity,MF
+Cleavage,GO:0016409,0.00439493181042769,0.999347624380724,5,23,palmitoyltransferase activity,MF
+Cleavage,GO:0003725,0.00537559570049909,0.999920846972172,2,3,double-stranded RNA binding,MF
+Cleavage,GO:0008168,0.00560352806186607,0.9980125423703,12,106,methyltransferase activity,MF
+Cleavage,GO:0017064,0.00649657207411355,0.999894367459723,2,3,fatty acid amide hydrolase activity,MF
+Cleavage,GO:0016717,0.00669531094294076,0.999510505240279,3,10,"oxidoreductase activity, acting on paired donors, with oxidation of a pair of donors resulting in the reduction of molecular oxygen to two molecules of water",MF
+Cleavage,GO:0003964,0.00710958416332372,0.997034666003906,15,169,RNA-directed DNA polymerase activity,MF
+Cleavage,GO:0000175,0.00750146483317599,0.999868446250292,2,3,3'-5'-exoribonuclease activity,MF
+Cleavage,GO:0003953,0.00991817200876666,0.999798375867544,2,3,NAD+ nucleosidase activity,MF
+Cleavage,GO:0005085,0.0101167485985857,0.996555173436351,10,74,guanyl-nucleotide exchange factor activity,MF
+Cleavage,GO:0032217,0.0102761718519687,0.999701097077556,2,4,riboflavin transmembrane transporter activity,MF
+Cleavage,GO:0004659,0.0106442611041437,0.99968458038766,2,4,prenyltransferase activity,MF
+Cleavage,GO:0016972,0.012044528376981299,0.999618947028022,2,4,thiol oxidase activity,MF
+Cleavage,GO:0003824,0.0128989951537594,0.994071126989471,16,176,catalytic activity,MF
+Cleavage,GO:0009374,0.0132806544478119,0.999557451572185,2,4,biotin binding,MF
+Cleavage,GO:0046872,0.0137455850642591,0.992163937072373,28,338,metal ion binding,MF
+Cleavage,GO:0070290,0.0166224752383395,0.999278000997066,2,5,N-acylphosphatidylethanolamine-specific phospholipase D activity,MF
+Cleavage,GO:0008138,0.0212982791115199,0.996213306463981,4,21,protein tyrosine/serine/threonine phosphatase activity,MF
+Cleavage,GO:0016705,0.0290196297468012,0.986520604963018,13,144,"oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen",MF
+Cleavage,GO:0120013,0.0316943815432718,0.997884656912825,2,6,lipid transfer activity,MF
+Cleavage,GO:0003712,0.0347018872033086,0.992675276242943,4,25,transcription coregulator activity,MF
+Cleavage,GO:0015385,0.0368655283367773,0.997326915502081,2,6,sodium:proton antiporter activity,MF
+Cleavage,GO:0008194,0.0388396972372032,0.993918577930673,3,16,UDP-glycosyltransferase activity,MF
+Cleavage,GO:0050353,0.0402473088721817,1,1,1,trimethyllysine dioxygenase activity,MF
+Cleavage,GO:0004452,0.0409404759421339,1,1,1,isopentenyl-diphosphate delta-isomerase activity,MF
+Cleavage,GO:0000009,0.0422065863448972,1,1,1,"alpha-1,6-mannosyltransferase activity",MF
+Cleavage,GO:0004476,0.0424868164864744,1,1,1,mannose-6-phosphate isomerase activity,MF
+Cleavage,GO:0005506,0.0444083033166675,0.976791138293673,15,182,iron ion binding,MF
+Cleavage,GO:0044547,0.0470060511461741,1,1,1,DNA topoisomerase binding,MF
+Cleavage,GO:0072587,0.0470060511461741,1,1,1,"DNA topoisomerase type II (double strand cut, ATP-hydrolyzing) activator activity",MF
+Cleavage,GO:0008176,0.0470503677374901,1,1,1,tRNA (guanine-N7-)-methyltransferase activity,MF
+Cleavage,GO:0004392,0.0475510507182735,1,1,1,heme oxygenase (decyclizing) activity,MF
+Cleavage,GO:0071253,0.0476630001415036,1,1,1,connexin binding,MF
+Cleavage,GO:0005096,0.0479500180054374,0.986303233962777,5,35,GTPase activator activity,MF
+Prawn_chip,GO:0035556,2.1519365512475e-5,0.999992215031113,29,146,intracellular signal transduction,BP
+Prawn_chip,GO:0090481,2.50952524812607e-5,0.999999616610252,5,6,pyrimidine nucleotide-sugar transmembrane transport,BP
+Prawn_chip,GO:0006368,3.53071924907589e-5,0.999999418645466,5,6,transcription elongation from RNA polymerase II promoter,BP
+Prawn_chip,GO:0006139,8.49008655679142e-5,0.999984950615268,11,35,nucleobase-containing compound metabolic process,BP
+Prawn_chip,GO:0006888,2.11670178486071e-4,0.999983685453161,6,12,endoplasmic reticulum to Golgi vesicle-mediated transport,BP
+Prawn_chip,GO:0016311,5.73604546962458e-4,0.999925318904372,7,18,dephosphorylation,BP
+Prawn_chip,GO:0046856,5.8266502039508e-4,0.999961960445405,5,9,phosphatidylinositol dephosphorylation,BP
+Prawn_chip,GO:0006351,0.00169424897400574,0.999578886528596,10,41,"transcription, DNA-templated",BP
+Prawn_chip,GO:0006265,0.00275566639293604,0.999801222157379,4,8,DNA topological change,BP
+Prawn_chip,GO:0006355,0.00298182620872349,0.998157169986337,54,465,"regulation of transcription, DNA-templated",BP
+Prawn_chip,GO:0001522,0.00317265342356173,0.999620480703798,5,13,pseudouridine synthesis,BP
+Prawn_chip,GO:0006275,0.00434406796759963,0.999818866338932,3,5,regulation of DNA replication,BP
+Prawn_chip,GO:0034080,0.00505222047310663,1,2,2,CENP-A containing nucleosome assembly,BP
+Prawn_chip,GO:0009298,0.00560500046953195,1,2,2,GDP-mannose biosynthetic process,BP
+Prawn_chip,GO:0071816,0.00580440976184238,1,2,2,tail-anchored membrane protein insertion into ER membrane,BP
+Prawn_chip,GO:0034968,0.00587773225798562,0.99972589976199,3,5,histone lysine methylation,BP
+Prawn_chip,GO:0007051,0.00617383016879945,1,2,2,spindle organization,BP
+Prawn_chip,GO:0016070,0.00680398263006127,1,2,2,RNA metabolic process,BP
+Prawn_chip,GO:0008299,0.0079074545714171909,0.99912629040021,4,10,isoprenoid biosynthetic process,BP
+Prawn_chip,GO:0006480,0.00793408011914777,1,2,2,N-terminal protein amino acid methylation,BP
+Prawn_chip,GO:0006364,0.00835615007437667,0.998309492283711,6,22,rRNA processing,BP
+Prawn_chip,GO:0006784,0.00838522308799185,1,2,2,heme A biosynthetic process,BP
+Prawn_chip,GO:0009152,0.00847672687784785,1,2,2,purine ribonucleotide biosynthetic process,BP
+Prawn_chip,GO:0006623,0.00850289513384397,1,2,2,protein targeting to vacuole,BP
+Prawn_chip,GO:0017148,0.0085435133344983,1,2,2,negative regulation of translation,BP
+Prawn_chip,GO:0043488,0.0085435133344983,1,2,2,regulation of mRNA stability,BP
+Prawn_chip,GO:0016180,0.00855942872516002,1,2,2,snRNA processing,BP
+Prawn_chip,GO:0006486,0.00857269863947264,0.996300735521062,16,112,protein glycosylation,BP
+Prawn_chip,GO:0006260,0.0121169477412053,0.996157377436006,9,45,DNA replication,BP
+Prawn_chip,GO:0008033,0.0170764724755503,0.995860973679321,6,25,tRNA processing,BP
+Prawn_chip,GO:0006352,0.0191073125884855,0.996937814065276,4,14,"DNA-templated transcription, initiation",BP
+Prawn_chip,GO:0006470,0.0196140652851262,0.992740837397029,10,55,protein dephosphorylation,BP
+Prawn_chip,GO:0006261,0.0201752338367796,0.999398779747792,2,3,DNA-dependent DNA replication,BP
+Prawn_chip,GO:0000290,0.020725702779292,0.999373223079816,2,3,deadenylation-dependent decapping of nuclear-transcribed mRNA,BP
+Prawn_chip,GO:0018344,0.0227194600645661,0.999277457364645,2,3,protein geranylgeranylation,BP
+Prawn_chip,GO:0016570,0.0230244955708095,0.999262370193536,2,3,histone modification,BP
+Prawn_chip,GO:0000012,0.023261380987674,0.999250575120473,2,3,single strand break repair,BP
+Prawn_chip,GO:0034508,0.0237902388691376,0.999223995388237,2,3,centromere complex assembly,BP
+Prawn_chip,GO:0009408,0.0238466367983587,0.999221140878435,2,3,response to heat,BP
+Prawn_chip,GO:0006526,0.0239473971365469,0.999216031449746,2,3,arginine biosynthetic process,BP
+Prawn_chip,GO:0008053,0.0241786854020406,0.999204256784464,2,3,mitochondrial fusion,BP
+Prawn_chip,GO:0006357,0.0243131249933926,0.992637008578075,7,35,regulation of transcription by RNA polymerase II,BP
+Prawn_chip,GO:0006471,0.0247794248307334,0.997247173177946,3,8,protein ADP-ribosylation,BP
+Prawn_chip,GO:0006281,0.0265583141266284,0.988058237625711,13,87,DNA repair,BP
+Prawn_chip,GO:0006695,0.0273023141788668,0.998657300159958,2,4,cholesterol biosynthetic process,BP
+Prawn_chip,GO:0032218,0.0300682273688531,0.998440744440649,2,4,riboflavin transport,BP
+Prawn_chip,GO:0044260,0.031444290907544,0.998328637270018,2,4,cellular macromolecule metabolic process,BP
+Prawn_chip,GO:0032981,0.0338720109189659,0.998123951512381,2,4,mitochondrial respiratory chain complex I assembly,BP
+Prawn_chip,GO:0015671,0.0356657070203685,0.997967175001841,2,4,oxygen transport,BP
+Prawn_chip,GO:0030488,0.0360836684994506,0.997929976814294,2,4,tRNA methylation,BP
+Prawn_chip,GO:0050909,0.0444187147572561,0.996701677618955,2,5,sensory perception of taste,BP
+Prawn_chip,GO:0007264,0.0495885470469677,0.98074684507644,8,48,small GTPase mediated signal transduction,BP
+Prawn_chip,GO:0005634,6.43101845594543e-4,0.999638603770475,51,379,nucleus,CC
+Prawn_chip,GO:0005665,0.00510606206508804,1,2,2,"RNA polymerase II, core complex",CC
+Prawn_chip,GO:0043189,0.00512383364145524,1,2,2,H4/H2A histone acetyltransferase complex,CC
+Prawn_chip,GO:0036038,0.00670071730105174,1,2,2,MKS complex,CC
+Prawn_chip,GO:0000139,0.00845139265364375,0.997970199822262,7,30,Golgi membrane,CC
+Prawn_chip,GO:0032039,0.00855942872516002,1,2,2,integrator complex,CC
+Prawn_chip,GO:0016592,0.00888607989995504,0.997855636745499,7,29,mediator complex,CC
+Prawn_chip,GO:0005765,0.0129486960419861,0.998946118334827,3,7,lysosomal membrane,CC
+Prawn_chip,GO:0000775,0.0223794848270604,0.997610773019768,3,8,"chromosome, centromeric region",CC
+Prawn_chip,GO:0016593,0.0230244955708095,0.999262370193536,2,3,Cdc73/Paf1 complex,CC
+Prawn_chip,GO:0008023,0.0239304509820473,0.999216891625621,2,3,transcription elongation factor complex,CC
+Prawn_chip,GO:0008408,2.18922372649264e-8,0.999999998251343,13,26,3'-5' exonuclease activity,MF
+Prawn_chip,GO:0015165,2.50952524812607e-5,0.999999616610252,5,6,pyrimidine nucleotide-sugar transmembrane transporter activity,MF
+Prawn_chip,GO:0018024,2.54000391047439e-4,0.999987803315135,5,8,histone-lysine N-methyltransferase activity,MF
+Prawn_chip,GO:0000175,5.91829399673569e-4,1,3,3,3'-5'-exoribonuclease activity,MF
+Prawn_chip,GO:0004725,8.74041911011702e-4,0.999737966415187,14,62,protein tyrosine phosphatase activity,MF
+Prawn_chip,GO:0003917,0.00210792631299997,0.999953684886349,3,4,"DNA topoisomerase type I (single strand cut, ATP-independent) activity",MF
+Prawn_chip,GO:0070290,0.00367812728234583,0.999855718011996,3,5,N-acylphosphatidylethanolamine-specific phospholipase D activity,MF
+Prawn_chip,GO:0046872,0.00383276465170646,0.997735385304822,44,338,metal ion binding,MF
+Prawn_chip,GO:0016717,0.00399088761384132,0.999638767899903,4,10,"oxidoreductase activity, acting on paired donors, with oxidation of a pair of donors resulting in the reduction of molecular oxygen to two molecules of water",MF
+Prawn_chip,GO:0016787,0.00412965936338342,0.997947245041634,26,183,hydrolase activity,MF
+Prawn_chip,GO:0005347,0.00516693014982191,0.999075989664633,6,20,ATP transmembrane transporter activity,MF
+Prawn_chip,GO:0009019,0.00561650292831799,1,2,2,tRNA (guanine-N1-)-methyltransferase activity,MF
+Prawn_chip,GO:0016757,0.00662510421687678,0.998106092720041,9,43,"transferase activity, transferring glycosyl groups",MF
+Prawn_chip,GO:0046982,0.00662627270971254,0.998105705062421,9,43,protein heterodimerization activity,MF
+Prawn_chip,GO:0008017,0.00670891377655568,0.997314493148336,15,83,microtubule binding,MF
+Prawn_chip,GO:0004421,0.00712532509344006,1,2,2,hydroxymethylglutaryl-CoA synthase activity,MF
+Prawn_chip,GO:0097020,0.00713141370427151,1,2,2,COPII adaptor activity,MF
+Prawn_chip,GO:0035240,0.00794330161439681,1,2,2,dopamine binding,MF
+Prawn_chip,GO:0072544,0.00794330161439681,1,2,2,L-DOPA binding,MF
+Prawn_chip,GO:0072545,0.00794330161439681,1,2,2,tyrosine binding,MF
+Prawn_chip,GO:0003991,0.00846248346107942,1,2,2,acetylglutamate kinase activity,MF
+Prawn_chip,GO:0003868,0.00846379866091153,1,2,2,4-hydroxyphenylpyruvate dioxygenase activity,MF
+Prawn_chip,GO:0004018,0.00847672687784785,1,2,2,"N6-(1,2-dicarboxyethyl)AMP AMP-lyase (fumarate-forming) activity",MF
+Prawn_chip,GO:0004748,0.00847813971929207,1,2,2,"ribonucleoside-diphosphate reductase activity, thioredoxin disulfide as acceptor",MF
+Prawn_chip,GO:0004587,0.00848430555891656,1,2,2,ornithine-oxo-acid transaminase activity,MF
+Prawn_chip,GO:0030371,0.0085435133344983,1,2,2,translation repressor activity,MF
+Prawn_chip,GO:0016409,0.00877797445017896,0.998190096111485,6,23,palmitoyltransferase activity,MF
+Prawn_chip,GO:0051087,0.00908376107912219,0.998914946565179,4,11,chaperone binding,MF
+Prawn_chip,GO:0004449,0.0113046276307857,0.999204797252996,3,6,isocitrate dehydrogenase (NAD+) activity,MF
+Prawn_chip,GO:0008168,0.0121844317007562,0.994545589537703,16,106,methyltransferase activity,MF
+Prawn_chip,GO:0017150,0.0131288002202132,0.998248402567927,4,11,tRNA dihydrouridine synthase activity,MF
+Prawn_chip,GO:0003956,0.0147797605669906,0.999627963817243,2,3,NAD(P)+-protein-arginine ADP-ribosyltransferase activity,MF
+Prawn_chip,GO:0003725,0.0160292113878927,0.999578448910213,2,3,double-stranded RNA binding,MF
+Prawn_chip,GO:0005515,0.0170910023308452,0.985329682641865,351,3720,protein binding,MF
+Prawn_chip,GO:0017064,0.0176044247255118,0.999512909365039,2,3,fatty acid amide hydrolase activity,MF
+Prawn_chip,GO:0003777,0.017888632183032,0.992433663314034,13,78,microtubule motor activity,MF
+Prawn_chip,GO:0003723,0.0231337251251175,0.986081384122233,30,239,RNA binding,MF
+Prawn_chip,GO:0016773,0.0237356865308993,0.997407158217988,3,8,"phosphotransferase activity, alcohol group as acceptor",MF
+Prawn_chip,GO:0003953,0.0238425869604354,0.999221345984069,2,3,NAD+ nucleosidase activity,MF
+Prawn_chip,GO:0004631,0.0273023141788668,0.998657300159958,2,4,phosphomevalonate kinase activity,MF
+Prawn_chip,GO:0032217,0.0300682273688531,0.998440744440649,2,4,riboflavin transmembrane transporter activity,MF
+Prawn_chip,GO:0003824,0.030395022334393,0.982882762938705,22,176,catalytic activity,MF
+Prawn_chip,GO:0004659,0.0307747917894669,0.998383538605226,2,4,prenyltransferase activity,MF
+Prawn_chip,GO:0017017,0.0308271040345468,0.998379273148459,2,4,MAP kinase tyrosine/serine/threonine phosphatase activity,MF
+Prawn_chip,GO:0003697,0.0324704899046715,0.992013761108471,5,23,single-stranded DNA binding,MF
+Prawn_chip,GO:0016972,0.0327929491394039,0.998216005960351,2,4,thiol oxidase activity,MF
+Prawn_chip,GO:0005096,0.0345571411730236,0.988724056256483,7,35,GTPase activator activity,MF
+Prawn_chip,GO:0009374,0.0355535836105152,0.997977111254633,2,4,biotin binding,MF
+Prawn_chip,GO:0001671,0.0401595553724898,0.997554273401129,2,4,ATPase activator activity,MF
+Prawn_chip,GO:0000166,0.048759249061028,0.984435927332631,6,31,nucleotide binding,MF
+Prawn_chip,GO:0070122,0.0488536342180639,0.989159488414218,4,16,isopeptidase activity,MF
+Early_gastrula,GO:0006334,5.71019875328093e-19,1,28,41,nucleosome assembly,BP
+Early_gastrula,GO:0006355,1.39674266067364e-14,1,91,465,"regulation of transcription, DNA-templated",BP
+Early_gastrula,GO:0006265,2.65843862619365e-6,0.999999944509311,6,8,DNA topological change,BP
+Early_gastrula,GO:0008033,7.00541373791951e-6,0.999999232021767,10,25,tRNA processing,BP
+Early_gastrula,GO:0042254,2.01136822581708e-5,0.999998246550927,8,18,ribosome biogenesis,BP
+Early_gastrula,GO:0000413,4.3783479689116e-5,0.999995525674068,8,20,protein peptidyl-prolyl isomerization,BP
+Early_gastrula,GO:0006471,6.18885720533635e-5,0.99999782788581,5,8,protein ADP-ribosylation,BP
+Early_gastrula,GO:0006275,1.55438603138472e-4,0.999997492096756,4,5,regulation of DNA replication,BP
+Early_gastrula,GO:0006281,2.25307893821221e-4,0.999931149479549,17,87,DNA repair,BP
+Early_gastrula,GO:0009408,3.72993689932127e-4,1,3,3,response to heat,BP
+Early_gastrula,GO:0000398,3.9672586584983e-4,0.999929370208801,9,31,"mRNA splicing, via spliceosome",BP
+Early_gastrula,GO:0006352,4.93119427009244e-4,0.9999513151153,6,14,"DNA-templated transcription, initiation",BP
+Early_gastrula,GO:0006396,5.57837588863347e-4,0.999868492176259,11,49,RNA processing,BP
+Early_gastrula,GO:0006457,7.5388048435127e-4,0.999801129964507,12,55,protein folding,BP
+Early_gastrula,GO:0006364,8.94444131694745e-4,0.999866225794822,7,22,rRNA processing,BP
+Early_gastrula,GO:0006397,0.00126343555268394,0.999724411959901,9,38,mRNA processing,BP
+Early_gastrula,GO:0001522,0.00201824175229855,0.999783166760919,5,13,pseudouridine synthesis,BP
+Early_gastrula,GO:0006351,0.00245009586060475,0.999403694388275,9,41,"transcription, DNA-templated",BP
+Early_gastrula,GO:0046654,0.00393955479327032,0.999841524980004,3,5,tetrahydrofolate biosynthetic process,BP
+Early_gastrula,GO:0006164,0.00504157253695302,0.999737618967031,3,6,purine nucleotide biosynthetic process,BP
+Early_gastrula,GO:0009152,0.00529644242933349,1,2,2,purine ribonucleotide biosynthetic process,BP
+Early_gastrula,GO:0007051,0.00580938455037038,1,2,2,spindle organization,BP
+Early_gastrula,GO:0031145,0.0112920463344366,1,2,2,anaphase-promoting complex-dependent catabolic process,BP
+Early_gastrula,GO:0000012,0.0129982363977203,0.999694629989118,2,3,single strand break repair,BP
+Early_gastrula,GO:0042274,0.0147139488870306,0.999630506445498,2,3,ribosomal small subunit biogenesis,BP
+Early_gastrula,GO:0034508,0.0152633884366414,0.999609058643445,2,3,centromere complex assembly,BP
+Early_gastrula,GO:0016570,0.0156705473943632,0.999592885974904,2,3,histone modification,BP
+Early_gastrula,GO:0006261,0.0186033152992321,0.999469596090905,2,3,DNA-dependent DNA replication,BP
+Early_gastrula,GO:0051276,0.0201938758214606,0.999026134600059,2,5,chromosome organization,BP
+Early_gastrula,GO:0006367,0.0204140708396958,0.996660989212391,4,14,transcription initiation from RNA polymerase II promoter,BP
+Early_gastrula,GO:0140021,0.0222529951538486,0.99930030097968,2,3,mitochondrial ADP transmembrane transport,BP
+Early_gastrula,GO:1990544,0.0222529951538486,0.99930030097968,2,3,mitochondrial ATP transmembrane transport,BP
+Early_gastrula,GO:0042779,0.022765792352185302,0.999275166595213,2,3,tRNA 3'-trailer cleavage,BP
+Early_gastrula,GO:0043486,0.0235872282072885,0.999234231752938,2,3,histone exchange,BP
+Early_gastrula,GO:0006913,0.0267339936881386,0.99870030345759,2,4,nucleocytoplasmic transport,BP
+Early_gastrula,GO:0006614,0.0275081608239965,0.996678215419498,3,9,SRP-dependent cotranslational protein targeting to membrane,BP
+Early_gastrula,GO:0006189,0.0282825262836845,0.998581901400276,2,4,'de novo' IMP biosynthetic process,BP
+Early_gastrula,GO:0051225,0.0283132486299627,0.996343291591979,3,11,spindle assembly,BP
+Early_gastrula,GO:0006099,0.0303932614085121,0.994150056975322,4,17,tricarboxylic acid cycle,BP
+Early_gastrula,GO:0009113,0.0308609805456883,0.998376494163018,2,4,purine nucleobase biosynthetic process,BP
+Early_gastrula,GO:0032981,0.0310158436538291,0.998363834621308,2,4,mitochondrial respiratory chain complex I assembly,BP
+Early_gastrula,GO:0015671,0.0334285837429153,0.99816197083099,2,4,oxygen transport,BP
+Early_gastrula,GO:0000244,0.037820819072056,1,1,1,spliceosomal tri-snRNP complex assembly,BP
+Early_gastrula,GO:0006403,0.037820819072056,1,1,1,RNA localization,BP
+Early_gastrula,GO:0006122,0.0407852917431756,0.997494523207993,2,4,"mitochondrial electron transport, ubiquinol to cytochrome c",BP
+Early_gastrula,GO:0006357,0.0418110407387122,0.986992824297819,6,35,regulation of transcription by RNA polymerase II,BP
+Early_gastrula,GO:0017121,0.0463631531244889,0.996473656106582,2,5,plasma membrane phospholipid scrambling,BP
+Early_gastrula,GO:0044782,0.0480984602142621,1,1,1,cilium organization,BP
+Early_gastrula,GO:0000786,4.59024873649901e-22,1,32,46,nucleosome,CC
+Early_gastrula,GO:0005634,3.78644792406093e-15,1,76,379,nucleus,CC
+Early_gastrula,GO:0071011,5.36168622665132e-4,1,3,3,precatalytic spliceosome,CC
+Early_gastrula,GO:1990904,0.00231683897006637,0.999751095907573,5,12,ribonucleoprotein complex,CC
+Early_gastrula,GO:0005667,0.00608025156387235,0.999077882212185,5,17,transcription regulator complex,CC
+Early_gastrula,GO:0070176,0.00614451886656316,1,2,2,DRM complex,CC
+Early_gastrula,GO:0005665,0.00853904705092735,1,2,2,"RNA polymerase II, core complex",CC
+Early_gastrula,GO:0005694,0.00896583873562695,0.998876709338973,4,13,chromosome,CC
+Early_gastrula,GO:0070652,0.0103783844264255,0.999223048411147,3,7,HAUS complex,CC
+Early_gastrula,GO:0030127,0.0127954303667451,0.999701917555463,2,3,COPII vesicle coat,CC
+Early_gastrula,GO:0005765,0.0150432460410665,0.998703597373443,3,7,lysosomal membrane,CC
+Early_gastrula,GO:0016593,0.0156705473943632,0.999592885974904,2,3,Cdc73/Paf1 complex,CC
+Early_gastrula,GO:0048500,0.0174908080793286,0.999517745996434,2,3,signal recognition particle,CC
+Early_gastrula,GO:0005750,0.0233350356645655,0.999246886955395,2,3,mitochondrial respiratory chain complex III,CC
+Early_gastrula,GO:0030117,0.0349037653154598,0.995105229714887,3,11,membrane coat,CC
+Early_gastrula,GO:0005643,0.0372703405005002,0.994635362758283,3,11,nuclear pore,CC
+Early_gastrula,GO:0005682,0.037820819072056,1,1,1,U5 snRNP,CC
+Early_gastrula,GO:0071005,0.037820819072056,1,1,1,U2-type precatalytic spliceosome,CC
+Early_gastrula,GO:0005663,0.0475301386978508,1,1,1,DNA replication factor C complex,CC
+Early_gastrula,GO:0003677,3.31706288070454e-27,1,149,690,DNA binding,MF
+Early_gastrula,GO:0003676,1.17891366478457e-8,1,157,1224,nucleic acid binding,MF
+Early_gastrula,GO:0003723,6.71350583296873e-7,0.999999757553557,40,239,RNA binding,MF
+Early_gastrula,GO:0003700,3.79507070966447e-6,0.99999855750256506,37,201,DNA-binding transcription factor activity,MF
+Early_gastrula,GO:0000981,1.49072465525936e-5,0.99999461986011,30,149,"DNA-binding transcription factor activity, RNA polymerase II-specific",MF
+Early_gastrula,GO:0003918,2.21995972352106e-4,1,3,3,"DNA topoisomerase type II (double strand cut, ATP-hydrolyzing) activity",MF
+Early_gastrula,GO:0003755,3.29404130152541e-4,0.999928312159178,11,44,peptidyl-prolyl cis-trans isomerase activity,MF
+Early_gastrula,GO:0046982,3.58901680919959e-4,0.999921356427383,11,43,protein heterodimerization activity,MF
+Early_gastrula,GO:0017150,4.25888577293318e-4,0.999970344823942,5,11,tRNA dihydrouridine synthase activity,MF
+Early_gastrula,GO:0003956,8.09599476188195e-4,1,3,3,NAD(P)+-protein-arginine ADP-ribosyltransferase activity,MF
+Early_gastrula,GO:0008094,9.28661503546803e-4,0.999955725012824,4,7,DNA-dependent ATPase activity,MF
+Early_gastrula,GO:0003917,0.00161782906820066,0.999967699189243,3,4,"DNA topoisomerase type I (single strand cut, ATP-independent) activity",MF
+Early_gastrula,GO:0051537,0.00295514827906591,0.999643270749594,5,14,"2 iron, 2 sulfur cluster binding",MF
+Early_gastrula,GO:0008312,0.00411445367697716,0.999831829660843,3,5,7S RNA binding,MF
+Early_gastrula,GO:0003938,0.00480069664218376,1,2,2,IMP dehydrogenase activity,MF
+Early_gastrula,GO:0004642,0.00487210951236235,1,2,2,phosphoribosylformylglycinamidine synthase activity,MF
+Early_gastrula,GO:0004018,0.00529644242933349,1,2,2,"N6-(1,2-dicarboxyethyl)AMP AMP-lyase (fumarate-forming) activity",MF
+Early_gastrula,GO:0004748,0.00530972730877621,1,2,2,"ribonucleoside-diphosphate reductase activity, thioredoxin disulfide as acceptor",MF
+Early_gastrula,GO:0003868,0.00533361258781791,1,2,2,4-hydroxyphenylpyruvate dioxygenase activity,MF
+Early_gastrula,GO:0030337,0.00618459390678363,1,2,2,DNA polymerase processivity factor activity,MF
+Early_gastrula,GO:0008093,0.00683253731149289,1,2,2,cytoskeletal anchor activity,MF
+Early_gastrula,GO:0070840,0.00683253731149289,1,2,2,dynein complex binding,MF
+Early_gastrula,GO:0004449,0.00738742566853295,0.999557180846937,3,6,isocitrate dehydrogenase (NAD+) activity,MF
+Early_gastrula,GO:0016891,0.00843585781315278,1,2,2,"endoribonuclease activity, producing 5'-phosphomonoesters",MF
+Early_gastrula,GO:0031072,0.014863179516236,0.998644410209497,3,8,heat shock protein binding,MF
+Early_gastrula,GO:0004683,0.0151906696277659,0.999611922204987,2,3,calmodulin-dependent protein kinase activity,MF
+Early_gastrula,GO:0016616,0.0162771362835384,0.998554197950547,3,7,"oxidoreductase activity, acting on the CH-OH group of donors, NAD or NADP as acceptor",MF
+Early_gastrula,GO:0009055,0.017590164944489,0.995032900810885,7,34,electron transfer activity,MF
+Early_gastrula,GO:0005525,0.0218699303149441,0.98577499589375694,41,373,GTP binding,MF
+Early_gastrula,GO:0005471,0.0222529951538486,0.99930030097968,2,3,ATP:ADP antiporter activity,MF
+Early_gastrula,GO:0005488,0.0222829185803396,0.997625057122016,3,8,binding,MF
+Early_gastrula,GO:0070122,0.0224451344120619,0.996112545907999,4,16,isopeptidase activity,MF
+Early_gastrula,GO:0003824,0.0243262255704614,0.98660734936635,22,176,catalytic activity,MF
+Early_gastrula,GO:0003690,0.0245326987193682,0.99728521488584,3,8,double-stranded DNA binding,MF
+Early_gastrula,GO:0003924,0.0246120232942222,0.984943046349355,31,270,GTPase activity,MF
+Early_gastrula,GO:0000213,0.0250413026365872,0.999159768314193,2,3,tRNA-intron endonuclease activity,MF
+Early_gastrula,GO:0003899,0.0271577049677771,0.994906650023802,4,18,DNA-directed 5'-3' RNA polymerase activity,MF
+Early_gastrula,GO:0043565,0.0274803344301561,0.985777824262906,18,127,sequence-specific DNA binding,MF
+Early_gastrula,GO:0004146,0.0316959691246249,0.998307809443264,2,4,dihydrofolate reductase activity,MF
+Early_gastrula,GO:0001671,0.031810064204836,0.998298342965349,2,4,ATPase activator activity,MF
+Early_gastrula,GO:0042803,0.0369703880720431,0.997850214492275,2,4,protein homodimerization activity,MF
+Early_gastrula,GO:0050681,0.037820819072056,1,1,1,androgen receptor binding,MF
+Early_gastrula,GO:0019825,0.0461905739913702,0.99275336480307,3,11,oxygen binding,MF
+Early_gastrula,GO:0017128,0.0463631531244889,0.996473656106582,2,5,phospholipid scramblase activity,MF
+Early_gastrula,GO:0003689,0.0475301386978508,1,1,1,DNA clamp loader activity,MF
+Early_gastrula,GO:0004534,0.0486731475993412,1,1,1,5'-3' exoribonuclease activity,MF
+Mid_gastrula,GO:0006334,1.94847382974552e-20,1,26,41,nucleosome assembly,BP
+Mid_gastrula,GO:0006355,1.78981998629562e-7,1,54,465,"regulation of transcription, DNA-templated",BP
+Mid_gastrula,GO:0006614,1.13140220289455e-6,0.999999974846237,6,9,SRP-dependent cotranslational protein targeting to membrane,BP
+Mid_gastrula,GO:0051603,2.55589929130317e-6,0.999999925087426,6,10,proteolysis involved in cellular protein catabolic process,BP
+Mid_gastrula,GO:0000398,1.02133485702725e-4,0.999986701107308,8,31,"mRNA splicing, via spliceosome",BP
+Mid_gastrula,GO:0006164,0.00117784125418755,0.999963665593901,3,6,purine nucleotide biosynthetic process,BP
+Mid_gastrula,GO:0006471,0.00374730977796652,0.999794714524201,3,8,protein ADP-ribosylation,BP
+Mid_gastrula,GO:0042274,0.00552746492310709,0.999917408828036,2,3,ribosomal small subunit biogenesis,BP
+Mid_gastrula,GO:0031145,0.00557226003018975,1,2,2,anaphase-promoting complex-dependent catabolic process,BP
+Mid_gastrula,GO:0006357,0.00573423798461799,0.99885689320056,6,35,regulation of transcription by RNA polymerase II,BP
+Mid_gastrula,GO:0006396,0.00579475374395724,0.99863576699031,7,49,RNA processing,BP
+Mid_gastrula,GO:0008033,0.00622425410163511,0.99898318375505,5,25,tRNA processing,BP
+Mid_gastrula,GO:0006397,0.00688217167352966,0.99856274518341,6,38,mRNA processing,BP
+Mid_gastrula,GO:0051276,0.00753252424746713,0.999784469029152,2,5,chromosome organization,BP
+Mid_gastrula,GO:0051225,0.00820392065796361,0.999336965069052,3,11,spindle assembly,BP
+Mid_gastrula,GO:0006511,0.00890402651712048,0.997432703566834,8,70,ubiquitin-dependent protein catabolic process,BP
+Mid_gastrula,GO:0042254,0.00908569350158033,0.998775790168127,4,18,ribosome biogenesis,BP
+Mid_gastrula,GO:0140021,0.0103631465682986,0.999784336565127,2,3,mitochondrial ADP transmembrane transport,BP
+Mid_gastrula,GO:1990544,0.0103631465682986,0.999784336565127,2,3,mitochondrial ATP transmembrane transport,BP
+Mid_gastrula,GO:0042779,0.0106607424850515,0.999774775344702,2,3,tRNA 3'-trailer cleavage,BP
+Mid_gastrula,GO:0006189,0.0114247019211606,0.99964850438823,2,4,'de novo' IMP biosynthetic process,BP
+Mid_gastrula,GO:0000413,0.0117468922212184,0.998264868875565,4,20,protein peptidyl-prolyl isomerization,BP
+Mid_gastrula,GO:0006094,0.0121072439871899,0.999615868295638,2,4,gluconeogenesis,BP
+Mid_gastrula,GO:0006541,0.0143855261448914,0.999421392541999,2,5,glutamine metabolic process,BP
+Mid_gastrula,GO:0016573,0.0174946096943437,0.998086014258384,3,12,histone acetylation,BP
+Mid_gastrula,GO:0032508,0.0184218911206889,0.997944629402995,3,12,DNA duplex unwinding,BP
+Mid_gastrula,GO:0006122,0.0192835414638661,0.999215223049141,2,4,"mitochondrial electron transport, ubiquinol to cytochrome c",BP
+Mid_gastrula,GO:0017121,0.0193358785254183,0.999089253778407,2,5,plasma membrane phospholipid scrambling,BP
+Mid_gastrula,GO:0006275,0.0219930309988657,0.998889773846482,2,5,regulation of DNA replication,BP
+Mid_gastrula,GO:0046654,0.0222990484931362,0.998865899771099,2,5,tetrahydrofolate biosynthetic process,BP
+Mid_gastrula,GO:0070897,0.022670729516424,0.998836657807153,2,5,transcription preinitiation complex assembly,BP
+Mid_gastrula,GO:0000244,0.022696304890169,1,1,1,spliceosomal tri-snRNP complex assembly,BP
+Mid_gastrula,GO:0006403,0.022696304890169,1,1,1,RNA localization,BP
+Mid_gastrula,GO:0044782,0.0288162427937993,1,1,1,cilium organization,BP
+Mid_gastrula,GO:0032784,0.0324065429225961,1,1,1,"regulation of DNA-templated transcription, elongation",BP
+Mid_gastrula,GO:0006352,0.0360054290178695,0.994638670930644,3,14,"DNA-templated transcription, initiation",BP
+Mid_gastrula,GO:0006685,0.0370639474171987,1,1,1,sphingomyelin catabolic process,BP
+Mid_gastrula,GO:0016072,0.037245360563808,1,1,1,rRNA metabolic process,BP
+Mid_gastrula,GO:0034470,0.037245360563808,1,1,1,ncRNA processing,BP
+Mid_gastrula,GO:0023051,0.0395632938456658,1,1,1,regulation of signaling,BP
+Mid_gastrula,GO:0030155,0.0395632938456658,1,1,1,regulation of cell adhesion,BP
+Mid_gastrula,GO:0048024,0.0404832293239427,1,1,1,"regulation of mRNA splicing, via spliceosome",BP
+Mid_gastrula,GO:0006729,0.0418897365880688,0.996990361666873,2,5,tetrahydrobiopterin biosynthetic process,BP
+Mid_gastrula,GO:0006207,0.0420195145171578,0.996425433455452,2,8,'de novo' pyrimidine nucleobase biosynthetic process,BP
+Mid_gastrula,GO:0006348,0.0427462080759405,1,1,1,chromatin silencing at telomere,BP
+Mid_gastrula,GO:0006434,0.0429704489385165,1,1,1,seryl-tRNA aminoacylation,BP
+Mid_gastrula,GO:0050794,0.0442399058595564,1,1,1,regulation of cellular process,BP
+Mid_gastrula,GO:0006265,0.0449526145768135,0.996030734119973,2,8,DNA topological change,BP
+Mid_gastrula,GO:0007411,0.0454698454068273,1,1,1,axon guidance,BP
+Mid_gastrula,GO:0016319,0.0454698454068273,1,1,1,mushroom body development,BP
+Mid_gastrula,GO:0016322,0.0454698454068273,1,1,1,neuron remodeling,BP
+Mid_gastrula,GO:0031103,0.0454698454068273,1,1,1,axon regeneration,BP
+Mid_gastrula,GO:0042752,0.0454698454068273,1,1,1,regulation of circadian rhythm,BP
+Mid_gastrula,GO:0045475,0.0454698454068273,1,1,1,locomotor rhythm,BP
+Mid_gastrula,GO:0048526,0.0454698454068273,1,1,1,imaginal disc-derived wing expansion,BP
+Mid_gastrula,GO:0048842,0.0454698454068273,1,1,1,positive regulation of axon extension involved in axon guidance,BP
+Mid_gastrula,GO:0051315,0.0469601199466606,1,1,1,attachment of mitotic spindle microtubules to kinetochore,BP
+Mid_gastrula,GO:0000165,0.0473365324125203,1,1,1,MAPK cascade,BP
+Mid_gastrula,GO:0010387,0.048022774810904,1,1,1,COP9 signalosome assembly,BP
+Mid_gastrula,GO:0018095,0.0481198094422064,1,1,1,protein polyglutamylation,BP
+Mid_gastrula,GO:0009264,0.0481368228418692,1,1,1,deoxyribonucleotide catabolic process,BP
+Mid_gastrula,GO:0043484,0.0482238749933663,1,1,1,regulation of RNA splicing,BP
+Mid_gastrula,GO:0002092,0.0489872153779751,1,1,1,positive regulation of receptor internalization,BP
+Mid_gastrula,GO:0097061,0.0489872153779751,1,1,1,dendritic spine organization,BP
+Mid_gastrula,GO:0097062,0.0489872153779751,1,1,1,dendritic spine maintenance,BP
+Mid_gastrula,GO:0000786,3.99740839113964e-24,1,30,46,nucleosome,CC
+Mid_gastrula,GO:0005634,1.41245095178065e-13,1,56,379,nucleus,CC
+Mid_gastrula,GO:0005839,1.16360836545411e-6,0.999999974000821,6,9,proteasome core complex,CC
+Mid_gastrula,GO:0071011,1.54002465416477e-4,1,3,3,precatalytic spliceosome,CC
+Mid_gastrula,GO:0046540,0.00138606369449665,0.999961771997621,3,5,U4/U6 x U5 tri-snRNP complex,CC
+Mid_gastrula,GO:0005786,0.0023630610068954,1,2,2,"signal recognition particle, endoplasmic reticulum targeting",CC
+Mid_gastrula,GO:0070652,0.00273967535058219,0.9998741639185,3,7,HAUS complex,CC
+Mid_gastrula,GO:0048500,0.00748598486513623,0.999868847562237,2,3,signal recognition particle,CC
+Mid_gastrula,GO:0005680,0.00773585327902979,0.999447840631343,3,8,anaphase-promoting complex,CC
+Mid_gastrula,GO:0005750,0.011016992711824901,0.999763137416733,2,3,mitochondrial respiratory chain complex III,CC
+Mid_gastrula,GO:0005682,0.022696304890169,1,1,1,U5 snRNP,CC
+Mid_gastrula,GO:0071005,0.022696304890169,1,1,1,U2-type precatalytic spliceosome,CC
+Mid_gastrula,GO:0043625,0.0407074985797278,1,1,1,delta DNA polymerase complex,CC
+Mid_gastrula,GO:0005667,0.0409594546872443,0.993396033290833,3,17,transcription regulator complex,CC
+Mid_gastrula,GO:0031307,0.0412459152966386,1,1,1,integral component of mitochondrial outer membrane,CC
+Mid_gastrula,GO:0000974,0.0428118996479409,1,1,1,Prp19 complex,CC
+Mid_gastrula,GO:0005838,0.0462538039649336,1,1,1,proteasome regulatory particle,CC
+Mid_gastrula,GO:0031213,0.0474506596029747,1,1,1,RSF complex,CC
+Mid_gastrula,GO:0036396,0.0476315631686747,1,1,1,RNA N6-methyladenosine methyltransferase complex,CC
+Mid_gastrula,GO:0034457,0.0480048910739786,1,1,1,Mpp10 complex,CC
+Mid_gastrula,GO:0031464,0.0481695991576286,1,1,1,Cul4A-RING E3 ubiquitin ligase complex,CC
+Mid_gastrula,GO:0005751,0.0485687471264084,1,1,1,mitochondrial respiratory chain complex IV,CC
+Mid_gastrula,GO:0014069,0.0489872153779751,1,1,1,postsynaptic density,CC
+Mid_gastrula,GO:0032588,0.0489872153779751,1,1,1,trans-Golgi network membrane,CC
+Mid_gastrula,GO:0098842,0.0489872153779751,1,1,1,postsynaptic early endosome,CC
+Mid_gastrula,GO:0003677,7.25180178824105e-20,1,103,690,DNA binding,MF
+Mid_gastrula,GO:0003723,7.88030354965174e-7,0.999999749306959,30,239,RNA binding,MF
+Mid_gastrula,GO:0003676,1.22754160819275e-5,0.999992790330669,103,1224,nucleic acid binding,MF
+Mid_gastrula,GO:0008312,2.9790285766645e-5,0.999999690696554,4,5,7S RNA binding,MF
+Mid_gastrula,GO:0003918,5.3116626285294e-5,1,3,3,"DNA topoisomerase type II (double strand cut, ATP-hydrolyzing) activity",MF
+Mid_gastrula,GO:0009055,5.43885189111745e-5,0.999992500294755,9,34,electron transfer activity,MF
+Mid_gastrula,GO:0004298,5.49872358823897e-4,0.999955021984491,5,14,threonine-type endopeptidase activity,MF
+Mid_gastrula,GO:0046982,0.00130872334449742,0.99973594723195,8,43,protein heterodimerization activity,MF
+Mid_gastrula,GO:0003700,0.00167971317134882,0.999269412624322,22,201,DNA-binding transcription factor activity,MF
+Mid_gastrula,GO:0004642,0.00177036403974383,1,2,2,phosphoribosylformylglycinamidine synthase activity,MF
+Mid_gastrula,GO:0003938,0.00178898180799228,1,2,2,IMP dehydrogenase activity,MF
+Mid_gastrula,GO:0030942,0.0023630610068954,1,2,2,endoplasmic reticulum signal peptide binding,MF
+Mid_gastrula,GO:0004613,0.00239378193349647,1,2,2,phosphoenolpyruvate carboxykinase (GTP) activity,MF
+Mid_gastrula,GO:0030337,0.00266392145199929,1,2,2,DNA polymerase processivity factor activity,MF
+Mid_gastrula,GO:0008093,0.00301132138522737,1,2,2,cytoskeletal anchor activity,MF
+Mid_gastrula,GO:0070840,0.00301132138522737,1,2,2,dynein complex binding,MF
+Mid_gastrula,GO:0016891,0.00391027437985343,1,2,2,"endoribonuclease activity, producing 5'-phosphomonoesters",MF
+Mid_gastrula,GO:0051537,0.00394595957036028,0.999602794655492,4,14,"2 iron, 2 sulfur cluster binding",MF
+Mid_gastrula,GO:0016616,0.00511861467387058,0.999705189809663,3,7,"oxidoreductase activity, acting on the CH-OH group of donors, NAD or NADP as acceptor",MF
+Mid_gastrula,GO:0019904,0.00535915766692279,0.999665719627064,3,8,protein domain specific binding,MF
+Mid_gastrula,GO:0004683,0.00627432239422995,0.999899817329265,2,3,calmodulin-dependent protein kinase activity,MF
+Mid_gastrula,GO:0005471,0.0103631465682986,0.999784336565127,2,3,ATP:ADP antiporter activity,MF
+Mid_gastrula,GO:0003824,0.0108196623600201,0.994998682964533,17,176,catalytic activity,MF
+Mid_gastrula,GO:0016274,0.0127968958037811,0.998780242836928,3,11,protein-arginine N-methyltransferase activity,MF
+Mid_gastrula,GO:0004146,0.0139750247965896,0.999521451590313,2,4,dihydrofolate reductase activity,MF
+Mid_gastrula,GO:0042803,0.0170063831331452,0.999353159255026,2,4,protein homodimerization activity,MF
+Mid_gastrula,GO:0004402,0.0176477289783084,0.998062866657249,3,12,histone acetyltransferase activity,MF
+Mid_gastrula,GO:0017025,0.0193067554381628,0.999091360955005,2,5,TBP-class protein binding,MF
+Mid_gastrula,GO:0017128,0.0193358785254183,0.999089253778407,2,5,phospholipid scramblase activity,MF
+Mid_gastrula,GO:0050681,0.022696304890169,1,1,1,androgen receptor binding,MF
+Mid_gastrula,GO:0016301,0.0258848651249323,0.993764533531563,5,33,kinase activity,MF
+Mid_gastrula,GO:0016639,0.0276579443988093,0.99841906579471,2,5,"oxidoreductase activity, acting on the CH-NH2 group of donors, NAD or NADP as acceptor",MF
+Mid_gastrula,GO:0000981,0.0317479413463388,0.984207486077836,15,149,"DNA-binding transcription factor activity, RNA polymerase II-specific",MF
+Mid_gastrula,GO:0004017,0.0333051629531526,0.997715838736538,2,6,adenylate kinase activity,MF
+Mid_gastrula,GO:0004070,0.0350299608476129,1,1,1,aspartate carbamoyltransferase activity,MF
+Mid_gastrula,GO:0004767,0.0370639474171987,1,1,1,sphingomyelin phosphodiesterase activity,MF
+Mid_gastrula,GO:0003883,0.038259038895372,1,1,1,CTP synthase activity,MF
+Mid_gastrula,GO:0008094,0.040630532535011,0.996726929052752,2,7,DNA-dependent ATPase activity,MF
+Mid_gastrula,GO:0015269,0.0422525169949461,0.996696177521327,2,6,calcium-activated potassium channel activity,MF
+Mid_gastrula,GO:0004828,0.0429704489385165,1,1,1,serine-tRNA ligase activity,MF
+Mid_gastrula,GO:0003688,0.0448435294423585,1,1,1,DNA replication origin binding,MF
+Mid_gastrula,GO:0016671,0.0455124297585757,1,1,1,"oxidoreductase activity, acting on a sulfur group of donors, disulfide as acceptor",MF
+Mid_gastrula,GO:0004526,0.0456557703595314,0.996272949294617,2,6,ribonuclease P activity,MF
+Mid_gastrula,GO:0004518,0.0463584354449944,0.992147775705942,3,17,nuclease activity,MF
+Mid_gastrula,GO:0003963,0.0477673742912233,1,1,1,RNA-3'-phosphate cyclase activity,MF
+Mid_gastrula,GO:0004108,0.0477990979757273,1,1,1,citrate (Si)-synthase activity,MF
+Mid_gastrula,GO:0019843,0.0479077901428594,0.99598258743592,2,6,rRNA binding,MF
+Mid_gastrula,GO:0004139,0.0481368228418692,1,1,1,deoxyribose-phosphate aldolase activity,MF
+Mid_gastrula,GO:0017174,0.0492703139346928,1,1,1,glycine N-methyltransferase activity,MF
+Mid_gastrula,GO:0005524,0.0494456615100327,0.961857378593642,78,1441,ATP binding,MF
+Late_gastrula,GO:0051603,5.05137473275049e-7,0.999999988899796,6,10,proteolysis involved in cellular protein catabolic process,BP
+Late_gastrula,GO:0042908,4.40151990791936e-5,0.999997987594121,5,13,xenobiotic transport,BP
+Late_gastrula,GO:0055114,5.61413371190347e-4,0.999687786881332,48,819,oxidation-reduction process,BP
+Late_gastrula,GO:0051493,0.00121316588056816,1,2,2,regulation of cytoskeleton organization,BP
+Late_gastrula,GO:0006979,0.00184431953361985,0.999771623085886,5,27,response to oxidative stress,BP
+Late_gastrula,GO:0006614,0.00325238906705332,0.999822981020924,3,9,SRP-dependent cotranslational protein targeting to membrane,BP
+Late_gastrula,GO:0055085,0.00526745550961306,0.997069628038098,32,580,transmembrane transport,BP
+Late_gastrula,GO:0007017,0.00564702465674415,0.999079370814357,5,30,microtubule-based process,BP
+Late_gastrula,GO:0006478,0.00936364550567922,0.999205769887254,3,11,peptidyl-tyrosine sulfation,BP
+Late_gastrula,GO:0031110,0.0100798510137109,0.999709849512004,2,4,regulation of microtubule polymerization or depolymerization,BP
+Late_gastrula,GO:0070897,0.0112972633753156,0.999600299177541,2,5,transcription preinitiation complex assembly,BP
+Late_gastrula,GO:0070588,0.0177900473273874,0.996841930422682,4,37,calcium ion transmembrane transport,BP
+Late_gastrula,GO:0006207,0.023757668002072,0.998518143383932,2,8,'de novo' pyrimidine nucleobase biosynthetic process,BP
+Late_gastrula,GO:0006355,0.0247531065106652,0.985253422889988,27,465,"regulation of transcription, DNA-templated",BP
+Late_gastrula,GO:0032784,0.0247537289243912,1,1,1,"regulation of DNA-templated transcription, elongation",BP
+Late_gastrula,GO:0002023,0.0280520630837627,1,1,1,reduction of food intake in response to dietary excess,BP
+Late_gastrula,GO:0009749,0.0280520630837627,1,1,1,response to glucose,BP
+Late_gastrula,GO:0035264,0.0280520630837627,1,1,1,multicellular organism growth,BP
+Late_gastrula,GO:0006348,0.0294486824583809,1,1,1,chromatin silencing at telomere,BP
+Late_gastrula,GO:0006434,0.029612208928737,1,1,1,seryl-tRNA aminoacylation,BP
+Late_gastrula,GO:0008218,0.0316275713390671,0.995361783810812,3,18,bioluminescence,BP
+Late_gastrula,GO:0045017,0.0326322363577041,0.993173326064376,4,28,glycerolipid biosynthetic process,BP
+Late_gastrula,GO:0006811,0.0327257548478169,0.987801708517426,8,119,ion transport,BP
+Late_gastrula,GO:0009264,0.0373851279696198,1,1,1,deoxyribonucleotide catabolic process,BP
+Late_gastrula,GO:0006270,0.0393878890227215,0.99655597401306,2,11,DNA replication initiation,BP
+Late_gastrula,GO:0002092,0.0394416086747344,1,1,1,positive regulation of receptor internalization,BP
+Late_gastrula,GO:0097061,0.0394416086747344,1,1,1,dendritic spine organization,BP
+Late_gastrula,GO:0097062,0.0394416086747344,1,1,1,dendritic spine maintenance,BP
+Late_gastrula,GO:0006452,0.0405008599683634,1,1,1,translational frameshifting,BP
+Late_gastrula,GO:0045901,0.0405008599683634,1,1,1,positive regulation of translational elongation,BP
+Late_gastrula,GO:0045905,0.0405008599683634,1,1,1,positive regulation of translational termination,BP
+Late_gastrula,GO:0071806,0.0425307925285804,1,1,1,protein transmembrane transport,BP
+Late_gastrula,GO:0016051,0.0427978102658573,0.996323404342545,2,8,carbohydrate biosynthetic process,BP
+Late_gastrula,GO:0009247,0.0465580023615454,0.995697367551086,2,9,glycolipid biosynthetic process,BP
+Late_gastrula,GO:0005839,2.39481805534734e-7,0.99999999595437306,6,9,proteasome core complex,CC
+Late_gastrula,GO:0005930,0.0121970685761827,0.999550645877054,2,5,axoneme,CC
+Late_gastrula,GO:0005874,0.014409287494493,0.996973941919325,5,39,microtubule,CC
+Late_gastrula,GO:0042555,0.0268198262641388,0.998165515689693,2,9,MCM complex,CC
+Late_gastrula,GO:0016604,0.0280520630837627,1,1,1,nuclear body,CC
+Late_gastrula,GO:0043625,0.0282931225268712,1,1,1,delta DNA polymerase complex,CC
+Late_gastrula,GO:0036396,0.0356499921954473,1,1,1,RNA N6-methyladenosine methyltransferase complex,CC
+Late_gastrula,GO:0005751,0.0389255388877711,1,1,1,mitochondrial respiratory chain complex IV,CC
+Late_gastrula,GO:0014069,0.0394416086747344,1,1,1,postsynaptic density,CC
+Late_gastrula,GO:0032588,0.0394416086747344,1,1,1,trans-Golgi network membrane,CC
+Late_gastrula,GO:0098842,0.0394416086747344,1,1,1,postsynaptic early endosome,CC
+Late_gastrula,GO:0031511,0.0397523344842673,1,1,1,Mis6-Sim4 complex,CC
+Late_gastrula,GO:0008559,4.40151990791936e-5,0.999997987594121,5,13,ATPase-coupled xenobiotic transmembrane transporter activity,MF
+Late_gastrula,GO:0004298,1.21114014584043e-4,0.999992914718546,5,14,threonine-type endopeptidase activity,MF
+Late_gastrula,GO:0042626,2.14586073593276e-4,0.999952306730959,11,94,ATPase-coupled transmembrane transporter activity,MF
+Late_gastrula,GO:0004222,0.00206647860532693,0.999345049013964,12,144,metalloendopeptidase activity,MF
+Late_gastrula,GO:0016887,0.00208307202409964,0.999338523080501,12,148,ATPase activity,MF
+Late_gastrula,GO:0004983,0.00253665931181744,0.999491852829176,7,44,neuropeptide Y receptor activity,MF
+Late_gastrula,GO:0005200,0.00270319589049302,0.999636056008741,5,26,structural constituent of cytoskeleton,MF
+Late_gastrula,GO:0000981,0.00364831134066431,0.998644041072029,14,149,"DNA-binding transcription factor activity, RNA polymerase II-specific",MF
+Late_gastrula,GO:0019205,0.00516273622289725,0.999895289125621,2,4,nucleobase-containing compound kinase activity,MF
+Late_gastrula,GO:0008476,0.00936364550567922,0.999205769887254,3,11,protein-tyrosine sulfotransferase activity,MF
+Late_gastrula,GO:0017025,0.010531070007558,0.999640941990697,2,5,TBP-class protein binding,MF
+Late_gastrula,GO:0020037,0.0135356982502756,0.994072012500276,14,208,heme binding,MF
+Late_gastrula,GO:0000166,0.0159751781004115,0.9972893647913,4,31,nucleotide binding,MF
+Late_gastrula,GO:0004017,0.0184980133187233,0.999077075514437,2,6,adenylate kinase activity,MF
+Late_gastrula,GO:0004499,0.0217069283096792,0.995995647874076,4,28,"N,N-dimethylaniline monooxygenase activity",MF
+Late_gastrula,GO:0005262,0.0222641249851252,0.995786903565606,4,35,calcium channel activity,MF
+Late_gastrula,GO:0019843,0.0228735358883604,0.998721145850117,2,6,rRNA binding,MF
+Late_gastrula,GO:0008234,0.0250886543328618,0.991939948503106,7,76,cysteine-type peptidase activity,MF
+Late_gastrula,GO:0001965,0.0253659110394451,1,1,1,G-protein alpha-subunit binding,MF
+Late_gastrula,GO:0004070,0.025887305245037,1,1,1,aspartate carbamoyltransferase activity,MF
+Late_gastrula,GO:0004828,0.029612208928737,1,1,1,serine-tRNA ligase activity,MF
+Late_gastrula,GO:0019904,0.0296860760631325,0.997911979583209,2,8,protein domain specific binding,MF
+Late_gastrula,GO:0005216,0.0298251574667859,0.99102840558442,6,78,ion channel activity,MF
+Late_gastrula,GO:0003688,0.0313484836746543,1,1,1,DNA replication origin binding,MF
+Late_gastrula,GO:0016671,0.0321431547838072,1,1,1,"oxidoreductase activity, acting on a sulfur group of donors, disulfide as acceptor",MF
+Late_gastrula,GO:0043565,0.0327033391122113,0.986287458422673,10,127,sequence-specific DNA binding,MF
+Late_gastrula,GO:0004806,0.0351875940825245,0.994555568543226,3,20,triglyceride lipase activity,MF
+Late_gastrula,GO:0003963,0.0360009971440055,1,1,1,RNA-3'-phosphate cyclase activity,MF
+Late_gastrula,GO:0004108,0.036089437308746,1,1,1,citrate (Si)-synthase activity,MF
+Late_gastrula,GO:0005488,0.0362443682093984,0.997158072571516,2,8,binding,MF
+Late_gastrula,GO:0004139,0.0373851279696198,1,1,1,deoxyribose-phosphate aldolase activity,MF
+Late_gastrula,GO:0016209,0.0386849653766851,1,1,1,antioxidant activity,MF
+Late_gastrula,GO:0016705,0.0392293167324032,0.982985831995888,10,144,"oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen",MF
+Late_gastrula,GO:0003921,0.0411106664918062,1,1,1,GMP synthase activity,MF
+Late_gastrula,GO:0004602,0.0420508377746642,0.996422484060396,2,8,glutathione peroxidase activity,MF
+Late_gastrula,GO:0004144,0.0432910913268415,0.990013396747463,4,31,diacylglycerol O-acyltransferase activity,MF
+Late_gastrula,GO:0016661,0.044586823133562,1,1,1,"oxidoreductase activity, acting on other nitrogenous compounds as donors",MF
+Late_gastrula,GO:0001733,0.0465580023615454,0.995697367551086,2,9,galactosylceramide sulfotransferase activity,MF
+Late_gastrula,GO:0016274,0.0489037668032782,0.995183514317411,2,11,protein-arginine N-methyltransferase activity,MF
+Planula,GO:0007186,1.1883220058352e-48,1,690,1128,G protein-coupled receptor signaling pathway,BP
+Planula,GO:0055085,1.24146506396784e-17,1,332,580,transmembrane transport,BP
+Planula,GO:0015074,2.53382844677898e-8,1,271,528,DNA integration,BP
+Planula,GO:0006813,2.77324204390969e-6,0.999999118534088,50,75,potassium ion transport,BP
+Planula,GO:0034220,1.09223140066536e-5,0.999995586270574,63,103,ion transmembrane transport,BP
+Planula,GO:0051260,3.515466918115e-5,0.999987275337003,47,74,protein homooligomerization,BP
+Planula,GO:0006412,4.1900632914976e-5,0.999979896402602,77,135,translation,BP
+Planula,GO:0055114,5.8698472698773e-5,0.999956545641062,382,819,oxidation-reduction process,BP
+Planula,GO:0006811,6.34426924745892e-5,0.99997050246747,69,119,ion transport,BP
+Planula,GO:0046373,6.62746033622536e-4,1,8,8,L-arabinose metabolic process,BP
+Planula,GO:0006259,0.00161128277682651,1,7,7,DNA metabolic process,BP
+Planula,GO:0006814,0.00164054276816252,0.999529090159998,21,31,sodium ion transport,BP
+Planula,GO:0006478,0.00581338174847892,0.999282677739879,9,11,peptidyl-tyrosine sulfation,BP
+Planula,GO:0006857,0.00590432573307949,0.999269240677544,9,11,oligopeptide transport,BP
+Planula,GO:0006508,0.00601850657090067,0.995347528446753,235,515,proteolysis,BP
+Planula,GO:0007166,0.00603553330591013,0.996470324787435,62,119,cell surface receptor signaling pathway,BP
+Planula,GO:0050482,0.0120942806279767,0.998356121467139,8,10,arachidonic acid secretion,BP
+Planula,GO:0071805,0.013117125457392,0.99529726496796,18,29,potassium ion transmembrane transport,BP
+Planula,GO:0006979,0.0149544843141476,0.994762599419976,17,27,response to oxidative stress,BP
+Planula,GO:0006268,0.025364001845446,1,4,4,DNA unwinding involved in DNA replication,BP
+Planula,GO:0006644,0.028843344326604,0.994186618251206,8,11,phospholipid metabolic process,BP
+Planula,GO:0046512,0.0405339582424054,0.99596162128969,5,6,sphingosine biosynthetic process,BP
+Planula,GO:0046513,0.0405339582424054,0.99596162128969,5,6,ceramide biosynthetic process,BP
+Planula,GO:0005975,0.0431101639265557,0.96971231988209,74,157,carbohydrate metabolic process,BP
+Planula,GO:0016021,5.6605878964372e-32,1,1257,2456,integral component of membrane,CC
+Planula,GO:0008076,3.08185683858626e-8,0.999999995575211,35,43,voltage-gated potassium channel complex,CC
+Planula,GO:0005576,6.34869235245666e-7,0.999999714008291,99,167,extracellular region,CC
+Planula,GO:0005840,8.04499629107273e-5,0.999963360494615,64,110,ribosome,CC
+Planula,GO:0016020,3.49970045456067e-4,0.999725180208333,444,977,membrane,CC
+Planula,GO:0005886,0.00185709952049839,0.99926658427957,32,52,plasma membrane,CC
+Planula,GO:0045211,0.00325192532362461,0.998787140607595,26,42,postsynaptic membrane,CC
+Planula,GO:0001518,0.00388058003812499,0.999731308294625,8,9,voltage-gated sodium channel complex,CC
+Planula,GO:0005930,0.0101218046913727,1,5,5,axoneme,CC
+Planula,GO:0030173,0.0190413744674845,0.998339809693159,6,7,integral component of Golgi membrane,CC
+Planula,GO:0071203,0.0266289509283859,1,4,4,WASH complex,CC
+Planula,GO:0030286,0.0402580463099553,0.980357957006233,24,41,dynein complex,CC
+Planula,GO:0017059,0.0405339582424054,0.99596162128969,5,6,serine C-palmitoyltransferase complex,CC
+Planula,GO:0005581,0.0467798546123011,0.995109102529587,5,6,collagen trimer,CC
+Planula,GO:0004930,2.6755440260305e-48,1,659,1068,G protein-coupled receptor activity,MF
+Planula,GO:0022857,1.12898036935673e-9,1,157,272,transmembrane transporter activity,MF
+Planula,GO:0005249,2.99982180750392e-8,0.999999993937261,44,58,voltage-gated potassium channel activity,MF
+Planula,GO:0005230,1.44335121071447e-6,0.999999560238802,50,74,extracellular ligand-gated ion channel activity,MF
+Planula,GO:0015276,1.71092338112081e-6,0.999999816881389,23,27,ligand-gated ion channel activity,MF
+Planula,GO:0005509,1.30387551310707e-5,0.999991066439019,337,698,calcium ion binding,MF
+Planula,GO:0016705,1.30886777267857e-5,0.999993845545605,83,144,"oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen",MF
+Planula,GO:0005506,1.84812123342791e-5,0.999990430355714,101,182,iron ion binding,MF
+Planula,GO:0003735,5.10103822850968e-5,0.999974615331881,82,146,structural constituent of ribosome,MF
+Planula,GO:0004983,1.380277951968e-4,0.999960235066536,30,44,neuropeptide Y receptor activity,MF
+Planula,GO:0030414,1.55937688132326e-4,0.999981601572455,16,19,peptidase inhibitor activity,MF
+Planula,GO:0003964,2.96820743929193e-4,0.999834052745212,90,169,RNA-directed DNA polymerase activity,MF
+Planula,GO:0042626,4.80338137644691e-4,0.999775120089074,54,94,ATPase-coupled transmembrane transporter activity,MF
+Planula,GO:0004888,5.087017963709e-4,0.99974575520283,62,111,transmembrane signaling receptor activity,MF
+Planula,GO:0046556,6.62746033622536e-4,1,8,8,alpha-L-arabinofuranosidase activity,MF
+Planula,GO:0031418,0.00112359581731737,0.999644669332018,25,38,L-ascorbic acid binding,MF
+Planula,GO:0005216,0.00139687692212228,0.999352289445039,45,78,ion channel activity,MF
+Planula,GO:0020037,0.00149629552761006,0.999058504542951,105,208,heme binding,MF
+Planula,GO:0004222,0.00276794310234114,0.998366358555873,75,144,metalloendopeptidase activity,MF
+Planula,GO:0005248,0.00388058003812499,0.999731308294625,8,9,voltage-gated sodium channel activity,MF
+Planula,GO:0004620,0.00397746015838877,0.9997231774287,8,9,phospholipase activity,MF
+Planula,GO:0004867,0.00426101744831493,0.999175454620785,13,17,serine-type endopeptidase inhibitor activity,MF
+Planula,GO:0005201,0.00547077445020761,0.997116978201826,47,86,extracellular matrix structural constituent,MF
+Planula,GO:0008476,0.00581338174847892,0.999282677739879,9,11,protein-tyrosine sulfotransferase activity,MF
+Planula,GO:0004623,0.00581339168124369,0.999282676274712,9,11,phospholipase A2 activity,MF
+Planula,GO:0030246,0.00679454197404404,0.996647251440418,38,68,carbohydrate binding,MF
+Planula,GO:0008146,0.00706716036058805,0.996411331761836,40,73,sulfotransferase activity,MF
+Planula,GO:0004970,0.00751793678500914,0.997794209310013,16,24,ionotropic glutamate receptor activity,MF
+Planula,GO:0005267,0.00804953275229665,0.997244678630343,19,30,potassium channel activity,MF
+Planula,GO:0031419,0.0101436153723308,1,5,5,cobalamin binding,MF
+Planula,GO:0004553,0.0111334649036267,0.994948613452823,28,49,"hydrolase activity, hydrolyzing O-glycosyl compounds",MF
+Planula,GO:0004190,0.0138199795403723,0.991742997019431,54,106,aspartic-type endopeptidase activity,MF
+Planula,GO:0004842,0.0159025712376873,0.988735931144003,107,225,ubiquitin-protein transferase activity,MF
+Planula,GO:0004890,0.0189136667440016,0.99517514516095,11,16,GABA-A receptor activity,MF
+Planula,GO:0016620,0.0190235849749786,0.99514190918927,11,16,"oxidoreductase activity, acting on the aldehyde or oxo group of donors, NAD or NADP as acceptor",MF
+Planula,GO:0016706,0.0198658178409217,0.994389993689637,12,18,2-oxoglutarate-dependent dioxygenase activity,MF
+Planula,GO:0005272,0.0198676350651493,0.994389390574482,12,18,sodium channel activity,MF
+Planula,GO:0004525,0.0249779297141493,0.996210808666817,7,9,ribonuclease III activity,MF
+Planula,GO:0009378,0.025364001845446,1,4,4,four-way junction helicase activity,MF
+Planula,GO:0009916,0.025364001845446,1,4,4,alternative oxidase activity,MF
+Planula,GO:0016624,0.0253646222039796,1,4,4,"oxidoreductase activity, acting on the aldehyde or oxo group of donors, disulfide as acceptor",MF
+Planula,GO:0008242,0.0253841988878988,1,4,4,omega peptidase activity,MF
+Planula,GO:0022848,0.0292889497816707,0.987127631948768,20,35,acetylcholine-gated cation-selective channel activity,MF
+Planula,GO:0046983,0.0392571903274464,0.970823093272382,105,229,protein dimerization activity,MF
+Planula,GO:0004758,0.0405339582424054,0.99596162128969,5,6,serine C-palmitoyltransferase activity,MF
+Planula,GO:0016702,0.0409148469958481,0.980535427632546,21,38,"oxidoreductase activity, acting on single donors with incorporation of molecular oxygen, incorporation of two atoms of oxygen",MF
+Planula,GO:0008191,0.0492330921001317,0.991609759657942,6,8,metalloendopeptidase inhibitor activity,MF
+Planula,GO:0004656,0.049283180026039,0.991598672645823,6,8,procollagen-proline 4-dioxygenase activity,MF
+Planula,unknown,0.00183024414115351,0.998420016749675,904,2105,NA,NA
+Adult,GO:0007186,1.5006664881115e-20,1,708,1128,G protein-coupled receptor signaling pathway,BP
+Adult,GO:0006508,1.09255961447824e-7,1,312,515,proteolysis,BP
+Adult,GO:0042981,1.92481543371052e-7,0.99999991514194,125,183,regulation of apoptotic process,BP
+Adult,GO:0007166,3.1938173308171e-6,0.999998732288739,84,119,cell surface receptor signaling pathway,BP
+Adult,GO:0007156,2.34830039789002e-5,0.999994945506016,35,43,homophilic cell adhesion via plasma membrane adhesion molecules,BP
+Adult,GO:0051260,3.10828250377344e-5,0.999989346473502,54,74,protein homooligomerization,BP
+Adult,GO:0055085,3.24092852045153e-5,0.999977826163383,335,580,transmembrane transport,BP
+Adult,GO:0005975,3.46716524692313e-5,0.999982821732381,103,157,carbohydrate metabolic process,BP
+Adult,GO:0034220,4.6703472004847e-5,0.99998037770126,71,103,ion transmembrane transport,BP
+Adult,GO:0006751,5.13558140207288e-5,1,14,14,glutathione catabolic process,BP
+Adult,GO:0007165,1.72087484144902e-4,0.999888703829023,198,332,signal transduction,BP
+Adult,GO:0016540,2.32143518881363e-4,0.99998655098054,15,16,protein autoprocessing,BP
+Adult,GO:0007267,2.37144293247536e-4,0.999986222433151,15,16,cell-cell signaling,BP
+Adult,GO:0016539,0.00152556158266279,0.999893106570229,12,13,intein-mediated protein splicing,BP
+Adult,GO:0015074,0.00161706093285895,0.998788073122555,295,528,DNA integration,BP
+Adult,GO:0006955,0.00898393530285442,0.997953100483518,15,19,immune response,BP
+Adult,GO:0050482,0.00968716179573207,0.999139491946344,9,10,arachidonic acid secretion,BP
+Adult,GO:0016042,0.00974721555083432,0.999132981564728,9,10,lipid catabolic process,BP
+Adult,GO:0006821,0.00988275510877514,0.99911825230677,9,10,chloride transport,BP
+Adult,GO:0007160,0.0113062866629245,0.996703301764199,18,24,cell-matrix adhesion,BP
+Adult,GO:0032481,0.0144882540667812,1,6,6,positive regulation of type I interferon production,BP
+Adult,GO:0008272,0.0145551068454522,1,6,6,sulfate transport,BP
+Adult,GO:0006813,0.0147920579800206,0.992030306120748,47,75,potassium ion transport,BP
+Adult,GO:0007275,0.0205142660483651,0.989032643572938,42,67,multicellular organism development,BP
+Adult,GO:0006644,0.029798973152598,0.994782129638674,9,11,phospholipid metabolic process,BP
+Adult,GO:0006857,0.0301621889494531,0.994703304340169,9,11,oligopeptide transport,BP
+Adult,GO:0016310,0.0309082858450663,0.994540592357903,9,11,phosphorylation,BP
+Adult,GO:0046373,0.0331506367436019,0.996378507005524,7,8,L-arabinose metabolic process,BP
+Adult,GO:0006629,0.0355261055016931,0.976966029341065,66,113,lipid metabolic process,BP
+Adult,GO:0007169,0.0435608302135907,0.989541277760405,10,13,transmembrane receptor protein tyrosine kinase signaling pathway,BP
+Adult,GO:0070588,0.0499665477062408,0.976207188526557,24,37,calcium ion transmembrane transport,BP
+Adult,GO:0016021,6.13542941248383e-20,1,1428,2456,integral component of membrane,CC
+Adult,GO:0005576,6.50728892703839e-14,1,130,167,extracellular region,CC
+Adult,GO:0008076,6.1085536192982e-5,0.999985319908162,34,43,voltage-gated potassium channel complex,CC
+Adult,GO:0016020,7.46102230339872e-4,0.999405233502575,534,977,membrane,CC
+Adult,GO:0045211,0.00310481729291449,0.998894249117405,30,42,postsynaptic membrane,CC
+Adult,GO:0001518,0.0183953038687712,0.998188210379574,8,9,voltage-gated sodium channel complex,CC
+Adult,GO:0005886,0.0188823553903576,0.990898928329468,34,52,plasma membrane,CC
+Adult,GO:0004930,1.11797259598833e-20,1,675,1068,G protein-coupled receptor activity,MF
+Adult,GO:0004713,7.55424660619636e-11,1,123,166,protein tyrosine kinase activity,MF
+Adult,GO:0005044,3.22967506083016e-7,0.999999931201497,50,61,scavenger receptor activity,MF
+Adult,GO:0030246,1.73894437167135e-6,0.999999535635122,53,68,carbohydrate binding,MF
+Adult,GO:0043531,2.22792403810341e-6,0.999999729851123,30,34,ADP binding,MF
+Adult,GO:0030414,2.51790191980158e-6,1,19,19,peptidase inhibitor activity,MF
+Adult,GO:0022857,3.45606059371728e-6,0.999998743965769,171,272,transmembrane transporter activity,MF
+Adult,GO:0005201,8.9508340519217e-6,0.999996889002896,63,86,extracellular matrix structural constituent,MF
+Adult,GO:0004089,1.88214314259195e-5,0.999997893524123,24,27,carbonate dehydratase activity,MF
+Adult,GO:0005509,2.39517186839419e-5,0.999983105019015,402,698,calcium ion binding,MF
+Adult,GO:0036374,1.04046995679595e-4,1,13,13,glutathione hydrolase activity,MF
+Adult,GO:0031418,1.77607457288399e-4,0.999957334911678,30,38,L-ascorbic acid binding,MF
+Adult,GO:0004714,2.07096887613569e-4,0.999953264723646,28,35,transmembrane receptor protein tyrosine kinase activity,MF
+Adult,GO:0003950,2.21381329022764e-4,0.999936322859595,35,46,NAD+ ADP-ribosyltransferase activity,MF
+Adult,GO:0004888,3.72100384767133e-4,0.999819903649195,73,111,transmembrane signaling receptor activity,MF
+Adult,GO:0003968,4.24783140024629e-4,1,11,11,RNA-directed 5'-3' RNA polymerase activity,MF
+Adult,GO:0004553,5.29754201206579e-4,0.999826542179691,36,49,"hydrolase activity, hydrolyzing O-glycosyl compounds",MF
+Adult,GO:0005230,5.37179937677638e-4,0.999777367107434,51,74,extracellular ligand-gated ion channel activity,MF
+Adult,GO:0015276,6.08610994765149e-4,0.999877992642933,22,27,ligand-gated ion channel activity,MF
+Adult,GO:0004222,8.03279271892279e-4,0.999557332241017,91,144,metalloendopeptidase activity,MF
+Adult,GO:0004867,0.00175725026185903,0.999782518417078,15,17,serine-type endopeptidase inhibitor activity,MF
+Adult,GO:0004525,0.00176901470787218,1,9,9,ribonuclease III activity,MF
+Adult,GO:0004252,0.00177082345625281,0.999040369145825,76,120,serine-type endopeptidase activity,MF
+Adult,GO:0004890,0.00180602942746489,0.999780861579199,14,16,GABA-A receptor activity,MF
+Adult,GO:0004190,0.00285356871989636,0.998471699398526,67,106,aspartic-type endopeptidase activity,MF
+Adult,GO:0015293,0.00356406059464411,1,8,8,symporter activity,MF
+Adult,GO:0005249,0.004702115050028,0.997932452285059,39,58,voltage-gated potassium channel activity,MF
+Adult,GO:0004623,0.00521787897216496,0.99957522736495,10,11,phospholipase A2 activity,MF
+Adult,GO:0016829,0.00567768986512348,0.999215158958123,12,14,lyase activity,MF
+Adult,GO:0016702,0.00576858041314337,0.997919307472168,27,38,"oxidoreductase activity, acting on single donors with incorporation of molecular oxygen, incorporation of two atoms of oxygen",MF
+Adult,GO:0005164,0.00579622152000587,0.99894597022958,14,17,tumor necrosis factor receptor binding,MF
+Adult,GO:0004565,0.00624746343117299,0.999121718607353,12,14,beta-galactosidase activity,MF
+Adult,GO:0016407,0.00715271902497628,1,7,7,acetyltransferase activity,MF
+Adult,GO:0008061,0.00827861444552375,0.997311163693376,22,30,chitin binding,MF
+Adult,GO:0035438,0.0144882540667812,1,6,6,cyclic-di-GMP binding,MF
+Adult,GO:0008271,0.0144887408606038,1,6,6,secondary active sulfate transmembrane transporter activity,MF
+Adult,GO:0005247,0.0148437597799346,1,6,6,voltage-gated chloride channel activity,MF
+Adult,GO:0016849,0.0151218811143014,1,6,6,phosphorus-oxygen lyase activity,MF
+Adult,GO:0022848,0.017103067516938,0.993195476110264,24,35,acetylcholine-gated cation-selective channel activity,MF
+Adult,GO:0000976,0.0173938452837711,0.99720116443089,10,12,transcription regulatory region sequence-specific DNA binding,MF
+Adult,GO:0005248,0.0183953038687712,0.998188210379574,8,9,voltage-gated sodium channel activity,MF
+Adult,GO:0004096,0.018595694642449,0.992524622662156,24,35,catalase activity,MF
+Adult,GO:0004620,0.0187633980599981,0.9981428414833,8,9,phospholipase activity,MF
+Adult,GO:0004842,0.0188902935306779,0.986503092297024,128,225,ubiquitin-protein transferase activity,MF
+Adult,GO:0004322,0.029345894332002,1,5,5,ferroxidase activity,MF
+Adult,GO:0005179,0.0293458943320771,1,5,5,hormone activity,MF
+Adult,GO:0031419,0.0294003343949268,1,5,5,cobalamin binding,MF
+Adult,GO:0004800,0.029798973152489,0.994782129638694,9,11,thyroxine 5'-deiodinase activity,MF
+Adult,GO:0004656,0.0325382853858369,0.996464087558335,7,8,procollagen-proline 4-dioxygenase activity,MF
+Adult,GO:0004563,0.0330034891216326,0.996399118124834,7,8,beta-N-acetylhexosaminidase activity,MF
+Adult,GO:0046556,0.0331506367436019,0.996378507005524,7,8,alpha-L-arabinofuranosidase activity,MF
+Adult,GO:0008519,0.0344317105277408,0.990676406877324,12,16,ammonium transmembrane transporter activity,MF
+Adult,GO:0004977,0.0430262792671628,0.986500032110575,13,18,melanocortin receptor activity,MF
+Adult,GO:0030144,0.0442804181459512,0.989328238196439,10,13,"alpha-1,6-mannosylglycoprotein 6-beta-N-acetylglucosaminyltransferase activity",MF
+Adult,unknown,3.17271553779714e-19,1,1234,2105,NA,NA
