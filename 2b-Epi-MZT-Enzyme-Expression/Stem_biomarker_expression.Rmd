@@ -1,0 +1,513 @@
+---
+title: "Stem Cell Biomarker Expression"
+author: "Erin Chille"
+date: "Last updated: 2020/11/09"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Set up workspace
+
+Remove prior objects and load necessary tools
+```{r, warning=FALSE, message=FALSE}
+rm(list=ls()) # removes all prior objects
+
+library("RColorBrewer")
+library("ggplot2")
+library("tidyverse")
+library("ggpubr")
+library("DESeq2")
+library("genefilter")
+```
+
+
+Load sample Information
+```{r}
+sample.info <- read.csv(file="Sample_Info/RNAseq_data.csv", header=T, sep=",") #load sample info
+```
+
+Load gene count Information
+```{r}
+counts <- as.data.frame(read.csv("1-QC-Align-Assemble/Output/gene_count_matrix.csv", row.names="gene_id"), colClasses = double) #Load normalized expression matrix from stringtie
+```
+
+#### Quality-filter gene counts  
+Pre-filtering our dataset to reduce the memory size dataframe, increase the speed of the transformation and testing functions, and improve quality of statistical analysis by removing low-coverage counts. Removed counts could represent outliers in the data and removing these improves sensitivity of statistical tests. Here we will filter out the genes that are only present in fewer than two of the 24 ambient samples.
+```{r}
+#keep only ambient treatmentinfo and count data
+dev <- c("AMB")
+treatmentinfo_dev <- filter(sample.info, treatment %in% dev)
+dim(treatmentinfo_dev) #rows should be 24
+
+# delete sample columns corresponding to low and extreme low samples by mapping Null value to them
+gcount_dev <- counts[treatmentinfo_dev$sample_id]
+dim(gcount_dev) #columns should be 24
+
+#create filter for the counts data
+#gfiltdev <- rowSums(count(gcount_dev)) > 0
+#set filter values for PoverA, P=100% percent of the samples have counts over A=10. This means that only 2 out of 24 (0.083) samples need to have counts over 10. Our smallest sample size for our life stages is two (fertilized egg, mid-gastrula, early-gastrula). By setting 2/24 as the P, this means if a particular gene is expressed only in 1 of these smallest life stages, it will be included in the analysis.
+filt <- filterfun(pOverA(0.083,10))
+
+#create filter for the counts data
+gfiltdev <- genefilter(gcount_dev, filt)
+
+#identify genes to keep by count filter
+gkeepdev <- gcount_dev[gfiltdev,]
+
+
+#identify genes to keep by count filter
+gkeepdev <- gcount_dev[gfiltdev,]
+
+#identify gene lists
+gn.keepdev <- rownames(gkeepdev)
+
+#gene count data filtered in PoverA, P percent of the samples have counts over A
+gcount_filt_dev <- as.data.frame(gcount_dev[which(rownames(gcount_dev) %in% gn.keepdev),])
+
+#How many rows do we have before and after filtering?
+nrow(gcount_dev) #Before
+nrow(gcount_filt_dev) #After
+```
+
+In order for the DESeq2 algorithms to work, the SampleIDs on the treatmentinfo file and count matrices have to match exactly and in the same order. The following R clump will check to make sure that these match.
+```{r}
+#Checking that all row and column names match. Should return "TRUE"
+all(treatmentinfo_dev$sample_id %in% colnames(gcount_filt_dev))
+all(treatmentinfo_dev$sample_id == colnames(gcount_filt_dev)) 
+```
+
+### Read normalization
+We are now going normalize our read counts using VST-normalization in DESeq2
+
+#### Construct the DESeq2 dataset
+
+Merge the treatment and time_point columns into a new column , group. Set group as a factor.
+```{r}
+treatmentinfo_dev$time_point <- factor(treatmentinfo_dev$time_point, levels = c("Unfertilized_egg", "Fertilized_egg", "Cleavage", "Prawn_chip", "Early_gastrula", "Mid_gastrula", "Late_gastrula", "Planula", "Adult"))
+```
+
+Create a DESeqDataSet design from gene count matrix and labels. Here we set the design to look at time_point to test for any differences in gene expression across timepoints.
+```{r}
+#Set DESeq2 design
+gdds_dev <- DESeqDataSetFromMatrix(countData = gcount_filt_dev,
+                              colData = treatmentinfo_dev,
+                              design = ~time_point)
+```
+
+#### Log-transform the count data
+First we are going to log-transform the data using a variance stabilizing transforamtion (VST). This is only for visualization purposes. Essentially, this is roughly similar to putting the data on the log2 scale. It will deal with the sampling variability of low counts by calculating within-group variability (if blind=FALSE). Importantly, it does not use the design to remove variation in the data, and so can be used to examine if there may be any variability do to technical factors such as extraction batch effects.
+
+To do this we first need to calculate the size factors of our samples. This is a rough estimate of how many reads each sample contains compared to the others. In order to use VST (the faster log2 transforming process) to log-transform our data, the size factors need to be less than 4. Otherwise, there could be artefacts in our results.
+```{r}
+SF.gdds_dev <- estimateSizeFactors(gdds_dev) #estimate size factors to determine if we can use vst  to transform our data. Size factors should be less than for to use vst
+print(sizeFactors(SF.gdds_dev)) #View size factors
+```
+
+Our size factors are all less than 4, so we can use VST!
+```{r}
+gvst_dev <- vst(gdds_dev, blind=FALSE) #apply a variance stabilizing transforamtion to minimize effects of small counts and normalize wrt library size
+head(assay(gvst_dev), 3) #view transformed gene count data
+```
+Find mean, median, mode of expression
+```{r}
+#Make a list of observations
+exp_df <- as.data.frame(assay(gvst_dev))
+exp_list <- c(exp_df$X119, exp_df$X120, exp_df$X121, exp_df$X127, exp_df$X132, exp_df$X153, exp_df$X154, exp_df$X159, exp_df$X162, exp_df$X163, exp_df$X167, exp_df$X179, exp_df$X180, exp_df$X184, exp_df$X212, exp_df$X215, exp_df$X218, exp_df$X221, exp_df$X359, exp_df$X361, exp_df$X375, exp_df$X1101, exp_df$X1548, exp_df$X1628)
+sanity.check <- nrow(exp_df)*ncol(exp_df) #make sure num observations match
+length(exp_list) == sanity.check #make sure num observations match. Should be true.
+
+#Get stats and view distribution as a histogram
+max(exp_list)
+mean(exp_list)
+median(exp_list)
+min(exp_list)
+hist(exp_list)
+```
+
+
+## Run BLAST search of biomarkers against Mcap protein fasta
+
+Find orthologues of biomarkers within Mcap genome
+```{bash}
+#Make blast database from Mcap predicted protein fasta file
+#/usr/local/ncbi/blast/bin/makeblastdb -in {path2ref}/Mcap.protein.fa -input_type fasta -dbtype prot -parse_seqids -out 2b-Epi-MZT-Enzyme-Expression/Input/Mcap.protein.blast.db
+
+#Blast fasta file containing sequences of selected biomarkers against our sequences
+#/usr/local/ncbi/blast/bin/blastp -query 2b-Epi-MZT-Enzyme-Expression/Input/stem_query.fasta -db 2b-Epi-MZT-Enzyme-Expression/Input/Mcap.protein.blast.db -outfmt 6 -max_target_seqs 100 -evalue 1e-05 -out 2b-Epi-MZT-Enzyme-Expression/Output/Mcap_stem_biomarker_hits.csv
+
+#Manually in text editor: (1.) Add column names: "queryprot", "gene_id", "pident", "length", "mismatch", "gapopen", "qstart", "qend", "sstart", "send", "evalue", "bitscore", and (2.) Remove ("augustus." and ".t1") from gene_ids using "command F" replace
+#Manually in Excel: Add a column called Enzyme_Name that lists the alias for each of your target of enzymes. Check the annotation to see if there is any overlap in genes
+```
+
+Subset results for genes of interest
+```{r}
+hits <- read.table(file="2b-Epi-MZT-Enzyme-Expression/Output/Mcap_stem_biomarker_hits.csv", col.names=c("Enzyme_Name","gene_id","pident", "length", "mismatch", "gapopen", "qstart", "qend", "sstart", "ssend", "evalue", "bitscore"))
+hits <- hits %>% distinct(Enzyme_Name, gene_id, .keep_all = TRUE)
+hits <- hits %>% group_by(Enzyme_Name) %>% distinct(sstart, ssend, .keep_all = TRUE)
+hits$gene_id <- gsub("augustus.", "", hits$gene_id)
+hits$gene_id <- gsub(".t1", "", hits$gene_id)
+levels(as.factor(hits$Enzyme_Name))
+
+countsx <- as.data.frame(assay(gvst_dev))
+gene.counts <- countsx[(row.names(countsx) %in% hits$gene_id), ]
+#str(gene.counts)
+gene.counts$gene_id <- row.names(gene.counts) 
+gene.counts <- merge(gene.counts, hits[,c(1,2)], by="gene_id")
+
+gene.counts.long <- pivot_longer(gene.counts, 2:25, values_to = "exp")
+  #gather(gene.counts, group, exp, X1101:X375, factor_key=TRUE) 
+colnames(gene.counts.long)[3] <- "sample_id"
+gene.counts.long <- merge(gene.counts.long, sample.info[,c(1:2)], by="sample_id")
+#str(gene.counts.long)
+
+mean.counts <- gene.counts.long %>%
+  group_by(gene_id, Enzyme_Name, time_point) %>%
+  summarise(mean = mean(exp),
+            sd=sd(exp))
+
+mean.counts$time_point <- factor(mean.counts$time_point, 
+                                 levels = c("Unfertilized_egg","Fertilized_egg","Cleavage", 
+                                  "Prawn_chip","Early_gastrula","Mid_gastrula", "Late_gastrula",
+                                  "Planula", "Adult"))
+levels(as.factor(mean.counts$Enzyme_Name))
+```
+
+```{r}
+HSFP5.counts <- subset(mean.counts, Enzyme_Name =="HSFP5")
+nHSFP5 <- length(levels(as.factor(HSFP5.counts$gene_id)))
+MYBL1.counts <- subset(mean.counts, Enzyme_Name =="MYBL1")
+nMYBL1 <- length(levels(as.factor(MYBL1.counts$gene_id)))
+NANOS.counts <- subset(mean.counts, Enzyme_Name =="NANOS")
+nNANOS <- length(levels(as.factor(NANOS.counts$gene_id)))
+RFX3.counts <- subset(mean.counts, Enzyme_Name =="RFX3")
+nRFX3 <- length(levels(as.factor(RFX3.counts$gene_id)))
+SOLH2.counts <- subset(mean.counts, Enzyme_Name =="SOLH2")
+nSOLH2 <- length(levels(as.factor(SOLH2.counts$gene_id)))
+VASA.counts <- subset(mean.counts, Enzyme_Name =="VASA")
+nVASA <- length(levels(as.factor(VASA.counts$gene_id)))
+PIWI.counts <- subset(mean.counts, Enzyme_Name =="PIWI")
+nPIWI <- length(levels(as.factor(PIWI.counts$gene_id)))
+
+nhomologues <- as.data.frame(cbind(HSFP5=nHSFP5, MYBL1=nMYBL1, NANOS=nNANOS, RFX3=nRFX3, SOLH2=nSOLH2, VASA=nVASA, PIWI=nPIWI))
+print(nhomologues)
+```
+
+Select only the top hit for each enzyme for plotting.
+```{r}
+top_HSFP5=c("g61783")
+top_MYBL1=c("g47070")
+top_NANOS=c("g56764")
+top_RFX3=c("g45492")
+top_SOLH2=c("g41670")
+top_VASA=c("adi2mcaRNA36621_R2")
+top_PIWI=c("g67777")
+
+```
+
+## Plot methylation-related genes
+
+Plot MYBL1a expression as a function of time and treatment
+```{r}
+Mcap.MYBL1 <- MYBL1.counts %>% subset(gene_id%in%top_MYBL1) %>% 
+  ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
+  geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
+  geom_line(aes(), lty="dashed", color = "darkgrey") +
+  geom_point(aes(), size = 1.5) +
+  xlab("Timepoint") +
+  ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
+  theme_bw() + #Set the background color
+  ylim(8.728599, 14) +
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        panel.border = element_blank(), #Set the border
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        plot.background=element_blank(),  #Set the plot background
+        axis.title.x=element_blank(), #set x-axis title size
+        axis.text.x=element_blank(), #set x-axis label size
+        axis.text.y=element_text(size = 6), #set x-axis label size
+        axis.title.y=element_text(size = 6), #set x-axis label size
+        axis.ticks.x=element_blank(), #No x-label ticks
+        legend.text=element_text(size = 6), #Legend text size
+        legend.title=element_text(size = 6), #Legend title size
+        legend.position=c(0.75, 0.9)) +
+  ggtitle("i) MYBL1") +
+  #facet_grid(rows=vars(gene_id), scales="free_y") +
+  theme(strip.text.y = element_text(size = 5)) +
+  theme(plot.title = element_text(face = 'bold.italic', 
+                                  size = 9, 
+                                  hjust = 0)) #+
+  #annotate("text", x = 3, y = 14, label = "de novo methylation", size = 2.5)
+Mcap.MYBL1
+```
+
+Plot PIWI expression as a function of time and treatment
+```{r}
+Mcap.PIWI <- PIWI.counts %>% subset(gene_id%in%top_PIWI) %>% 
+  ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
+  geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
+  geom_line(aes(), lty="dashed", color = "darkgrey") +
+  geom_point(aes(), size = 1.5) +
+  xlab("Timepoint") +
+  ylab(expression(paste("Mean normalized expression"))) +
+  theme_bw() + #Set the background color
+  ylim(8.728599, 15) +
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        panel.border = element_blank(), #Set the border
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        plot.background=element_blank(),  #Set the plot background
+        axis.title.x=element_blank(), #set x-axis title size
+        axis.text.x=element_blank(), #set x-axis label size
+        axis.text.y=element_text(size = 6), #set x-axis label size
+        axis.title.y=element_blank(), #set x-axis label size
+        axis.ticks.x=element_blank(), #No x-label ticks
+        legend.text=element_text(size = 6), #Legend text size
+        legend.title=element_text(size = 6), #Legend title size
+        legend.position=c(0.75, 0.9)) +
+  ggtitle("ii) PIWI") +
+  #facet_grid(rows=vars(gene_id), scales="free_y") +
+  theme(strip.text.y = element_text(size = 5)) +
+  theme(plot.title = element_text(face = 'bold.italic', 
+                                  size = 9, 
+                                  hjust = 0)) #+
+  #annotate("text", x = 3.5, y = 14, label = "methylation maintenance", size = 2.5)
+Mcap.PIWI
+```
+
+Plot NANOS expression as a function of time and treatment
+```{r}
+Mcap.NANOS <- NANOS.counts %>% subset(gene_id%in%top_NANOS) %>% 
+  ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
+  geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
+  geom_line(aes(), lty="dashed", color = "darkgrey") +
+  geom_point(aes(), size = 1.5) +
+  xlab("Timepoint") +
+  ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
+  theme_bw() + #Set the background color
+  ylim(8.728599, 14) +
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        panel.border = element_blank(), #Set the border
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        plot.background=element_blank(),  #Set the plot background
+        axis.title.x=element_blank(), #set x-axis title size
+        axis.text.x=element_blank(), #set x-axis label size
+        axis.text.y=element_text(size = 6), #set x-axis label size
+        axis.title.y=element_blank(), #set x-axis label size
+        axis.ticks.x=element_blank(), #No x-label ticks
+        legend.text=element_text(size = 6), #Legend text size
+        legend.title=element_text(size = 6), #Legend title size
+        legend.position=c(0.75, 0.9)) +
+  ggtitle("iii) NANOS") +
+  #facet_grid(rows=vars(gene_id), scales="free_y") +
+  theme(strip.text.y = element_text(size = 5)) +
+  theme(plot.title = element_text(face = 'bold.italic', 
+                                  size = 9, 
+                                  hjust = 0)) #+
+  #annotate("text", x = 3, y = 14, label = "methylation removal", size = 2.5)
+Mcap.NANOS
+```
+
+Plot RFX3 and MBD3 expression as a function of time and treatment
+```{r}
+Mcap.RFX3 <- RFX3.counts %>% subset(gene_id%in%top_RFX3) %>% 
+  ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
+  geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
+  geom_line(lty="dashed", color = "darkgrey") +
+  geom_point(aes(), size = 1.5) +
+  xlab("Timepoint") +
+  ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
+  theme_bw() + #Set the background color
+  ylim(8.728599, 14) +
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        panel.border = element_blank(), #Set the border
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        plot.background=element_blank(),  #Set the plot background
+        axis.title.x=element_text(size = 6), #set x-axis title size
+        axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1, size = 6), #set x-axis label size
+        axis.text.y=element_text(size = 6), #set x-axis label size
+        axis.title.y=element_text(size = 6), #set x-axis label size
+        axis.ticks.x=element_blank(), #No x-label ticks
+        legend.text=element_text(size = 6), #Legend text size
+        legend.title=element_text(size = 6), #Legend title size
+        legend.position=c(0.75, 0.9)) +
+  ggtitle("iv) RFX3") +
+  #facet_grid(rows=vars(gene_id), scales="free_y") +
+  theme(strip.text.y = element_text(size = 5)) +
+  theme(plot.title = element_text(face = 'bold.italic', 
+                                  size = 9, 
+                                  hjust = 0)) #+
+  #annotate("text", x = 3.5, y = 14, label = "transcriptional repression", size = 2.5)
+Mcap.RFX3
+```
+
+Plot SOLH2 expression as a function of time and treatment
+```{r}
+Mcap.SOLH2 <- SOLH2.counts %>% subset(gene_id%in%top_SOLH2) %>% 
+  ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
+  geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
+  geom_line(lty="dashed", color = "darkgrey") +
+  geom_point(aes(), size = 1.5) +
+  xlab("Timepoint") +
+  ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
+  theme_bw() + #Set the background color
+  ylim(8.728599, 14.5) +
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        panel.border = element_blank(), #Set the border
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        plot.background=element_blank(),  #Set the plot background
+        axis.title.x=element_text(size = 6), #set x-axis title size
+        axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1, size = 6), #set x-axis label size
+        axis.text.y=element_text(size = 6), #set x-axis label size
+        axis.title.y=element_blank(), #set x-axis label size
+        axis.ticks.x=element_blank(), #No x-label ticks
+        legend.text=element_text(size = 6), #Legend text size
+        legend.title=element_text(size = 6), #Legend title size
+        legend.position=c(0.75, 0.85)) +
+  ggtitle("v) SOLH2") +
+  #facet_grid(rows=vars(gene_id), scales="free_y") +
+  theme(strip.text.y = element_text(size = 5)) +
+  theme(plot.title = element_text(face = 'bold.italic', 
+                                  size = 9, 
+                                  hjust = 0)) #+
+  #annotate("text", x = 3.5, y = 14.5, label = "methylation maintenance", size = 2.5)
+Mcap.SOLH2
+```
+
+```{r}
+Mcap.VASA <- VASA.counts %>% subset(gene_id%in%top_VASA) %>% 
+  ggplot(aes(x=time_point, y=mean, group=gene_id)) +
+  geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
+  geom_line(lty="dashed", color = "darkgrey") +
+  geom_point(aes(), size = 1.5) +
+  xlab("Timepoint") +
+  ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
+  theme_bw() + #Set the background color
+  ylim(8.728599, 14) +
+  theme(axis.line = element_line(color = 'black'), #Set the axes color
+        panel.border = element_blank(), #Set the border
+        panel.grid.major = element_blank(), #Set the major gridlines
+        panel.grid.minor = element_blank(), #Set the minor gridlines
+        plot.background=element_blank(),  #Set the plot background
+        axis.title.x=element_text(size = 6), #set x-axis title size
+        axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1, size = 6), #set x-axis label size
+        axis.text.y=element_text(size = 6), #set x-axis label size
+        axis.title.y=element_blank(), #set x-axis label size
+        axis.ticks.x=element_blank(), #No x-label ticks
+        legend.text=element_text(size = 6), #Legend text size
+        legend.title=element_text(size = 6), #Legend title size
+        legend.position = c(0.75, 0.9)) +
+  #guides(shape=guide_legend(ncol=2)) +
+  ggtitle("vii) VASA") +
+  #facet_grid(rows=vars(gene_id), scales="free_y") +
+  theme(strip.text.y = element_text(size = 5)) +
+  theme(plot.title = element_text(face = 'bold.italic',
+                                  size = 9,
+                                  hjust = 0)) #+
+  #annotate("text", x = 3.25, y = 14, label = "chromatin accessibility", size = 2.5)
+Mcap.VASA
+```
+
+
+Compile plots into single figure and save
+```{r}
+library(patchwork)
+Fig.7 <- (Mcap.MYBL1 + Mcap.PIWI + Mcap.NANOS) / (Mcap.RFX3 + Mcap.SOLH2 + Mcap.VASA)
+Fig.7 
+ggsave("2b-Epi-MZT-Enzyme-Expression/Output/Mcap-Stem-Expression.png", Fig.7, width=7, height=5)
+```
+
+# Run differential expression analysis to see if any biomarkers are differentially expressed
+Run differential expression test using a Wald model. 
+```{r, message = FALSE}
+DEG_dev <- DESeq(gdds_dev) #run differential expression test by group using the Wald model
+```
+
+Make a list of biomarkers to look for:
+```{r}
+stem.markers <- c(top_MYBL1, top_NANOS, top_RFX3, top_SOLH2, top_VASA, top_PIWI)
+```
+
+Look for differential expression of biomarkers
+```{r, warning=FALSE}
+DESeq.results.fe_vs_ue <-  results(DEG_dev, name="time_point_Fertilized_egg_vs_Unfertilized_egg")
+DESeq.results.fe_vs_ue <- as.data.frame(DESeq.results.fe_vs_ue)
+DESeq.results.fe_vs_ue$contrast <- c("Fertilized_egg_vs_Unfertilized_egg")
+DESeq.results.fe_vs_ue$gene_id <-  rownames(DESeq.results.fe_vs_ue)
+fe_vs_ue.DEGs <- filter(DESeq.results.fe_vs_ue, padj<0.05) 
+nrow(fe_vs_ue.DEGs) #N DEGs
+stem.DEGs.fe_vs_ue <- filter(DESeq.results.fe_vs_ue, gene_id%in%stem.markers, padj<0.05)
+
+DESeq.results.clvg_vs_fe <-  results(DEG_dev, contrast= c("time_point","Cleavage","Fertilized_egg"))
+DESeq.results.clvg_vs_fe <- as.data.frame(DESeq.results.clvg_vs_fe)
+DESeq.results.clvg_vs_fe$contrast <- c("Cleavage_vs_Fertilized_egg")
+DESeq.results.clvg_vs_fe$gene_id <-  rownames(DESeq.results.clvg_vs_fe)
+clvg_vs_fe.DEGs <- filter(DESeq.results.clvg_vs_fe, padj<0.05) 
+nrow(clvg_vs_fe.DEGs) #N DEGs
+stem.DEGs.clvg_vs_fe <- filter(DESeq.results.clvg_vs_fe, gene_id%in%stem.markers, padj<0.05)
+
+DESeq.results.pc_vs_clvg <-  results(DEG_dev, contrast= c("time_point","Prawn_chip","Cleavage"))
+DESeq.results.pc_vs_clvg <- as.data.frame(DESeq.results.pc_vs_clvg)
+DESeq.results.pc_vs_clvg$contrast <- c("Prawn_chip_vs_Cleavage")
+DESeq.results.pc_vs_clvg$gene_id <-  rownames(DESeq.results.pc_vs_clvg)
+pc_vs_clvg.DEGs <- filter(DESeq.results.pc_vs_clvg, padj<0.05) 
+nrow(pc_vs_clvg.DEGs) #N DEGs
+stem.DEGs.pc_vs_clvg <- filter(DESeq.results.pc_vs_clvg, gene_id%in%stem.markers, padj<0.05)
+
+DESeq.results.eg_vs_pc <-  results(DEG_dev, contrast= c("time_point", "Early_gastrula","Prawn_chip"))
+DESeq.results.eg_vs_pc <- as.data.frame(DESeq.results.eg_vs_pc)
+DESeq.results.eg_vs_pc$contrast <- c("Early_gastrula_vs_Prawn_chip")
+DESeq.results.eg_vs_pc$gene_id <-  rownames(DESeq.results.eg_vs_pc)
+eg_vs_pc.DEGs <- filter(DESeq.results.eg_vs_pc, padj<0.05) 
+nrow(eg_vs_pc.DEGs) #N DEGs
+stem.DEGs.eg_vs_pc <- filter(DESeq.results.eg_vs_pc, gene_id%in%stem.markers, padj<0.05)
+
+DESeq.results.mg_vs_eg <-  results(DEG_dev, contrast= c("time_point", "Mid_gastrula", "Early_gastrula"))
+DESeq.results.mg_vs_eg <- as.data.frame(DESeq.results.mg_vs_eg)
+DESeq.results.mg_vs_eg$contrast <- c("Mid_gastrula_vs_Early_gastrula")
+DESeq.results.mg_vs_eg$gene_id <-  rownames(DESeq.results.mg_vs_eg)
+mg_vs_eg.DEGs <- filter(DESeq.results.mg_vs_eg, padj<0.05) 
+nrow(mg_vs_eg.DEGs) #N DEGs
+stem.DEGs.mg_vs_eg <- filter(DESeq.results.mg_vs_eg, gene_id%in%stem.markers, padj<0.05)
+
+DESeq.results.lg_vs_mg <-  results(DEG_dev, contrast= c("time_point","Late_gastrula","Mid_gastrula"))
+DESeq.results.lg_vs_mg <- as.data.frame(DESeq.results.lg_vs_mg)
+DESeq.results.lg_vs_mg$contrast <- c("Late_gastrula_vs_Mid_gastrula")
+DESeq.results.lg_vs_mg$gene_id <-  rownames(DESeq.results.lg_vs_mg)
+lg_vs_mg.DEGs <- filter(DESeq.results.lg_vs_mg, padj<0.05) 
+nrow(lg_vs_mg.DEGs) #N DEGs
+stem.DEGs.lg_vs_mg <- filter(DESeq.results.lg_vs_mg, gene_id%in%stem.markers, padj<0.05)
+
+DESeq.results.pln_vs_lg <-  results(DEG_dev, contrast= c("time_point", "Planula", "Late_gastrula"))
+DESeq.results.pln_vs_lg <- as.data.frame(DESeq.results.pln_vs_lg)
+DESeq.results.pln_vs_lg$contrast <- c("Planula_vs_Late_gastrula")
+DESeq.results.pln_vs_lg$gene_id <-  rownames(DESeq.results.pln_vs_lg)
+pln_vs_lg.DEGs <- filter(DESeq.results.pln_vs_lg, padj<0.05) 
+nrow(pln_vs_lg.DEGs) #N DEGs
+stem.DEGs.pln_vs_lg <- filter(DESeq.results.pln_vs_lg, gene_id%in%stem.markers, padj<0.05)
+
+DESeq.results.adult_vs_pln <-  results(DEG_dev, contrast= c("time_point", "Adult","Planula"))
+DESeq.results.adult_vs_pln <- as.data.frame(DESeq.results.adult_vs_pln)
+DESeq.results.adult_vs_pln$contrast <- c("Adult_vs_Planula")
+DESeq.results.adult_vs_pln$gene_id <-  rownames(DESeq.results.adult_vs_pln)
+adult_vs_pln.DEGs <- filter(DESeq.results.adult_vs_pln, padj<0.05) 
+nrow(adult_vs_pln.DEGs) #N DEGs
+stem.DEGs.adult_vs_pln <- filter(DESeq.results.adult_vs_pln, gene_id%in%stem.markers, padj<0.05)
+```
+
+Bind results. Add enzyme names for biomarker files.
+```{r}
+stem_DEGs <- bind_rows(stem.DEGs.fe_vs_ue, stem.DEGs.clvg_vs_fe, stem.DEGs.pc_vs_clvg, stem.DEGs.eg_vs_pc, stem.DEGs.mg_vs_eg, stem.DEGs.lg_vs_mg, stem.DEGs.pln_vs_lg, stem.DEGs.adult_vs_pln)
+stem_DEGs <- merge(stem_DEGs, hits[,c(1,2)], by="gene_id")
+stem_DEGs
+length(levels(factor(stem_DEGs$Enzyme_Name)))
+levels(factor(stem_DEGs$Enzyme_Name))
+
+#save
+write_csv(stem_DEGs, file = "2b-Epi-MZT-Enzyme-Expression/Output/stem_biomarker_DEGs.csv")
+```
