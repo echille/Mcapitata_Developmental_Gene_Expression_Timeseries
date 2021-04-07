@@ -136,7 +136,7 @@ Find orthologues of biomarkers within Mcap genome
 #/usr/local/ncbi/blast/bin/makeblastdb -in {path2ref}/Mcap.protein.fa -input_type fasta -dbtype prot -parse_seqids -out 2b-Epi-MZT-Enzyme-Expression/Input/Mcap.protein.blast.db
 
 #Blast fasta file containing sequences of selected biomarkers against our sequences
-#/usr/local/ncbi/blast/bin/blastp -query 2b-Epi-MZT-Enzyme-Expression/Input/stem_query.fasta -db 2b-Epi-MZT-Enzyme-Expression/Input/Mcap.protein.blast.db -outfmt 6 -max_target_seqs 100 -evalue 1e-05 -out 2b-Epi-MZT-Enzyme-Expression/Output/Mcap_stem_biomarker_hits.csv
+/usr/local/ncbi/blast/bin/blastp -query 2b-Epi-MZT-Enzyme-Expression/Input/stem_query.fasta -db 2b-Epi-MZT-Enzyme-Expression/Input/Mcap.protein.blast.db -outfmt 6 -max_target_seqs 100 -evalue 1e-05 -out 2b-Epi-MZT-Enzyme-Expression/Output/Mcap_stem_biomarker_hits.csv
 
 #Manually in text editor: (1.) Add column names: "queryprot", "gene_id", "pident", "length", "mismatch", "gapopen", "qstart", "qend", "sstart", "send", "evalue", "bitscore", and (2.) Remove ("augustus." and ".t1") from gene_ids using "command F" replace
 #Manually in Excel: Add a column called Enzyme_Name that lists the alias for each of your target of enzymes. Check the annotation to see if there is any overlap in genes
@@ -176,42 +176,44 @@ levels(as.factor(mean.counts$Enzyme_Name))
 ```
 
 ```{r}
-HSFP5.counts <- subset(mean.counts, Enzyme_Name =="HSFP5")
-nHSFP5 <- length(levels(as.factor(HSFP5.counts$gene_id)))
-MYBL1.counts <- subset(mean.counts, Enzyme_Name =="MYBL1")
-nMYBL1 <- length(levels(as.factor(MYBL1.counts$gene_id)))
-NANOS.counts <- subset(mean.counts, Enzyme_Name =="NANOS")
-nNANOS <- length(levels(as.factor(NANOS.counts$gene_id)))
-RFX3.counts <- subset(mean.counts, Enzyme_Name =="RFX3")
-nRFX3 <- length(levels(as.factor(RFX3.counts$gene_id)))
-SOLH2.counts <- subset(mean.counts, Enzyme_Name =="SOLH2")
-nSOLH2 <- length(levels(as.factor(SOLH2.counts$gene_id)))
-VASA.counts <- subset(mean.counts, Enzyme_Name =="VASA")
-nVASA <- length(levels(as.factor(VASA.counts$gene_id)))
-PIWI.counts <- subset(mean.counts, Enzyme_Name =="PIWI")
-nPIWI <- length(levels(as.factor(PIWI.counts$gene_id)))
+# HSFP5.counts <- subset(mean.counts, Enzyme_Name =="HSFP5")
+# nHSFP5 <- length(levels(as.factor(HSFP5.counts$gene_id)))
+PL10.counts <- subset(mean.counts, Enzyme_Name =="PL10")
+nPL10 <- length(levels(as.factor(PL10.counts$gene_id)))
+Nanos2.counts <- subset(mean.counts, Enzyme_Name =="Nanos2")
+nNanos2 <- length(levels(as.factor(Nanos2.counts$gene_id)))
+# RFX3.counts <- subset(mean.counts, Enzyme_Name =="RFX3")
+# nRFX3 <- length(levels(as.factor(RFX3.counts$gene_id)))
+# SOLH2.counts <- subset(mean.counts, Enzyme_Name =="SOLH2")
+# nSOLH2 <- length(levels(as.factor(SOLH2.counts$gene_id)))
+Vasa1.counts <- subset(mean.counts, Enzyme_Name =="Vasa1")
+nVasa1 <- length(levels(as.factor(Vasa1.counts$gene_id)))
+Vasa2.counts <- subset(mean.counts, Enzyme_Name =="Vasa2")
+nVasa2 <- length(levels(as.factor(Vasa2.counts$gene_id)))
 
-nhomologues <- as.data.frame(cbind(HSFP5=nHSFP5, MYBL1=nMYBL1, NANOS=nNANOS, RFX3=nRFX3, SOLH2=nSOLH2, VASA=nVASA, PIWI=nPIWI))
+nhomologues <- as.data.frame(cbind(#HSFP5=nHSFP5, 
+  PL10=nPL10, Nanos2=nNanos2, #RFX3=nRFX3, SOLH2=nSOLH2, 
+  Vasa1=nVasa1, Vasa2=nVasa2))
 print(nhomologues)
 ```
 
 Select only the top hit for each enzyme for plotting.
 ```{r}
-top_HSFP5=c("g61783")
-top_MYBL1=c("g47070")
-top_NANOS=c("g56764")
-top_RFX3=c("g45492")
-top_SOLH2=c("g41670")
-top_VASA=c("adi2mcaRNA36621_R2")
-top_PIWI=c("g67777")
+#top_HSFP5=c("g61783")
+top_PL10=c("g23849")
+top_Nanos2=c("g56764")
+#top_RFX3=c("g45492")
+#top_SOLH2=c("g41670")
+top_Vasa1=c("adi2mcaRNA36621_R2")
+top_Vasa2=c("g66215")
 
 ```
 
 ## Plot methylation-related genes
 
-Plot MYBL1a expression as a function of time and treatment
+Plot PL10a expression as a function of time and treatment
 ```{r}
-Mcap.MYBL1 <- MYBL1.counts %>% subset(gene_id%in%top_MYBL1) %>% 
+Mcap.PL10 <- PL10.counts %>% subset(gene_id%in%top_PL10) %>% 
   ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
   geom_line(aes(), lty="dashed", color = "darkgrey") +
@@ -233,19 +235,19 @@ Mcap.MYBL1 <- MYBL1.counts %>% subset(gene_id%in%top_MYBL1) %>%
         legend.text=element_text(size = 6), #Legend text size
         legend.title=element_text(size = 6), #Legend title size
         legend.position=c(0.75, 0.9)) +
-  ggtitle("i) MYBL1") +
+  ggtitle("i) PL10") +
   #facet_grid(rows=vars(gene_id), scales="free_y") +
   theme(strip.text.y = element_text(size = 5)) +
   theme(plot.title = element_text(face = 'bold.italic', 
                                   size = 9, 
                                   hjust = 0)) #+
   #annotate("text", x = 3, y = 14, label = "de novo methylation", size = 2.5)
-Mcap.MYBL1
+Mcap.PL10
 ```
 
-Plot PIWI expression as a function of time and treatment
+Plot Vasa2 expression as a function of time and treatment
 ```{r}
-Mcap.PIWI <- PIWI.counts %>% subset(gene_id%in%top_PIWI) %>% 
+Mcap.Vasa2 <- Vasa2.counts %>% subset(gene_id%in%top_Vasa2) %>% 
   ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
   geom_line(aes(), lty="dashed", color = "darkgrey") +
@@ -267,54 +269,54 @@ Mcap.PIWI <- PIWI.counts %>% subset(gene_id%in%top_PIWI) %>%
         legend.text=element_text(size = 6), #Legend text size
         legend.title=element_text(size = 6), #Legend title size
         legend.position=c(0.75, 0.9)) +
-  ggtitle("ii) PIWI") +
+  ggtitle("ii) Vasa2") +
   #facet_grid(rows=vars(gene_id), scales="free_y") +
   theme(strip.text.y = element_text(size = 5)) +
   theme(plot.title = element_text(face = 'bold.italic', 
                                   size = 9, 
                                   hjust = 0)) #+
   #annotate("text", x = 3.5, y = 14, label = "methylation maintenance", size = 2.5)
-Mcap.PIWI
+Mcap.Vasa2
 ```
 
-Plot NANOS expression as a function of time and treatment
+Plot Nanos2 expression as a function of time and treatment
 ```{r}
-Mcap.NANOS <- NANOS.counts %>% subset(gene_id%in%top_NANOS) %>% 
-  ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
-  geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
-  geom_line(aes(), lty="dashed", color = "darkgrey") +
-  geom_point(aes(), size = 1.5) +
-  xlab("Timepoint") +
-  ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
-  theme_bw() + #Set the background color
-  ylim(8.728599, 14) +
-  theme(axis.line = element_line(color = 'black'), #Set the axes color
-        panel.border = element_blank(), #Set the border
-        panel.grid.major = element_blank(), #Set the major gridlines
-        panel.grid.minor = element_blank(), #Set the minor gridlines
-        plot.background=element_blank(),  #Set the plot background
-        axis.title.x=element_blank(), #set x-axis title size
-        axis.text.x=element_blank(), #set x-axis label size
-        axis.text.y=element_text(size = 6), #set x-axis label size
-        axis.title.y=element_blank(), #set x-axis label size
-        axis.ticks.x=element_blank(), #No x-label ticks
-        legend.text=element_text(size = 6), #Legend text size
-        legend.title=element_text(size = 6), #Legend title size
-        legend.position=c(0.75, 0.9)) +
-  ggtitle("iii) NANOS") +
-  #facet_grid(rows=vars(gene_id), scales="free_y") +
-  theme(strip.text.y = element_text(size = 5)) +
-  theme(plot.title = element_text(face = 'bold.italic', 
-                                  size = 9, 
-                                  hjust = 0)) #+
-  #annotate("text", x = 3, y = 14, label = "methylation removal", size = 2.5)
-Mcap.NANOS
+# Mcap.RFX3 <- RFX3.counts %>% subset(gene_id%in%top_RFX3) %>% 
+#   ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
+#   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
+#   geom_line(aes(), lty="dashed", color = "darkgrey") +
+#   geom_point(aes(), size = 1.5) +
+#   xlab("Timepoint") +
+#   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
+#   theme_bw() + #Set the background color
+#   ylim(8.728599, 14) +
+#   theme(axis.line = element_line(color = 'black'), #Set the axes color
+#         panel.border = element_blank(), #Set the border
+#         panel.grid.major = element_blank(), #Set the major gridlines
+#         panel.grid.minor = element_blank(), #Set the minor gridlines
+#         plot.background=element_blank(),  #Set the plot background
+#         axis.title.x=element_blank(), #set x-axis title size
+#         axis.text.x=element_blank(), #set x-axis label size
+#         axis.text.y=element_text(size = 6), #set x-axis label size
+#         axis.title.y=element_blank(), #set x-axis label size
+#         axis.ticks.x=element_blank(), #No x-label ticks
+#         legend.text=element_text(size = 6), #Legend text size
+#         legend.title=element_text(size = 6), #Legend title size
+#         legend.position=c(0.75, 0.9)) +
+#   ggtitle("iii) RFX3") +
+#   #facet_grid(rows=vars(gene_id), scales="free_y") +
+#   theme(strip.text.y = element_text(size = 5)) +
+#   theme(plot.title = element_text(face = 'bold.italic', 
+#                                   size = 9, 
+#                                   hjust = 0)) #+
+#   #annotate("text", x = 3, y = 14, label = "methylation removal", size = 2.5)
+# Mcap.RFX3
 ```
 
 Plot RFX3 and MBD3 expression as a function of time and treatment
 ```{r}
-Mcap.RFX3 <- RFX3.counts %>% subset(gene_id%in%top_RFX3) %>% 
-  ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
+Mcap.Nanos2 <- Nanos2.counts %>% subset(gene_id%in%top_Nanos2) %>%
+  ggplot(aes(x=time_point, y=mean, group=gene_id)) +
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
   geom_line(lty="dashed", color = "darkgrey") +
   geom_point(aes(), size = 1.5) +
@@ -335,52 +337,52 @@ Mcap.RFX3 <- RFX3.counts %>% subset(gene_id%in%top_RFX3) %>%
         legend.text=element_text(size = 6), #Legend text size
         legend.title=element_text(size = 6), #Legend title size
         legend.position=c(0.75, 0.9)) +
-  ggtitle("iv) RFX3") +
+  ggtitle("iii) Nanos2") +
   #facet_grid(rows=vars(gene_id), scales="free_y") +
   theme(strip.text.y = element_text(size = 5)) +
-  theme(plot.title = element_text(face = 'bold.italic', 
-                                  size = 9, 
+  theme(plot.title = element_text(face = 'bold.italic',
+                                  size = 9,
                                   hjust = 0)) #+
   #annotate("text", x = 3.5, y = 14, label = "transcriptional repression", size = 2.5)
-Mcap.RFX3
+Mcap.Nanos2
 ```
 
 Plot SOLH2 expression as a function of time and treatment
 ```{r}
-Mcap.SOLH2 <- SOLH2.counts %>% subset(gene_id%in%top_SOLH2) %>% 
-  ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
-  geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
-  geom_line(lty="dashed", color = "darkgrey") +
-  geom_point(aes(), size = 1.5) +
-  xlab("Timepoint") +
-  ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
-  theme_bw() + #Set the background color
-  ylim(8.728599, 14.5) +
-  theme(axis.line = element_line(color = 'black'), #Set the axes color
-        panel.border = element_blank(), #Set the border
-        panel.grid.major = element_blank(), #Set the major gridlines
-        panel.grid.minor = element_blank(), #Set the minor gridlines
-        plot.background=element_blank(),  #Set the plot background
-        axis.title.x=element_text(size = 6), #set x-axis title size
-        axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1, size = 6), #set x-axis label size
-        axis.text.y=element_text(size = 6), #set x-axis label size
-        axis.title.y=element_blank(), #set x-axis label size
-        axis.ticks.x=element_blank(), #No x-label ticks
-        legend.text=element_text(size = 6), #Legend text size
-        legend.title=element_text(size = 6), #Legend title size
-        legend.position=c(0.75, 0.85)) +
-  ggtitle("v) SOLH2") +
-  #facet_grid(rows=vars(gene_id), scales="free_y") +
-  theme(strip.text.y = element_text(size = 5)) +
-  theme(plot.title = element_text(face = 'bold.italic', 
-                                  size = 9, 
-                                  hjust = 0)) #+
-  #annotate("text", x = 3.5, y = 14.5, label = "methylation maintenance", size = 2.5)
-Mcap.SOLH2
+# Mcap.SOLH2 <- SOLH2.counts %>% subset(gene_id%in%top_SOLH2) %>% 
+#   ggplot(aes(x=time_point, y=mean, group=gene_id)) + 
+#   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
+#   geom_line(lty="dashed", color = "darkgrey") +
+#   geom_point(aes(), size = 1.5) +
+#   xlab("Timepoint") +
+#   ylab(expression(paste("Mean expression (vst-transformed counts)"))) +
+#   theme_bw() + #Set the background color
+#   ylim(8.728599, 14.5) +
+#   theme(axis.line = element_line(color = 'black'), #Set the axes color
+#         panel.border = element_blank(), #Set the border
+#         panel.grid.major = element_blank(), #Set the major gridlines
+#         panel.grid.minor = element_blank(), #Set the minor gridlines
+#         plot.background=element_blank(),  #Set the plot background
+#         axis.title.x=element_text(size = 6), #set x-axis title size
+#         axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1, size = 6), #set x-axis label size
+#         axis.text.y=element_text(size = 6), #set x-axis label size
+#         axis.title.y=element_blank(), #set x-axis label size
+#         axis.ticks.x=element_blank(), #No x-label ticks
+#         legend.text=element_text(size = 6), #Legend text size
+#         legend.title=element_text(size = 6), #Legend title size
+#         legend.position=c(0.75, 0.85)) +
+#   ggtitle("v) SOLH2") +
+#   #facet_grid(rows=vars(gene_id), scales="free_y") +
+#   theme(strip.text.y = element_text(size = 5)) +
+#   theme(plot.title = element_text(face = 'bold.italic', 
+#                                   size = 9, 
+#                                   hjust = 0)) #+
+#   #annotate("text", x = 3.5, y = 14.5, label = "methylation maintenance", size = 2.5)
+# Mcap.SOLH2
 ```
 
 ```{r}
-Mcap.VASA <- VASA.counts %>% subset(gene_id%in%top_VASA) %>% 
+Mcap.Vasa1 <- Vasa1.counts %>% subset(gene_id%in%top_Vasa1) %>% 
   ggplot(aes(x=time_point, y=mean, group=gene_id)) +
   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width=.1) +
   geom_line(lty="dashed", color = "darkgrey") +
@@ -403,22 +405,21 @@ Mcap.VASA <- VASA.counts %>% subset(gene_id%in%top_VASA) %>%
         legend.title=element_text(size = 6), #Legend title size
         legend.position = c(0.75, 0.9)) +
   #guides(shape=guide_legend(ncol=2)) +
-  ggtitle("vii) VASA") +
+  ggtitle("iv) Vasa1") +
   #facet_grid(rows=vars(gene_id), scales="free_y") +
   theme(strip.text.y = element_text(size = 5)) +
   theme(plot.title = element_text(face = 'bold.italic',
                                   size = 9,
                                   hjust = 0)) #+
   #annotate("text", x = 3.25, y = 14, label = "chromatin accessibility", size = 2.5)
-Mcap.VASA
+Mcap.Vasa1
 ```
 
 
 Compile plots into single figure and save
 ```{r}
 library(patchwork)
-Fig.7 <- (Mcap.MYBL1 + Mcap.PIWI + Mcap.NANOS) / (Mcap.RFX3 + Mcap.SOLH2 + Mcap.VASA)
-Fig.7 
+Fig.7 <- (Mcap.PL10+Mcap.Vasa2) / (Mcap.Nanos2+Mcap.Vasa1)
 ggsave("2b-Epi-MZT-Enzyme-Expression/Output/Mcap-Stem-Expression.png", Fig.7, width=7, height=5)
 ```
 
@@ -430,7 +431,7 @@ DEG_dev <- DESeq(gdds_dev) #run differential expression test by group using the 
 
 Make a list of biomarkers to look for:
 ```{r}
-stem.markers <- c(top_MYBL1, top_NANOS, top_RFX3, top_SOLH2, top_VASA, top_PIWI)
+stem.markers <- c(top_PL10, top_Nanos2, top_RFX3, top_SOLH2, top_Vasa1, top_Vasa2)
 ```
 
 Look for differential expression of biomarkers
