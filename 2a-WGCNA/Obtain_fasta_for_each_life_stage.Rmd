@@ -39,7 +39,7 @@ AdultColors <- c("antiquewhite4", "thistle", "navajowhite1", "blue", "cyan", "bl
 
 Get a list of genes that are positively correlated with each life stage.
 ```{r}
-UE <- gi %>% filter(moduleColor%in%UEColors) %>% subset(select=gene_id)
+UE <- gi %>% filter(moduleColor%in%UEColors) %>% subset(select=gene_id) 
 FE <- gi %>% filter(moduleColor%in%FEColors) %>% subset(select=gene_id)
 Clvg <- gi %>% filter(moduleColor%in%ClvgColors) %>% subset(select=gene_id)
 PC <- gi %>% filter(moduleColor%in%PCColors) %>% subset(select=gene_id)
@@ -57,19 +57,19 @@ Make fasta for each life stage
 rownames(ref) <- ref$seq.name
 
 #Test with unfertilized eggs
-UE.fa <- ref[UE$gene_id,]
-str(UE.fa)
+UE.fa <- na.omit(ref[UE$gene_id,])
+str(UE.fa) 
 dat2fasta(UE.fa, "2a-WGCNA/Output/Mcap_unfertilized_egg.fasta") #Looks good, so we will save
 
 #For the other 8, I will nest the commands
-dat2fasta(ref[FE$gene_id,], "2a-WGCNA/Output/Mcap_fertilized_egg.fasta") #Looks good, so we will save
-dat2fasta(ref[Clvg$gene_id,], "2a-WGCNA/Output/Mcap_cleavage.fasta") #Looks good, so we will save
-dat2fasta(ref[PC$gene_id,], "2a-WGCNA/Output/Mcap_prawn_chip.fasta") #Looks good, so we will save
-dat2fasta(ref[EG$gene_id,], "2a-WGCNA/Output/Mcap_early_gastrula.fasta") #Looks good, so we will save
-dat2fasta(ref[MG$gene_id,], "2a-WGCNA/Output/Mcap_mid_gastrula.fasta") #Looks good, so we will save
-dat2fasta(ref[LG$gene_id,], "2a-WGCNA/Output/Mcap_late_gastrula.fasta") #Looks good, so we will save
-dat2fasta(ref[Pln$gene_id,], "2a-WGCNA/Output/Mcap_planula.fasta") #Looks good, so we will save
-dat2fasta(ref[Adult$gene_id,], "2a-WGCNA/Output/Mcap_adult.fasta") #Looks good, so we will save
+dat2fasta(na.omit(ref[FE$gene_id,]), "2a-WGCNA/Output/Mcap_fertilized_egg.fasta")
+dat2fasta(na.omit(ref[Clvg$gene_id,]), "2a-WGCNA/Output/Mcap_cleavage.fasta")
+dat2fasta(na.omit(ref[PC$gene_id,]), "2a-WGCNA/Output/Mcap_prawn_chip.fasta")
+dat2fasta(na.omit(ref[EG$gene_id,]), "2a-WGCNA/Output/Mcap_early_gastrula.fasta")
+dat2fasta(na.omit(ref[MG$gene_id,]), "2a-WGCNA/Output/Mcap_mid_gastrula.fasta")
+dat2fasta(na.omit(ref[LG$gene_id,]), "2a-WGCNA/Output/Mcap_late_gastrula.fasta")
+dat2fasta(na.omit(ref[Pln$gene_id,]), "2a-WGCNA/Output/Mcap_planula.fasta")
+dat2fasta(na.omit(ref[Adult$gene_id,]), "2a-WGCNA/Output/Mcap_adult.fasta")
 ```
 Check n sequences in each file
 ```{bash}

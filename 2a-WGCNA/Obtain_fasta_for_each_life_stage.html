@@ -412,7 +412,7 @@ LGColors &lt;- c(&quot;mediumpurple1&quot;, &quot;sienna3&quot;, &quot;thistle4&
 PlnColors &lt;- c(&quot;blue&quot;, &quot;salmon&quot;, &quot;sienna3&quot;)
 AdultColors &lt;- c(&quot;antiquewhite4&quot;, &quot;thistle&quot;, &quot;navajowhite1&quot;, &quot;blue&quot;, &quot;cyan&quot;, &quot;blueviolet&quot;, &quot;ivory&quot;)</code></pre>
 <p>Get a list of genes that are positively correlated with each life stage.</p>
-<pre class="r"><code>UE &lt;- gi %&gt;% filter(moduleColor%in%UEColors) %&gt;% subset(select=gene_id)
+<pre class="r"><code>UE &lt;- gi %&gt;% filter(moduleColor%in%UEColors) %&gt;% subset(select=gene_id) 
 FE &lt;- gi %&gt;% filter(moduleColor%in%FEColors) %&gt;% subset(select=gene_id)
 Clvg &lt;- gi %&gt;% filter(moduleColor%in%ClvgColors) %&gt;% subset(select=gene_id)
 PC &lt;- gi %&gt;% filter(moduleColor%in%PCColors) %&gt;% subset(select=gene_id)
@@ -426,41 +426,43 @@ Adult &lt;- gi %&gt;% filter(moduleColor%in%AdultColors) %&gt;% subset(select=ge
 rownames(ref) &lt;- ref$seq.name
 
 #Test with unfertilized eggs
-UE.fa &lt;- ref[UE$gene_id,]
-str(UE.fa)</code></pre>
-<pre><code>## &#39;data.frame&#39;:    4044 obs. of  2 variables:
+UE.fa &lt;- na.omit(ref[UE$gene_id,])
+str(UE.fa) </code></pre>
+<pre><code>## &#39;data.frame&#39;:    3708 obs. of  2 variables:
 ##  $ seq.name: chr  &quot;g45338 &quot; &quot;adi2mcaRNA23838_R0 &quot; &quot;g52470 &quot; &quot;g47993 &quot; ...
-##  $ seq.text: chr  &quot;ATGTTTAAGCGCTGGCGCGATAGAAAGAAGGAAACCGAACAGCAACCTGAGAGTCCAACAAGGGAAAATCAACAACAATTGCTCACCGAAACCTCCGGATTTATATGCCCA&quot;| __truncated__ &quot;ATGATACAGACGGATAAGACACAAATTTCGCCTCATCAGCATCTCAGATGTCAGATAATACCAATGCCAGGTCTAACTGATGTGTCACCGTCAGAAGTGTTCAAAGAGATC&quot;| __truncated__ &quot;ATGAACTCAACGAAGACCAAAGGCGACAAAAAAACACCAGAGGCATGTTTTATGGCGTTCACACCTCAGAGCTCTCCGACTCGCGGTGGGGAGGTTTTGTTTGTTACATAT&quot;| __truncated__ &quot;ATGGCTTCGGCGGAGGGATTTCTTCACAGTCCACTTGTTGTCTGGGCCAACAATACTTTCAAGACGAATATTTTGATTGAATCTATCACCGATTTGGCGGATGGTGTCCTC&quot;| __truncated__ ...</code></pre>
+##  $ seq.text: chr  &quot;ATGTTTAAGCGCTGGCGCGATAGAAAGAAGGAAACCGAACAGCAACCTGAGAGTCCAACAAGGGAAAATCAACAACAATTGCTCACCGAAACCTCCGGATTTATATGCCCA&quot;| __truncated__ &quot;ATGATACAGACGGATAAGACACAAATTTCGCCTCATCAGCATCTCAGATGTCAGATAATACCAATGCCAGGTCTAACTGATGTGTCACCGTCAGAAGTGTTCAAAGAGATC&quot;| __truncated__ &quot;ATGAACTCAACGAAGACCAAAGGCGACAAAAAAACACCAGAGGCATGTTTTATGGCGTTCACACCTCAGAGCTCTCCGACTCGCGGTGGGGAGGTTTTGTTTGTTACATAT&quot;| __truncated__ &quot;ATGGCTTCGGCGGAGGGATTTCTTCACAGTCCACTTGTTGTCTGGGCCAACAATACTTTCAAGACGAATATTTTGATTGAATCTATCACCGATTTGGCGGATGGTGTCCTC&quot;| __truncated__ ...
+##  - attr(*, &quot;na.action&quot;)= &#39;omit&#39; Named int [1:336] 20 57 66 83 87 109 133 147 153 159 ...
+##   ..- attr(*, &quot;names&quot;)= chr [1:336] &quot;NA&quot; &quot;NA.1&quot; &quot;NA.2&quot; &quot;NA.3&quot; ...</code></pre>
 <pre class="r"><code>dat2fasta(UE.fa, &quot;2a-WGCNA/Output/Mcap_unfertilized_egg.fasta&quot;) #Looks good, so we will save</code></pre>
 <pre><code>## 2a-WGCNA/Output/Mcap_unfertilized_egg.fasta has been saved to  /Users/erinchille/Documents/Putnam_Lab.nosync/Mcapitata_Developmental_Gene_Expression_Timeseries</code></pre>
 <pre class="r"><code>#For the other 8, I will nest the commands
-dat2fasta(ref[FE$gene_id,], &quot;2a-WGCNA/Output/Mcap_fertilized_egg.fasta&quot;) #Looks good, so we will save</code></pre>
+dat2fasta(na.omit(ref[FE$gene_id,]), &quot;2a-WGCNA/Output/Mcap_fertilized_egg.fasta&quot;)</code></pre>
 <pre><code>## 2a-WGCNA/Output/Mcap_fertilized_egg.fasta has been saved to  /Users/erinchille/Documents/Putnam_Lab.nosync/Mcapitata_Developmental_Gene_Expression_Timeseries</code></pre>
-<pre class="r"><code>dat2fasta(ref[Clvg$gene_id,], &quot;2a-WGCNA/Output/Mcap_cleavage.fasta&quot;) #Looks good, so we will save</code></pre>
+<pre class="r"><code>dat2fasta(na.omit(ref[Clvg$gene_id,]), &quot;2a-WGCNA/Output/Mcap_cleavage.fasta&quot;)</code></pre>
 <pre><code>## 2a-WGCNA/Output/Mcap_cleavage.fasta has been saved to  /Users/erinchille/Documents/Putnam_Lab.nosync/Mcapitata_Developmental_Gene_Expression_Timeseries</code></pre>
-<pre class="r"><code>dat2fasta(ref[PC$gene_id,], &quot;2a-WGCNA/Output/Mcap_prawn_chip.fasta&quot;) #Looks good, so we will save</code></pre>
+<pre class="r"><code>dat2fasta(na.omit(ref[PC$gene_id,]), &quot;2a-WGCNA/Output/Mcap_prawn_chip.fasta&quot;)</code></pre>
 <pre><code>## 2a-WGCNA/Output/Mcap_prawn_chip.fasta has been saved to  /Users/erinchille/Documents/Putnam_Lab.nosync/Mcapitata_Developmental_Gene_Expression_Timeseries</code></pre>
-<pre class="r"><code>dat2fasta(ref[EG$gene_id,], &quot;2a-WGCNA/Output/Mcap_early_gastrula.fasta&quot;) #Looks good, so we will save</code></pre>
+<pre class="r"><code>dat2fasta(na.omit(ref[EG$gene_id,]), &quot;2a-WGCNA/Output/Mcap_early_gastrula.fasta&quot;)</code></pre>
 <pre><code>## 2a-WGCNA/Output/Mcap_early_gastrula.fasta has been saved to  /Users/erinchille/Documents/Putnam_Lab.nosync/Mcapitata_Developmental_Gene_Expression_Timeseries</code></pre>
-<pre class="r"><code>dat2fasta(ref[MG$gene_id,], &quot;2a-WGCNA/Output/Mcap_mid_gastrula.fasta&quot;) #Looks good, so we will save</code></pre>
+<pre class="r"><code>dat2fasta(na.omit(ref[MG$gene_id,]), &quot;2a-WGCNA/Output/Mcap_mid_gastrula.fasta&quot;)</code></pre>
 <pre><code>## 2a-WGCNA/Output/Mcap_mid_gastrula.fasta has been saved to  /Users/erinchille/Documents/Putnam_Lab.nosync/Mcapitata_Developmental_Gene_Expression_Timeseries</code></pre>
-<pre class="r"><code>dat2fasta(ref[LG$gene_id,], &quot;2a-WGCNA/Output/Mcap_late_gastrula.fasta&quot;) #Looks good, so we will save</code></pre>
+<pre class="r"><code>dat2fasta(na.omit(ref[LG$gene_id,]), &quot;2a-WGCNA/Output/Mcap_late_gastrula.fasta&quot;)</code></pre>
 <pre><code>## 2a-WGCNA/Output/Mcap_late_gastrula.fasta has been saved to  /Users/erinchille/Documents/Putnam_Lab.nosync/Mcapitata_Developmental_Gene_Expression_Timeseries</code></pre>
-<pre class="r"><code>dat2fasta(ref[Pln$gene_id,], &quot;2a-WGCNA/Output/Mcap_planula.fasta&quot;) #Looks good, so we will save</code></pre>
+<pre class="r"><code>dat2fasta(na.omit(ref[Pln$gene_id,]), &quot;2a-WGCNA/Output/Mcap_planula.fasta&quot;)</code></pre>
 <pre><code>## 2a-WGCNA/Output/Mcap_planula.fasta has been saved to  /Users/erinchille/Documents/Putnam_Lab.nosync/Mcapitata_Developmental_Gene_Expression_Timeseries</code></pre>
-<pre class="r"><code>dat2fasta(ref[Adult$gene_id,], &quot;2a-WGCNA/Output/Mcap_adult.fasta&quot;) #Looks good, so we will save</code></pre>
+<pre class="r"><code>dat2fasta(na.omit(ref[Adult$gene_id,]), &quot;2a-WGCNA/Output/Mcap_adult.fasta&quot;)</code></pre>
 <pre><code>## 2a-WGCNA/Output/Mcap_adult.fasta has been saved to  /Users/erinchille/Documents/Putnam_Lab.nosync/Mcapitata_Developmental_Gene_Expression_Timeseries</code></pre>
 <p>Check n sequences in each file</p>
 <pre class="bash"><code>zgrep -c &quot;&gt;&quot; /Users/erinchille/Documents/Putnam_Lab.nosync/Mcapitata_Developmental_Gene_Expression_Timeseries/2a-WGCNA/Output/Mcap_*</code></pre>
-<pre><code>## /Users/erinchille/Documents/Putnam_Lab.nosync/Mcapitata_Developmental_Gene_Expression_Timeseries/2a-WGCNA/Output/Mcap_adult.fasta:16226
-## /Users/erinchille/Documents/Putnam_Lab.nosync/Mcapitata_Developmental_Gene_Expression_Timeseries/2a-WGCNA/Output/Mcap_cleavage.fasta:1577
-## /Users/erinchille/Documents/Putnam_Lab.nosync/Mcapitata_Developmental_Gene_Expression_Timeseries/2a-WGCNA/Output/Mcap_early_gastrula.fasta:2685
-## /Users/erinchille/Documents/Putnam_Lab.nosync/Mcapitata_Developmental_Gene_Expression_Timeseries/2a-WGCNA/Output/Mcap_fertilized_egg.fasta:2035
-## /Users/erinchille/Documents/Putnam_Lab.nosync/Mcapitata_Developmental_Gene_Expression_Timeseries/2a-WGCNA/Output/Mcap_late_gastrula.fasta:1237
-## /Users/erinchille/Documents/Putnam_Lab.nosync/Mcapitata_Developmental_Gene_Expression_Timeseries/2a-WGCNA/Output/Mcap_mid_gastrula.fasta:1771
-## /Users/erinchille/Documents/Putnam_Lab.nosync/Mcapitata_Developmental_Gene_Expression_Timeseries/2a-WGCNA/Output/Mcap_planula.fasta:13122
-## /Users/erinchille/Documents/Putnam_Lab.nosync/Mcapitata_Developmental_Gene_Expression_Timeseries/2a-WGCNA/Output/Mcap_prawn_chip.fasta:2638
-## /Users/erinchille/Documents/Putnam_Lab.nosync/Mcapitata_Developmental_Gene_Expression_Timeseries/2a-WGCNA/Output/Mcap_unfertilized_egg.fasta:4044</code></pre>
+<pre><code>## /Users/erinchille/Documents/Putnam_Lab.nosync/Mcapitata_Developmental_Gene_Expression_Timeseries/2a-WGCNA/Output/Mcap_adult.fasta:14943
+## /Users/erinchille/Documents/Putnam_Lab.nosync/Mcapitata_Developmental_Gene_Expression_Timeseries/2a-WGCNA/Output/Mcap_cleavage.fasta:1473
+## /Users/erinchille/Documents/Putnam_Lab.nosync/Mcapitata_Developmental_Gene_Expression_Timeseries/2a-WGCNA/Output/Mcap_early_gastrula.fasta:2504
+## /Users/erinchille/Documents/Putnam_Lab.nosync/Mcapitata_Developmental_Gene_Expression_Timeseries/2a-WGCNA/Output/Mcap_fertilized_egg.fasta:1859
+## /Users/erinchille/Documents/Putnam_Lab.nosync/Mcapitata_Developmental_Gene_Expression_Timeseries/2a-WGCNA/Output/Mcap_late_gastrula.fasta:1124
+## /Users/erinchille/Documents/Putnam_Lab.nosync/Mcapitata_Developmental_Gene_Expression_Timeseries/2a-WGCNA/Output/Mcap_mid_gastrula.fasta:1646
+## /Users/erinchille/Documents/Putnam_Lab.nosync/Mcapitata_Developmental_Gene_Expression_Timeseries/2a-WGCNA/Output/Mcap_planula.fasta:12087
+## /Users/erinchille/Documents/Putnam_Lab.nosync/Mcapitata_Developmental_Gene_Expression_Timeseries/2a-WGCNA/Output/Mcap_prawn_chip.fasta:2468
+## /Users/erinchille/Documents/Putnam_Lab.nosync/Mcapitata_Developmental_Gene_Expression_Timeseries/2a-WGCNA/Output/Mcap_unfertilized_egg.fasta:3708</code></pre>
 
 
 
