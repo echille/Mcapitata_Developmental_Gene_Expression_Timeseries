@@ -875,12 +875,6 @@ dim(geneInfo)
 head(geneInfo)
 ```
 
-```{r}
-# geneInfo <- subset(geneInfo, select = c(1:10, 81, 11:80))
-# dim(geneInfo)
-# names(geneInfo)
-```
-
 Save geneInfo as a CSV
 ```{r}
 head(geneInfo)

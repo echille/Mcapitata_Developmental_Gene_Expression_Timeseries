@@ -1,0 +1,78 @@
+---
+title: "Get FASTA for each life stage"
+author: "Erin Chille"
+date: "4/9/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+In this script, I will use the gene info data obtained from WGCNA to extract and save genes positively associated with each life stage from the Mcap reference FASTA file.
+
+```{r}
+library(tidyverse)
+library(phylotools)
+```
+Load gene info and reference fasta
+```{r}
+gi <- read_csv(file = "2a-WGCNA/Output/geneInfo.csv", col_names = TRUE)
+gi <- subset(gi, select=c(gene_id,moduleColor))
+
+ref <- read.fasta(file="/Volumes/ErinsDrive/Putnam_Lab/BSF_Biomin_Mcap/Mcap-ref/Mcap.mRNA.fa", clean_name = FALSE)
+head(ref)
+```
+
+Set module colors of each life stage (copied from WGCNA script).
+```{r}
+UEColors <- c("grey", "coral1", "mediumpurple3", "antiquewhite2", "antiquewhite4", "thistle", "honeydew1", "midnightblue")
+FEColors <- c("coral1", "lightslateblue", "mediumpurple3", "antiquewhite2", "midnightblue")
+ClvgColors <- c("blue2", "violet")
+PCColors <- c("indianred3", "blue2", "plum3", "blue4", "coral", "violet")
+EGColors <- c("magenta4", "plum3", "blue4", "skyblue1", "brown2", "coral", "darkslateblue", "plum4")
+MGColors <- c("magenta4", "skyblue1", "darkseagreen", "darkslateblue", "thistle4", "salmon4")
+LGColors <- c("mediumpurple1", "sienna3", "thistle4", "salmon4")
+PlnColors <- c("blue", "salmon", "sienna3")
+AdultColors <- c("antiquewhite4", "thistle", "navajowhite1", "blue", "cyan", "blueviolet", "ivory")
+```
+
+Get a list of genes that are positively correlated with each life stage.
+```{r}
+UE <- gi %>% filter(moduleColor%in%UEColors) %>% subset(select=gene_id)
+FE <- gi %>% filter(moduleColor%in%FEColors) %>% subset(select=gene_id)
+Clvg <- gi %>% filter(moduleColor%in%ClvgColors) %>% subset(select=gene_id)
+PC <- gi %>% filter(moduleColor%in%PCColors) %>% subset(select=gene_id)
+EG <- gi %>% filter(moduleColor%in%EGColors) %>% subset(select=gene_id)
+MG <- gi %>% filter(moduleColor%in%MGColors) %>% subset(select=gene_id)
+LG <- gi %>% filter(moduleColor%in%LGColors) %>% subset(select=gene_id)
+Pln <- gi %>% filter(moduleColor%in%PlnColors) %>% subset(select=gene_id)
+Adult <- gi %>% filter(moduleColor%in%AdultColors) %>% subset(select=gene_id)
+```
+
+
+Make fasta for each life stage
+```{r}
+#Prep ref
+rownames(ref) <- ref$seq.name
+
+#Test with unfertilized eggs
+UE.fa <- ref[UE$gene_id,]
+str(UE.fa)
+dat2fasta(UE.fa, "2a-WGCNA/Output/Mcap_unfertilized_egg.fasta") #Looks good, so we will save
+
+#For the other 8, I will nest the commands
+dat2fasta(ref[FE$gene_id,], "2a-WGCNA/Output/Mcap_fertilized_egg.fasta") #Looks good, so we will save
+dat2fasta(ref[Clvg$gene_id,], "2a-WGCNA/Output/Mcap_cleavage.fasta") #Looks good, so we will save
+dat2fasta(ref[PC$gene_id,], "2a-WGCNA/Output/Mcap_prawn_chip.fasta") #Looks good, so we will save
+dat2fasta(ref[EG$gene_id,], "2a-WGCNA/Output/Mcap_early_gastrula.fasta") #Looks good, so we will save
+dat2fasta(ref[MG$gene_id,], "2a-WGCNA/Output/Mcap_mid_gastrula.fasta") #Looks good, so we will save
+dat2fasta(ref[LG$gene_id,], "2a-WGCNA/Output/Mcap_late_gastrula.fasta") #Looks good, so we will save
+dat2fasta(ref[Pln$gene_id,], "2a-WGCNA/Output/Mcap_planula.fasta") #Looks good, so we will save
+dat2fasta(ref[Adult$gene_id,], "2a-WGCNA/Output/Mcap_adult.fasta") #Looks good, so we will save
+```
+Check n sequences in each file
+```{bash}
+zgrep -c ">" /Users/erinchille/Documents/Putnam_Lab.nosync/Mcapitata_Developmental_Gene_Expression_Timeseries/2a-WGCNA/Output/Mcap_*
+```
+
