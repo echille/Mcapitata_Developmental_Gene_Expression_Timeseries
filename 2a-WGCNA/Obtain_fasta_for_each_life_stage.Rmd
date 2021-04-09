@@ -54,22 +54,23 @@ Adult <- gi %>% filter(moduleColor%in%AdultColors) %>% subset(select=gene_id)
 Make fasta for each life stage
 ```{r}
 #Prep ref
-rownames(ref) <- ref$seq.name
+ref$seq.name <- gsub(" ", "", ref$seq.name)
 
 #Test with unfertilized eggs
-UE.fa <- na.omit(ref[UE$gene_id,])
-str(UE.fa) 
+UE.fa <- ref[which(ref$seq.name%in%UE$gene_id),]
+dim(UE.fa) 
 dat2fasta(UE.fa, "2a-WGCNA/Output/Mcap_unfertilized_egg.fasta") #Looks good, so we will save
 
 #For the other 8, I will nest the commands
-dat2fasta(na.omit(ref[FE$gene_id,]), "2a-WGCNA/Output/Mcap_fertilized_egg.fasta")
-dat2fasta(na.omit(ref[Clvg$gene_id,]), "2a-WGCNA/Output/Mcap_cleavage.fasta")
-dat2fasta(na.omit(ref[PC$gene_id,]), "2a-WGCNA/Output/Mcap_prawn_chip.fasta")
-dat2fasta(na.omit(ref[EG$gene_id,]), "2a-WGCNA/Output/Mcap_early_gastrula.fasta")
-dat2fasta(na.omit(ref[MG$gene_id,]), "2a-WGCNA/Output/Mcap_mid_gastrula.fasta")
-dat2fasta(na.omit(ref[LG$gene_id,]), "2a-WGCNA/Output/Mcap_late_gastrula.fasta")
-dat2fasta(na.omit(ref[Pln$gene_id,]), "2a-WGCNA/Output/Mcap_planula.fasta")
-dat2fasta(na.omit(ref[Adult$gene_id,]), "2a-WGCNA/Output/Mcap_adult.fasta")
+dat2fasta(ref[which(ref$seq.name%in%FE$gene_id),], "2a-WGCNA/Output/Mcap_fertilized_egg.fasta")
+
+dat2fasta(ref[which(ref$seq.name%in%Clvg$gene_id),], "2a-WGCNA/Output/Mcap_cleavage.fasta")
+dat2fasta(ref[which(ref$seq.name%in%PC$gene_id),], "2a-WGCNA/Output/Mcap_prawn_chip.fasta")
+dat2fasta(ref[which(ref$seq.name%in%EG$gene_id),], "2a-WGCNA/Output/Mcap_early_gastrula.fasta")
+dat2fasta(ref[which(ref$seq.name%in%MG$gene_id),], "2a-WGCNA/Output/Mcap_mid_gastrula.fasta")
+dat2fasta(ref[which(ref$seq.name%in%LG$gene_id),], "2a-WGCNA/Output/Mcap_late_gastrula.fasta")
+dat2fasta(ref[which(ref$seq.name%in%Pln$gene_id),], "2a-WGCNA/Output/Mcap_planula.fasta")
+dat2fasta(ref[which(ref$seq.name%in%Adult$gene_id),], "2a-WGCNA/Output/Mcap_adult.fasta")
 ```
 Check n sequences in each file
 ```{bash}
