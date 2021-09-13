@@ -142,7 +142,7 @@ pheatmap(gsampleDistMatrix_dev, #plot matrix
 
 ##### Principal component plot of samples
 ```{r}
-gPCAdata_dev <- plotPCA(gvst_dev, intgroup = c("time_point"), returnData=TRUE)
+gPCAdata_dev <- plotPCA(gvst_dev, intgroup = c("time_point"), ntop= nrow(gvst_dev), returnData=TRUE)
 percentVar_dev <- round(100*attr(gPCAdata_dev, "percentVar")) #plot PCA of samples with all data
 
 allgenesfilt_PCA <- ggplot(gPCAdata_dev, aes(PC1, PC2, shape=time_point)) + 
@@ -156,10 +156,9 @@ allgenesfilt_PCA <- ggplot(gPCAdata_dev, aes(PC1, PC2, shape=time_point)) +
                      #panel.grid.major = element_blank(), #Set major gridlines 
                      #panel.grid.minor = element_blank(), #Set minor gridlines
                      axis.line = element_line(colour = "black"), #Set axes color
-        plot.background=element_blank()) # + #Set the plot background
+        plot.background=element_blank()); allgenesfilt_PCA # + #Set the plot background
   #theme(legend.position = ("none")) #set title attributes
-allgenesfilt_PCA
-ggsave("2a-WGCNA/Output/Fig2-DEV-allgenesfilt-PCA.pdf", allgenesfilt_PCA)
+#ggsave("2a-WGCNA/Output/Fig2-DEV-allgenesfilt-PCA.pdf", allgenesfilt_PCA)
 ```
 
 ### Compile WGCNA Dataset
