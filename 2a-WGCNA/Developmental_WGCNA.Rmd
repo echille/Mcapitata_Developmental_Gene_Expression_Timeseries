@@ -138,8 +138,6 @@ pheatmap(gsampleDistMatrix_dev, #plot matrix
          clustering_distance_cols=gsampleDists_dev, #cluster columns
          col=colors) #set colors
 ```
-
-
 ##### Principal component plot of samples
 ```{r}
 gPCAdata_dev <- plotPCA(gvst_dev, intgroup = c("time_point"), ntop= nrow(gvst_dev), returnData=TRUE)
@@ -158,7 +156,7 @@ allgenesfilt_PCA <- ggplot(gPCAdata_dev, aes(PC1, PC2, shape=time_point)) +
                      axis.line = element_line(colour = "black"), #Set axes color
         plot.background=element_blank()); allgenesfilt_PCA # + #Set the plot background
   #theme(legend.position = ("none")) #set title attributes
-#ggsave("2a-WGCNA/Output/Fig2-DEV-allgenesfilt-PCA.pdf", allgenesfilt_PCA)
+ggsave("2a-WGCNA/Output/Fig2-DEV-allgenesfilt-PCA.pdf", allgenesfilt_PCA)
 ```
 
 ### Compile WGCNA Dataset
