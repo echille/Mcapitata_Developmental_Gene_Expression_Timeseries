@@ -559,7 +559,7 @@ Cluster1Plot <- expressionProfile_data %>%
   #ylim(-0.5,1) +
   ylab("Mean Module Eigenegene") +
   theme_bw() + 
-  ggtitle("Cluster 1") +
+  ggtitle("A) Cluster 1") +
   theme(axis.text.x=element_blank(), #set x-axis label size
         axis.title.x=element_blank(), #set x-axis title size
         axis.ticks.x=element_blank(), #No x-label ticks
@@ -581,7 +581,7 @@ Cluster2Plot <- expressionProfile_data %>%
   geom_boxplot(alpha=0) +
         scale_x_discrete(limits=time_point_order) +
   #ylim(-0.5,1) +
-  ggtitle("Cluster 2") +
+  ggtitle("B) Cluster 2") +
   theme_bw() + 
   theme(axis.text.x=element_blank(), #set x-axis label size
         axis.title.x=element_blank(), #set x-axis title size
@@ -604,7 +604,7 @@ Cluster3Plot <- expressionProfile_data %>%
   geom_boxplot(alpha=0) +
         scale_x_discrete(limits=time_point_order) +
   #ylim(-0.5,1) +
-  ggtitle("Cluster 3") +
+  ggtitle("C) Cluster 3") +
   theme_bw() + 
  theme(axis.text.x=element_blank(), #set x-axis label size
         axis.title.x=element_blank(), #set x-axis title size
@@ -627,7 +627,7 @@ Cluster4Plot <- expressionProfile_data %>%
   geom_boxplot(alpha=0) +
         scale_x_discrete(limits=time_point_order) +
   #ylim(-0.5,1) +
-  ggtitle("Cluster 4") +
+  ggtitle("D) Cluster 4") +
   ylab("Mean Module Eigenegene") +
   theme_bw() + 
  theme(axis.text.x=element_blank(), #set x-axis label size
@@ -651,7 +651,7 @@ Cluster5Plot <- expressionProfile_data %>%
   geom_boxplot(alpha=0) +
         scale_x_discrete(limits=time_point_order) +
   #ylim(-0.5,1) +
-  ggtitle("Cluster 5") +
+  ggtitle("E) Cluster 5") +
   theme_bw() + 
  theme(axis.text.x=element_blank(), #set x-axis label size
         axis.title.x=element_blank(), #set x-axis title size
@@ -674,7 +674,7 @@ Cluster6Plot <- expressionProfile_data %>%
   geom_boxplot(alpha=0) +
         scale_x_discrete(limits=time_point_order) +
   #ylim(-0.5,1) +
-  ggtitle("Cluster 6") +
+  ggtitle("F) Cluster 6") +
   theme_bw() + 
   theme(axis.text.x=element_blank(), #set x-axis label size
         axis.title.x=element_blank(), #set x-axis title size
@@ -697,7 +697,7 @@ Cluster7Plot <- expressionProfile_data %>%
   geom_boxplot(alpha=0) +
         scale_x_discrete(limits=time_point_order) +
   #ylim(-0.5,1) +
-  ggtitle("Cluster 7") +
+  ggtitle("G) Cluster 7") +
   ylab("Mean Module Eigenegene") +
   theme_bw() + 
   theme(axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1, size = 14), #set x-axis label size
@@ -721,7 +721,7 @@ Cluster8Plot <- expressionProfile_data %>%
   geom_boxplot(alpha=0) +
         scale_x_discrete(limits=time_point_order) +
   #ylim(-0.5,1) +
-  ggtitle("Cluster 8") +
+  ggtitle("H) Cluster 8") +
   theme_bw() + 
   theme(axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1, size = 14), #set x-axis label size
         axis.title.x=element_text(size = 14), #set x-axis title size
@@ -744,7 +744,7 @@ Cluster9Plot <- expressionProfile_data %>%
   geom_boxplot(alpha=0) +
   scale_x_discrete(limits=time_point_order) +
   #ylim(-0.5,1) +
-  ggtitle("Cluster 9") +
+  ggtitle("I) Cluster 9") +
   xlab("Time Point") +
   theme_bw() + #Set background color
   theme(axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1, size = 14), #set x-axis label size
@@ -764,8 +764,9 @@ Cluster9Plot <- expressionProfile_data %>%
 
 Compile plots into 1 graph, aligning by y-axis and save
 ```{r}
-expressionProfiles <- cowplot::plot_grid(Cluster1Plot, Cluster2Plot, Cluster3Plot, Cluster4Plot, Cluster5Plot, Cluster6Plot, Cluster7Plot, Cluster8Plot, Cluster9Plot, align = "v", ncol = 3, nrow = 3)
-ggsave("2a-WGCNA/Output/SFig1-RNAseq-expressionProfiles.png", expressionProfiles, height = 16, width = 21, units = "in")
+library(patchwork)
+expressionProfiles <- (Cluster1Plot + Cluster2Plot + Cluster3Plot) / (Cluster4Plot + Cluster5Plot + Cluster6Plot) / (Cluster7Plot + Cluster8Plot + Cluster9Plot)
+ggsave("2a-WGCNA/Output/SFig1-RNAseq-expressionProfiles.png", expressionProfiles, height = 235, width = 340, units = "mm", dpi=300)
 ```
 
 ###  Gene relationship to trait and important modules: Gene Significance and Module Membership
