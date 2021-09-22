@@ -698,6 +698,7 @@ Cluster7Plot <- expressionProfile_data %>%
         scale_x_discrete(limits=time_point_order) +
   #ylim(-0.5,1) +
   ggtitle("G) Cluster 7") +
+  xlab("Time Point") +
   ylab("Mean Module Eigenegene") +
   theme_bw() + 
   theme(axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1, size = 14), #set x-axis label size
@@ -722,6 +723,7 @@ Cluster8Plot <- expressionProfile_data %>%
         scale_x_discrete(limits=time_point_order) +
   #ylim(-0.5,1) +
   ggtitle("H) Cluster 8") +
+  xlab("Time Point") +
   theme_bw() + 
   theme(axis.text.x=element_text(angle = 90, vjust = 0.5, hjust=1, size = 14), #set x-axis label size
         axis.title.x=element_text(size = 14), #set x-axis title size
