@@ -1,0 +1,8 @@
+cff-version: 1.1.0
+message: "If you use this dataset, please cite it as below."
+authors:
+  - family-names: Chille, Strand, Neder, Schmidt, Sherman, Mass, Putnam
+    given-names: Erin, Emma, Mayaan, Valeria, Madeleine, Tali, Hollie
+title: echille/Mcapitata_Developmental_Gene_Expression_Timeseries: Dataset release for Chille et al. (2021) BMC Genomics
+version: v1.0.0
+date-released: 2021-11-01
