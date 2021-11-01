@@ -1,5 +1,7 @@
 # Developmental series of gene expression clarifies maternal mRNA provisioning and maternal-to-zygotic transition in the reef-building coral Montipora capitata
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5636821.svg)](https://doi.org/10.5281/zenodo.5636821)
+
 Chille E 1, Strand E 1, Neder M 2, Schmidt V 3, Sherman M 1, Mass T 2, Putnam HM 1  
 1 Department of Biology, University of Rhode Island, Rhode Island, USA  
 2 Department of Marine Biology, The Leon H. Charney School of Marine Sciences, University of Haifa, Haifa, Israel  
@@ -25,8 +27,3 @@ Prior to fertilization, mothers provision their oocytes with mRNA that regulates
 [Figure 5](https://raw.githubusercontent.com/echille/Mcapitata_Developmental_Gene_Expression_Timeseries/master/Final_figures/Fig5.jpg)  
 [Figure 6](https://github.com/echille/Mcapitata_Developmental_Gene_Expression_Timeseries/blob/master/Final_figures/Fig6-annot.png?raw=true)  
 [Figure 7](https://github.com/echille/Mcapitata_Developmental_Gene_Expression_Timeseries/blob/master/Final_figures/Fig7_annot.png?raw=true)  
-
-[Supplement](https://www.biorxiv.org/content/biorxiv/early/2021/04/14/2021.04.14.439692/DC1/embed/media-1.docx?download=true)  
-
-## Citation
-Chille, E. E., Strand, E., Neder, M., Schmidt, V., Sherman, M., Putnam, H. M., & Mass, T. (2021). Developmental series of gene expression clarifies maternal mRNA provisioning and maternal-to-zygotic transition in the reef-building coral Montipora capitata. *bioRxiv.*
